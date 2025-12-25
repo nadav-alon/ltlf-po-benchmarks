@@ -1,0 +1,12 @@
+MONA DFA
+number of variables: 5
+variables: LEFT POS_0 POS_1 POS_2 T_0
+orders: 2 2 2 2 2
+states: 1
+initial: 0
+bdd nodes: 1
+final: -1
+behaviour: 0
+bdd:
+ -1 0 0
+end

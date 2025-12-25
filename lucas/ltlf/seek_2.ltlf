@@ -1,0 +1,1 @@
+(((((((G ((target_0) || (target_1))) && (G ((target_0) -> (! (target_1))))) && (G (((X (true)) && (target_0)) -> (X (target_1))))) && (G (((X (true)) && (target_1)) -> (X (target_0))))) && (G (((target_0) && (guess_0)) -> (hit)))) && (G (((target_1) && (guess_1)) -> (hit)))) -> (((G ((guess_0) || (guess_1))) && (G ((guess_0) -> (! (guess_1))))) && (F (hit))))

@@ -1,0 +1,3 @@
+.inputs: t_0 pos_0 pos_1
+.outputs: left
+.unobservables: t_0

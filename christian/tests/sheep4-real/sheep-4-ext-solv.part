@@ -1,0 +1,3 @@
+.inputs: pos_0 pos_1 pos_2 pos_3 disallow_0_1 disallow_0_2 disallow_0_3
+.outputs: move_0 move_1 move_2 move_3
+.unobservables: disallow_0_1 disallow_0_2 disallow_0_3

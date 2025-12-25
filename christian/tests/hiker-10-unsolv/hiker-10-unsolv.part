@@ -1,0 +1,3 @@
+.inputs: poison berry sick eot herbs inbag
+.outputs: eat collectherbs takeherbs
+.unobservables: poison
