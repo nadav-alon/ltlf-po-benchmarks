@@ -10,17 +10,24 @@ import tempfile
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
+from collections import defaultdict
 
 class Statistics():
     def __init__(self):
-        self.passed = 0
-        self.failed = 0
-        self.timeout = 0
-        self.other = 0
-        self.rows = []
+        self.stats = defaultdict(lambda: {'passed': 0, 'failed': 0, 'timeout': 0, 'other': 0})
+        self.results = defaultdict(dict) # test_path -> {impl: (time, status)}
+        self.lock = threading.Lock()
+
+    def add_result(self, test_path, impl, time, status, outcome):
+        with self.lock:
+            self.results[test_path][impl] = (time, status)
+            if outcome == 'passed': self.stats[impl]['passed'] += 1
+            elif outcome == 'failed': self.stats[impl]['failed'] += 1
+            elif outcome == 'timeout': self.stats[impl]['timeout'] += 1
+            elif outcome == 'other': self.stats[impl]['other'] += 1
+
 # for statistics 
 statistics = Statistics()
-statLock = threading.Lock()
 
 def replace_line_in_file(filename, line_number, new_line):
     """
@@ -86,7 +93,6 @@ def executeTest(test, mode, timeout, syftpath, disregard, iter):
             replace_line_in_file(inputfile, 1, "true")
         elif disregard == "backup":
             replace_line_in_file(inputfile, 2, "true") 
-    print(inputfile)
     results = []
     times   = []
     for i in range(iter):
@@ -115,31 +121,27 @@ def executeTest(test, mode, timeout, syftpath, disregard, iter):
             results.append(result)
             times.append(time_ms_syft)
         except subprocess.TimeoutExpired:
-            with statLock:
-                statistics.timeout += 1
-                statistics.rows.append([str(test[0]), -1, "timeout"])
-                return
+            statistics.add_result(str(test[0]), syftpath, -1, "timeout", "timeout")
+            shutil.rmtree(temp_dir)
+            return
         except subprocess.CalledProcessError as e:
-            with statLock:
-                statistics.other += 1
-                statistics.rows.append([str(test[0]), -1, "error"])
-                return
+            statistics.add_result(str(test[0]), syftpath, -1, "error", "other")
+            shutil.rmtree(temp_dir)
+            return
 
-        # Check that all results are identical 
+    # Cleanup temp dir
+    shutil.rmtree(temp_dir)
+
+    # Check that all results are identical 
     if not all(elem == results[0] for elem in results):
-        statistics.rows.append([str(test[0]), -1, "rnid"])
+        statistics.add_result(str(test[0]), syftpath, -1, "rnid", "other")
         return 
+    
+    average_time = sum(times) / len(times)
     if not disregard and results[0] != test[2]: # If we disregard smth, realizability possibilities change!
-        with statLock:
-            statistics.failed += 1
-            # Compute average of times
-            average_time = sum(times) / len(times)
-            statistics.rows.append([str(test[0]), average_time /1000, "WA"])
+        statistics.add_result(str(test[0]), syftpath, average_time / 1000, "WA", "failed")
     else:
-        with statLock:
-            statistics.passed += 1
-            average_time = sum(times) / len(times)
-            statistics.rows.append([str(test[0]), time_ms_syft/1000, ""])
+        statistics.add_result(str(test[0]), syftpath, average_time / 1000, "", "passed")
                 
 
 
@@ -157,8 +159,9 @@ if __name__ == "__main__":
                         help="Specify the directory where tests are stord",
                         default="../../tests/")
     parser.add_argument('-syft',
-                        help="Specify the path to Syft executable",
-                        default="../../Syft/build/bin/Syft")
+                        help="Specify the path to Syft executable(s)",
+                        default=["../../Syft/build/bin/Syft"],
+                        nargs='+')
     #parser.add_argument('-test', help="Specify which test to run", default=None)
     parser.add_argument('-j', type=int,
                         help="Number of threads to use (t >= 1 --> mutithreading)",
@@ -175,30 +178,45 @@ if __name__ == "__main__":
     tests = collectTests(args.tdir)
 
     # Create csvwriter + lock for output file + write initial row
-    threads = []
-
     max_workers = args.j if args.j else None
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = [executor.submit(executeTest, test, args.impl, args.timeout, args.syft, args.disregard, args.iter) for test in tests]
+        futures = []
+        for test in tests:
+            for syft_path in args.syft:
+                futures.append(executor.submit(executeTest, test, args.impl, args.timeout, syft_path, args.disregard, args.iter))
 
         for future in as_completed(futures):
             future.result()  # Wait for all futures to complete
 
 
-    for t in threads:
-        t.join()
     # Timeout (1) / Unexpected Output (2) / Failure (3), 
     print("================================")
     print("========= STATISTICS ===========")
-    print(f"SUCCESS: {statistics.passed}")
-    print(f"FAILED: {statistics.failed}")
-    print(f"TIMEOUT: {statistics.timeout}")
-    print(f"ERROR: {statistics.other}")
+    for impl in args.syft:
+        print(f"--- Statistics for {impl} ---")
+        print(f"SUCCESS: {statistics.stats[impl]['passed']}")
+        print(f"FAILED: {statistics.stats[impl]['failed']}")
+        print(f"TIMEOUT: {statistics.stats[impl]['timeout']}")
+        print(f"ERROR: {statistics.stats[impl]['other']}")
+
     if not args.o:
         args.o = f"results-{args.impl}.csv"
+
+    header = ["Test"]
+    for impl in args.syft:
+        header.extend([f"{impl}_Time", f"{impl}_Status"])
+    
+    rows = [header]
+    for test_path in sorted(statistics.results.keys()):
+        row = [test_path]
+        for impl in args.syft:
+            res = statistics.results[test_path].get(impl, ("N/A", "N/A"))
+            row.extend([res[0], res[1]])
+        rows.append(row)
+
     with open(args.o, 'w') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerows(statistics.rows)
+        writer.writerows(rows)
 
     
