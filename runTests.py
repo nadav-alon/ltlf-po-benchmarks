@@ -12,6 +12,41 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 from collections import defaultdict
 
+class Solver():
+    def __init__(self, path, name=None):
+        self.path = Path(path)
+        self.name = name if name else str(self.path)
+
+    def get_command(self, input_file, part_file, mode):
+        """Returns the command string to execute."""
+        raise NotImplementedError
+
+    def parse_output(self, output_bytes):
+        """Returns (result_code, time_ms) from tool output. result: 1=Realizable, 0=Unrealizable"""
+        raise NotImplementedError
+
+    def get_name(self):
+        return self.name
+
+class SyftSolver(Solver):
+    def get_command(self, input_file, part_file, mode):
+        return f"./Syft {input_file} {part_file} 0 {mode}"
+
+    def parse_output(self, output_bytes):
+        l_str = str(output_bytes)
+        lines = l_str.split("\\n")
+        # Try to find the time in output 
+        rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", lines[-2])
+        assert(len(rr) == 1)
+        time_ms = float(rr[0])
+        
+        result = None 
+        if "Unrealizable" in l_str:
+            result = 0
+        if "Realizable" in l_str:
+            result = 1
+        return result, time_ms
+
 class Statistics():
     def __init__(self):
         self.stats = defaultdict(lambda: {'passed': 0, 'failed': 0, 'timeout': 0, 'other': 0})
@@ -70,8 +105,7 @@ def collectTests(testdir):
 
     return tests
 
-def executeTest(test, mode, timeout, syftpath, disregard, iter):
-    SyftPath = Path(syftpath)
+def executeTest(test, mode, timeout, solver, disregard, iter):
     # Create a unique temporary directory
     temp_dir = tempfile.mkdtemp()
     
@@ -95,37 +129,27 @@ def executeTest(test, mode, timeout, syftpath, disregard, iter):
             replace_line_in_file(inputfile, 2, "true") 
     results = []
     times   = []
+    solver_name = solver.get_name()
     for i in range(iter):
-        syft_command = f"./Syft {inputfile} {partfile} 0 {mode}" 
+        command = solver.get_command(inputfile, partfile, mode)
         try:
-            print(syft_command)
+            print(f"[{solver_name}] {command}")
             l = subprocess.check_output(
-                        syft_command,
+                        command,
                         timeout=timeout,
-                        cwd=SyftPath.parent,
+                        cwd=solver.path.parent,
                         shell=True
                     )
-            # Try to find the time in output 
-            # https://stackoverflow.com/questions/4289331/how-to-extract-numbers-from-a-string-in-python : Regex 
-            lines = str(l).split("\\n")
-            print(lines)
-            rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?",lines[-2])
-            assert(len(rr) == 1)
-            time_ms_syft = float(rr[0])
-            # Get the result to analyse it
-            result = None 
-            if "Unrealizable" in str(l):
-                result = 0
-            if "Realizable" in str(l):
-                result = 1
+            
+            result, time_ms = solver.parse_output(l)
             results.append(result)
-            times.append(time_ms_syft)
+            times.append(time_ms)
         except subprocess.TimeoutExpired:
-            statistics.add_result(str(test[0]), syftpath, -1, "timeout", "timeout")
+            statistics.add_result(str(test[0]), solver_name, -1, "timeout", "timeout")
             shutil.rmtree(temp_dir)
             return
-        except subprocess.CalledProcessError as e:
-            statistics.add_result(str(test[0]), syftpath, -1, "error", "other")
+        except (subprocess.CalledProcessError, Exception) as e:
+            statistics.add_result(str(test[0]), solver_name, -1, "error", "other")
             shutil.rmtree(temp_dir)
             return
 
@@ -134,14 +158,14 @@ def executeTest(test, mode, timeout, syftpath, disregard, iter):
 
     # Check that all results are identical 
     if not all(elem == results[0] for elem in results):
-        statistics.add_result(str(test[0]), syftpath, -1, "rnid", "other")
+        statistics.add_result(str(test[0]), solver_name, -1, "rnid", "other")
         return 
     
     average_time = sum(times) / len(times)
     if not disregard and results[0] != test[2]: # If we disregard smth, realizability possibilities change!
-        statistics.add_result(str(test[0]), syftpath, average_time / 1000, "WA", "failed")
+        statistics.add_result(str(test[0]), solver_name, average_time / 1000, "WA", "failed")
     else:
-        statistics.add_result(str(test[0]), syftpath, average_time / 1000, "", "passed")
+        statistics.add_result(str(test[0]), solver_name, average_time / 1000, "", "passed")
                 
 
 
@@ -177,14 +201,22 @@ if __name__ == "__main__":
     print("Collecting tests")
     tests = collectTests(args.tdir)
 
+    solvers = []
+    for s_entry in args.syft:
+        if ":" in s_entry:
+            name, path = s_entry.split(":", 1)
+            solvers.append(SyftSolver(path, name=name))
+        else:
+            solvers.append(SyftSolver(s_entry))
+
     # Create csvwriter + lock for output file + write initial row
     max_workers = args.j if args.j else None
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = []
         for test in tests:
-            for syft_path in args.syft:
-                futures.append(executor.submit(executeTest, test, args.impl, args.timeout, syft_path, args.disregard, args.iter))
+            for solver in solvers:
+                futures.append(executor.submit(executeTest, test, args.impl, args.timeout, solver, args.disregard, args.iter))
 
         for future in as_completed(futures):
             future.result()  # Wait for all futures to complete
@@ -193,25 +225,28 @@ if __name__ == "__main__":
     # Timeout (1) / Unexpected Output (2) / Failure (3), 
     print("================================")
     print("========= STATISTICS ===========")
-    for impl in args.syft:
-        print(f"--- Statistics for {impl} ---")
-        print(f"SUCCESS: {statistics.stats[impl]['passed']}")
-        print(f"FAILED: {statistics.stats[impl]['failed']}")
-        print(f"TIMEOUT: {statistics.stats[impl]['timeout']}")
-        print(f"ERROR: {statistics.stats[impl]['other']}")
+    for solver in solvers:
+        name = solver.get_name()
+        print(f"--- Statistics for {name} ---")
+        print(f"SUCCESS: {statistics.stats[name]['passed']}")
+        print(f"FAILED: {statistics.stats[name]['failed']}")
+        print(f"TIMEOUT: {statistics.stats[name]['timeout']}")
+        print(f"ERROR: {statistics.stats[name]['other']}")
 
     if not args.o:
         args.o = f"results-{args.impl}.csv"
 
     header = ["Test"]
-    for impl in args.syft:
-        header.extend([f"{impl}_Time", f"{impl}_Status"])
+    for solver in solvers:
+        name = solver.get_name()
+        header.extend([f"{name}_Time", f"{name}_Status"])
     
     rows = [header]
     for test_path in sorted(statistics.results.keys()):
         row = [test_path]
-        for impl in args.syft:
-            res = statistics.results[test_path].get(impl, ("N/A", "N/A"))
+        for solver in solvers:
+            name = solver.get_name()
+            res = statistics.results[test_path].get(name, ("N/A", "N/A"))
             row.extend([res[0], res[1]])
         rows.append(row)
 
