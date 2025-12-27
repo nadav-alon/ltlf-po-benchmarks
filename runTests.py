@@ -14,7 +14,7 @@ from collections import defaultdict
 
 class Solver():
     def __init__(self, path, name=None):
-        self.path = Path(path)
+        self.path = Path(path).expanduser().resolve()
         self.name = name if name else str(self.path)
 
     def get_command(self, input_file, part_file, mode):
@@ -30,21 +30,67 @@ class Solver():
 
 class SyftSolver(Solver):
     def get_command(self, input_file, part_file, mode):
-        return f"./Syft {input_file} {part_file} 0 {mode}"
+        return f'"{self.path}" {input_file} {part_file} 0 {mode}'
 
     def parse_output(self, output_bytes):
         l_str = str(output_bytes)
         lines = l_str.split("\\n")
         # Try to find the time in output 
-        rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", lines[-2])
-        assert(len(rr) == 1)
-        time_ms = float(rr[0])
+        try:
+            rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", lines[-2])
+            assert(len(rr) == 1)
+            time_ms = float(rr[0])
+        except Exception:
+            # Fallback for if output structure differs
+            time_ms = 0.0
         
         result = None 
         if "Unrealizable" in l_str:
             result = 0
         if "Realizable" in l_str:
             result = 1
+        return result, time_ms
+
+class LucasSyftSolver(Solver):
+    def get_command(self, input_file, part_file, mode):
+        # Lucas version expects a DFA file.
+        # If the formula was modified, we should have a 'modified.dfa' in the temp dir.
+        dfa_file = input_file + ".dfa"
+        if not os.path.exists(dfa_file):
+            # If no .dfa exists, we need to generate it from the ltlf
+            with open(input_file, 'r') as f:
+                lines = [l.strip() for l in f if l.strip()]
+            
+            # Combine lines: (Line 1) & (Line 2)
+            combined_formula = " & ".join([f"({l})" for l in lines])
+            
+            # Use ltlf2dfa to create the DFA
+            # Using -v flag for Syft-specific format if needed, but standard should work
+            subprocess.run(f'ltlf2dfa -f "{combined_formula}" > {dfa_file}', shell=True, capture_output=True)
+
+        mapping = {
+            "direct": "partial dfa",
+            "belief": "partial cordfa",
+            "mso": "partial dfa"
+        }
+        lucas_mode = mapping.get(mode, "partial dfa")
+        return f'"{self.path}" {dfa_file} {part_file} 0 {lucas_mode}'
+
+    def parse_output(self, output_bytes):
+        # Reuse logic or customize if lucas output differs significantly
+        l_str = str(output_bytes)
+        result = None 
+        if "unrealizable" in l_str: result = 0
+        elif "realizable" in l_str: result = 1
+        
+        # Lucas Syft often prints time in ms at the end
+        lines = l_str.strip().split("\\n")
+        time_ms = 0.0
+        for line in reversed(lines):
+            rr = re.findall(r"(\d+\.?\d*)\s*ms", line)
+            if rr:
+                time_ms = float(rr[0])
+                break
         return result, time_ms
 
 class Statistics():
@@ -113,13 +159,19 @@ def executeTest(test, mode, timeout, solver, disregard, iter):
     file1_name = os.path.basename(test[0])
     file2_name = os.path.basename(test[1])
 
-    # Create unique filenames resembling the original names
     inputfile = os.path.join(temp_dir, file1_name)
     partfile = os.path.join(temp_dir, file2_name)
 
     # Copy files to the unique temporary directory
     shutil.copy2(test[0], inputfile)
     shutil.copy2(test[1], partfile)
+    
+    # If we are NOT disregarding anything, we can copy the existing DFA
+    # If we ARE disregarding, the DFA must be regenerated inside LucasSyftSolver
+    if not disregard:
+        dfa_orig = str(test[0]) + ".dfa"
+        if os.path.exists(dfa_orig):
+            shutil.copy2(dfa_orig, inputfile + ".dfa")
 
     # Depending on the disregard argument, replace either first or second line in file with tt
     if disregard:
@@ -134,22 +186,44 @@ def executeTest(test, mode, timeout, solver, disregard, iter):
         command = solver.get_command(inputfile, partfile, mode)
         try:
             print(f"[{solver_name}] {command}")
-            l = subprocess.check_output(
-                        command,
-                        timeout=timeout,
-                        cwd=solver.path.parent,
-                        shell=True
-                    )
+            # Run the command and capture all output
+            completed_proc = subprocess.run(
+                command,
+                timeout=timeout,
+                cwd=solver.path.parent,
+                shell=True,
+                capture_output=True
+            )
             
-            result, time_ms = solver.parse_output(l)
+            output = completed_proc.stdout
+            error_output = completed_proc.stderr
+            full_log = output + (b"\n" if output and error_output else b"") + error_output
+
+            # If a log directory is provided, save the output
+            if getattr(args, 'logdir', None):
+                log_name = f"{Path(test[0]).stem}_{solver_name}_iter{i}.log"
+                log_path = Path(args.logdir) / log_name
+                log_path.write_bytes(full_log)
+
+            if completed_proc.returncode != 0:
+                print(f"[{solver_name}] Command failed with exit code {completed_proc.returncode}")
+                if error_output:
+                    print(f"[{solver_name}] Stderr: {error_output.decode(errors='replace')}")
+                statistics.add_result(str(test[0]), solver_name, -1, f"error({completed_proc.returncode})", "other")
+                shutil.rmtree(temp_dir)
+                return
+
+            result, time_ms = solver.parse_output(output)
             results.append(result)
             times.append(time_ms)
-        except subprocess.TimeoutExpired:
+        except subprocess.TimeoutExpired as e:
+            # Try to capture whatever output was there before timeout if possible (not always available in TimeoutExpired)
             statistics.add_result(str(test[0]), solver_name, -1, "timeout", "timeout")
             shutil.rmtree(temp_dir)
             return
-        except (subprocess.CalledProcessError, Exception) as e:
-            statistics.add_result(str(test[0]), solver_name, -1, "error", "other")
+        except Exception as e:
+            print(f"[{solver_name}] Unexpected error: {e}")
+            statistics.add_result(str(test[0]), solver_name, -1, "exception", "other")
             shutil.rmtree(temp_dir)
             return
 
@@ -172,8 +246,9 @@ def executeTest(test, mode, timeout, solver, disregard, iter):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('impl',
+    parser.add_argument('-impl',
                         choices=['direct', 'belief', 'mso'],
+                        default='direct',
                         help='Select which implementation to run the tests with')
     parser.add_argument('-disregard', default=None, choices=[None, "backup", "main"])
     parser.add_argument('-o',
@@ -181,10 +256,10 @@ if __name__ == "__main__":
                         default=None)
     parser.add_argument('-tdir',
                         help="Specify the directory where tests are stord",
-                        default="../../tests/")
+                        default="christian/tests2/")
     parser.add_argument('-syft',
                         help="Specify the path to Syft executable(s)",
-                        default=["../../Syft/build/bin/Syft"],
+                        default=["lucas:~/lucas/Syft/build/bin/Syft", "christian:~/christian/ltlf-synth-unrel-input-aaai2025/Syft/build/bin/Syft"],
                         nargs='+')
     #parser.add_argument('-test', help="Specify which test to run", default=None)
     parser.add_argument('-j', type=int,
@@ -196,16 +271,28 @@ if __name__ == "__main__":
     parser.add_argument('-iter',
                         help="How often to run each test for better comparability",
                         default=1, type=int)
+    parser.add_argument('-logdir',
+                        help="Directory to save test outputs",
+                        default=None)
 
     args = parser.parse_args()
+    
+    if args.logdir:
+        Path(args.logdir).mkdir(parents=True, exist_ok=True)
+
     print("Collecting tests")
     tests = collectTests(args.tdir)
 
     solvers = []
     for s_entry in args.syft:
         if ":" in s_entry:
-            name, path = s_entry.split(":", 1)
-            solvers.append(SyftSolver(path, name=name))
+            name_prefix, path = s_entry.split(":", 1)
+            if name_prefix.lower() == "lucas":
+                solvers.append(LucasSyftSolver(path, name=name_prefix))
+            elif name_prefix.lower() == "christian":
+                solvers.append(SyftSolver(path, name=name_prefix))
+            else:
+                solvers.append(SyftSolver(path, name=name_prefix))
         else:
             solvers.append(SyftSolver(s_entry))
 
