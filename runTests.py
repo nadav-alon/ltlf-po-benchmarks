@@ -53,20 +53,51 @@ class SyftSolver(Solver):
 
 class LucasSyftSolver(Solver):
     def get_command(self, input_file, part_file, mode):
-        # Lucas version expects a DFA file.
-        # If the formula was modified, we should have a 'modified.dfa' in the temp dir.
+        # Lucas version expects a MONA DFA file.
         dfa_file = input_file + ".dfa"
         if not os.path.exists(dfa_file):
-            # If no .dfa exists, we need to generate it from the ltlf
+            # 1. Parse .part file to keep variables from being optimized out by MONA
+            vars_to_keep = []
+            if os.path.exists(part_file):
+                with open(part_file, 'r') as f:
+                    for line in f:
+                        if line.startswith('.') and ':' in line:
+                            # Extract variable names from lines like .inputs: a b c
+                            vars_to_keep.extend(line.split(':')[1].strip().split())
+
+            # 2. Get the formulas
             with open(input_file, 'r') as f:
-                lines = [l.strip() for l in f if l.strip()]
+                formulas = [l.strip() for l in f if l.strip()]
             
-            # Combine lines: (Line 1) & (Line 2)
-            combined_formula = " & ".join([f"({l})" for l in lines])
+            # Use 'tautology' as a way to ensure all variables are represented if a formula is empty or 'true'
+            safe_true = get_safe_true(part_file)
+            formulas = [f if f.lower() != "true" else safe_true for f in formulas]
+            combined = " & ".join([f"({f})" for f in formulas])
             
-            # Use ltlf2dfa to create the DFA
-            # Using -v flag for Syft-specific format if needed, but standard should work
-            subprocess.run(f'ltlf2dfa -f "{combined_formula}" > {dfa_file}', shell=True, capture_output=True)
+            # 3. Use ltlf2fol to get MONA code
+            bin_dir = self.path.parent
+            ltlf2fol = bin_dir / "ltlf2fol"
+            
+            # ltlf2fol doesn't support stdin '-', so we write the combined formula to a temp file
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.ltlf', delete=True) as tf:
+                tf.write(combined)
+                tf.flush()
+                mona_proc = subprocess.run([str(ltlf2fol), "NNF", tf.name], text=True, capture_output=True)
+            
+            mona_code = mona_proc.stdout
+            if not mona_code:
+                print(f"[{self.get_name()}] Error: ltlf2fol produced empty output. Stderr: {mona_proc.stderr}")
+                return "" # This will cause an error downstream
+
+            # 5. Run mona to get the DFA
+            # MONA also doesn't support stdin '-', so we use a temp file
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.mona', delete=True) as tf_mona:
+                tf_mona.write(mona_code)
+                tf_mona.flush()
+                mona_out = subprocess.run(["mona", "-u", "-xw", tf_mona.name], text=True, capture_output=True)
+            
+            with open(dfa_file, 'w') as f:
+                f.write(mona_out.stdout)
 
         mapping = {
             "direct": "partial dfa",
@@ -93,11 +124,29 @@ class LucasSyftSolver(Solver):
                 break
         return result, time_ms
 
+def get_variables_from_part(part_file):
+    vars = []
+    if os.path.exists(part_file):
+        with open(part_file, 'r') as f:
+            for line in f:
+                if line.startswith('.') and ':' in line:
+                    vars.extend(line.split(':')[1].strip().split())
+    # Standardize names (remove commas, whitespace)
+    return sorted(list(set(v.strip().replace(',', '') for v in vars if v.strip())))
+
+def get_safe_true(part_file):
+    vars = get_variables_from_part(part_file)
+    if not vars:
+        return "true"
+    # Construct a tautology that mentions every variable to prevent them from being optimized out
+    return " & ".join([f"({v} | !{v})" for v in vars])
+
 class Statistics():
     def __init__(self):
         self.stats = defaultdict(lambda: {'passed': 0, 'failed': 0, 'timeout': 0, 'other': 0})
         self.results = defaultdict(dict) # test_path -> {impl: (time, status)}
         self.lock = threading.Lock()
+        self.solver_locks = defaultdict(threading.Lock)
 
     def add_result(self, test_path, impl, time, status, outcome):
         with self.lock:
@@ -173,12 +222,13 @@ def executeTest(test, mode, timeout, solver, disregard, iter):
         if os.path.exists(dfa_orig):
             shutil.copy2(dfa_orig, inputfile + ".dfa")
 
-    # Depending on the disregard argument, replace either first or second line in file with tt
+    # Depending on the disregard argument, replace either first or second line in file with a safe tautology
     if disregard:
+        safe_true = get_safe_true(partfile)
         if disregard == "main":
-            replace_line_in_file(inputfile, 1, "true")
+            replace_line_in_file(inputfile, 1, safe_true)
         elif disregard == "backup":
-            replace_line_in_file(inputfile, 2, "true") 
+            replace_line_in_file(inputfile, 2, safe_true) 
     results = []
     times   = []
     solver_name = solver.get_name()
@@ -186,14 +236,15 @@ def executeTest(test, mode, timeout, solver, disregard, iter):
         command = solver.get_command(inputfile, partfile, mode)
         try:
             print(f"[{solver_name}] {command}")
-            # Run the command and capture all output
-            completed_proc = subprocess.run(
-                command,
-                timeout=timeout,
-                cwd=solver.path.parent,
-                shell=True,
-                capture_output=True
-            )
+            # Use a lock for this specific solver to prevent parallel executions from colliding on temp files
+            with statistics.solver_locks[solver.path.parent]:
+                completed_proc = subprocess.run(
+                    command,
+                    timeout=timeout,
+                    cwd=solver.path.parent,
+                    shell=True,
+                    capture_output=True
+                )
             
             output = completed_proc.stdout
             error_output = completed_proc.stderr
