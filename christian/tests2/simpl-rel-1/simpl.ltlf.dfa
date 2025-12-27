@@ -1,0 +1,15 @@
+MONA DFA
+number of variables: 3
+variables: A B C
+orders: 2 2 2
+states: 3
+initial: 0
+bdd nodes: 4
+final: -1 -1 1
+behaviour: 0 1 2
+bdd:
+ -1 1 0
+ 0 3 2
+ -1 2 0
+ 2 0 2
+end

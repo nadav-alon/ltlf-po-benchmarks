@@ -1,0 +1,70 @@
+n=$1
+
+cat << EOF
+INFO
+{
+	TITLE: "Coin Game ${n}"
+	DESCRIPTION: "Get all heads"
+	SEMANTICS: Moore
+	TARGET: Moore
+}
+
+GLOBAL
+{
+	PARAMETERS
+	{
+		n = ${n}; // number of coins
+	}
+
+	DEFINITIONS
+	{
+		pred(i) =
+			i == 0: n - 1
+			otherwise: i - 1;
+
+		succ(i) =
+			i == n - 1: 0
+			otherwise: i + 1;
+
+		update(i, flip, coin, swap) =
+			  (X flip[i] -> (X coin[i] <-> !coin[i]))
+			  && (X (flip[pred(i)] && swap) -> (X coin[i] <-> coin[pred(pred(i))]))
+			  && (X (flip[succ(i)] && swap) -> (X coin[i] <-> coin[succ(succ(i))]))
+			  && (X (!flip[i] && (!swap || (!flip[pred(i)] && !flip[succ(i)]))) -> (X coin[i] <-> coin[i]));
+	}
+}
+
+MAIN
+{
+	INPUTS
+	{
+		coin[n];
+		flipped_to_head;
+		swap;
+		valid;
+	}
+
+	OUTPUTS
+	{
+		flip[n];
+	}
+
+	INITIALLY
+	{
+		||[0 <= i < n] !coin[i];
+		&&[0 <= i < n] &&[i < j < n] (!coin[i] -> coin[j]);
+	}
+
+	ASSUME
+	{
+		X true -> X G(valid <-> &&[0 <= i < n] &&[i < j < n] (flip[i] -> !flip[j]));
+		&&[0 <= i < n] G(X valid -> update(i, flip, coin, swap));
+		X true -> X G(valid -> (flipped_to_head <-> ||[0 <= i < n] (flip[i] && coin[i])));
+	}
+
+	GUARANTEE
+	{
+		F &&[0 <= i < n] coin[i];
+	}
+}
+EOF

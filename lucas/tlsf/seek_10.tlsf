@@ -1,0 +1,58 @@
+INFO
+{
+	TITLE: "Seek & Destroy 10"
+	DESCRIPTION: "Hit a moving target"
+	SEMANTICS: Moore
+	TARGET: Moore
+}
+
+GLOBAL
+{
+	PARAMETERS
+	{
+		n = 10; // number of positions
+	}
+}
+
+MAIN
+{
+	INPUTS
+	{
+		target[n];
+		hit;
+	}
+
+	OUTPUTS
+	{
+		guess[n];
+	}
+
+	ASSUME
+	{
+		// Target has to be in one position
+		G(||[0 <= i < n] target[i]);
+
+		// Target cannot be in more than one place at the same time
+		&&[0 <= i < n] &&[i < j < n] G(target[i] -> !target[j]);
+
+		// Target must always move to an adjacent position
+		G(X true && target[0] -> X target[1]);
+		G(X true && target[n - 1] -> X target[n - 2]);
+		&&[0 < i < n - 1] G(X true && target[i] -> X (target[i - 1] || target[i + 1]));
+
+		// Signal if the guess hits the target
+		&&[0 <= i < n] G(target[i] && guess[i] -> hit)
+	}
+
+	GUARANTEE
+	{
+		// Has to guess a position
+		G(||[0 <= i < n] guess[i]);
+
+		// Can only guess one position
+		&&[0 <= i < n] &&[i < j < n] G(guess[i] -> !guess[j]);
+
+		// Goal is to hit the target
+		F hit;
+	}
+}
