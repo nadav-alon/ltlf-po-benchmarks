@@ -1,5 +1,6 @@
 import subprocess
 import os
+import sys
 import re
 import csv 
 from pathlib import Path
@@ -7,6 +8,7 @@ import time
 import tempfile
 import argparse
 import threading
+import shutil
 
 
 class Solver():
@@ -33,6 +35,20 @@ class Solver():
     def get_name(self)-> str:
         return self.name
 
+
+def get_variables_from_part(part_file):
+    vars = set()
+    if os.path.exists(part_file):
+        with open(part_file, 'r') as f:
+            for line in f:
+                line = line.strip().lower()
+                if line.startswith('.') and ':' in line:
+                    vars.update(line.split(':')[1].strip().split())
+                elif any(line.startswith(k) for k in ['inputs', 'outputs', 'unobservables']):
+                    parts = line.split()
+                    if len(parts) > 1:
+                        vars.update(parts[1:])
+    return sorted(list(vars))
 
 def get_safe_true(part_file):
     vars = get_variables_from_part(part_file)
@@ -199,53 +215,104 @@ ERROR_CODE = -1
 
 def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
     temp_dir = tempfile.mkdtemp()
+    try:
+        test_path = Path(test)
+        test_name = test_path.name
+        test_stem = test_path.stem
+        
+        # Files in original location
+        # test is the path to the .ltlf file
+        # We assume the structure is <test-dir>/<subdir>/<file>.ltlf
+        # and there is a <test-dir>/part/<file>.part
+        # However, the user might pass --test-dir relative or absolute.
+        # We can look for the part file based on the test path.
+        
+        # If test is "lucas/ltlf/seek_9.ltlf", we want "lucas/part/seek_9.part"
+        # Let's find the "part" directory relative to the test file
+        original_part = None
+        potential_part_dir = test_path.parents[1] / "part"
+        if potential_part_dir.exists():
+            original_part = potential_part_dir / (test_stem + ".part")
 
-    inputfile = os.path.join(temp_dir, test)
-    partfile = os.path.join(temp_dir, str(test) + '.part')
+        inputfile = os.path.join(temp_dir, test_name)
+        partfile = os.path.join(temp_dir, test_stem + ".part")
 
-    command = solver.get_command(inputfile, partfile, mode)
-    times = []
-    results = []
+        # Copy the test files
+        shutil.copy2(test, inputfile)
+        if original_part and original_part.exists():
+            shutil.copy2(original_part, partfile)
+        
+        # Copy DFA files if they exist
+        for dfa_suffix in [".dfa", ".dfa.rev.neg", ".dfa.quant"]:
+            dfa_src = str(test) + dfa_suffix
+            if os.path.exists(dfa_src):
+                shutil.copy2(dfa_src, inputfile + dfa_suffix)
+        
+        # Copy part file variants if they exist
+        if original_part:
+            for part_suffix in [".rev.neg", ".quant"]:
+                part_src = str(original_part) + part_suffix
+                if os.path.exists(part_src):
+                    shutil.copy2(part_src, partfile + part_suffix)
+        
+        # Copy .mona files from mso directory if they exist
+        # Structure: lucas/ltlf/coins_3.ltlf -> lucas/mso/coins_3.mona
+        test_dir_root = test_path.parents[1]  # lucas/
+        mso_dir = test_dir_root / "mso"
+        if mso_dir.exists():
+            for mona_suffix in [".mona", ".mona.rev.neg", ".mona.quant"]:
+                mona_src = mso_dir / (test_stem + mona_suffix)
+                if mona_src.exists():
+                    mona_dst = os.path.join(temp_dir, test_stem + mona_suffix)
+                    shutil.copy2(mona_src, mona_dst)
 
-    for i in range(iter):
-        try:
-            l = subprocess.check_output(command, timeout=timeout, shell=True, cwd=solver.path)
-            result, time = solver.parse_output(l)
-            if result is None:
-                statistics.add_result(test, time, 0, "other")
-                print(f"Failed to parse output for {test}")
+        command = solver.get_command(inputfile, partfile, mode)
+        if not command:
+            return
+
+        times = []
+        results = []
+
+        for i in range(iter):
+            try:
+                l = subprocess.check_output(command, timeout=timeout, shell=True, cwd=solver.path.parent)
+                result, time = solver.parse_output(l)
+                if result is None:
+                    statistics.add_result(test, time, 0, "other")
+                    print(f"Failed to parse output for {test}")
+                    continue
+
+                if result == 1:
+                    results.append(1)
+                else:
+                    results.append(0)
+                times.append(time)
+
+            except subprocess.TimeoutExpired:
+                print(f"Timeout for {test}")
+                results.append(TIMEOUT_CODE)
+                times.append(timeout)
                 continue
 
-            if result == 1:
-                results.append(1)
-            else:
-                results.append(0)
-            times.append(time)
+            except subprocess.CalledProcessError as e:
+                print(f"Failed to run {test}: {e}")
+                results.append(ERROR_CODE)
+                times.append(0)
+                continue
+        
+        average_time = sum(times) / len(times) if times else 0
 
-        except subprocess.TimeoutExpired:
-            print(f"Timeout for {test}")
-            results.append(TIMEOUT_CODE)
-            times.append(timeout)
-            continue
-
-        except subprocess.CalledProcessError as e:
-            print(f"Failed to run {test}: {e}")
-            results.append(ERROR_CODE)
-            times.append(0)
-            continue
-    
-    average_time = sum(times) / len(times) if times else 0
-
-
-
-    if TIMEOUT_CODE in results:
-        statistics.add_result(test, average_time, TIMEOUT_CODE, "timeout")
-    elif ERROR_CODE in results:
-        statistics.add_result(test, average_time, ERROR_CODE, "error")
-    elif not all(elem == results[0] for elem in results):
-        statistics.add_result(test, average_time, -1, "inconsistent")
-    else:
-        statistics.add_result(test, average_time, -1 if len(results) == 0 else results[0], 'other')
+        if TIMEOUT_CODE in results:
+            statistics.add_result(test, average_time, TIMEOUT_CODE, "timeout")
+        elif ERROR_CODE in results:
+            statistics.add_result(test, average_time, ERROR_CODE, "error")
+        elif not all(elem == results[0] for elem in (results if results else [None])):
+            statistics.add_result(test, average_time, -1, "inconsistent")
+        else:
+            status = results[0] if results else -1
+            statistics.add_result(test, average_time, status, 'other')
+    finally:
+        shutil.rmtree(temp_dir)
         
 
 
@@ -255,17 +322,24 @@ if __name__ == "__main__":
     parser.add_argument("--iter", type=int, default=1, help="Number of iterations")
     parser.add_argument("--mode", type=str, default="direct", help="Mode", choices=["direct", "iterative"])
     parser.add_argument("--solver", type=str, default="lucas", help="Solver", choices=["lucas", "christian"])
-    parser.add_argument("--path", type=str, default="", help="Path to Syft executable")
+    parser.add_argument("--path", type=str, default="~/lucas/Syft/build/bin/Syft", help="Path to Syft executable")
     parser.add_argument("--test-dir", type=str, default="lucas", help="Test directory")
     parser.add_argument("--output", type=str, default="results.csv", help="Output file")
     args = parser.parse_args()
+
+    # Expand user path and validate
+    syft_path = Path(args.path).expanduser().resolve()
+    if not syft_path.exists():
+        print(f"Error: Syft executable not found at {syft_path}")
+        print(f"Please specify the correct path using --path argument")
+        sys.exit(1)
 
     test_dir = args.test_dir
     timeout = args.timeout
     iterations = args.iter
     mode = args.mode
-    solver = ChristianSyftSolver(args.path, name="christian") \
-        if args.solver != 'lucas' else LucasSyftSolver(args.path, name="lucas")
+    solver = ChristianSyftSolver(str(syft_path), name="christian") \
+        if args.solver != 'lucas' else LucasSyftSolver(str(syft_path), name="lucas")
     tests = collectTest(test_dir)
     for test in tests:
         executeTest(test, timeout, solver, mode, iterations)
