@@ -59,6 +59,9 @@ def get_safe_true(part_file):
 
 class ChristianSyftSolver(Solver):
     def get_command(self, input_file, part_file, mode)-> str:
+        # Christian's Syft expects .main and .backup files
+        # and handles ltlf2fol conversion internally
+        
         if not part_file.endswith('.christian.part'):
             christian_part = part_file + '.christian.part'
             if not os.path.exists(christian_part):
@@ -72,20 +75,21 @@ class ChristianSyftSolver(Solver):
             christian_input = input_file + '.christian.ltlf'
             if not os.path.exists(christian_input):
                 with open(input_file, 'r') as f:
-                    content = f.read()
+                    content = f.read().strip()
+                
+                # Christian's Syft expects the .ltlf file to have exactly 2 lines:
+                # Line 1: main formula
+                # Line 2: backup formula (tautology)
+                safe_true = get_safe_true(part_file)
+                
                 with open(christian_input, 'w') as f:
-                    f.write(content+'\n'+get_safe_true(part_file))
+                    f.write(content + '\n')
+                    f.write(safe_true + '\n')
+                    
             input_file = christian_input
         
-
-        christian_dfa = input_file + '.christian.dfa'
-        if not os.path.exists(christian_dfa):
-            # Run MONA on the source file to get the DFA
-            mona_out = subprocess.run(["mona", "-u", "-xw", input_file], text=True, capture_output=True)
-            with open(christian_dfa, 'w') as f:
-                f.write(mona_out.stdout)
-        
-        return f'"{self.path}" {christian_dfa} {part_file} 0 {mode}'
+        # Christian's Syft takes the .ltlf file and handles conversion internally
+        return f'"{self.path}" {input_file} {part_file} 0 {mode}'
 
     def parse_output(self, output_bytes)-> (int, float):
         l_str = str(output_bytes)
