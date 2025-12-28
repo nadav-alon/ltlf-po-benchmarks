@@ -1,0 +1,5 @@
+Test,lucas_Time,lucas_Status,christian_Time,christian_Status
+christian/tests2/conflict-really-simple/conflict.ltlf,0.00272689,,-1,error(1)
+christian/tests2/sheep-4-twotalesa/sheep-4-twotalesa.ltlf,-1,timeout,-1,error(1)
+christian/tests2/simpl-rel-1/simpl.ltlf,0.0059818,,-1,error(1)
+christian/tests2/trap-a5-solv/trap-a5-solv.ltlf,-1,error(139),-1,error(1)

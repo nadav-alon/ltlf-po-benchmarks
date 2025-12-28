@@ -1,0 +1,38 @@
+Sorry, I forgot, the benchmarks can be found here: https://github.com/lucasmt/ltlf-po-benchmarks.
+
+Also, if it helps, here are some instructions for running the code that I sent to Yong a few years ago. I think they should still be up-to-date, but it you find any problems let me know.
+
+    To run the algorithms you first need to run MONA on the input files from https://github.com/lucasmt/ltlf-po-benchmarks. I assume that the MONA output for a file called filename.mona is saved on a file called filename.dfa, and likewise the output of filename.mona.quant is saved to filename.dfa.quant, and the output of filename.mona.rev.neg is saved to filename.dfa.rev.neg.
+
+    After the code is compiled, the executable can be run like:
+
+    ./Syft dfa-file part-file starting-player observability input-type
+
+    where:
+
+    - dfa-file is a MONA output file with the automaton.
+    - part-file is the file partitioning variables into inputs and outputs (and possibly unobservable).
+    - starting-player is 0 if the system is the starting player and 1 if the environment is.
+    - observability is either "full" or "partial".
+    - input-type is either "dfa" or "cordfa".
+
+    To run belief-states algorithm: ./Syft filename.dfa filename.part 0 partial dfa
+    To run projection-based algorithm: ./Syft filename.dfa.rev.neg filename.part.rev.neg 0 partial cordfa
+    To run MSO algorithm: ./Syft filename.dfa.quant filename.part.quant 0 full dfa
+
+
+-----------------
+
+Sorry for the delay in responding and the issues with the code. If I recall correctly, the synStrategy.cpp file is not needed to run the tool, so I think you should be fine just deleting it. Alternatively, you can just add an extra argument of "false" to the constructor in line 90 to take care of the compiler error (the problem is that the constructor was modified in this version to have an additional boolean flag, as seen here: https://github.com/lucasmt/Syft/blob/7d797f03b94522f8177f50d530529c4b68240d7a/src/synthesis/syn.h#L13).
+
+By the way, I found these other guidelines that I sent someone else who asked about running the code last year, maybe they will be helpful to you (in addition to the ones I already sent in the previous email thread):
+
+        Installation: Assuming it still works, you can use the general installation instructions for Syft in the INSTALL file: https://github.com/lucasmt/Syft/blob/double-negation-dfa/INSTALL.
+        LTLf to FOL of the reverse language: The code in the ltlf2pfol directory (https://github.com/lucasmt/Syft/tree/double-negation-dfa/src/ltlf2pfol) implements the step of converting an LTLf formula to an FOL formula for the reverse language, which can then be given as input to MONA (as described in Section 4.1 of the paper). You can run it as "./ltlf2pfol filename", where filename is the input LTLf file in the same format as the original Syft (the main function is in translatep.cpp: https://github.com/lucasmt/Syft/blob/double-negation-dfa/src/ltlf2pfol/translatep.cpp).
+        Synthesis: The main file displays the usage command line to run synthesis: https://github.com/lucasmt/Syft/blob/double-negation-dfa/src/synthesis/main.cpp. You can run the belief-state construction (Section 4.2) by passing Observability=partial and SpecType=dfa, and the projection-based approach (Section 4.1) by passing SpecType=cordfa (the Observability argument is ignored in this case, the unobservable variables are projected out regardless).
+
+ 
+If you continue to have issues with the code after this let me know.
+
+Thanks and happy holidays,
+Lucas
