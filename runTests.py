@@ -202,7 +202,7 @@ def collectTest(testDir):
 
     tests = []
 
-    for file in p.rglob("*/*.ltlf"):
+    for file in p.rglob("ltlf/*.ltlf"):
         tests.append(file)
         test_name = file.name.replace(".ltlf", "")
 
@@ -324,7 +324,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run tests for Syft.")
     parser.add_argument("--timeout", type=int, default=1500, help="Timeout in seconds")
     parser.add_argument("--iter", type=int, default=1, help="Number of iterations")
-    parser.add_argument("--mode", type=str, default="direct", help="Mode", choices=["direct", "iterative"])
+    parser.add_argument("--mode", type=str, default="direct", help="Mode", choices=["direct", "belief", "mso"])
     parser.add_argument("--solver", type=str, default="lucas", help="Solver", choices=["lucas", "christian"])
     parser.add_argument("--path", type=str, default="~/lucas/Syft/build/bin/Syft", help="Path to Syft executable")
     parser.add_argument("--test-dir", type=str, default="lucas", help="Test directory")
