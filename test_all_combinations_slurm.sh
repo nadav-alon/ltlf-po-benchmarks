@@ -6,15 +6,14 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
-#SBATCH --time=01:00:00
-#SBATCH --partition=batch
+#SBATCH --time=00:45:00
 #SBATCH --exclude=gpu1,gpu2,gpu3,gpu7,gpu8,cn31,cn32,cn33,cn34,cn35,cn36,cn37,cn38,cn39,cn40,cn41,cn42,cn43,cn44
 
 # Create logs directory if it doesn't exist
-mkdir -p logs
+mkdir -p logs results
 
 # Configuration
-TIMEOUT=60
+TIMEOUT=180
 TEST_DIR="lucas"
 LUCAS_PATH="~/work/lucas/Syft/build/bin/Syft"
 CHRISTIAN_PATH="~/work/ltlf-synth-unrel-input-aaai2025/Syft/build/bin/Syft"
@@ -36,7 +35,6 @@ else
 fi
 
 OUTPUT_FILE="results/test_${SOLVER}_${MODE}.csv"
-mkdir -p results
 
 echo "========================================="
 echo "SLURM Job ID: $SLURM_JOB_ID"
