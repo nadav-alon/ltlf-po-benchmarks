@@ -1,38 +1,97 @@
-from pathlib import Path
 import subprocess
 import os
-import re
-import shutil
 import sys
+import re
 import csv 
+from pathlib import Path
 import time 
 import tempfile
 import argparse
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
-from collections import defaultdict
+import shutil
+
 
 class Solver():
     def __init__(self, path, name=None):
         self.path = Path(path).expanduser().resolve()
         self.name = name if name else str(self.path)
 
-    def get_command(self, input_file, part_file, mode):
-        """Returns the command string to execute."""
+    def get_command(self, input_file, part_file, mode)-> str:
+        """Returns the command string to execute.
+
+        Args:
+            input_file (str): The input file path.
+            part_file (str): The part file path.
+            mode (str): The mode.
+        Returns:
+            str: The command string to execute.
+        """
         raise NotImplementedError
 
-    def parse_output(self, output_bytes):
+    def parse_output(self, output_bytes)-> (int, float):
         """Returns (result_code, time_ms) from tool output. result: 1=Realizable, 0=Unrealizable"""
         raise NotImplementedError
 
-    def get_name(self):
+    def get_name(self)-> str:
         return self.name
 
-class SyftSolver(Solver):
-    def get_command(self, input_file, part_file, mode):
+
+def get_variables_from_part(part_file):
+    vars = set()
+    if os.path.exists(part_file):
+        with open(part_file, 'r') as f:
+            for line in f:
+                line = line.strip().lower()
+                if line.startswith('.') and ':' in line:
+                    vars.update(line.split(':')[1].strip().split())
+                elif any(line.startswith(k) for k in ['inputs', 'outputs', 'unobservables']):
+                    parts = line.split()
+                    if len(parts) > 1:
+                        vars.update(parts[1:])
+    return sorted(list(vars))
+
+def get_safe_true(part_file):
+    vars = get_variables_from_part(part_file)
+    if not vars:
+        return "true"
+    # Return a list of tautologies, one for each variable
+    return " && ".join([f"{v} | ~{v}" for v in vars])
+
+class ChristianSyftSolver(Solver):
+    def get_command(self, input_file, part_file, mode)-> str:
+        # Christian's Syft expects .main and .backup files
+        # and handles ltlf2fol conversion internally
+        
+        if not part_file.endswith('.christian.part'):
+            christian_part = part_file + '.christian.part'
+            if not os.path.exists(christian_part):
+                with open(part_file, 'r') as f:
+                    content = f.read()
+                with open(christian_part, 'w') as f:
+                    f.write(content.replace('inputs:', '.inputs:').replace('outputs:', '.outputs:'))
+            part_file = christian_part
+
+        if not input_file.endswith('christian.ltlf'):
+            christian_input = input_file + '.christian.ltlf'
+            if not os.path.exists(christian_input):
+                with open(input_file, 'r') as f:
+                    content = f.read().strip()
+                
+                # Christian's Syft expects the .ltlf file to have exactly 2 lines:
+                # Line 1: main formula
+                # Line 2: backup formula (tautology)
+                safe_true = get_safe_true(part_file)
+                
+                with open(christian_input, 'w') as f:
+                    f.write(content + '\n')
+                    f.write(safe_true + '\n')
+                    
+            input_file = christian_input
+        
+        # Christian's Syft takes the .ltlf file and handles conversion internally
         return f'"{self.path}" {input_file} {part_file} 0 {mode}'
 
-    def parse_output(self, output_bytes):
+    def parse_output(self, output_bytes)-> (int, float):
         l_str = str(output_bytes)
         lines = l_str.split("\\n")
         # Try to find the time in output 
@@ -49,10 +108,15 @@ class SyftSolver(Solver):
             result = 0
         if "Realizable" in l_str:
             result = 1
+
+        # if result == 1:
+            # TODO: need to save the output of the tool
+
         return result, time_ms
 
+
 class LucasSyftSolver(Solver):
-    def get_command(self, input_file, part_file, mode):
+    def get_command(self, input_file, part_file, mode)-> str:
         # Configuration based on lucas-benchmarks-instructions.txt:
         # direct (Belief-states): partial dfa, uses .dfa, .part
         # belief (Projection-based): partial cordfa, uses .dfa.rev.neg, .part.rev.neg
@@ -70,6 +134,7 @@ class LucasSyftSolver(Solver):
         
         # Check if actual_part_file exists, else use base part_file
         if not os.path.exists(actual_part_file):
+            print(f"Missing part file for {input_file}, missing suffix {part_suffix}")
             actual_part_file = part_file
 
         if not os.path.exists(dfa_file):
@@ -82,29 +147,6 @@ class LucasSyftSolver(Solver):
             if os.path.exists(mona_source):
                 # Run MONA on the source file to get the DFA
                 mona_out = subprocess.run(["mona", "-u", "-xw", mona_source], text=True, capture_output=True)
-                with open(dfa_file, 'w') as f:
-                    f.write(mona_out.stdout)
-            elif dfa_suffix == ".dfa":
-                # Use normalized formula already written to input_file
-                with open(input_file, 'r') as f:
-                    final_formula = f.read().strip()
-                
-                ltlf2fol = self.path.parent / "ltlf2fol"
-                with tempfile.NamedTemporaryFile(mode='w', suffix='.ltlf', delete=True) as tf:
-                    tf.write(final_formula)
-                    tf.flush()
-                    mona_proc = subprocess.run([str(ltlf2fol), "NNF", tf.name], text=True, capture_output=True)
-                
-                mona_code = mona_proc.stdout
-                if not mona_code:
-                    print(f"[{self.get_name()}] Error: ltlf2fol produced empty output. Stderr: {mona_proc.stderr}")
-                    return ""
-                
-                with tempfile.NamedTemporaryFile(mode='w', suffix='.mona', delete=True) as tf_mona:
-                    tf_mona.write(mona_code)
-                    tf_mona.flush()
-                    mona_out = subprocess.run(["mona", "-u", "-xw", tf_mona.name], text=True, capture_output=True)
-                
                 with open(dfa_file, 'w') as f:
                     f.write(mona_out.stdout)
             else:
@@ -128,431 +170,205 @@ class LucasSyftSolver(Solver):
             if rr:
                 time_ms = float(rr[0])
                 break
+
+        # TODO: need to save the output of the tool
         return result, time_ms
-
-def normalize_part_file(filename):
-    """
-    Ensures the part file has the format:
-    .inputs: var1 var2
-    .outputs: var3 var4
-    ...
-    Also lowercases variable names and ensures all unobservables are also inputs.
-    """
-    if not os.path.exists(filename):
-        return
-    with open(filename, 'r') as f:
-        lines = f.readlines()
-    
-    inputs = set()
-    outputs = set()
-    unobs = set()
-    
-    for line in lines:
-        line = line.strip().lower()
-        if not line: continue
-        
-        parts = []
-        if line.startswith('.'):
-            key_part, vars_part = line.split(':', 1)
-            key = key_part.strip().lstrip('.')
-            vars_str = vars_part
-        else:
-            parts = line.split()
-            if not parts: continue
-            key = parts[0].replace(":", "")
-            vars_str = " ".join(parts[1:])
-        
-        vars_list = [v.strip().replace(",", "") for v in vars_str.replace(",", " ").split() if v.strip()]
-        if key in ['inputs', 'input']: inputs.update(vars_list)
-        elif key in ['outputs', 'output']: outputs.update(vars_list)
-        elif key in ['unobservables', 'unobservable']: unobs.update(vars_list)
-
-    # All unobservables must be inputs in Partial Observability
-    inputs.update(unobs)
-    
-    with open(filename, 'w') as f:
-        f.write(f".inputs: {' '.join(sorted(list(inputs)))}\n")
-        f.write(f".outputs: {' '.join(sorted(list(outputs)))}\n")
-        if unobs:
-            f.write(f".unobservables: {' '.join(sorted(list(unobs)))}\n")
-
-def get_variables_from_part(part_file):
-    vars = set()
-    if os.path.exists(part_file):
-        with open(part_file, 'r') as f:
-            for line in f:
-                line = line.strip().lower()
-                if line.startswith('.') and ':' in line:
-                    vars.update(line.split(':')[1].strip().split())
-                elif any(line.startswith(k) for k in ['inputs', 'outputs', 'unobservables']):
-                    parts = line.split()
-                    if len(parts) > 1:
-                        vars.update(parts[1:])
-    return sorted(list(vars))
-
-def get_safe_true(part_file):
-    vars = get_variables_from_part(part_file)
-    if not vars:
-        return ["true"]
-    # Return a list of tautologies, one for each variable
-    return [f"{v} | ~{v}" for v in vars]
-
-def get_normalized_formula(formula_str, vars_list=None):
-    # Lowercase variables
-    f = formula_str.lower()
-    # Standardize operators
-    f = f.replace("&&", "&").replace("||", "|").replace("!", "~").replace("next", "X").replace("always", "G").replace("eventually", "F").replace("until", "U")
-    # Some versions of ltlf2fol might use -> or <-> 
-    # but we ensure spaces around them for safety
-    f = f.replace("<->", " <-> ").replace("->", " -> ")
-    
-    # Replace true/false literals with tautologies/contradictions if we have variables
-    # because some versions of ltlf2fol fail on 'true'/'false' when a part file is used.
-    if vars_list:
-        v = vars_list[0]
-        f = f.replace(" true ", f" ({v} | ~{v}) ").replace("(true)", f"({v} | ~{v})")
-        f = f.replace(" false ", f" ({v} & ~{v}) ").replace("(false)", f"({v} & ~{v})")
-        if f.strip() == "true": f = f"({v} | ~{v})"
-        if f.strip() == "false": f = f"({v} & ~{v})"
-    
-    # Clean up spaces
-    f = " ".join(f.split())
-    return f
 
 class Statistics():
     def __init__(self):
-        self.stats = defaultdict(lambda: {'passed': 0, 'failed': 0, 'timeout': 0, 'other': 0})
-        self.results = defaultdict(dict) # test_path -> {impl: (time, status)}
+        self.stats = {'passed': 0, 'failed': 0, 'timeout': 0, 'other': 0, 'error': 0, 'inconsistent': 0}
+        self.results = {} # test_path -> (time, status)
         self.lock = threading.Lock()
-        self.solver_locks = defaultdict(threading.Lock)
 
-    def add_result(self, test_path, impl, time, status, outcome):
+
+    def add_result(self, test_path, time, status, outcome):
         with self.lock:
-            self.results[test_path][impl] = (time, status)
-            if outcome == 'passed': self.stats[impl]['passed'] += 1
-            elif outcome == 'failed': self.stats[impl]['failed'] += 1
-            elif outcome == 'timeout': self.stats[impl]['timeout'] += 1
-            elif outcome == 'other': self.stats[impl]['other'] += 1
+            self.results[test_path] = (time, status)
+            if outcome == 'passed': self.stats['passed'] += 1
+            elif outcome == 'failed': self.stats['failed'] += 1
+            elif outcome == 'timeout': self.stats['timeout'] += 1
+            elif outcome == 'other': self.stats['other'] += 1
+            elif outcome == 'error': self.stats['error'] += 1
+            elif outcome == 'inconsistent': self.stats['inconsistent'] += 1
 
 # for statistics 
 statistics = Statistics()
 
-def replace_line_in_file(filename, line_number, new_line):
-    """
-        Replaces a line in a file.
-    """
-    with open(filename, 'r') as file:
-        lines = file.readlines()
 
-    if line_number < 1 or line_number > len(lines):
-        raise IndexError("Line number out of range")
-    lines[line_number - 1] = new_line + '\n'
-    with open(filename, 'w') as file:
-        file.writelines(lines)
-
-
-def collectTests(testdir):
+def collectTest(testDir):
     global statistics
-    p = Path(testdir)
-    tests = []
-    for file in p.rglob("*/*.ltlf"):
-        # Check for corresponding .part 
-        corresponding_partfile = file.with_suffix(".part")
-        corresponding_output = file.with_name("expected.txt")
-        if (not corresponding_partfile.is_file()) or (not corresponding_output.is_file()):
-            print('One of the tests is missing the correct files')
-            if not corresponding_partfile.is_file():
-                print('Expected to find ' + str(corresponding_partfile))
-            if not corresponding_output.is_file():
-                print('Expected to find ' + str(corresponding_output))
-            sys.exit(-1)
-        # Read the expected file and save this information about the test
-        expected_res = None
-        with open(corresponding_output, "r") as f:
-            try:
-                expected_res = int(f.read())
-            except Exception:
-                print("Expected to find 0 / 1 in {str(corresponding_output)}")
-                sys.exit(-1)
-        tests.append((file, corresponding_partfile, expected_res))
+    p = Path(testDir)
+    part_dir = p / "part" 
 
-    # If no tests found with .part files in same dir, try looking for lucas-style structure
-    if not tests:
-        for file in p.rglob("*.ltlf"):
-            # Look for .part in ../part/
-            stem = file.stem
-            part_path = file.parent.parent / "part" / (stem + ".part")
-            if part_path.exists():
-                # For Lucas tests, we might not have expected.txt, so we use None or 1 as default
-                expected_txt = file.parent / "expected.txt"
-                expected_res = 1 # Default to realizable if unknown
-                if expected_txt.exists():
-                    with open(expected_txt, 'r') as f:
-                        try: expected_res = int(f.read().strip())
-                        except: pass
-                tests.append((file, part_path, expected_res))
+    tests = []
+
+    for file in p.rglob("*/*.ltlf"):
+        tests.append(file)
+        test_name = file.name.replace(".ltlf", "")
+
+        if not (part_dir / (test_name + ".part")).exists():
+            statistics.add_result(file, 0, 0, "other")
+            print(f"Missing part file for {file}")
+            continue
 
     return tests
 
-def executeTest(test, mode, timeout, solver, disregard, iter):
-    # Create a unique temporary directory
+
+TIMEOUT_CODE = -2
+ERROR_CODE = -1
+
+def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
     temp_dir = tempfile.mkdtemp()
-    
-    # Get the original filenames
-    file1_name = os.path.basename(test[0])
-    file2_name = os.path.basename(test[1])
-
-    inputfile = os.path.join(temp_dir, file1_name)
-    partfile = os.path.join(temp_dir, file2_name)
-
-    # Determine which part file to use: check for solver-specific one first
-    original_part = test[1]
-    solver_name = solver.get_name().lower()
-    
-    # Try: stem.solver_name.part (e.g., bench.christian.part)
-    potential_specific_part = original_part.parent / (original_part.stem + "." + solver_name + original_part.suffix)
-    if not potential_specific_part.exists():
-        # Try: filename.solver_name (e.g., bench.part.christian)
-        potential_specific_part = original_part.parent / (original_part.name + "." + solver_name)
-    
-    if potential_specific_part.exists():
-        actual_source_part = potential_specific_part
-    else:
-        actual_source_part = original_part
-
-    # Initialize partition file by copying selected source
-    shutil.copy2(actual_source_part, partfile)
-
-    # Normalize both files for maximum compatibility
-    normalize_part_file(partfile)
-    
-    with open(test[0], 'r') as f:
-        lines = [l.strip() for l in f if l.strip()]
-    
-    # For Christian's solver, we need main/backup format (at least 2 lines)
-    # If there's only one line in a Lucas benchmark, duplicate it.
-    if "christian" in solver.get_name().lower() and len(lines) == 1:
-        lines = [lines[0], lines[0]]
-
-    # Combine lines: put each formula on a separate line
-    # The Christian ltlf2fol is very sensitive and often expects this multi-line format
-    all_vars = get_variables_from_part(partfile)
-    safe_tautologies = [f"{v} | ~{v}" for v in all_vars]
-    normalized_formulas = [get_normalized_formula(l, all_vars) for l in lines]
-    
-    final_lines = normalized_formulas + safe_tautologies
+    try:
+        test_path = Path(test)
+        test_name = test_path.name
+        test_stem = test_path.stem
         
-    with open(inputfile, 'w') as f:
-        for line in final_lines:
-            f.write(line + "\n")
-    
-    # If we are NOT disregarding anything, we can copy the existing DFA and variants
-    if not disregard:
-        for suffix in [".dfa", ".dfa.rev.neg", ".dfa.quant"]:
-            src = str(test[0]) + suffix
-            if os.path.exists(src):
-                shutil.copy2(src, inputfile + suffix)
-            # Try to find MONA source files as well (e.g. from a sibling 'mso' directory)
-            stem = Path(test[0]).stem
-            parent = Path(test[0]).parent
-            mona_suffixes = [".mona", ".mona.rev.neg", ".mona.quant"]
-            for ms in mona_suffixes:
-                m_src = parent / (stem + ms)
-                if m_src.exists():
-                    shutil.copy2(m_src, os.path.join(temp_dir, stem + ms))
-                # Also check sibling 'mso' directory
-                m_src_alt = parent.parent / "mso" / (stem + ms)
-                if m_src_alt.exists():
-                    shutil.copy2(m_src_alt, os.path.join(temp_dir, stem + ms))
+        # Files in original location
+        # test is the path to the .ltlf file
+        # We assume the structure is <test-dir>/<subdir>/<file>.ltlf
+        # and there is a <test-dir>/part/<file>.part
+        # However, the user might pass --test-dir relative or absolute.
+        # We can look for the part file based on the test path.
+        
+        # If test is "lucas/ltlf/seek_9.ltlf", we want "lucas/part/seek_9.part"
+        # Let's find the "part" directory relative to the test file
+        original_part = None
+        potential_part_dir = test_path.parents[1] / "part"
+        if potential_part_dir.exists():
+            original_part = potential_part_dir / (test_stem + ".part")
 
-    # Copy part variants if they exist
-    for suffix in [".rev.neg", ".quant"]:
-        src = str(actual_source_part) + suffix
-        if os.path.exists(src):
-            shutil.copy2(src, partfile + suffix)
+        inputfile = os.path.join(temp_dir, test_name)
+        partfile = os.path.join(temp_dir, test_stem + ".part")
 
-    # Depending on the disregard argument, replace either first or second line in file with a safe tautology
-    if disregard:
-        safe_true = get_safe_true(partfile)
-        if disregard == "main":
-            replace_line_in_file(inputfile, 1, safe_true)
-        elif disregard == "backup":
-            replace_line_in_file(inputfile, 2, safe_true) 
-    results = []
-    times   = []
-    solver_name = solver.get_name()
-    for i in range(iter):
+        # Copy the test files
+        shutil.copy2(test, inputfile)
+        if original_part and original_part.exists():
+            shutil.copy2(original_part, partfile)
+        
+        # Copy DFA files if they exist
+        for dfa_suffix in [".dfa", ".dfa.rev.neg", ".dfa.quant"]:
+            dfa_src = str(test) + dfa_suffix
+            if os.path.exists(dfa_src):
+                shutil.copy2(dfa_src, inputfile + dfa_suffix)
+        
+        # Copy part file variants if they exist
+        if original_part:
+            for part_suffix in [".rev.neg", ".quant"]:
+                part_src = str(original_part) + part_suffix
+                if os.path.exists(part_src):
+                    shutil.copy2(part_src, partfile + part_suffix)
+        
+        # Copy .mona files from mso directory if they exist
+        # Structure: lucas/ltlf/coins_3.ltlf -> lucas/mso/coins_3.mona
+        test_dir_root = test_path.parents[1]  # lucas/
+        mso_dir = test_dir_root / "mso"
+        if mso_dir.exists():
+            for mona_suffix in [".mona", ".mona.rev.neg", ".mona.quant"]:
+                mona_src = mso_dir / (test_stem + mona_suffix)
+                if mona_src.exists():
+                    mona_dst = os.path.join(temp_dir, test_stem + mona_suffix)
+                    shutil.copy2(mona_src, mona_dst)
+
         command = solver.get_command(inputfile, partfile, mode)
-        try:
-            print(f"[{solver_name}] {command}")
-            # Use a lock for this specific solver to prevent parallel executions from colliding on temp files
-            with statistics.solver_locks[solver.path.parent]:
-                completed_proc = subprocess.run(
-                    command,
-                    timeout=timeout,
-                    cwd=solver.path.parent,
-                    shell=True,
-                    capture_output=True
-                )
-            
-            output = completed_proc.stdout
-            error_output = completed_proc.stderr
-            full_log = output + (b"\n" if output and error_output else b"") + error_output
-
-            # If a log directory is provided, save the output
-            if getattr(args, 'logdir', None):
-                log_name = f"{Path(test[0]).stem}_{solver_name}_iter{i}.log"
-                log_path = Path(args.logdir) / log_name
-                log_path.write_bytes(full_log)
-
-            if completed_proc.returncode != 0:
-                print(f"[{solver_name}] Command failed with exit code {completed_proc.returncode}")
-                if error_output:
-                    print(f"[{solver_name}] Stderr: {error_output.decode(errors='replace')}")
-                statistics.add_result(str(test[0]), solver_name, -1, f"error({completed_proc.returncode})", "other")
-                shutil.rmtree(temp_dir)
-                return
-            
-            result, time_ms = solver.parse_output(output)
-            results.append(result)
-            times.append(time_ms)
-        except subprocess.TimeoutExpired as e:
-            # Try to capture whatever output was there before timeout if possible (not always available in TimeoutExpired)
-            statistics.add_result(str(test[0]), solver_name, -1, "timeout", "timeout")
-            shutil.rmtree(temp_dir)
-            return
-        except Exception as e:
-            print(f"[{solver_name}] Unexpected error: {e}")
-            statistics.add_result(str(test[0]), solver_name, -1, "exception", "other")
-            shutil.rmtree(temp_dir)
+        if not command:
             return
 
-    # Cleanup temp dir
-    shutil.rmtree(temp_dir)
+        times = []
+        results = []
 
-    # Check that all results are identical 
-    if not all(elem == results[0] for elem in results):
-        statistics.add_result(str(test[0]), solver_name, -1, "rnid", "other")
-        return 
-    
-    average_time = sum(times) / len(times)
-    if not disregard and results[0] != test[2]: # If we disregard smth, realizability possibilities change!
-        statistics.add_result(str(test[0]), solver_name, average_time / 1000, "WA", "failed")
-    else:
-        statistics.add_result(str(test[0]), solver_name, average_time / 1000, "", "passed")
-                
+        for i in range(iter):
+            try:
+                l = subprocess.check_output(command, timeout=timeout, shell=True, cwd=solver.path.parent)
+                result, time = solver.parse_output(l)
+                if result is None:
+                    statistics.add_result(test, time, 0, "other")
+                    print(f"Failed to parse output for {test}")
+                    continue
 
+                if result == 1:
+                    results.append(1)
+                else:
+                    results.append(0)
+                times.append(time)
+
+            except subprocess.TimeoutExpired:
+                print(f"Timeout for {test}")
+                results.append(TIMEOUT_CODE)
+                times.append(timeout)
+                continue
+
+            except subprocess.CalledProcessError as e:
+                print(f"Failed to run {test}: {e}")
+                results.append(ERROR_CODE)
+                times.append(0)
+                continue
+        
+        average_time = sum(times) / len(times) if times else 0
+
+        if TIMEOUT_CODE in results:
+            statistics.add_result(test, average_time, TIMEOUT_CODE, "timeout")
+        elif ERROR_CODE in results:
+            statistics.add_result(test, average_time, ERROR_CODE, "error")
+        elif not all(elem == results[0] for elem in (results if results else [None])):
+            statistics.add_result(test, average_time, -1, "inconsistent")
+        else:
+            status = results[0] if results else -1
+            statistics.add_result(test, average_time, status, 'other')
+    finally:
+        shutil.rmtree(temp_dir)
+        
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-impl',
-                        choices=['direct', 'belief', 'mso'],
-                        default='direct',
-                        help='Select which implementation to run the tests with')
-    parser.add_argument('-disregard', default=None, choices=[None, "backup", "main"])
-    parser.add_argument('-o',
-                        help="Specify the result file",
-                        default=None)
-    parser.add_argument('-tdir',
-                        help="Specify the directory where tests are stord",
-                        default="christian/tests2/")
-    parser.add_argument('-syft',
-                        help="Specify the path to Syft executable(s)",
-                        default=["lucas:~/lucas/Syft/build/bin/Syft", "christian:~/christian/ltlf-synth-unrel-input-aaai2025/Syft/build/bin/Syft"],
-                        nargs='+')
-    #parser.add_argument('-test', help="Specify which test to run", default=None)
-    parser.add_argument('-j', type=int,
-                        help="Number of threads to use (t >= 1 --> mutithreading)",
-                        default=None)
-    parser.add_argument('-timeout',
-                        help="The timeout to use",
-                        default=1500)
-    parser.add_argument('-iter',
-                        help="How often to run each test for better comparability",
-                        default=1, type=int)
-    parser.add_argument('-logdir',
-                        help="Directory to save test outputs",
-                        default=None)
-
+    parser = argparse.ArgumentParser(description="Run tests for Syft.")
+    parser.add_argument("--timeout", type=int, default=1500, help="Timeout in seconds")
+    parser.add_argument("--iter", type=int, default=1, help="Number of iterations")
+    parser.add_argument("--mode", type=str, default="direct", help="Mode", choices=["direct", "iterative"])
+    parser.add_argument("--solver", type=str, default="lucas", help="Solver", choices=["lucas", "christian"])
+    parser.add_argument("--path", type=str, default="~/lucas/Syft/build/bin/Syft", help="Path to Syft executable")
+    parser.add_argument("--test-dir", type=str, default="lucas", help="Test directory")
+    parser.add_argument("--output", type=str, default="results.csv", help="Output file")
     args = parser.parse_args()
-    
-    if args.logdir:
-        Path(args.logdir).mkdir(parents=True, exist_ok=True)
 
-    print("Collecting tests")
-    tests = collectTests(args.tdir)
+    # Expand user path and validate
+    syft_path = Path(args.path).expanduser().resolve()
+    if not syft_path.exists():
+        print(f"Error: Syft executable not found at {syft_path}")
+        print(f"Please specify the correct path using --path argument")
+        sys.exit(1)
 
-    solvers = []
-    for s_entry in args.syft:
-        if ":" in s_entry:
-            name_prefix, path = s_entry.split(":", 1)
-            # Tilde expansion and resolve
-            path = os.path.expanduser(path)
-            s_path = Path(path).resolve()
-            if not s_path.exists():
-                print(f"Warning: Solver '{name_prefix}' executable not found at {s_path}. Skipping.")
-                continue
-            
-            if name_prefix.lower() == "lucas":
-                solvers.append(LucasSyftSolver(str(s_path), name=name_prefix))
-            else:
-                solvers.append(SyftSolver(str(s_path), name=name_prefix))
-        else:
-            path = os.path.expanduser(s_entry)
-            s_path = Path(path).resolve()
-            if not s_path.exists():
-                print(f"Warning: Solver executable not found at {s_path}. Skipping.")
-                continue
-            solvers.append(SyftSolver(str(s_path)))
+    test_dir = args.test_dir
+    timeout = args.timeout
+    iterations = args.iter
+    mode = args.mode
+    solver = ChristianSyftSolver(str(syft_path), name="christian") \
+        if args.solver != 'lucas' else LucasSyftSolver(str(syft_path), name="lucas")
+    tests = collectTest(test_dir)
+    for test in tests:
+        executeTest(test, timeout, solver, mode, iterations)
 
-    if not solvers:
-        print("Error: No valid solvers found. Exiting.")
-        sys.exit(-1)
+    print("===========")
+    print("Statistics:")
+    print("===========")
+    print(f"Passed: {statistics.stats['passed']}")
+    print(f"Failed: {statistics.stats['failed']}")
+    print(f"Timeout: {statistics.stats['timeout']}")
+    print(f"Other: {statistics.stats['other']}")
+    print(f"Error: {statistics.stats['error']}")
+    print(f"Inconsistent: {statistics.stats['inconsistent']}")
 
-    # Create csvwriter + lock for output file + write initial row
-    max_workers = args.j if args.j else None
+    if not args.output:
+        output_file = f"results_{args.solver}_{args.mode}.csv"
+    else:
+        output_file = args.output
 
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = []
-        for test in tests:
-            for solver in solvers:
-                futures.append(executor.submit(executeTest, test, args.impl, args.timeout, solver, args.disregard, args.iter))
-
-        for future in as_completed(futures):
-            future.result()  # Wait for all futures to complete
-
-
-    # Timeout (1) / Unexpected Output (2) / Failure (3), 
-    print("================================")
-    print("========= STATISTICS ===========")
-    for solver in solvers:
-        name = solver.get_name()
-        print(f"--- Statistics for {name} ---")
-        print(f"SUCCESS: {statistics.stats[name]['passed']}")
-        print(f"FAILED: {statistics.stats[name]['failed']}")
-        print(f"TIMEOUT: {statistics.stats[name]['timeout']}")
-        print(f"ERROR: {statistics.stats[name]['other']}")
-
-    if not args.o:
-        args.o = f"results-{args.impl}.csv"
-
-    header = ["Test"]
-    for solver in solvers:
-        name = solver.get_name()
-        header.extend([f"{name}_Time", f"{name}_Status"])
-    
-    rows = [header]
-    for test_path in sorted(statistics.results.keys()):
-        row = [test_path]
-        for solver in solvers:
-            name = solver.get_name()
-            res = statistics.results[test_path].get(name, ("N/A", "N/A"))
-            row.extend([res[0], res[1]])
-        rows.append(row)
-
-    with open(args.o, 'w') as csvfile:
+    with open(output_file, "w") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerows(rows)
+        writer.writerow(["test", "time", "status"])
+        for test, (time, status) in statistics.results.items():
+            writer.writerow([test, time, status])
+
+
 
     
