@@ -1,0 +1,90 @@
+INFO
+{
+	TITLE: "Peek with 1 plates and 3 holes per player"
+	DESCRIPTION: "Peek"
+	SEMANTICS: Moore
+	TARGET: Moore
+}
+
+GLOBAL
+{
+	PARAMETERS
+	{
+		n = 1; // number of plates per player
+		m = 3; // number of holes per player
+	}
+
+	DEFINITIONS
+	{
+		change(p) = (X p <-> !p);
+	}
+}
+
+MAIN
+{
+	INPUTS
+	{
+		plate_env[n]; // 1 if the environment's ith plate is in
+
+		// Environment is responsible for updating the holes since the
+		// system doesn't have enough information to do it.
+		peek_env[m]; // 1 if environment can peek through its ith hole
+		peek_sys[m]; // 1 if system can peek through its ith hole
+	}
+
+	OUTPUTS
+	{
+		turn_env; // 1 if it's environment player's turn
+		turn_sys; // 1 if it's system player's turn
+		plate_sys[n]; // 1 if the system's ith plate is in
+	}
+
+	ASSUME
+	{
+		// Initially all environment plates are in
+		&&[0 <= i < n] plate_env[i];
+
+		// On the environment's turn, it can move at most one plate
+		&&[0 <= i < n] &&[i < j < n] G(X turn_env -> (change(plate_env[i]) -> !change(plate_env[j])));
+
+		// If it's not the environment's turn, it cannot move any plates
+		&&[0 <= i < n] G(X !turn_env -> !change(plate_env[i]));
+
+		// Encoding of the holes in DNF
+		G(peek_env[0] <-> plate_env[0] && !plate_sys[0]);
+		G(peek_env[1] <-> !plate_env[0] && true);
+		G(peek_env[2] <-> true && !plate_sys[0]);
+		G(peek_sys[0] <-> true && true);
+		G(peek_sys[1] <-> true && true);
+		G(peek_sys[2] <-> !plate_env[0] && true);
+	}
+
+	GUARANTEE
+	{
+		// First timestep is setup, neither player moves
+		!turn_sys;
+		!turn_env;
+
+		// Initially all system plates are in
+		&&[0 <= i < n] plate_sys[i];
+
+		// System is the first player to move
+		X turn_sys;
+
+		// Only one player can move at a time
+		X G(turn_sys <-> !turn_env);
+
+		// Players alternate turns
+		X G(X true -> (X turn_sys <-> turn_env));
+
+		// On the system's turn, it can move at most one plate
+		&&[0 <= i < n] &&[i < j < n] G(X turn_sys -> (change(plate_sys[i]) -> !change(plate_sys[j])));
+
+		// If it's not the system's turn, it cannot move any plates
+		&&[0 <= i < n] G(X !turn_sys -> !change(plate_sys[i]));
+
+		// System wins if it can peek through one of its holes before the environment
+		(&&[0 <= i < m] (turn_env -> !peek_env[i])) U (turn_sys && ||[0 <= i < m] peek_sys[i]);
+
+	}
+}
