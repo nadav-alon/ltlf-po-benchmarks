@@ -351,6 +351,8 @@ if __name__ == "__main__":
     parser.add_argument("--path", type=str, default="~/lucas/Syft/build/bin/Syft", help="Path to Syft executable")
     parser.add_argument("--test-dir", type=str, default="lucas", help="Test directory")
     parser.add_argument("--output", type=str, default="results.csv", help="Output file")
+    parser.add_argument("--shard-id", type=int, default=0, help="Shard index (0-indexed)")
+    parser.add_argument("--num-shards", type=int, default=1, help="Total number of shards")
     args = parser.parse_args()
 
     # Expand user path and validate
@@ -366,7 +368,15 @@ if __name__ == "__main__":
     mode = args.mode
     solver = ChristianSyftSolver(str(syft_path), name="christian") \
         if args.solver != 'lucas' else LucasSyftSolver(str(syft_path), name="lucas")
-    tests = collectTest(test_dir)
+    tests = sorted(collectTest(test_dir))
+    
+    if args.num_shards > 1:
+        total_tests = len(tests)
+        tests = tests[args.shard_id::args.num_shards]
+        print(f"Shard {args.shard_id}/{args.num_shards}: Running {len(tests)} out of {total_tests} tests.")
+    else:
+        print(f"Running all {len(tests)} tests.")
+
     for test in tests:
         executeTest(test, timeout, solver, mode, iterations)
 
