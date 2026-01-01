@@ -197,19 +197,38 @@ statistics = Statistics()
 
 def collectTest(testDir):
     global statistics
-    p = Path(testDir)
-    part_dir = p / "part" 
-
+    p = Path(testDir).resolve()
+    
     tests = []
 
-    for file in p.rglob("ltlf/*.ltlf"):
-        tests.append(file)
-        test_name = file.name.replace(".ltlf", "")
+    if p.is_file():
+        if p.suffix == ".ltlf":
+            test_files = [p]
+        else:
+            print(f"File {p} is not an .ltlf file.")
+            return []
+    else:
+        test_files = list(p.rglob("ltlf/*.ltlf"))
 
-        if not (part_dir / (test_name + ".part")).exists():
-            statistics.add_result(file, 0, 0, "other")
-            print(f"Missing part file for {file}")
-            continue
+    for file in test_files:
+        test_path = file.resolve()
+        
+        # Try to find part file by replacing "ltlf" with "part" in the path
+        parts = list(test_path.parts)
+        if "ltlf" in parts:
+            idx = parts.index("ltlf")
+            part_parts = list(parts)
+            part_parts[idx] = "part"
+            part_file = Path(*part_parts).with_suffix(".part")
+            
+            if not part_file.exists():
+                statistics.add_result(test_path, 0, 0, "other")
+                print(f"Missing part file for {test_path} (expected at {part_file})")
+                continue
+            
+            tests.append(test_path)
+        else:
+            print(f"Test file {test_path} not under an 'ltlf' directory, skipping.")
 
     return tests
 
@@ -220,49 +239,52 @@ ERROR_CODE = -1
 def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
     temp_dir = tempfile.mkdtemp()
     try:
-        test_path = Path(test)
+        test_path = Path(test).resolve()
         test_name = test_path.name
         test_stem = test_path.stem
         
-        # Files in original location
-        # test is the path to the .ltlf file
-        # We assume the structure is <test-dir>/<subdir>/<file>.ltlf
-        # and there is a <test-dir>/part/<file>.part
-        # However, the user might pass --test-dir relative or absolute.
-        # We can look for the part file based on the test path.
+        # Strategy: find the index of "ltlf" in the parts of the path
+        # and replace it with "part" or "mso" to find related files
+        parts = list(test_path.parts)
+        if "ltlf" not in parts:
+            print(f"Error: {test} is not under an 'ltlf' directory.")
+            return
+
+        ltlf_idx = parts.index("ltlf")
         
-        # If test is "lucas/ltlf/seek_9.ltlf", we want "lucas/part/seek_9.part"
-        # Let's find the "part" directory relative to the test file
-        original_part = None
-        potential_part_dir = test_path.parents[1] / "part"
-        if potential_part_dir.exists():
-            original_part = potential_part_dir / (test_stem + ".part")
+        # Construct part file path
+        part_parts = list(parts)
+        part_parts[ltlf_idx] = "part"
+        original_part = Path(*part_parts).with_suffix(".part")
+
+        # Construct mso directory path
+        mso_parts = list(parts)
+        mso_parts[ltlf_idx] = "mso"
+        mso_dir = Path(*mso_parts).parent
 
         inputfile = os.path.join(temp_dir, test_name)
         partfile = os.path.join(temp_dir, test_stem + ".part")
 
         # Copy the test files
         shutil.copy2(test, inputfile)
-        if original_part and original_part.exists():
+        if original_part.exists():
             shutil.copy2(original_part, partfile)
+        else:
+            print(f"Warning: Part file {original_part} not found.")
         
-        # Copy DFA files if they exist
+        # Copy DFA files if they exist (next to the .ltlf file)
         for dfa_suffix in [".dfa", ".dfa.rev.neg", ".dfa.quant"]:
             dfa_src = str(test) + dfa_suffix
             if os.path.exists(dfa_src):
                 shutil.copy2(dfa_src, inputfile + dfa_suffix)
         
         # Copy part file variants if they exist
-        if original_part:
-            for part_suffix in [".rev.neg", ".quant"]:
-                part_src = str(original_part) + part_suffix
-                if os.path.exists(part_src):
-                    shutil.copy2(part_src, partfile + part_suffix)
+        for part_suffix in [".rev.neg", ".quant"]:
+            part_src = str(original_part) + part_suffix
+            if os.path.exists(part_src):
+                shutil.copy2(part_src, partfile + part_suffix)
         
         # Copy .mona files from mso directory if they exist
-        # Structure: lucas/ltlf/coins_3.ltlf -> lucas/mso/coins_3.mona
-        test_dir_root = test_path.parents[1]  # lucas/
-        mso_dir = test_dir_root / "mso"
         if mso_dir.exists():
             for mona_suffix in [".mona", ".mona.rev.neg", ".mona.quant"]:
                 mona_src = mso_dir / (test_stem + mona_suffix)
