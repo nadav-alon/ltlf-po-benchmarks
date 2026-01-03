@@ -1,0 +1,6 @@
+estimation_data/
+test_results/
+logs/
+results/
+results.csv
+results-*.csv
