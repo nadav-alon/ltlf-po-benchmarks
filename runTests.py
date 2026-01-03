@@ -208,7 +208,7 @@ def collectTest(testDir):
             print(f"File {p} is not an .ltlf file.")
             return []
     else:
-        test_files = list(p.rglob("ltlf/*.ltlf"))
+        test_files = list(p.rglob("**/ltlf/**/*.ltlf"))
 
     for file in test_files:
         test_path = file.resolve()
