@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
 #SBATCH --time=12:00:00
-#SBATCH --exclude=gpu1,gpu2,gpu3,gpu7,gpu8,cn31,cn32,cn33,cn34,cn35,cn36,cn37,cn38,cn39,cn40,cn41,cn42,cn43,cn44
+#SBATCH --exclude=gpu1,gpu2,gpu3,gpu4,gpu5,gpu6,gpu7,gpu8,cn31,cn32,cn33,cn34,cn35,cn36,cn37,cn38,cn39,cn40,cn41,cn42,cn43,cn44
 
 # Create logs directory if it doesn't exist
 mkdir -p logs results
