@@ -22,15 +22,14 @@ CHRISTIAN_PATH="~/work/ltlf-synth-unrel-input-aaai2025/Syft/build/bin/Syft"
 SHARDS_PER_COMBINATION=16
 
 # Define all combinations
-SOLVERS=("lucas" "lucas" "lucas" "christian" "christian" "christian")
-MODES=("direct" "belief" "mso" "direct" "belief" "mso")
+MODES_LONG=("lucas:belief-states" "lucas:projection-based" "lucas:mso" "christian:direct" "christian:belief" "christian:mso")
 
 # Calculate combination and shard index
 COMBINATION_ID=$(($SLURM_ARRAY_TASK_ID / $SHARDS_PER_COMBINATION))
 SHARD_ID=$(($SLURM_ARRAY_TASK_ID % $SHARDS_PER_COMBINATION))
 
-SOLVER=${SOLVERS[$COMBINATION_ID]}
-MODE=${MODES[$COMBINATION_ID]}
+MODE_LONG=${MODES_LONG[$COMBINATION_ID]}
+SOLVER=$(echo $MODE_LONG | cut -d':' -f1)
 
 # Set the correct path based on solver
 if [ "$SOLVER" = "lucas" ]; then
@@ -40,13 +39,15 @@ else
 fi
 
 # Unique output file per shard
-OUTPUT_FILE="results/test_${SOLVER}_${MODE}_shard_${SHARD_ID}.csv"
+# Replace colon with underscore for the filename
+SAFE_MODE=$(echo $MODE_LONG | tr ':' '_')
+OUTPUT_FILE="results/test_${SAFE_MODE}_shard_${SHARD_ID}.csv"
 
 echo "========================================="
 echo "SLURM Job ID: $SLURM_JOB_ID"
 echo "Array Task ID: $SLURM_ARRAY_TASK_ID"
 echo "Running on node: $(hostname)"
-echo "Testing: $SOLVER solver with $MODE mode"
+echo "Testing: $MODE_LONG"
 echo "Shard: $SHARD_ID of $SHARDS_PER_COMBINATION"
 echo "Output file: $OUTPUT_FILE"
 echo "========================================="
@@ -54,8 +55,7 @@ echo ""
 
 # Run the test
 python3 runTests.py \
-    --solver=$SOLVER \
-    --mode=$MODE \
+    --mode=$MODE_LONG \
     --test-dir=$TEST_DIR \
     --path=$SYFT_PATH \
     --timeout=$TIMEOUT \

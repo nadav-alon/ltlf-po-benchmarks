@@ -118,13 +118,13 @@ class ChristianSyftSolver(Solver):
 class LucasSyftSolver(Solver):
     def get_command(self, input_file, part_file, mode)-> str:
         # Configuration based on lucas-benchmarks-instructions.txt:
-        # direct (Belief-states): partial dfa, uses .dfa, .part
-        # belief (Projection-based): partial cordfa, uses .dfa.rev.neg, .part.rev.neg
-        # mso (MSO): full dfa, uses .dfa.quant, .part.quant
+        # belief-states: partial dfa, uses .dfa, .part
+        # projection-based: partial cordfa, uses .dfa.rev.neg, .part.rev.neg
+        # mso: full dfa, uses .dfa.quant, .part.quant
         config = {
-            "direct": ("partial", "dfa", ".dfa", ""),
-            "belief": ("partial", "cordfa", ".dfa.rev.neg", ".rev.neg"),
-            "mso":    ("full",    "dfa", ".dfa.quant",   ".quant")
+            "belief-states":    ("partial", "dfa", ".dfa", ""),
+            "projection-based": ("partial", "cordfa", ".dfa.rev.neg", ".rev.neg"),
+            "mso":              ("full",    "dfa", ".dfa.quant",   ".quant")
         }
         
         obs, inp_type, dfa_suffix, part_suffix = config.get(mode, ("partial", "dfa", ".dfa", ""))
@@ -343,31 +343,37 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
 
 
 if __name__ == "__main__":
+    MODES = [
+        "christian:direct", "christian:belief", "christian:mso",
+        "lucas:belief-states", "lucas:projection-based", "lucas:mso"
+    ]
     parser = argparse.ArgumentParser(description="Run tests for Syft.")
     parser.add_argument("--timeout", type=int, default=1500, help="Timeout in seconds")
     parser.add_argument("--iter", type=int, default=1, help="Number of iterations")
-    parser.add_argument("--mode", type=str, default="direct", help="Mode", choices=["direct", "belief", "mso"])
-    parser.add_argument("--solver", type=str, default="lucas", help="Solver", choices=["lucas", "christian"])
-    parser.add_argument("--path", type=str, default="~/lucas/Syft/build/bin/Syft", help="Path to Syft executable")
+    parser.add_argument("--mode", type=str, required=True, help="Algorithm mode", choices=MODES)
+    parser.add_argument("--path", type=str, required=True, help="Path to Syft executable")
     parser.add_argument("--test-dir", type=str, default="lucas", help="Test directory")
-    parser.add_argument("--output", type=str, default="results.csv", help="Output file")
+    parser.add_argument("--output", type=str, help="Output file")
     parser.add_argument("--shard-id", type=int, default=0, help="Shard index (0-indexed)")
     parser.add_argument("--num-shards", type=int, default=1, help="Total number of shards")
     args = parser.parse_args()
 
+    # Derive solver and internal mode
+    solver_name, internal_mode = args.mode.split(":")
+    
     # Expand user path and validate
     syft_path = Path(args.path).expanduser().resolve()
     if not syft_path.exists():
         print(f"Error: Syft executable not found at {syft_path}")
-        print(f"Please specify the correct path using --path argument")
         sys.exit(1)
 
     test_dir = args.test_dir
     timeout = args.timeout
     iterations = args.iter
-    mode = args.mode
+    
     solver = ChristianSyftSolver(str(syft_path), name="christian") \
-        if args.solver != 'lucas' else LucasSyftSolver(str(syft_path), name="lucas")
+        if solver_name == 'christian' else LucasSyftSolver(str(syft_path), name="lucas")
+        
     tests = sorted(collectTest(test_dir))
     
     if args.num_shards > 1:
@@ -378,7 +384,7 @@ if __name__ == "__main__":
         print(f"Running all {len(tests)} tests.")
 
     for test in tests:
-        executeTest(test, timeout, solver, mode, iterations)
+        executeTest(test, timeout, solver, internal_mode, iterations)
 
     print("===========")
     print("Statistics:")
@@ -391,7 +397,9 @@ if __name__ == "__main__":
     print(f"Inconsistent: {statistics.stats['inconsistent']}")
 
     if not args.output:
-        output_file = f"results_{args.solver}_{args.mode}.csv"
+        # Replace colon with underscore for a cleaner filename
+        safe_mode = args.mode.replace(":", "_")
+        output_file = f"results_{safe_mode}.csv"
     else:
         output_file = args.output
 

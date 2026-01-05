@@ -17,43 +17,43 @@ echo ""
 
 # Test Lucas solver with different modes
 echo "--- Testing Lucas Solver ---"
-for mode in direct belief mso; do
+for mode in "lucas:belief-states" "lucas:projection-based" "lucas:mso"; do
     echo ""
-    echo "Testing: Lucas + $mode mode"
-    output_file="test_lucas_${mode}.csv"
+    echo "Testing: $mode"
+    safe_mode=$(echo $mode | tr ':' '_')
+    output_file="test_${safe_mode}.csv"
     
     if python3 runTests.py \
-        --solver=lucas \
         --mode=$mode \
         --test-dir=$TEST_DIR \
         --path=$LUCAS_PATH \
         --timeout=$TIMEOUT \
         --output=$output_file \
         2>&1 | tail -20; then
-        echo "✓ Lucas + $mode: SUCCESS"
+        echo "✓ $mode: SUCCESS"
     else
-        echo "✗ Lucas + $mode: FAILED"
+        echo "✗ $mode: FAILED"
     fi
 done
 
 echo ""
 echo "--- Testing Christian Solver ---"
-for mode in direct belief mso; do
+for mode in "christian:direct" "christian:belief" "christian:mso"; do
     echo ""
-    echo "Testing: Christian + $mode mode"
-    output_file="test_christian_${mode}.csv"
+    echo "Testing: $mode"
+    safe_mode=$(echo $mode | tr ':' '_')
+    output_file="test_${safe_mode}.csv"
     
     if python3 runTests.py \
-        --solver=christian \
         --mode=$mode \
         --test-dir=$TEST_DIR \
         --path=$CHRISTIAN_PATH \
         --timeout=$TIMEOUT \
         --output=$output_file \
         2>&1 | tail -20; then
-        echo "✓ Christian + $mode: SUCCESS"
+        echo "✓ $mode: SUCCESS"
     else
-        echo "✗ Christian + $mode: FAILED"
+        echo "✗ $mode: FAILED"
     fi
 done
 
