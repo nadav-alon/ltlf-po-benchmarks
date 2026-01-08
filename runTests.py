@@ -174,7 +174,7 @@ class LucasSyftSolver(Solver):
         # TODO: need to save the output of the tool
         return result, time_ms
 
-class SpotLtlfSolver(Solver):
+class SpotSolver(Solver):
     def get_command(self, input_file, part_file, mode)-> str:
         if not part_file.endswith('.spot.part'):
             spot_part = part_file + '.spot.part'
@@ -185,7 +185,13 @@ class SpotLtlfSolver(Solver):
                     f.write(content.replace('inputs', '.inputs').replace('outputs', '.outputs').replace('unobservables', '.unobservables'))
             part_file = spot_part
 
-        return f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&' | ltlfsynt --part-file={part_file} --semantics=moore --real"
+        transformation = f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&'"
+        if mode == "ltlf"
+            return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics=moore --real"
+        elif mode == "ltl"
+            return f"{transformation} | ltlsynt --part-file={part_file} --semantics=moore --real"
+        elif mode == "ltlfilt"
+            return f"{transformation} | ltlfilt --from-ltlf | ltlsynt --part-file={part_file} --semantics=moore --real"
 
     def parse_output(self, output_bytes):
         l_str = str(output_bytes)
@@ -392,7 +398,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Derive solver and internal mode
-    solver_name, internal_mode = args.mode.split(":") if args.mode != "spot" else ("spot", "")
+    solver_name, internal_mode = args.mode.split(":")
     
     # Expand user path and validate
     syft_path = Path(args.path or "").expanduser().resolve()
@@ -406,7 +412,7 @@ if __name__ == "__main__":
     
     solver = ChristianSyftSolver(str(syft_path), name="christian") \
         if solver_name == 'christian' else LucasSyftSolver(str(syft_path), name="lucas") \
-        if solver_name == 'lucas' else SpotSolver(str(syft_path), name="spot")
+        if solver_name == 'lucas' else SpotSolver(str(syft_path), name="spot") 
     
     tests = sorted(collectTest(test_dir))
     
