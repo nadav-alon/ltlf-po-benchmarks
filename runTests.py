@@ -186,12 +186,12 @@ class SpotSolver(Solver):
             part_file = spot_part
 
         transformation = f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&'"
-        if mode == "ltlf"
-            return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics=moore --real"
-        elif mode == "ltl"
-            return f"{transformation} | ltlsynt --part-file={part_file} --semantics=moore --real"
-        elif mode == "ltlfilt"
-            return f"{transformation} | ltlfilt --from-ltlf | ltlsynt --part-file={part_file} --semantics=moore --real"
+        if mode == "ltlf":
+            return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics=moore --real --verbose"
+        elif mode == "ltl":
+            return f"{transformation} | ltlsynt --part-file={part_file} --semantics=moore --real --verbose"
+        elif mode == "ltlfilt":
+            return f"{transformation} | ltlfilt --from-ltlf | ltlsynt --part-file={part_file} --semantics=moore --real --verbose"
 
     def parse_output(self, output_bytes):
         l_str = str(output_bytes)
@@ -199,13 +199,19 @@ class SpotSolver(Solver):
         if "UNREALIZABLE" in l_str: result = 0
         elif "REALIZABLE" in l_str: result = 1
         
-        # Spot Syft often prints time in ms at the end
+        # Spot Syft often prints time in ms or seconds at the end
         lines = l_str.strip().split("\\n")
         time_ms = 0.0
         for line in reversed(lines):
-            rr = re.findall(r"(\d+\.?\d*)\s*ms", line)
-            if rr:
-                time_ms = float(rr[0])
+            # Matches "123 ms"
+            rr_ms = re.findall(r"(\d+\.?\d*)\s*ms", line)
+            if rr_ms:
+                time_ms = float(rr_ms[0])
+                break
+            # Matches "took 1.23 seconds"
+            rr_sec = re.findall(r"took\s*(\d+\.?\d*)\s*seconds", line)
+            if rr_sec:
+                time_ms = float(rr_sec[0]) * 1000
                 break
 
         return result, time_ms
@@ -338,19 +344,33 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
 
         for i in range(iter):
             try:
-                l = subprocess.check_output(command, timeout=timeout, shell=True, cwd=solver.path.parent, stderr=subprocess.STDOUT)
+                try:
+                    start_wall = time.time()
+                    l = subprocess.check_output(command, timeout=timeout, shell=True, cwd=solver.path.parent, stderr=subprocess.STDOUT)
+                    end_wall = time.time()
+                except subprocess.CalledProcessError as e:
+                    end_wall = time.time()
+                    # Some tools might return non-zero exit codes even if they produced a valid result.
+                    # We try to parse the output; if it contains a valid result, we treat it as success.
+                    result, t_val = solver.parse_output(e.output)
+                    if result is not None:
+                        l = e.output
+                    else:
+                        raise e
+
                 print(f"Output: {l}")
-                result, time = solver.parse_output(l)
+                result, t_val = solver.parse_output(l)
                 if result is None:
-                    statistics.add_result(test, time, 0, "other")
+                    statistics.add_result(test, t_val, 0, "other")
                     print(f"Failed to parse output for {test}")
                     continue
+                
+                # If tool didn't report time, use wall clock measurement
+                if t_val == 0.0:
+                    t_val = (end_wall - start_wall) * 1000
 
-                if result == 1:
-                    results.append(1)
-                else:
-                    results.append(0)
-                times.append(time)
+                results.append(result)
+                times.append(t_val)
 
             except subprocess.TimeoutExpired:
                 print(f"Timeout for {test}")
