@@ -189,9 +189,15 @@ class SpotSolver(Solver):
         if mode == "ltlf":
             return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics=moore --real --verbose"
         elif mode == "ltl":
-            return f"{transformation} | ltlsynt --part-file={part_file} --semantics=moore --real --verbose"
+            return f"{transformation} | ltlsynt --part-file={part_file} --real --verbose --algo=ds"
         elif mode == "ltlfilt":
-            return f"{transformation} | ltlfilt --from-ltlf | ltlsynt --part-file={part_file} --semantics=moore --real --verbose"
+            with open(part_file, 'r') as f:
+                content = f.read()
+                # add alive to outputs to account for the new variable introduced by ltlfilt --from-ltlf
+                content = content.replace('.output', '.output alive')
+            with open(part_file, 'w') as f:
+                f.write(content)
+            return f"{transformation} | ltlfilt --part-file={part_file} --from-ltlf --relabel=io | ltlsynt --real --verbose --algo=ds"
 
     def parse_output(self, output_bytes):
         l_str = str(output_bytes)
@@ -199,7 +205,7 @@ class SpotSolver(Solver):
         if "UNREALIZABLE" in l_str: result = 0
         elif "REALIZABLE" in l_str: result = 1
         
-        # Spot Syft often prints time in ms or seconds at the end
+        # Spot often prints time in ms or seconds at the end
         lines = l_str.strip().split("\\n")
         time_ms = 0.0
         for line in reversed(lines):
@@ -387,7 +393,7 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
                     outcome = "failed" if expected is not None else "other"
                     statistics.add_result(test, t_val, 0, outcome)
                     print(f"Failed to parse output for {test}")
-                    continue
+                    return
                 
                 # If tool didn't report time, use wall clock measurement
                 if t_val == 0.0:
