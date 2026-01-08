@@ -1,0 +1,7 @@
+TODOS:
+
+- add expected values for each test that has them (seek always realizable,
+ coin3 unrealizable and all the rest realizable, peek unknown)
+- run spot ltlf and ltl and ltlfilt -> ltl
+    - ltl and ltlf should be equirealizable
+- make sure the christian tool is working correctly

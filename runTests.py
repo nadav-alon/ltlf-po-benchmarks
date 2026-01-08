@@ -174,6 +174,37 @@ class LucasSyftSolver(Solver):
         # TODO: need to save the output of the tool
         return result, time_ms
 
+class SpotLtlfSolver(Solver):
+    def get_command(self, input_file, part_file, mode)-> str:
+        if not part_file.endswith('.spot.part'):
+            spot_part = part_file + '.spot.part'
+            if not os.path.exists(spot_part):
+                with open(part_file, 'r') as f:
+                    content = f.read()
+                with open(spot_part, 'w') as f:
+                    f.write(content.replace('inputs', '.inputs').replace('outputs', '.outputs').replace('unobservables', '.unobservables'))
+            part_file = spot_part
+
+        return f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&' | ltlfsynt --part-file={part_file} --semantics=moore --real"
+
+    def parse_output(self, output_bytes):
+        l_str = str(output_bytes)
+        result = None 
+        if "UNREALIZABLE" in l_str: result = 0
+        elif "REALIZABLE" in l_str: result = 1
+        
+        # Spot Syft often prints time in ms at the end
+        lines = l_str.strip().split("\\n")
+        time_ms = 0.0
+        for line in reversed(lines):
+            rr = re.findall(r"(\d+\.?\d*)\s*ms", line)
+            if rr:
+                time_ms = float(rr[0])
+                break
+
+        return result, time_ms
+
+
 class Statistics():
     def __init__(self):
         self.stats = {'passed': 0, 'failed': 0, 'timeout': 0, 'other': 0, 'error': 0, 'inconsistent': 0}
@@ -301,7 +332,8 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
 
         for i in range(iter):
             try:
-                l = subprocess.check_output(command, timeout=timeout, shell=True, cwd=solver.path.parent)
+                l = subprocess.check_output(command, timeout=timeout, shell=True, cwd=solver.path.parent, stderr=subprocess.STDOUT)
+                print(f"Output: {l}")
                 result, time = solver.parse_output(l)
                 if result is None:
                     statistics.add_result(test, time, 0, "other")
@@ -321,7 +353,7 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
                 continue
 
             except subprocess.CalledProcessError as e:
-                print(f"Failed to run {test}: {e}")
+                print(f"Failed to run {test}: {e}, {e.output}")
                 results.append(ERROR_CODE)
                 times.append(0)
                 continue
@@ -345,13 +377,14 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
 if __name__ == "__main__":
     MODES = [
         "christian:direct", "christian:belief", "christian:mso",
-        "lucas:belief-states", "lucas:projection-based", "lucas:mso"
+        "lucas:belief-states", "lucas:projection-based", "lucas:mso",
+        "spot:ltlf", "spot:ltl", "spot:ltlfilt"
     ]
     parser = argparse.ArgumentParser(description="Run tests for Syft.")
     parser.add_argument("--timeout", type=int, default=1500, help="Timeout in seconds")
     parser.add_argument("--iter", type=int, default=1, help="Number of iterations")
     parser.add_argument("--mode", type=str, required=True, help="Algorithm mode", choices=MODES)
-    parser.add_argument("--path", type=str, required=True, help="Path to Syft executable")
+    parser.add_argument("--path", type=str, help="Path to Syft executable")
     parser.add_argument("--test-dir", type=str, default="lucas", help="Test directory")
     parser.add_argument("--output", type=str, help="Output file")
     parser.add_argument("--shard-id", type=int, default=0, help="Shard index (0-indexed)")
@@ -359,11 +392,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Derive solver and internal mode
-    solver_name, internal_mode = args.mode.split(":")
+    solver_name, internal_mode = args.mode.split(":") if args.mode != "spot" else ("spot", "")
     
     # Expand user path and validate
-    syft_path = Path(args.path).expanduser().resolve()
-    if not syft_path.exists():
+    syft_path = Path(args.path or "").expanduser().resolve()
+    if not syft_path.exists() and solver_name != "spot":
         print(f"Error: Syft executable not found at {syft_path}")
         sys.exit(1)
 
@@ -372,8 +405,9 @@ if __name__ == "__main__":
     iterations = args.iter
     
     solver = ChristianSyftSolver(str(syft_path), name="christian") \
-        if solver_name == 'christian' else LucasSyftSolver(str(syft_path), name="lucas")
-        
+        if solver_name == 'christian' else LucasSyftSolver(str(syft_path), name="lucas") \
+        if solver_name == 'lucas' else SpotSolver(str(syft_path), name="spot")
+    
     tests = sorted(collectTest(test_dir))
     
     if args.num_shards > 1:
