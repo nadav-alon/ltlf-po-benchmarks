@@ -4,6 +4,7 @@ logs/
 results/
 results.csv
 results-*.csv
+results_*.csv
 ltlf-po-benchmarks.code-workspace
 spot/*
 !/spot/spot-2.14.4.dev.tar.gz

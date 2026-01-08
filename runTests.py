@@ -217,6 +217,29 @@ class SpotSolver(Solver):
         return result, time_ms
 
 
+def get_expected_result(test_path):
+    parts = list(test_path.parts)
+    if "ltlf" not in parts:
+        return None
+    
+    try:
+        idx = parts.index("ltlf")
+        expected_parts = list(parts)
+        expected_parts[idx] = "expected"
+        expected_file = Path(*expected_parts).with_suffix(".txt")
+        
+        if expected_file.exists():
+            with open(expected_file, 'r') as f:
+                content = f.read().strip().lower()
+                if "unrealizable" in content:
+                    return 0
+                if "realizable" in content:
+                    return 1
+    except Exception:
+        pass
+    return None
+
+
 class Statistics():
     def __init__(self):
         self.stats = {'passed': 0, 'failed': 0, 'timeout': 0, 'other': 0, 'error': 0, 'inconsistent': 0}
@@ -358,10 +381,11 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
                     else:
                         raise e
 
-                print(f"Output: {l}")
                 result, t_val = solver.parse_output(l)
                 if result is None:
-                    statistics.add_result(test, t_val, 0, "other")
+                    expected = get_expected_result(test_path)
+                    outcome = "failed" if expected is not None else "other"
+                    statistics.add_result(test, t_val, 0, outcome)
                     print(f"Failed to parse output for {test}")
                     continue
                 
@@ -385,16 +409,24 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
                 continue
         
         average_time = sum(times) / len(times) if times else 0
+        expected = get_expected_result(test_path)
 
         if TIMEOUT_CODE in results:
-            statistics.add_result(test, average_time, TIMEOUT_CODE, "timeout")
+            outcome = "failed" if expected is not None else "timeout"
+            statistics.add_result(test, average_time, TIMEOUT_CODE, outcome)
         elif ERROR_CODE in results:
-            statistics.add_result(test, average_time, ERROR_CODE, "error")
+            outcome = "failed" if expected is not None else "error"
+            statistics.add_result(test, average_time, ERROR_CODE, outcome)
         elif not all(elem == results[0] for elem in (results if results else [None])):
-            statistics.add_result(test, average_time, -1, "inconsistent")
+            outcome = "failed" if expected is not None else "inconsistent"
+            statistics.add_result(test, average_time, -1, outcome)
         else:
             status = results[0] if results else -1
-            statistics.add_result(test, average_time, status, 'other')
+            if expected is not None:
+                outcome = "passed" if status == expected else "failed"
+            else:
+                outcome = "other"
+            statistics.add_result(test, average_time, status, outcome)
     finally:
         shutil.rmtree(temp_dir)
         
