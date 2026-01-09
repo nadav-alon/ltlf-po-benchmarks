@@ -18,6 +18,10 @@ TEST_DIR="lucas"
 LUCAS_PATH="~/work/lucas/Syft/build/bin/Syft"
 CHRISTIAN_PATH="~/work/ltlf-synth-unrel-input-aaai2025/Syft/build/bin/Syft"
 
+# Local Spot installation
+export PATH="$PWD/spot/local/bin:$PATH"
+export LD_LIBRARY_PATH="$PWD/spot/local/lib:$LD_LIBRARY_PATH"
+
 # Number of shards per combination
 SHARDS_PER_COMBINATION=16
 
