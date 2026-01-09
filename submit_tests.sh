@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Script to submit test combinations to SLURM
-# Usage: ./submit_tests.sh [all|lucas|christian|spot|solver:mode] [--dry-run]
+# Usage: ./submit_tests.sh [target1 target2 ...] [--dry-run]
+# Targets can be: all, lucas, christian, spot, or solver:mode
 
-TARGET="all"
+TARGETS=()
 DRY_RUN=false
 
 # Simple argument parsing
@@ -11,9 +12,14 @@ for arg in "$@"; do
     if [ "$arg" == "--dry-run" ]; then
         DRY_RUN=true
     else
-        TARGET="$arg"
+        TARGETS+=("$arg")
     fi
 done
+
+# If no targets provided, default to all
+if [ ${#TARGETS[@]} -eq 0 ]; then
+    TARGETS=("all")
+fi
 
 # Configuration - read from the SLURM script to keep in sync
 SLURM_SCRIPT="test_all_combinations_slurm.sh"
@@ -30,55 +36,64 @@ read -a MODES <<< "$MODES_STR"
 NUM_MODES=${#MODES[@]}
 TOTAL_TASKS=$((NUM_MODES * SHARDS))
 
-ARRAY_RANGE=""
-DESC=""
+ARRAY_RANGES=()
+DESCS=()
 
-if [ "$TARGET" == "all" ]; then
-    ARRAY_RANGE="0-$((TOTAL_TASKS - 1))"
-    DESC="All combinations ($NUM_MODES combinations x $SHARDS shards)"
-elif [[ "$TARGET" == "lucas" || "$TARGET" == "christian" || "$TARGET" == "spot" ]]; then
-    # Find range for a specific solver
-    START=-1
-    END=-1
-    COUNT=0
-    for i in "${!MODES[@]}"; do
-        SOLVER=$(echo ${MODES[$i]} | cut -d':' -f1)
-        if [ "$SOLVER" == "$TARGET" ]; then
-            if [ $START -lt 0 ]; then START=$((i * SHARDS)); fi
-            END=$(( (i + 1) * SHARDS - 1 ))
-            COUNT=$((COUNT + 1))
+for TARGET in "${TARGETS[@]}"; do
+    FOUND=false
+    if [ "$TARGET" == "all" ]; then
+        ARRAY_RANGES+=("0-$((TOTAL_TASKS - 1))")
+        DESCS+=("All combinations")
+        FOUND=true
+    elif [[ "$TARGET" == "lucas" || "$TARGET" == "christian" || "$TARGET" == "spot" ]]; then
+        # Find range for a specific solver
+        START=-1
+        END=-1
+        for i in "${!MODES[@]}"; do
+            SOLVER=$(echo ${MODES[$i]} | cut -d':' -f1)
+            if [ "$SOLVER" == "$TARGET" ]; then
+                if [ $START -lt 0 ]; then START=$((i * SHARDS)); fi
+                END=$(( (i + 1) * SHARDS - 1 ))
+            fi
+        done
+        if [ $START -ge 0 ]; then
+            ARRAY_RANGES+=("$START-$END")
+            DESCS+=("Solver $TARGET")
+            FOUND=true
         fi
-    done
-    if [ $START -ge 0 ]; then
-        ARRAY_RANGE="$START-$END"
-        DESC="Solver $TARGET ($COUNT combinations x $SHARDS shards)"
+    else
+        # Find specific mode
+        for i in "${!MODES[@]}"; do
+            if [ "${MODES[$i]}" == "$TARGET" ]; then
+                START=$((i * SHARDS))
+                END=$((START + SHARDS - 1))
+                ARRAY_RANGES+=("$START-$END")
+                DESCS+=("Mode $TARGET")
+                FOUND=true
+                break
+            fi
+        done
     fi
-else
-    # Find specific mode
-    for i in "${!MODES[@]}"; do
-        if [ "${MODES[$i]}" == "$TARGET" ]; then
-            START=$((i * SHARDS))
-            END=$((START + SHARDS - 1))
-            ARRAY_RANGE="$START-$END"
-            DESC="Mode $TARGET ($SHARDS shards)"
-            break
-        fi
-    done
-fi
 
-if [ -z "$ARRAY_RANGE" ]; then
-    echo "Error: Unknown target '$TARGET'"
-    echo "Usage: ./submit_tests.sh [all|lucas|christian|spot|solver:mode]"
-    echo ""
-    echo "Available solvers: lucas, christian, spot"
-    echo "Available combinations:"
-    for m in "${MODES[@]}"; do echo "  - $m"; done
-    exit 1
-fi
+    if [ "$FOUND" = false ]; then
+        echo "Error: Unknown target '$TARGET'"
+        echo "Usage: ./submit_tests.sh [all|lucas|christian|spot|solver:mode] [--dry-run]"
+        echo ""
+        echo "Available solvers: lucas, christian, spot"
+        echo "Available combinations:"
+        for m in "${MODES[@]}"; do echo "  - $m"; done
+        exit 1
+    fi
+done
+
+# Join ranges with commas
+ARRAY_RANGE=$(IFS=,; echo "${ARRAY_RANGES[*]}")
+DESC_STR=$(IFS=,; echo "${DESCS[*]}")
 
 echo "========================================="
 echo "Submitting SLURM Job Array"
-echo "Target: $DESC"
+echo "Targets: $DESC_STR"
+echo "Range: $ARRAY_RANGE"
 echo "========================================="
 echo ""
 
@@ -102,14 +117,24 @@ if [ $EXIT_STATUS -eq 0 ]; then
     echo "  Job ID: $JOB_ID"
     echo "  Array tasks: $ARRAY_RANGE"
     echo ""
-    echo "Combinations mapping:"
-    # Parse the range to filter the output
-    IFS='-' read -r R_START R_END <<< "$ARRAY_RANGE"
+    echo "Combinations mapping for selected range:"
+    
+    # Simple overlap check for display
     for i in "${!MODES[@]}"; do
         S=$((i * SHARDS))
         E=$((S + SHARDS - 1))
-        # Check for overlap between [S, E] and [R_START, R_END]
-        if [ $S -le $R_END ] && [ $E -ge $R_START ]; then
+        
+        SHOW=false
+        # Check if this mode's range is covered by ANY of the requested ranges
+        for R in "${ARRAY_RANGES[@]}"; do
+            IFS='-' read -r R_START R_END <<< "$R"
+            if [ $S -le $R_END ] && [ $E -ge $R_START ]; then
+                SHOW=true
+                break
+            fi
+        done
+        
+        if [ "$SHOW" = true ]; then
             printf "  Tasks %3d-%3d: %s\n" $S $E "${MODES[$i]}"
         fi
     done
