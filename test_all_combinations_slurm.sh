@@ -2,7 +2,7 @@
 #SBATCH --job-name=syft_test_all
 #SBATCH --output=logs/test_all_%A_%a.out
 #SBATCH --error=logs/test_all_%A_%a.err
-#SBATCH --array=0-95
+#SBATCH --array=0-143
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
@@ -22,7 +22,7 @@ CHRISTIAN_PATH="~/work/ltlf-synth-unrel-input-aaai2025/Syft/build/bin/Syft"
 SHARDS_PER_COMBINATION=16
 
 # Define all combinations
-MODES_LONG=("lucas:belief-states" "lucas:projection-based" "lucas:mso" "christian:direct" "christian:belief" "christian:mso")
+MODES_LONG=("lucas:belief-states" "lucas:projection-based" "lucas:mso" "christian:direct" "christian:belief" "christian:mso" "spot:ltlf" "spot:ltl" "spot:ltlfilt")
 
 # Calculate combination and shard index
 COMBINATION_ID=$(($SLURM_ARRAY_TASK_ID / $SHARDS_PER_COMBINATION))
@@ -32,16 +32,24 @@ MODE_LONG=${MODES_LONG[$COMBINATION_ID]}
 SOLVER=$(echo $MODE_LONG | cut -d':' -f1)
 
 # Set the correct path based on solver
-if [ "$SOLVER" = "lucas" ]; then
-    SYFT_PATH=$LUCAS_PATH
+if [ "$SOLVER" = "spot" ]; then
+    SYFT_PATH="."
 else
-    SYFT_PATH=$CHRISTIAN_PATH
+    if [ "$SOLVER" = "lucas" ]; then
+        SYFT_PATH=$LUCAS_PATH
+    else
+        SYFT_PATH=$CHRISTIAN_PATH
+    fi
 fi
 
 # Unique output file per shard
 # Replace colon with underscore for the filename
 SAFE_MODE=$(echo $MODE_LONG | tr ':' '_')
-OUTPUT_FILE="results/test_${SAFE_MODE}_shard_${SHARD_ID}.csv"
+
+# if doesnt exist, create directory
+mkdir -p "results/test_${SLURM_JOB_ID}/${SAFE_MODE}"
+
+OUTPUT_FILE="results/test_${SLURM_JOB_ID}/${SAFE_MODE}/shard_${SHARD_ID}.csv"
 
 echo "========================================="
 echo "SLURM Job ID: $SLURM_JOB_ID"
