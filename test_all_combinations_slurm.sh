@@ -50,13 +50,17 @@ fi
 # Replace colon with underscore for the filename
 SAFE_MODE=$(echo $MODE_LONG | tr ':' '_')
 
-# if doesnt exist, create directory
-mkdir -p "results/test_${SLURM_JOB_ID}/${SAFE_MODE}"
+# Get the base Job ID (handles both array and non-array jobs)
+BASE_JOB_ID=${SLURM_ARRAY_JOB_ID:-$SLURM_JOB_ID}
 
-OUTPUT_FILE="results/test_${SLURM_JOB_ID}/${SAFE_MODE}/shard_${SHARD_ID}.csv"
+# if doesnt exist, create directory
+mkdir -p "results/test_${BASE_JOB_ID}/${SAFE_MODE}"
+
+OUTPUT_FILE="results/test_${BASE_JOB_ID}/${SAFE_MODE}/shard_${SHARD_ID}.csv"
 
 echo "========================================="
 echo "SLURM Job ID: $SLURM_JOB_ID"
+echo "SLURM Array Job ID: ${SLURM_ARRAY_JOB_ID:-N/A}"
 echo "Array Task ID: $SLURM_ARRAY_TASK_ID"
 echo "Running on node: $(hostname)"
 echo "Testing: $MODE_LONG"
