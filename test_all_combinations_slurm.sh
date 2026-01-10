@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=syft_test_all
+#SBATCH --job-name=ltlf_po
 #SBATCH --output=logs/slurm_%A_%a.out
 #SBATCH --error=logs/slurm_%A_%a.err
 #SBATCH --array=0-143
