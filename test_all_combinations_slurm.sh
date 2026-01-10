@@ -1,16 +1,13 @@
 #!/bin/bash
 #SBATCH --job-name=syft_test_all
-#SBATCH --output=logs/test_all_%A_%a.out
-#SBATCH --error=logs/test_all_%A_%a.err
+#SBATCH --output=logs/slurm_%A_%a.out
+#SBATCH --error=logs/slurm_%A_%a.err
 #SBATCH --array=0-143
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
 #SBATCH --time=12:00:00
 #SBATCH --exclude=cn[31-44],gpu[1-4],gpu[6-8]
-
-# Create logs directory if it doesn't exist
-mkdir -p logs results
 
 # Configuration
 TIMEOUT=180
@@ -52,11 +49,13 @@ SAFE_MODE=$(echo $MODE_LONG | tr ':' '_')
 
 # Get the base Job ID (handles both array and non-array jobs)
 BASE_JOB_ID=${SLURM_ARRAY_JOB_ID:-$SLURM_JOB_ID}
+TASK_ID=${SLURM_ARRAY_TASK_ID:-0}
 
-# if doesnt exist, create directory
-mkdir -p "results/test_${BASE_JOB_ID}/${SAFE_MODE}"
+# Create directories and REDIRECT all output to the job-specific folder
+mkdir -p "logs/${BASE_JOB_ID}" "results/${BASE_JOB_ID}/${SAFE_MODE}"
+exec > "logs/${BASE_JOB_ID}/ltlf_po_${BASE_JOB_ID}_${TASK_ID}.out" 2>&1
 
-OUTPUT_FILE="results/test_${BASE_JOB_ID}/${SAFE_MODE}/shard_${SHARD_ID}.csv"
+OUTPUT_FILE="results/${BASE_JOB_ID}/${SAFE_MODE}/shard_${SHARD_ID}.csv"
 
 echo "========================================="
 echo "SLURM Job ID: $SLURM_JOB_ID"

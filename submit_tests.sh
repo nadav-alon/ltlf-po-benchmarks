@@ -97,10 +97,7 @@ echo "Range: $ARRAY_RANGE"
 echo "========================================="
 echo ""
 
-# Create necessary directories
-mkdir -p logs results
-
-# Submit the job array
+# Submission block
 if [ "$DRY_RUN" = true ]; then
     echo "--- DRY RUN: No jobs will be submitted ---"
     echo "Command that would be run:"
@@ -144,10 +141,10 @@ if [ $EXIT_STATUS -eq 0 ]; then
     echo "  squeue -u \$USER"
     echo ""
     echo "Check logs in:"
-    echo "  logs/test_all_${JOB_ID}_*.out"
+    echo "  logs/$JOB_ID/ltlf_po_${JOB_ID}_*.out"
     echo ""
     echo "Results will be in:"
-    echo "  results/test_${JOB_ID}/"
+    echo "  results/$JOB_ID/"
     echo ""
     echo "Cancel all tasks with:"
     echo "  scancel $JOB_ID"
