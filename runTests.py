@@ -16,13 +16,14 @@ class Solver():
         self.path = Path(path).expanduser().resolve()
         self.name = name if name else str(self.path)
 
-    def get_command(self, input_file, part_file, mode)-> str:
+    def get_command(self, input_file, part_file, mode, semantics="moore")-> str:
         """Returns the command string to execute.
 
         Args:
             input_file (str): The input file path.
             part_file (str): The part file path.
             mode (str): The mode.
+            semantics (str): The semantics (mealy/moore).
         Returns:
             str: The command string to execute.
         """
@@ -58,7 +59,7 @@ def get_safe_true(part_file):
     return " && ".join([f"{v} | ~{v}" for v in vars])
 
 class ChristianSyftSolver(Solver):
-    def get_command(self, input_file, part_file, mode)-> str:
+    def get_command(self, input_file, part_file, mode, semantics)-> str:
         # Christian's Syft expects .main and .backup files
         # and handles ltlf2fol conversion internally
         
@@ -89,7 +90,8 @@ class ChristianSyftSolver(Solver):
             input_file = christian_input
         
         # Christian's Syft takes the .ltlf file and handles conversion internally
-        return f'"{self.path}" {input_file} {part_file} 0 {mode}'
+        sem_val = 1 if semantics == "mealy" else 0
+        return f'"{self.path}" {input_file} {part_file} {sem_val} {mode}'
 
     def parse_output(self, output_bytes)-> (int, float):
         l_str = str(output_bytes)
@@ -116,7 +118,7 @@ class ChristianSyftSolver(Solver):
 
 
 class LucasSyftSolver(Solver):
-    def get_command(self, input_file, part_file, mode)-> str:
+    def get_command(self, input_file, part_file, mode, semantics)-> str:
         # Configuration based on lucas-benchmarks-instructions.txt:
         # belief-states: partial dfa, uses .dfa, .part
         # projection-based: partial cordfa, uses .dfa.rev.neg, .part.rev.neg
@@ -153,7 +155,8 @@ class LucasSyftSolver(Solver):
                 print(f"[{self.get_name()}] Error: {dfa_file} not found and no source {mona_source} to generate it.")
                 return ""
 
-        return f'"{self.path}" {dfa_file} {actual_part_file} 0 {obs} {inp_type}'
+        sem_val = 1 if semantics == "mealy" else 0
+        return f'"{self.path}" {dfa_file} {actual_part_file} {sem_val} {obs} {inp_type}'
 
     def parse_output(self, output_bytes):
         # Reuse logic or customize if lucas output differs significantly
@@ -175,7 +178,7 @@ class LucasSyftSolver(Solver):
         return result, time_ms
 
 class SpotSolver(Solver):
-    def get_command(self, input_file, part_file, mode)-> str:
+    def get_command(self, input_file, part_file, mode, semantics)-> str:
         if not part_file.endswith('.spot.part'):
             spot_part = part_file + '.spot.part'
             if not os.path.exists(spot_part):
@@ -187,7 +190,7 @@ class SpotSolver(Solver):
 
         transformation = f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&'"
         if mode == "ltlf":
-            return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics=moore --real --verbose"
+            return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics={semantics} --real --verbose"
         elif mode == "ltl":
             return f"{transformation} | ltlsynt --part-file={part_file} --real --verbose --algo=ds"
         elif mode == "ltlfilt":
@@ -308,7 +311,7 @@ def collectTest(testDir):
 TIMEOUT_CODE = -2
 ERROR_CODE = -1
 
-def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
+def executeTest(test, timeout, solver: Solver, mode="direct", iter=1, semantics="moore"):
     temp_dir = tempfile.mkdtemp()
     try:
         test_path = Path(test).resolve()
@@ -364,7 +367,7 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1):
                     mona_dst = os.path.join(temp_dir, test_stem + mona_suffix)
                     shutil.copy2(mona_src, mona_dst)
 
-        command = solver.get_command(inputfile, partfile, mode)
+        command = solver.get_command(inputfile, partfile, mode, semantics)
         if not command:
             return
 
@@ -453,6 +456,7 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=str, help="Output file")
     parser.add_argument("--shard-id", type=int, default=0, help="Shard index (0-indexed)")
     parser.add_argument("--num-shards", type=int, default=1, help="Total number of shards")
+    parser.add_argument("--semantics", type=str, default="moore", choices=["moore", "mealy"], help="Semantics")
     args = parser.parse_args()
 
     # Derive solver and internal mode
@@ -482,7 +486,7 @@ if __name__ == "__main__":
         print(f"Running all {len(tests)} tests.")
 
     for test in tests:
-        executeTest(test, timeout, solver, internal_mode, iterations)
+        executeTest(test, timeout, solver, internal_mode, iterations, args.semantics)
 
     print("===========")
     print("Statistics:")

@@ -5,7 +5,7 @@
 #SBATCH --array=0-143
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=4G
+#SBATCH --mem=16G
 #SBATCH --time=12:00:00
 #SBATCH --exclude=cn[31-44],gpu[1-4],gpu[6-8]
 
