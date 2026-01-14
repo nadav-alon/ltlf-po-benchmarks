@@ -4,17 +4,33 @@
 # Usage: ./submit_tests.sh [target1 target2 ...] [--dry-run]
 # Targets can be: all, lucas, christian, spot, or solver:mode
 
+# Argument parsing
 TARGETS=()
 DRY_RUN=false
+SEMANTICS="moore"
 
-# Simple argument parsing
-for arg in "$@"; do
-    if [ "$arg" == "--dry-run" ]; then
-        DRY_RUN=true
-    else
-        TARGETS+=("$arg")
-    fi
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --dry-run)
+            DRY_RUN=true
+            shift
+            ;;
+        --semantics)
+            SEMANTICS="$2"
+            shift 2
+            ;;
+        --semantics=*)
+            SEMANTICS="${1#*=}"
+            shift
+            ;;
+        *)
+            TARGETS+=("$1")
+            shift
+            ;;
+    esac
 done
+
+export SEMANTICS
 
 # If no targets provided, default to all
 if [ ${#TARGETS[@]} -eq 0 ]; then
@@ -93,6 +109,8 @@ DESC_STR=$(IFS=,; echo "${DESCS[*]}")
 echo "========================================="
 echo "Submitting SLURM Job Array"
 echo "Targets: $DESC_STR"
+echo "Targets: $DESC_STR"
+echo "Semantics: $SEMANTICS"
 echo "Range: $ARRAY_RANGE"
 echo "========================================="
 echo ""
@@ -101,7 +119,7 @@ echo ""
 if [ "$DRY_RUN" = true ]; then
     echo "--- DRY RUN: No jobs will be submitted ---"
     echo "Command that would be run:"
-    echo "sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
+    echo "SEMANTICS=$SEMANTICS sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
     JOB_ID="DRY_RUN_ID"
     EXIT_STATUS=0
 else

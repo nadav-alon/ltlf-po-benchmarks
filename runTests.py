@@ -501,7 +501,8 @@ if __name__ == "__main__":
     if not args.output:
         # Replace colon with underscore for a cleaner filename
         safe_mode = args.mode.replace(":", "_")
-        output_file = f"results_{safe_mode}.csv"
+        safe_semantics = args.semantics.replace(":", "_")
+        output_file = f"results_{safe_mode}_{safe_semantics}.csv"
     else:
         output_file = args.output
 

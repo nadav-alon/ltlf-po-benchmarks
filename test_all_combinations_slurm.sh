@@ -22,6 +22,9 @@ export LD_LIBRARY_PATH="$PWD/spot/local/lib:$LD_LIBRARY_PATH"
 # Number of shards per combination
 SHARDS_PER_COMBINATION=16
 
+# Semantics (default to moore if not set)
+SEMANTICS=${SEMANTICS:-"moore"}
+
 # Define all combinations
 MODES_LONG=("lucas:belief-states" "lucas:projection-based" "lucas:mso" "christian:direct" "christian:belief" "christian:mso" "spot:ltlf" "spot:ltl" "spot:ltlfilt")
 
@@ -76,7 +79,8 @@ python3 runTests.py \
     --timeout=$TIMEOUT \
     --output=$OUTPUT_FILE \
     --shard-id=$SHARD_ID \
-    --num-shards=$SHARDS_PER_COMBINATION
+    --num-shards=$SHARDS_PER_COMBINATION \
+    --semantics=$SEMANTICS
 
 EXIT_CODE=$?
 
