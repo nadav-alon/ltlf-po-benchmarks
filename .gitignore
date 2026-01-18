@@ -2,6 +2,7 @@ estimation_data/
 test_results/
 logs/
 results/
+visualizations/
 results.csv
 results-*.csv
 results_*.csv
@@ -10,3 +11,4 @@ spot/*
 !/spot/spot-2.14.4.dev.tar.gz
 !/spot/install.sh
 
+run-*.sh
