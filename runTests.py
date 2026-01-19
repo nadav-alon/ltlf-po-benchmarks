@@ -81,6 +81,22 @@ def get_safe_true(part_file, exclude_unobs=False):
     # Return a list of tautologies, one for each variable
     return " && ".join([f"{v} | ~{v}" for v in sorted(list(vars))])
 
+def fix_part_content_for_christian(content):
+    new_content = []
+    for line in content.splitlines():
+        trimmed = line.strip()
+        if not trimmed: continue
+        if not trimmed.startswith('.'):
+            if trimmed.lower().startswith('inputs'):
+                line = '.inputs: ' + ' '.join(trimmed.split()[1:]).replace(':', '')
+            elif trimmed.lower().startswith('outputs'):
+                line = '.outputs: ' + ' '.join(trimmed.split()[1:]).replace(':', '')
+            elif trimmed.lower().startswith('unobservables'):
+                line = '.unobservables: ' + ' '.join(trimmed.split()[1:]).replace(':', '')
+        new_content.append(line)
+    new_content = '\n'.join(new_content)
+    return new_content
+
 class ChristianSyftSolver(Solver):
     def get_command(self, input_file, part_file, mode, semantics)-> str:
         # Christian's Syft expects .main and .backup files
@@ -92,20 +108,10 @@ class ChristianSyftSolver(Solver):
                 with open(part_file, 'r') as f:
                     content = f.read()
                 # Christian's tool expects .inputs: .outputs: .unobservables:
-                new_content = []
-                for line in content.splitlines():
-                    trimmed = line.strip()
-                    if not trimmed: continue
-                    if not trimmed.startswith('.'):
-                        if trimmed.lower().startswith('inputs'):
-                            line = '.inputs: ' + ' '.join(trimmed.split()[1:]).replace(':', '')
-                        elif trimmed.lower().startswith('outputs'):
-                            line = '.outputs: ' + ' '.join(trimmed.split()[1:]).replace(':', '')
-                        elif trimmed.lower().startswith('unobservables'):
-                            line = '.unobservables: ' + ' '.join(trimmed.split()[1:]).replace(':', '')
-                    new_content.append(line)
+                
+                new_content = fix_part_content_for_christian(content)
                 with open(christian_part, 'w') as f:
-                    f.write('\n'.join(new_content))
+                    f.write(new_content)
             part_file = christian_part
 
         if not input_file.endswith('christian.ltlf'):
@@ -222,7 +228,7 @@ class SpotSolver(Solver):
                 with open(part_file, 'r') as f:
                     content = f.read()
                 with open(spot_part, 'w') as f:
-                    f.write(content.replace('inputs', '.inputs').replace('outputs', '.outputs').replace('unobservables', '.unobservables'))
+                    f.write(fix_part_content_for_christian(content))
             part_file = spot_part
 
         transformation = f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&'"
@@ -429,6 +435,7 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1, semantics=
 
                 result, t_val = solver.parse_output(l)
                 if result is None:
+                    print(f"raw output: {l}")
                     expected = get_expected_result(test_path)
                     outcome = "failed" if expected is not None else "other"
                     statistics.add_result(test, t_val, 0, outcome)
