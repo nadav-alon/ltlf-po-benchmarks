@@ -1,0 +1,5 @@
+#F ( ok && X ( ok && X ( input <-> output ) ) )
+# past #(F (! ((! ok) || (! (X (! ((! ok) || (! (X (! ((! ((! input) || output)) || (! ((! output) || input)))))))))))))
+m2l-str;
+var2 INPUT, OK, OUTPUT;
+(ex1 x1: (x1 <= max $ & 0 <= x1 & (~(((~((ex1 x2: ((x2=x1-1) & (x1 > 0) & (~(((~((ex1 x3: ((x3=x2-1) & (x2 > 0) & (~(((~((((x3 in INPUT)) | (~((x3 in OUTPUT)))))) | (~((((x3 in OUTPUT)) | (~((x3 in INPUT))))))))))))) | (~((x2 in OK)))))))))) | (~((x1 in OK))))))));

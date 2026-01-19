@@ -47,16 +47,39 @@ def get_variables_from_part(part_file):
                     vars.update(line.split(':')[1].strip().split())
                 elif any(line.startswith(k) for k in ['inputs', 'outputs', 'unobservables']):
                     parts = line.split()
-                    if len(parts) > 1:
-                        vars.update(parts[1:])
+                    if len(parts) > 0 and (parts[0].endswith(':') or len(parts) > 1):
+                        start_idx = 1 if not parts[0].endswith(':') else 0
+                        # This logic is a bit messy, let's simplify
+                        line_content = line.replace(':', ' ').split()
+                        if len(line_content) > 1:
+                            vars.update(line_content[1:])
     return sorted(list(vars))
 
-def get_safe_true(part_file):
-    vars = get_variables_from_part(part_file)
+
+def get_unobservables_from_part(part_file):
+    unobs = set()
+    if os.path.exists(part_file):
+        with open(part_file, 'r') as f:
+            for line in f:
+                line = line.strip().lower()
+                if '.unobservables:' in line:
+                    unobs.update(line.split(':')[1].strip().split())
+                elif line.startswith('unobservables'):
+                    line_content = line.replace(':', ' ').split()
+                    if len(line_content) > 1:
+                        unobs.update(line_content[1:])
+    return unobs
+
+def get_safe_true(part_file, exclude_unobs=False):
+    vars = set(get_variables_from_part(part_file))
+    if exclude_unobs:
+        unobs = get_unobservables_from_part(part_file)
+        vars = vars - unobs
+    
     if not vars:
         return "true"
     # Return a list of tautologies, one for each variable
-    return " && ".join([f"{v} | ~{v}" for v in vars])
+    return " && ".join([f"{v} | ~{v}" for v in sorted(list(vars))])
 
 class ChristianSyftSolver(Solver):
     def get_command(self, input_file, part_file, mode, semantics)-> str:
@@ -68,8 +91,21 @@ class ChristianSyftSolver(Solver):
             if not os.path.exists(christian_part):
                 with open(part_file, 'r') as f:
                     content = f.read()
+                # Christian's tool expects .inputs: .outputs: .unobservables:
+                new_content = []
+                for line in content.splitlines():
+                    trimmed = line.strip()
+                    if not trimmed: continue
+                    if not trimmed.startswith('.'):
+                        if trimmed.lower().startswith('inputs'):
+                            line = '.inputs: ' + ' '.join(trimmed.split()[1:]).replace(':', '')
+                        elif trimmed.lower().startswith('outputs'):
+                            line = '.outputs: ' + ' '.join(trimmed.split()[1:]).replace(':', '')
+                        elif trimmed.lower().startswith('unobservables'):
+                            line = '.unobservables: ' + ' '.join(trimmed.split()[1:]).replace(':', '')
+                    new_content.append(line)
                 with open(christian_part, 'w') as f:
-                    f.write(content.replace('inputs:', '.inputs:').replace('outputs:', '.outputs:'))
+                    f.write('\n'.join(new_content))
             part_file = christian_part
 
         if not input_file.endswith('christian.ltlf'):
@@ -79,13 +115,14 @@ class ChristianSyftSolver(Solver):
                     content = f.read().strip()
                 
                 # Christian's Syft expects the .ltlf file to have exactly 2 lines:
-                # Line 1: main formula
-                # Line 2: backup formula (tautology)
-                safe_true = get_safe_true(part_file)
+                # Line 1: main formula (usually a tautology in MSO mode to define alphabet)
+                # Line 2: backup formula (the spec to be quantified)
+                # For MSO mode, we MUST exclude unobservables from line 1 so they don't stay free in MONA.
+                safe_true = get_safe_true(part_file, exclude_unobs=(mode == 'mso'))
                 
                 with open(christian_input, 'w') as f:
-                    f.write(content + '\n')
                     f.write(safe_true + '\n')
+                    f.write(content + '\n')
                     
             input_file = christian_input
         

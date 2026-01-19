@@ -1,0 +1,8 @@
+#output | ~output && req | ~req
+#G ( output )
+# Translating a file with special treatment 
+m2l-str;
+var2 OUTPUT, REQ;
+# 1 projectables
+(( ((~((0 in REQ))) | ((((((0 in REQ)) & (~((0 in OUTPUT))))) | ((0 in OUTPUT)))))) & ((all2 UNOBS : ((all1 x1: ((0 <= x1) => ((x1 in OUTPUT))))
+) )) );

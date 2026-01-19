@@ -1,0 +1,8 @@
+#true
+#output | ~output && req | ~req
+# Translating a file with special treatment 
+m2l-str;
+var2 OUTPUT, REQ;
+# 0 projectables
+(( (true)) & (((~((0 in REQ))) | ((((((0 in REQ)) & (~((0 in OUTPUT))))) | ((0 in OUTPUT)))))
+) );

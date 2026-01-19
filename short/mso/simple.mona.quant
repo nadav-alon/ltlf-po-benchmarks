@@ -1,0 +1,8 @@
+#output | ~output
+#F ( X true && ( input -> ( X output ) ) && ( ( X output ) -> input ) )
+# Translating a file with special treatment 
+m2l-str;
+var2 INPUT, OUTPUT;
+# 1 projectables
+(( ((~((0 in OUTPUT))) | ((0 in OUTPUT)))) & ((all2 INPUT : ((ex1 x1: (0 <= x1 & ((((((x1 in INPUT)) | (((ex1 x2: (x2=x1+1 & (~((x2 in OUTPUT))))) | (x1 = max $))))) & ((((((ex1 x2: (x2=x1+1 & ((x2 in OUTPUT))))) | (~((x1 in INPUT))))) & ((ex1 x2: (x2=x1+1 & ((true)))))))))))
+) )) );

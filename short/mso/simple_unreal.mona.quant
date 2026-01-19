@@ -1,0 +1,8 @@
+#g | ~g && h | ~h
+#F ( g ) && G ( ~g ) && ( h | ~h )
+# Translating a file with special treatment 
+m2l-str;
+var2 G, H;
+# 0 projectables
+(( ((~((0 in H))) | ((((((0 in H)) & (~((0 in G))))) | ((0 in G)))))) & (((((~((0 in H))) | ((0 in H)))) & ((((all1 x1: ((0 <= x1) => (~((x1 in G)))))) & ((ex1 x1: (0 <= x1 & ((x1 in G))))))))
+) );
