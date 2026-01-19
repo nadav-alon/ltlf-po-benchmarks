@@ -9,6 +9,44 @@ import tempfile
 import argparse
 import threading
 import shutil
+import platform
+from datetime import datetime
+
+
+def get_git_revision_hash():
+    try:
+        return subprocess.check_output(['git', 'rev-parse', 'HEAD'], 
+                                     cwd=os.path.dirname(os.path.abspath(__file__)),
+                                     stderr=subprocess.DEVNULL).decode('ascii').strip()
+    except Exception:
+        return "unknown"
+
+
+def get_system_info():
+    info = {
+        'cpu': platform.processor() or "unknown",
+        'cores': os.cpu_count(),
+        'mem': 'unknown',
+        'os': f"{platform.system()} {platform.release()}"
+    }
+    try:
+        if sys.platform == "linux":
+            if os.path.exists("/proc/cpuinfo"):
+                with open("/proc/cpuinfo", "r") as f:
+                    for line in f:
+                        if "model name" in line:
+                            info['cpu'] = line.split(":")[1].strip()
+                            break
+            if os.path.exists("/proc/meminfo"):
+                with open("/proc/meminfo", "r") as f:
+                    for line in f:
+                        if "MemTotal" in line:
+                            val_kb = int(line.split(":")[1].strip().split()[0])
+                            info['mem'] = f"{val_kb / (1024*1024):.2f} GB"
+                            break
+    except Exception:
+        pass
+    return info
 
 
 class Solver():
@@ -503,6 +541,8 @@ if __name__ == "__main__":
     parser.add_argument("--semantics", type=str, default="moore", choices=["moore", "mealy"], help="Semantics")
     args = parser.parse_args()
 
+    commit_hash = get_git_revision_hash()
+
     # Derive solver and internal mode
     solver_name, internal_mode = args.mode.split(":")
     
@@ -550,7 +590,15 @@ if __name__ == "__main__":
     else:
         output_file = args.output
 
+    sys_info = get_system_info()
     with open(output_file, "w") as csvfile:
+        csvfile.write(f"# Commit: {commit_hash}\n")
+        csvfile.write(f"# Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        csvfile.write(f"# Machine: {platform.node()}\n")
+        csvfile.write(f"# OS: {sys_info['os']}\n")
+        csvfile.write(f"# CPU: {sys_info['cpu']}\n")
+        csvfile.write(f"# Cores: {sys_info['cores']}\n")
+        csvfile.write(f"# RAM: {sys_info['mem']}\n")
         writer = csv.writer(csvfile)
         writer.writerow(["test", "time", "status"])
         for test, (time, status) in statistics.results.items():
