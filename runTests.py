@@ -277,8 +277,15 @@ class SpotSolver(Solver):
         elif mode == "ltlfilt":
             with open(part_file, 'r') as f:
                 content = f.read()
-                # add alive to outputs to account for the new variable introduced by ltlfilt --from-ltlf
-                content = content.replace('.output', '.output alive')
+            # add alive to outputs to account for the new variable introduced by ltlfilt --from-ltlf
+            # fix: replace '.outputs:' instead of '.output' to avoid mangling the keyword
+            if '.outputs:' in content:
+                content = content.replace('.outputs:', '.outputs: alive ')
+            elif '.output:' in content:
+                content = content.replace('.output:', '.output: alive ')
+            else:
+                content += "\n.outputs: alive\n"
+            
             with open(part_file, 'w') as f:
                 f.write(content)
             return f"{transformation} | ltlfilt --part-file={part_file} --from-ltlf --relabel=io | ltlsynt --real --verbose --algo=ds"
