@@ -109,7 +109,6 @@ DESC_STR=$(IFS=,; echo "${DESCS[*]}")
 echo "========================================="
 echo "Submitting SLURM Job Array"
 echo "Targets: $DESC_STR"
-echo "Targets: $DESC_STR"
 echo "Semantics: $SEMANTICS"
 echo "Range: $ARRAY_RANGE"
 echo "========================================="

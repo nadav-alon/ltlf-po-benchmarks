@@ -2,7 +2,7 @@
 #SBATCH --job-name=ltlf_po
 #SBATCH --output=logs/slurm_%A_%a.out
 #SBATCH --error=logs/slurm_%A_%a.err
-#SBATCH --array=0-143
+#SBATCH --array=0-159
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=16G
@@ -26,7 +26,7 @@ SHARDS_PER_COMBINATION=16
 SEMANTICS=${SEMANTICS:-"moore"}
 
 # Define all combinations
-MODES_LONG=("lucas:belief-states" "lucas:projection-based" "lucas:mso" "christian:direct" "christian:belief" "christian:mso" "spot:ltlf" "spot:ltl" "spot:ltlfilt")
+MODES_LONG=("lucas:belief-states" "lucas:projection-based" "lucas:mso" "christian:direct" "christian:belief" "christian:mso" "spot:ltlf" "spot:ltl" "spot:ltlfilt" "spot:ltlf-fo")
 
 # Calculate combination and shard index
 COMBINATION_ID=$(($SLURM_ARRAY_TASK_ID / $SHARDS_PER_COMBINATION))
