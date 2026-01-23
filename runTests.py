@@ -108,6 +108,16 @@ def get_unobservables_from_part(part_file):
                         unobs.update(line_content[1:])
     return unobs
 
+def add_useless_unobservables(part_file, num_useless_unobservables):
+    with open(part_file, 'r') as f:
+        outputs = get_variables_from_part(part_file, 'outputs')
+        unobservables = get_variables_from_part(part_file, 'unobservables')
+        inputs = get_variables_from_part(part_file, 'inputs')
+    with open(part_file, 'w') as f:
+        f.write('.inputs: ' + ' '.join(inputs) + '\n')
+        f.write('.outputs: ' + ' '.join(outputs) + '\n')
+        f.write('.unobservables: ' + ' '.join(unobservables + [f'u_useless_{i}' for i in range(num_useless_unobservables)]) + '\n')
+
 def make_fully_observable(part_file):
     with open(part_file, 'r') as f:
         outputs = get_variables_from_part(part_file, 'outputs')
@@ -228,7 +238,7 @@ class LucasSyftSolver(Solver):
         if not os.path.exists(actual_part_file):
             print(f"Missing part file for {input_file}, missing suffix {part_suffix}")
             actual_part_file = part_file
-
+        
         if not os.path.exists(dfa_file):
             # Try to find a source MONA file to generate the DFA
             # For .dfa, look for .mona; for .dfa.quant, look for .mona.quant; for .dfa.rev.neg, look for .mona.rev.neg
@@ -280,6 +290,15 @@ class SpotSolver(Solver):
 
         if mode == "ltlf-fo":
             make_fully_observable(part_file)
+        
+        if args.num_useless_unobservables > 0:
+            add_useless_unobservables(part_file, args.num_useless_unobservables)
+            with open(input_file, 'r') as f:
+                content = f.read().strip()
+            with open(input_file, 'w') as f:
+                f.write(content + '\n')
+                for i in range(args.num_useless_unobservables):
+                    f.write(f"G (u_useless_{i} | ~u_useless_{i})\n")
 
         transformation = f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&'"
         if mode == "ltlf":
@@ -573,6 +592,7 @@ if __name__ == "__main__":
     parser.add_argument("--shard-id", type=int, default=0, help="Shard index (0-indexed)")
     parser.add_argument("--num-shards", type=int, default=1, help="Total number of shards")
     parser.add_argument("--semantics", type=str, default="moore", choices=["moore", "mealy"], help="Semantics")
+    parser.add_argument("--num-useless-unobservables", type=int, default=0, help="Number of useless unobservables")
     args = parser.parse_args()
 
     commit_hash = get_git_revision_hash()
