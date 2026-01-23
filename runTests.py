@@ -353,7 +353,7 @@ def get_expected_result(test_path):
 
 class Statistics():
     def __init__(self):
-        self.stats = {'passed': 0, 'failed': 0, 'timeout': 0, 'other': 0, 'error': 0, 'inconsistent': 0}
+        self.stats = {'passed': 0, 'failed': 0, 'timeout': 0, 'other': 0, 'na': 0, 'error': 0, 'inconsistent': 0}
         self.results = {} # test_path -> (time, status)
         self.lock = threading.Lock()
 
@@ -365,6 +365,7 @@ class Statistics():
             elif outcome == 'failed': self.stats['failed'] += 1
             elif outcome == 'timeout': self.stats['timeout'] += 1
             elif outcome == 'other': self.stats['other'] += 1
+            elif outcome == 'na': self.stats['na'] += 1
             elif outcome == 'error': self.stats['error'] += 1
             elif outcome == 'inconsistent': self.stats['inconsistent'] += 1
 
@@ -417,6 +418,9 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1, semantics=
     temp_dir = tempfile.mkdtemp()
     try:
         test_path = Path(test).resolve()
+        
+        # FO tests are always run to collect timing data, but we label them 'na' 
+        # if the benchmark was unrealizable in PO (since realizability changes).
         test_name = test_path.name
         test_stem = test_path.stem
         
@@ -524,10 +528,16 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1, semantics=
         expected = get_expected_result(test_path)
 
         if TIMEOUT_CODE in results:
-            outcome = "failed" if expected is not None else "timeout"
+            if mode == "ltlf-fo" and expected == 0:
+                outcome = "na"
+            else:
+                outcome = "failed" if expected is not None else "timeout"
             statistics.add_result(test, average_time, TIMEOUT_CODE, outcome)
         elif ERROR_CODE in results:
-            outcome = "failed" if expected is not None else "error"
+            if mode == "ltlf-fo" and expected == 0:
+                outcome = "na"
+            else:
+                outcome = "failed" if expected is not None else "error"
             statistics.add_result(test, average_time, ERROR_CODE, outcome)
         elif not all(elem == results[0] for elem in (results if results else [None])):
             outcome = "failed" if expected is not None else "inconsistent"
@@ -535,7 +545,10 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1, semantics=
         else:
             status = results[0] if results else -1
             if expected is not None:
-                outcome = "passed" if status == expected else "failed"
+                if mode == "ltlf-fo" and expected == 0:
+                    outcome = "na" # Don't count as pass/fail for FO compared to unrealizable PO
+                else:
+                    outcome = "passed" if status == expected else "failed"
             else:
                 outcome = "other"
             statistics.add_result(test, average_time, status, outcome)
@@ -600,6 +613,7 @@ if __name__ == "__main__":
     print(f"Failed: {statistics.stats['failed']}")
     print(f"Timeout: {statistics.stats['timeout']}")
     print(f"Other: {statistics.stats['other']}")
+    print(f"N/A: {statistics.stats['na']}")
     print(f"Error: {statistics.stats['error']}")
     print(f"Inconsistent: {statistics.stats['inconsistent']}")
 
