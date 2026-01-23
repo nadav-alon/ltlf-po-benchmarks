@@ -75,22 +75,22 @@ class Solver():
         return self.name
 
 
-def get_variables_from_part(part_file):
+def get_variables_from_part(part_file, var_type='all'):
     vars = set()
+    postfix = '' if var_type == 'all' else var_type
+    line_titles = [var_type] if var_type != 'all' else ['inputs', 'outputs', 'unobservables']
     if os.path.exists(part_file):
         with open(part_file, 'r') as f:
             for line in f:
-                line = line.strip().lower()
-                if line.startswith('.') and ':' in line:
+                line = line.strip()
+                if line.startswith(f'.{postfix}') and ':' in line:
                     vars.update(line.split(':')[1].strip().split())
-                elif any(line.startswith(k) for k in ['inputs', 'outputs', 'unobservables']):
+                elif any(line.startswith(k) for k in line_titles):
                     parts = line.split()
                     if len(parts) > 0 and (parts[0].endswith(':') or len(parts) > 1):
-                        start_idx = 1 if not parts[0].endswith(':') else 0
-                        # This logic is a bit messy, let's simplify
                         line_content = line.replace(':', ' ').split()
-                        if len(line_content) > 1:
-                            vars.update(line_content[1:])
+                    if len(line_content) > 1:
+                        vars.update(line_content[1:])
     return sorted(list(vars))
 
 
@@ -107,6 +107,15 @@ def get_unobservables_from_part(part_file):
                     if len(line_content) > 1:
                         unobs.update(line_content[1:])
     return unobs
+
+def make_fully_observable(part_file):
+    with open(part_file, 'r') as f:
+        outputs = get_variables_from_part(part_file, 'outputs')
+        unobservables = get_variables_from_part(part_file, 'unobservables')
+        inputs = get_variables_from_part(part_file, 'inputs')
+    with open(part_file, 'w') as f:
+        f.write('.inputs: ' + ' '.join(inputs + unobservables) + '\n')
+        f.write('.outputs: ' + ' '.join(outputs) + '\n')
 
 def get_safe_true(part_file, exclude_unobs=False):
     vars = set(get_variables_from_part(part_file))
@@ -269,8 +278,13 @@ class SpotSolver(Solver):
                     f.write(fix_part_content_for_christian(content))
             part_file = spot_part
 
+        if mode == "ltlf-fo":
+            make_fully_observable(part_file)
+
         transformation = f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&'"
         if mode == "ltlf":
+            return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics={semantics} --real --verbose"
+        if mode == "ltlf-fo":
             return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics={semantics} --real --verbose"
         elif mode == "ltl":
             return f"{transformation} | ltlsynt --part-file={part_file} --real --verbose --algo=ds"
@@ -534,7 +548,7 @@ if __name__ == "__main__":
     MODES = [
         "christian:direct", "christian:belief", "christian:mso",
         "lucas:belief-states", "lucas:projection-based", "lucas:mso",
-        "spot:ltlf", "spot:ltl", "spot:ltlfilt"
+        "spot:ltlf", "spot:ltl", "spot:ltlfilt", "spot:ltlf-fo"
     ]
     parser = argparse.ArgumentParser(description="Run tests for Syft.")
     parser.add_argument("--timeout", type=int, default=1500, help="Timeout in seconds")
