@@ -24,6 +24,7 @@ SHARDS_PER_COMBINATION=16
 
 # Semantics (default to moore if not set)
 SEMANTICS=${SEMANTICS:-"moore"}
+NUM_USELESS_UNOBSERVABLES=${NUM_USELESS_UNOBSERVABLES:-0}
 
 # Define all combinations
 MODES_LONG=("lucas:belief-states" "lucas:projection-based" "lucas:mso" "christian:direct" "christian:belief" "christian:mso" "spot:ltlf" "spot:ltl" "spot:ltlfilt" "spot:ltlf-fo")
@@ -81,7 +82,8 @@ python3 runTests.py \
     --output=$OUTPUT_FILE \
     --shard-id=$SHARD_ID \
     --num-shards=$SHARDS_PER_COMBINATION \
-    --semantics=$SEMANTICS
+    --semantics=$SEMANTICS \
+    --num-useless-unobservables=$NUM_USELESS_UNOBSERVABLES
 
 EXIT_CODE=$?
 
