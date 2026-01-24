@@ -1,0 +1,3 @@
+.inputs:
+.outputs: u0shutter26ctrl0f1ddo26stop1b u0shutter26ctrl0f1ddo26open1b u0shutter26ctrl0f1ddo26close1b u0shutter26ctrl0shutter26ctrl
+.unobservables: p0p0is26open0shutter26input p0p0is26closed0shutter26input p0b0env26outside26is26bright p0b0user26is26sleeping

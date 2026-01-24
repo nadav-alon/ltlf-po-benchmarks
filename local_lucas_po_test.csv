@@ -1,0 +1,14 @@
+# Commit: 1db0b844290f261df7ed7bd7784bada4b9770d03
+# Date: 2026-01-24 22:48:06
+# Machine: DESKTOP-GOFVSDG
+# Mode: lucas:belief-states
+# Test Dir: full-observability/ltlf/AllLights_aeb1d897.ltlf
+# Part Dir: po-part-1-2
+# Semantics: moore
+# Useless Unobservables: 0
+# OS: Linux 6.6.87.2-microsoft-standard-WSL2
+# CPU: 13th Gen Intel(R) Core(TM) i7-13700
+# Cores: 24
+# RAM: 15.49 GB
+test,time,status
+/home/cowclaw/ltlf-po-benchmarks/full-observability/ltlf/AllLights_aeb1d897.ltlf,7.01452,1

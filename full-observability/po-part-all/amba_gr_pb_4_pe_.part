@@ -1,3 +1,3 @@
 .inputs:
 .outputs: stateG10_3 stateG10_2 stateG10_1 stateG3_2 stateG3_1 stateG3_0 stateG2 stateA1_1 stateA1_0 busreq hgrant3 hgrant2 hgrant1 hgrant0 locked decide start hmastlock hmaster1 hmaster0
-.unobservables: hlock0 hlock1 hlock2 hready hbusreq1 hbusreq0 hbusreq2 hburst1 hbusreq3 hlock3 hburst0
+.unobservables: hlock3 hready hlock0 hbusreq1 hlock1 hbusreq0 hburst0 hburst1 hlock2 hbusreq2 hbusreq3

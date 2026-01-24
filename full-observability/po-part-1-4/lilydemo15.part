@@ -1,3 +1,3 @@
-.inputs: r1
+.inputs: r2
 .outputs: a2 a1
-.unobservables: r2
+.unobservables: r1

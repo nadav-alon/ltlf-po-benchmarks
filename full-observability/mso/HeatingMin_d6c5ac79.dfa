@@ -1,0 +1,766 @@
+MONA v1.4-18 for WS1S/WS2S
+Copyright (C) 1997-2013 Aarhus University
+
+PARSING
+Time: 00:00:00.01
+Main formula:
+And(True,And(Or(All1(x1,Impl(LessEq(Int 0,Var1 x1),Or(Ex1(x2,And(LessEq(Var1 x1,Var1 x2),In(Var1 x2,Var2 P0B0ROOM29HEATING29OFF))),Not(In(Var1 x1,Var2 P0P0GT0OUTSIDE29TEMPERATURE0ROOM29TEMPERATURE))))),Ex1(x1,And(LessEq(Int 0,Var1 x1),And(All1(x2,Impl(LessEq(Var1 x1,Var1 x2),Ex1(x3,And(And(LessEq(Var1 x2,Var1 x3),Not(In(Var1 x3,Var2 P0B0ROOM29HEATING29OFF))),All1(x4,Impl(And(LessEq(Var1 x2,Var1 x4),Less(Var1 x4,Var1 x3)),Not(In(Var1 x4,Var2 U0ROOM29HEATING29CTRL0F1DTURN2ON1B)))))))),In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2OFF1B))))),All1(x1,Impl(LessEq(Int 0,Var1 x1),Or(And(Or(Or(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL),In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2ON1B)),Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2OFF1B))),And(Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2OFF1B)),Or(And(Or(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL),Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2ON1B))),And(Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2ON1B)),In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL))),And(Or(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2ON1B),Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL))),And(Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL)),In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2ON1B)))))),And(Or(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2OFF1B),And(Or(And(Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL)),In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2ON1B)),Or(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2ON1B),Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL)))),Or(And(Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2ON1B)),In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL)),Or(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL),Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2ON1B)))))),And(And(Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL)),Not(In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2ON1B))),In(Var1 x1,Var2 U0ROOM29HEATING29CTRL0F1DTURN2OFF1B))))))))
+
+Assertions:
+True
+
+AllPos variable: $
+
+Default first-order restriction (p):
+In(Var1 p,Var2 $)
+
+Default second-order restriction (P):
+Sub(Var2 P,Var2 $)
+
+Restriction for #0 ($):
+Not(Ex1(p,And(Notin(Var1 p,Var2 $),In(Plus1(Var1 p,1),Var2 $))))
+
+Restriction for #1 (p):
+True
+
+Restriction for #2 (p): default
+
+Restriction for #3 (P): default
+
+Restriction for #4 (P0B0ROOM29HEATING29OFF): default
+
+Restriction for #5 (P0P0GT0OUTSIDE29TEMPERATURE0ROOM29TEMPERATURE): default
+
+Restriction for #6 (U0ROOM29HEATING29CTRL0F1DTURN2OFF1B): default
+
+Restriction for #7 (U0ROOM29HEATING29CTRL0F1DTURN2ON1B): default
+
+Restriction for #8 (U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL): default
+
+Restriction for #9 (x1): default
+
+Restriction for #10 (x2): default
+
+Restriction for #11 (x1): default
+
+Restriction for #12 (x2): default
+
+Restriction for #13 (x3): default
+
+Restriction for #14 (x4): default
+
+Restriction for #15 (x1): default
+
+CODE GENERATION
+DAG hits: 2220, nodes: 90
+Time: 00:00:00.00
+
+REDUCTION
+Projections removed: 0 (of 10)
+Products removed: 3 (of 55)
+Other nodes removed: 0 (of 24)
+DAG nodes after reduction: 86
+Time: 00:00:00.00
+
+Symbol table:
+id     offset  name                 type        statespaces
+---------------------------------------------------------------
+#0     @0      $                    var2        
+#1     @1      p                    var1        
+#2     @2      p                    var1        
+#3     @3      P                    var2        
+#4     @4      P0B0ROOM29HEATING29OFF var2        
+#5     @5      P0P0GT0OUTSIDE29TEMPERATURE0ROOM29TEMPERATURE var2        
+#6     @6      U0ROOM29HEATING29CTRL0F1DTURN2OFF1B var2        
+#7     @7      U0ROOM29HEATING29CTRL0F1DTURN2ON1B var2        
+#8     @8      U0ROOM29HEATING29CTRL0ROOM29HEATING29CTRL var2        
+#9     @9      x1                   var1        
+#10    @10     x2                   var1        
+#11    @11     x1                   var1        
+#12    @12     x2                   var1        
+#13    @13     x3                   var1        
+#14    @14     x4                   var1        
+#15    @15     x1                   var1        
+#16    @16     <id16>               var1        
+#17    @17     <id17>               var1        
+#18    @18     <id18>               var1        
+#19    @19     <id19>               var1        
+#20    @20     <id20>               var1        
+#21    @21     <id21>               var1        
+#22    @22     <id22>               var1        
+#23    @23     <id23>               var1        
+#24    @24     <id24>               var1        
+#25    @25     <id25>               var1        
+#26    @26     <id26>               var1        
+#27    @27     <id27>               var1        
+#28    @28     <id28>               var1        
+#29    @29     <id29>               var1        
+#30    @30     <id30>               var1        
+#31    @31     <id31>               var1        
+#32    @32     <id32>               var1        
+#33    @33     <id33>               var1        
+#34    @34     <id34>               var1        
+#35    @35     <id35>               var1        
+#36    @36     <id36>               var1        
+#37    @37     <id37>               var1        
+#38    @38     <id38>               var1        
+#39    @39     <id39>               var1        
+#40    @40     <id40>               var1        
+#41    @41     <id41>               var1        
+#42    @42     <id42>               var1        
+#43    @43     <id43>               var1        
+#44    @44     <id44>               var1        
+#45    @45     <id45>               var1        
+#46    @46     <id46>               var1        
+#47    @47     <id47>               var1        
+#48    @48     <id48>               var1        
+#49    @49     <id49>               var1        
+#50    @50     <id50>               var1        
+#51    @51     <id51>               var1        
+#52    @52     <id52>               var1        
+#53    @53     <id53>               var1        
+#54    @54     <id54>               var1        
+#55    @55     <id55>               var1        
+#56    @56     <id56>               var1        
+#57    @57     <id57>               var1        
+#58    @58     <id58>               var1        
+#59    @59     <id59>               var1        
+#60    @60     <id60>               var1        
+#61    @61     <id61>               var1        
+#62    @62     <id62>               var1        
+#63    @63     <id63>               var1        
+#64    @64     <id64>               var1        
+#65    @65     <id65>               var1        
+#66    @66     <id66>               var1        
+#67    @67     <id67>               var1        
+#68    @68     <id68>               var1        
+#69    @69     <id69>               var1        
+#70    @70     <id70>               var1        
+#71    @71     <id71>               var1        
+#72    @72     <id72>               var1        
+#73    @73     <id73>               var1        
+#74    @74     <id74>               var1        
+#75    @75     <id75>               var1        
+#76    @76     <id76>               var1        
+#77    @77     <id77>               var1        
+#78    @78     <id78>               var1        
+#79    @79     <id79>               var1        
+#80    @80     <id80>               var1        
+#81    @81     <id81>               var1        
+#82    @82     <id82>               var1        
+#83    @83     <id83>               var1        
+#84    @84     <id84>               var1        
+#85    @85     <id85>               var1        
+#86    @86     <id86>               var1        
+#87    @87     <id87>               var1        
+#88    @88     <id88>               var1        
+#89    @89     <id89>               var1        
+#90    @90     <id90>               var1        
+#91    @91     <id91>               var1        
+#92    @92     <id92>               var1        
+#93    @93     <id93>               var1        
+#94    @94     <id94>               var1        
+#95    @95     <id95>               var1        
+#96    @96     <id96>               var1        
+#97    @97     <id97>               var1        
+#98    @98     <id98>               var1        
+#99    @99     <id99>               var1        
+#100   @100    <id100>              var1        
+#101   @101    <id101>              var1        
+#102   @102    <id102>              var1        
+#103   @103    <id103>              var1        
+#104   @104    <id104>              var1        
+#105   @105    <id105>              var1        
+#106   @106    <id106>              var1        
+#107   @107    <id107>              var1        
+#108   @108    <id108>              var1        
+#109   @109    <id109>              var1        
+#110   @110    <id110>              var1        
+#111   @111    <id111>              var1        
+#112   @112    <id112>              var1        
+#113   @113    <id113>              var1        
+#114   @114    <id114>              var1        
+#115   @115    <id115>              var1        
+#116   @116    <id116>              var1        
+#117   @117    <id117>              var1        
+#118   @118    <id118>              var1        
+#119   @119    <id119>              var1        
+#120   @120    <id120>              var1        
+#121   @121    <id121>              var1        
+#122   @122    <id122>              var1        
+#123   @123    <id123>              var1        
+#124   @124    <id124>              var1        
+#125   @125    <id125>              var1        
+#126   @126    <id126>              var1        
+#127   @127    <id127>              var1        
+#128   @128    <id128>              var1        
+#129   @129    <id129>              var1        
+#130   @130    <id130>              var1        
+#131   @131    <id131>              var1        
+#132   @132    <id132>              var1        
+#133   @133    <id133>              var1        
+#134   @134    <id134>              var1        
+#135   @135    <id135>              var1        
+#136   @136    <id136>              var1        
+#137   @137    <id137>              var1        
+#138   @138    <id138>              var1        
+#139   @139    <id139>              var1        
+#140   @140    <id140>              var1        
+#141   @141    <id141>              var1        
+#142   @142    <id142>              var1        
+#143   @143    <id143>              var1        
+#144   @144    <id144>              var1        
+#145   @145    <id145>              var1        
+#146   @146    <id146>              var1        
+#147   @147    <id147>              var1        
+#148   @148    <id148>              var1        
+#149   @149    <id149>              var1        
+#150   @150    <id150>              var1        
+#151   @151    <id151>              var1        
+#152   @152    <id152>              var1        
+#153   @153    <id153>              var1        
+#154   @154    <id154>              var1        
+#155   @155    <id155>              var1        
+#156   @156    <id156>              var1        
+#157   @157    <id157>              var1        
+#158   @158    <id158>              var1        
+#159   @159    <id159>              var1        
+#160   @160    <id160>              var1        
+#161   @161    <id161>              var1        
+#162   @162    <id162>              var1        
+#163   @163    <id163>              var1        
+#164   @164    <id164>              var1        
+#165   @165    <id165>              var1        
+#166   @166    <id166>              var1        
+#167   @167    <id167>              var1        
+#168   @168    <id168>              var1        
+#169   @169    <id169>              var1        
+#170   @170    <id170>              var1        
+#171   @171    <id171>              var1        
+#172   @172    <id172>              var1        
+#173   @173    <id173>              var1        
+#174   @174    <id174>              var1        
+#175   @175    <id175>              var1        
+#176   @176    <id176>              var1        
+#177   @177    <id177>              var1        
+#178   @178    <id178>              var1        
+#179   @179    <id179>              var1        
+
+Main formula:
+And(Restrict(And(And(And(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0)),And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))[#4->#5]),And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))[#4->#6]),And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))[#4->#7]),And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))[#4->#8])),And(Negate(Project(#68,Negate(Impl(Project(#17,And(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16)))),LessEq1(#17,#16)),Const(#17,0)))[#16->#68],Or(And(And(And(Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#8,#16->#68],Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#7,#16->#68]),And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#6,#20->#68]),Or(And(Or(And(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#7,#20->#68],Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#8,#16->#68]),Or(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#7,#20->#68],Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#8,#16->#68])),Or(And(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#8,#20->#68],Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#7,#16->#68]),Or(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#8,#20->#68],Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#7,#16->#68]))),And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#6,#20->#68])),And(And(Or(And(And(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#7,#20->#68],Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#8,#16->#68]),Or(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#7,#20->#68],Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#8,#16->#68])),And(And(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#8,#20->#68],Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#7,#16->#68]),Or(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#8,#20->#68],Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#7,#16->#68]))),Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#6,#16->#68]),Or(Or(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#8,#20->#68],And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#7,#20->#68]),Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#6,#16->#68]))))))),Or(Project(#33,And(And(Negate(Project(#37,Negate(Impl(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16)))),And(LessEq1(#16,#20),Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20]))[#16->#33,#20->#37],Project(#42,And(Negate(Project(#51,Negate(Impl(And(And(And(Less1(#51,#42),Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#42]),Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#51]),And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16)))),And(LessEq1(#16,#20),Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20]))[#16->#37,#20->#51]),Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#7,#16->#51])))),And(Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16])[#5->#4,#16->#42],And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16)))),And(LessEq1(#16,#20),Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20]))[#16->#37,#20->#42]))))))),And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#6,#20->#33]),Project(#17,And(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16)))),LessEq1(#17,#16)),Const(#17,0)))[#16->#33])),Negate(Project(#16,Negate(Impl(Project(#17,And(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16)))),LessEq1(#17,#16)),Const(#17,0))),Or(Negate(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20]))[#4->#5,#20->#16]),Project(#20,And(And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20],And(Restrict(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),Sub2(#4,#0))),In(#18,#0)[#0->#4,#18->#20])),And(Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16)))),And(LessEq1(#16,#20),Restrict(And(And(Restrict(Negate(Project(#18,And(Negate(And(Restrict(FirstOrder(#16))[#16->#18],In(#18,#0))),Project(#19,And(And(Restrict(FirstOrder(#16))[#16->#18],EqPlus1(#19,#18,1)),In(#18,#0)[#18->#19])))))),In(#18,#0)[#18->#16]),Restrict(FirstOrder(#16))))[#16->#20]))))))))))))
+
+
+AUTOMATON CONSTRUCTION
+1% completed (1 automata in memory, 0MB memory used)
+2% completed (2 automata in memory, 0MB memory used)
+Copying (4,6)
+3% completed (4 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (3,3) -> (3,3)
+4% completed (4 automata in memory, 0MB memory used)
+Copying (3,3)
+Replacing indices
+Product &
+  (3,3)x(4,6) -> (4,6)
+  Minimizing (4,6) -> (4,6)
+5% completed (4 automata in memory, 0MB memory used)
+Negation
+6% completed (4 automata in memory, 0MB memory used)
+8% completed (5 automata in memory, 0MB memory used)
+Copying (3,3)
+Replacing indices
+Product &
+  (3,3)x(5,8) -> (6,10)
+  Minimizing (6,10) -> (6,10)
+9% completed (5 automata in memory, 0MB memory used)
+Copying (4,6)
+Replacing indices
+Product &
+  (6,10)x(4,6) -> (10,24)
+  Minimizing (10,24) -> (6,11)
+10% completed (5 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #19
+  (6,11) -> (6,7)
+  Minimizing (6,7) -> (5,6)
+11% completed (5 automata in memory, 0MB memory used)
+Product &
+  (4,6)x(5,6) -> (8,12)
+  Minimizing (8,12) -> (5,8)
+12% completed (4 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #18
+  (5,8) -> (7,10)
+  Minimizing (7,10) -> (4,5)
+13% completed (4 automata in memory, 0MB memory used)
+Negation
+15% completed (4 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (4,5) -> (4,5)
+16% completed (4 automata in memory, 0MB memory used)
+Copying (4,5)
+Product &
+  (4,5)x(3,4) -> (6,11)
+  Minimizing (6,11) -> (5,8)
+17% completed (4 automata in memory, 0MB memory used)
+Copying (5,8)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,8)x(5,8) -> (7,16)
+  Minimizing (7,16) -> (5,9)
+18% completed (5 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,9)x(5,8) -> (7,18)
+  Minimizing (7,18) -> (5,10)
+19% completed (5 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,10)x(5,8) -> (7,20)
+  Minimizing (7,20) -> (5,11)
+20% completed (5 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,11)x(5,8) -> (7,22)
+  Minimizing (7,22) -> (5,12)
+22% completed (5 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (5,12) -> (4,10)
+23% completed (5 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (5,8) -> (4,6)
+24% completed (5 automata in memory, 0MB memory used)
+Copying (4,6)
+Replacing indices
+Product &
+  (4,6)x(4,6) -> (10,28)
+  Minimizing (10,28) -> (7,16)
+25% completed (5 automata in memory, 0MB memory used)
+Replacing indices
+Product &
+  (4,5)x(4,6) -> (9,19)
+  Minimizing (9,19) -> (6,10)
+26% completed (4 automata in memory, 0MB memory used)
+Product &
+  (6,10)x(3,3) -> (8,17)
+  Minimizing (8,17) -> (7,13)
+27% completed (3 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (7,13) -> (5,8)
+29% completed (3 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,8)x(7,16) -> (9,22)
+  Minimizing (9,22) -> (7,16)
+30% completed (3 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Negation 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 92
+  ((x2 in P0B0ROOM29HEATING29OFF))))) | (~((x1 in P0P0GT0OUTSIDE29TEMPERATURE0
+                                         ^
+31% completed (4 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 1660
+  9HEATING29CTRL0ROOM29HEATING29CTRL))) & (~((x1 in U0ROOM29HEATING29CTRL0F1DT
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+32% completed (5 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 1712
+  ROOM29HEATING29CTRL0F1DTURN2ON1B))))) & ((x1 in U0ROOM29HEATING29CTRL0F1DTUR
+                                         ^
+  (7,19)x(7,16) -> (15,53)
+  Minimizing (15,53) -> (7,22)
+33% completed (5 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 1044
+  9HEATING29CTRL0ROOM29HEATING29CTRL))) & ((x1 in U0ROOM29HEATING29CTRL0F1DTUR
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+34% completed (6 automata in memory, 0MB memory used)
+Copying (7,19)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 926
+   U0ROOM29HEATING29CTRL0F1DTURN2ON1B)) | (~((x1 in U0ROOM29HEATING29CTRL0ROOM
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+36% completed (8 automata in memory, 0MB memory used)
+Copying (7,19)
+Product | 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 1265
+  0ROOM29HEATING29CTRL0F1DTURN2ON1B)))) | ((((x1 in U0ROOM29HEATING29CTRL0F1DT
+                                         ^
+  (7,19)x(7,19) -> (9,28)
+  Minimizing (9,28) -> (7,19)
+37% completed (8 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 817
+  U0ROOM29HEATING29CTRL0F1DTURN2ON1B))) & ((x1 in U0ROOM29HEATING29CTRL0ROOM29
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+38% completed (9 automata in memory, 0MB memory used)
+Copying (7,19)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 713
+  29HEATING29CTRL0ROOM29HEATING29CTRL)) | (~((x1 in U0ROOM29HEATING29CTRL0F1DT
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+39% completed (11 automata in memory, 0MB memory used)
+Copying (7,19)
+Product | 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 1485
+  HEATING29CTRL0ROOM29HEATING29CTRL)))) | ((((x1 in U0ROOM29HEATING29CTRL0ROOM
+                                         ^
+  (7,19)x(7,19) -> (9,28)
+  Minimizing (9,28) -> (7,19)
+40% completed (11 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 1375
+  TING29CTRL0ROOM29HEATING29CTRL))))))) & (((((~((x1 in U0ROOM29HEATING29CTRL0
+                                         ^
+  (7,19)x(7,19) -> (9,28)
+  Minimizing (9,28) -> (7,20)
+41% completed (10 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 1153
+  U0ROOM29HEATING29CTRL0F1DTURN2OFF1B)) | (((((((~((x1 in U0ROOM29HEATING29CTR
+                                         ^
+  (7,20)x(7,16) -> (15,55)
+  Minimizing (15,55) -> (7,23)
+43% completed (10 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 1599
+  HEATING29CTRL0F1DTURN2ON1B))))))))))) & (((((~((x1 in U0ROOM29HEATING29CTRL0
+                                         ^
+  (7,22)x(7,23) -> (9,34)
+  Minimizing (9,34) -> (7,22)
+44% completed (9 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 985
+  EATING29CTRL0ROOM29HEATING29CTRL))))) & (((~((x1 in U0ROOM29HEATING29CTRL0RO
+                                         ^
+  (7,19)x(7,19) -> (9,28)
+  Minimizing (9,28) -> (7,19)
+45% completed (8 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 765
+  ROOM29HEATING29CTRL0F1DTURN2ON1B))))) & (((~((x1 in U0ROOM29HEATING29CTRL0F1
+                                         ^
+  (7,19)x(7,19) -> (9,28)
+  Minimizing (9,28) -> (7,19)
+46% completed (7 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 875
+  ATING29CTRL0ROOM29HEATING29CTRL)))))) | ((((((x1 in U0ROOM29HEATING29CTRL0F1
+                                         ^
+  (7,19)x(7,19) -> (9,28)
+  Minimizing (9,28) -> (7,20)
+47% completed (6 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 653
+  0ROOM29HEATING29CTRL0F1DTURN2OFF1B))) & ((((((((x1 in U0ROOM29HEATING29CTRL0
+                                         ^
+  (7,20)x(7,16) -> (15,55)
+  Minimizing (15,55) -> (7,23)
+48% completed (6 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 498
+  29HEATING29CTRL0ROOM29HEATING29CTRL)) | ((x1 in U0ROOM29HEATING29CTRL0F1DTUR
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+50% completed (7 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 547
+  0ROOM29HEATING29CTRL0F1DTURN2ON1B)))) | (~((x1 in U0ROOM29HEATING29CTRL0F1DT
+                                         ^
+  (7,19)x(7,16) -> (15,53)
+  Minimizing (15,53) -> (7,22)
+51% completed (7 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 600
+  OOM29HEATING29CTRL0F1DTURN2OFF1B))))) & (((~((x1 in U0ROOM29HEATING29CTRL0F1
+                                         ^
+  (7,23)x(7,22) -> (9,34)
+  Minimizing (9,34) -> (7,23)
+52% completed (6 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 1101
+  EATING29CTRL0F1DTURN2ON1B)))))))))))) | ((((((x1 in U0ROOM29HEATING29CTRL0F1
+                                         ^
+  (7,22)x(7,23) -> (9,34)
+  Minimizing (9,34) -> (7,24)
+53% completed (5 automata in memory, 0MB memory used)
+54% completed (6 automata in memory, 0MB memory used)
+Copying (5,8)
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 19
+  (((((all1 x1: ((0 <= x1) => ((((ex1 x2: (x1 <= x2 & ((x2 in P0B0ROOM29HEATIN
+                    ^
+  (5,8)x(5,8) -> (11,28)
+  Minimizing (11,28) -> (8,17)
+55% completed (6 automata in memory, 0MB memory used)
+56% completed (7 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 17
+  (((((all1 x1: ((0 <= x1) => ((((ex1 x2: (x1 <= x2 & ((x2 in P0B0ROOM29HEATIN
+                  ^
+  (8,17)x(4,4) -> (13,33)
+  Minimizing (13,33) -> (9,20)
+58% completed (6 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #17 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 19
+  (((((all1 x1: ((0 <= x1) => ((((ex1 x2: (x1 <= x2 & ((x2 in P0B0ROOM29HEATIN
+                    ^
+  (9,20) -> (6,9)
+  Minimizing (6,9) -> (5,8)
+59% completed (6 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product => 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 435
+  FF1B))))))))) & ((all1 x1: ((0 <= x1) => ((((((((((x1 in U0ROOM29HEATING29CT
+                                         ^
+  (5,8)x(7,24) -> (8,27)
+  Minimizing (8,27) -> (7,24)
+60% completed (6 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 414
+  ATING29CTRL0F1DTURN2OFF1B))))))))) & ((all1 x1: ((0 <= x1) => ((((((((((x1 i
+                                         ^
+61% completed (6 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #68 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 414
+  ATING29CTRL0F1DTURN2OFF1B))))))))) & ((all1 x1: ((0 <= x1) => ((((((((((x1 i
+                                         ^
+  (7,24) -> (9,39)
+  Minimizing (9,39) -> (7,22)
+62% completed (6 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 414
+  ATING29CTRL0F1DTURN2OFF1B))))))))) & ((all1 x1: ((0 <= x1) => ((((((((((x1 i
+                                         ^
+63% completed (6 automata in memory, 0MB memory used)
+65% completed (7 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 291
+  ING29OFF))) & (all1 x4: (x2 <= x4 & x4 < x3 => (~((x4 in U0ROOM29HEATING29CT
+                                         ^
+  (5,7)x(5,8) -> (11,24)
+  Minimizing (11,24) -> (8,16)
+66% completed (7 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (8,16)x(5,8) -> (11,24)
+  Minimizing (11,24) -> (9,19)
+67% completed (7 automata in memory, 0MB memory used)
+68% completed (8 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 45
+  (((((all1 x1: ((0 <= x1) => ((((ex1 x2: (x1 <= x2 & ((x2 in P0B0ROOM29HEATIN
+                                              ^
+  (5,7)x(5,8) -> (11,24)
+  Minimizing (11,24) -> (8,16)
+69% completed (8 automata in memory, 0MB memory used)
+Product &
+  (5,8)x(8,16) -> (11,24)
+  Minimizing (11,24) -> (9,19)
+70% completed (7 automata in memory, 0MB memory used)
+Copying (9,19)
+Replacing indices
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 287
+  HEATING29OFF))) & (all1 x4: (x2 <= x4 & x4 < x3 => (~((x4 in U0ROOM29HEATING
+                                         ^
+  (9,19)x(9,19) -> (23,58)
+  Minimizing (23,58) -> (14,38)
+72% completed (7 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product => 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 297
+  FF))) & (all1 x4: (x2 <= x4 & x4 < x3 => (~((x4 in U0ROOM29HEATING29CTRL0F1D
+                                         ^
+  (14,38)x(7,16) -> (26,86)
+  Minimizing (26,86) -> (14,45)
+73% completed (7 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 267
+  (~((x3 in P0B0ROOM29HEATING29OFF))) & (all1 x4: (x2 <= x4 & x4 < x3 => (~((x
+                                         ^
+74% completed (7 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #51 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 267
+  (~((x3 in P0B0ROOM29HEATING29OFF))) & (all1 x4: (x2 <= x4 & x4 < x3 => (~((x
+                                         ^
+  (14,45) -> (12,37)
+  Minimizing (12,37) -> (10,28)
+75% completed (7 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 267
+  (~((x3 in P0B0ROOM29HEATING29OFF))) & (all1 x4: (x2 <= x4 & x4 < x3 => (~((x
+                                         ^
+76% completed (7 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (9,19)
+Replacing indices
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 227
+  2: ((x1 <= x2) => ((ex1 x3: (x2 <= x3 & (~((x3 in P0B0ROOM29HEATING29OFF))) 
+                                         ^
+  (7,16)x(9,19) -> (18,50)
+  Minimizing (18,50) -> (9,25)
+77% completed (8 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 265
+  & (~((x3 in P0B0ROOM29HEATING29OFF))) & (all1 x4: (x2 <= x4 & x4 < x3 => (~(
+                                         ^
+  (10,28)x(9,25) -> (18,63)
+  Minimizing (18,63) -> (10,37)
+79% completed (7 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #42 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 208
+   <= x1 & ((((all1 x2: ((x1 <= x2) => ((ex1 x3: (x2 <= x3 & (~((x3 in P0B0ROO
+                                         ^
+  (10,37) -> (13,45)
+  Minimizing (13,45) -> (8,24)
+80% completed (7 automata in memory, 0MB memory used)
+Copying (9,19)
+Replacing indices
+Product => 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 204
+  : (0 <= x1 & ((((all1 x2: ((x1 <= x2) => ((ex1 x3: (x2 <= x3 & (~((x3 in P0B
+                                         ^
+  (9,19)x(8,24) -> (21,74)
+  Minimizing (21,74) -> (10,35)
+81% completed (7 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 182
+  URE)))))))) | ((ex1 x1: (0 <= x1 & ((((all1 x2: ((x1 <= x2) => ((ex1 x3: (x2
+                                         ^
+82% completed (7 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #37 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 182
+  URE)))))))) | ((ex1 x1: (0 <= x1 & ((((all1 x2: ((x1 <= x2) => ((ex1 x3: (x2
+                                         ^
+  (10,35) -> (14,46)
+  Minimizing (14,46) -> (8,24)
+83% completed (7 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 182
+  URE)))))))) | ((ex1 x1: (0 <= x1 & ((((all1 x2: ((x1 <= x2) => ((ex1 x3: (x2
+                                         ^
+84% completed (7 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 356
+  HEATING29CTRL0F1DTURN2ON1B))))))))))) & ((x1 in U0ROOM29HEATING29CTRL0F1DTUR
+                                         ^
+  (8,24)x(7,16) -> (17,63)
+  Minimizing (17,63) -> (8,28)
+86% completed (7 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 177
+  PERATURE)))))))) | ((ex1 x1: (0 <= x1 & ((((all1 x2: ((x1 <= x2) => ((ex1 x3
+                                         ^
+  (8,28)x(5,8) -> (9,31)
+  Minimizing (9,31) -> (8,28)
+87% completed (7 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #33 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 159
+  PERATURE0ROOM29TEMPERATURE)))))))) | ((ex1 x1: (0 <= x1 & ((((all1 x2: ((x1 
+                                         ^
+  (8,28) -> (11,40)
+  Minimizing (11,40) -> (8,24)
+88% completed (7 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 52
+  (((((all1 x1: ((0 <= x1) => ((((ex1 x2: (x1 <= x2 & ((x2 in P0B0ROOM29HEATIN
+                                                     ^
+  (7,16)x(9,19) -> (18,50)
+  Minimizing (18,50) -> (9,25)
+89% completed (6 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #20 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 33
+  (((((all1 x1: ((0 <= x1) => ((((ex1 x2: (x1 <= x2 & ((x2 in P0B0ROOM29HEATIN
+                                  ^
+  (9,25) -> (10,27)
+  Minimizing (10,27) -> (7,17)
+90% completed (6 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 90
+  & ((x2 in P0B0ROOM29HEATING29OFF))))) | (~((x1 in P0P0GT0OUTSIDE29TEMPERATUR
+                                         ^
+  (7,16)x(7,17) -> (15,47)
+  Minimizing (15,47) -> (7,20)
+91% completed (5 automata in memory, 0MB memory used)
+Product => 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 27
+  (((((all1 x1: ((0 <= x1) => ((((ex1 x2: (x1 <= x2 & ((x2 in P0B0ROOM29HEATIN
+                            ^
+  (5,8)x(7,20) -> (8,23)
+  Minimizing (8,23) -> (7,20)
+93% completed (4 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 6
+  (((((all1 x1: ((0 <= x1) => ((((ex1 x2: (x1 <= x2 & ((x2 in P0B0ROOM29HEATIN
+       ^
+94% completed (4 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #16 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 6
+  (((((all1 x1: ((0 <= x1) => ((((ex1 x2: (x1 <= x2 & ((x2 in P0B0ROOM29HEATIN
+       ^
+  (7,20) -> (9,28)
+  Minimizing (9,28) -> (7,18)
+95% completed (4 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 6
+  (((((all1 x1: ((0 <= x1) => ((((ex1 x2: (x1 <= x2 & ((x2 in P0B0ROOM29HEATIN
+       ^
+96% completed (4 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 156
+  TEMPERATURE0ROOM29TEMPERATURE)))))))) | ((ex1 x1: (0 <= x1 & ((((all1 x2: ((
+                                         ^
+  (8,24)x(7,18) -> (16,60)
+  Minimizing (16,60) -> (8,29)
+97% completed (3 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/HeatingMin_d6c5ac79.mona' line 7 column 411
+  9HEATING29CTRL0F1DTURN2OFF1B))))))))) & ((all1 x1: ((0 <= x1) => ((((((((((x
+                                         ^
+  (7,22)x(8,29) -> (17,87)
+  Minimizing (17,87) -> (9,44)
+98% completed (2 automata in memory, 0MB memory used)
+Product &
+  (4,10)x(9,44) -> (10,52)
+  Minimizing (10,52) -> (9,44)
+100% completed (1 automata in memory, 0MB memory used)
+Product &
+  (9,44)x(3,3) -> (9,45)
+  Minimizing (9,45) -> (7,29)
+Right-quotient
+Projecting #0
+  (7,29) -> (6,24)
+  Minimizing (6,24) -> (6,24)
+Total automaton construction time: 00:00:00.00
+
+Minimizations:   69
+Projections:     11
+Products:        53
+Copies:          45
+Replaces:        38
+Right-quotients: 10
+Negations:       11
+
+Largest number of states in a minimized automaton: 14, BDD nodes: 45
+Maximum number of automata in memory: 13
+
+Total time: 00:00:00.01

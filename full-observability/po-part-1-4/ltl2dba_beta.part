@@ -1,3 +1,3 @@
-.inputs: q_1 p_0 p_1
+.inputs: q_0 q_1 p_0
 .outputs: acc
-.unobservables: q_0
+.unobservables: p_1

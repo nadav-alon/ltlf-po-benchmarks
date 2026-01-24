@@ -1,0 +1,7 @@
+#G (F req) -> G (F grant)
+#((F (! (F req))) || (! (F (! (F grant)))))
+#NNF format
+#((F (G (! req))) || (G (F grant)))
+m2l-str;
+var2 GRANT, REQ;
+(((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & ((x2 in GRANT)))))))) | ((ex1 x1: (0 <= x1 & ((all1 x2: ((x1 <= x2) => (~((x2 in REQ))))))))));

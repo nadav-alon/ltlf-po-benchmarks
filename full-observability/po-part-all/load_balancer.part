@@ -1,3 +1,3 @@
 .inputs:
 .outputs: grant_0 grant_1
-.unobservables: request_1 idle request_0
+.unobservables: idle request_0 request_1

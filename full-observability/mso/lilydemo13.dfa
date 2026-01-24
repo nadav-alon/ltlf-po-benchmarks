@@ -1,0 +1,299 @@
+MONA v1.4-18 for WS1S/WS2S
+Copyright (C) 1997-2013 Aarhus University
+
+PARSING
+Time: 00:00:00.00
+Main formula:
+And(True,And(Or(Ex1(x1,And(LessEq(Int 0,Var1 x1),Not(In(Var1 x1,Var2 A1)))),Ex1(x1,And(LessEq(Int 0,Var1 x1),In(Var1 x1,Var2 R1)))),Or(Ex1(x1,And(LessEq(Int 0,Var1 x1),In(Var1 x1,Var2 A1))),Ex1(x1,And(LessEq(Int 0,Var1 x1),Not(In(Var1 x1,Var2 R1)))))))
+
+Assertions:
+True
+
+AllPos variable: $
+
+Default first-order restriction (p):
+In(Var1 p,Var2 $)
+
+Default second-order restriction (P):
+Sub(Var2 P,Var2 $)
+
+Restriction for #0 ($):
+Not(Ex1(p,And(Notin(Var1 p,Var2 $),In(Plus1(Var1 p,1),Var2 $))))
+
+Restriction for #1 (p):
+True
+
+Restriction for #2 (p): default
+
+Restriction for #3 (P): default
+
+Restriction for #4 (A1): default
+
+Restriction for #5 (R1): default
+
+Restriction for #6 (x1): default
+
+Restriction for #7 (x1): default
+
+Restriction for #8 (x1): default
+
+Restriction for #9 (x1): default
+
+CODE GENERATION
+DAG hits: 417, nodes: 41
+Time: 00:00:00.00
+
+REDUCTION
+Projections removed: 0 (of 5)
+Products removed: 3 (of 21)
+Other nodes removed: 0 (of 14)
+DAG nodes after reduction: 37
+Time: 00:00:00.00
+
+Symbol table:
+id     offset  name                 type        statespaces
+---------------------------------------------------------------
+#0     @0      $                    var2        
+#1     @1      p                    var1        
+#2     @2      p                    var1        
+#3     @3      P                    var2        
+#4     @4      A1                   var2        
+#5     @5      R1                   var2        
+#6     @6      x1                   var1        
+#7     @7      x1                   var1        
+#8     @8      x1                   var1        
+#9     @9      x1                   var1        
+#10    @10     <id10>               var1        
+#11    @11     <id11>               var1        
+#12    @12     <id12>               var1        
+#13    @13     <id13>               var1        
+#14    @14     <id14>               var1        
+#15    @15     <id15>               var1        
+#16    @16     <id16>               var1        
+#17    @17     <id17>               var1        
+#18    @18     <id18>               var1        
+#19    @19     <id19>               var1        
+#20    @20     <id20>               var1        
+#21    @21     <id21>               var1        
+#22    @22     <id22>               var1        
+#23    @23     <id23>               var1        
+#24    @24     <id24>               var1        
+#25    @25     <id25>               var1        
+#26    @26     <id26>               var1        
+#27    @27     <id27>               var1        
+#28    @28     <id28>               var1        
+#29    @29     <id29>               var1        
+#30    @30     <id30>               var1        
+#31    @31     <id31>               var1        
+#32    @32     <id32>               var1        
+#33    @33     <id33>               var1        
+#34    @34     <id34>               var1        
+#35    @35     <id35>               var1        
+#36    @36     <id36>               var1        
+#37    @37     <id37>               var1        
+#38    @38     <id38>               var1        
+#39    @39     <id39>               var1        
+#40    @40     <id40>               var1        
+#41    @41     <id41>               var1        
+#42    @42     <id42>               var1        
+#43    @43     <id43>               var1        
+#44    @44     <id44>               var1        
+#45    @45     <id45>               var1        
+#46    @46     <id46>               var1        
+#47    @47     <id47>               var1        
+
+Main formula:
+And(And(Or(Project(#18,And(And(And(Restrict(And(Sub2(#4,#0),Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))))),In(#12,#0)[#0->#4,#12->#10]),Restrict(And(And(Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))),In(#12,#0)[#12->#10]),Restrict(FirstOrder(#10)))))[#4->#5,#10->#18],Project(#11,And(And(LessEq1(#11,#10),Restrict(And(And(Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))),In(#12,#0)[#12->#10]),Restrict(FirstOrder(#10))))),Const(#11,0)))[#10->#18]))[#5->#4],Project(#10,And(Negate(And(And(Restrict(And(Sub2(#4,#0),Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))))),In(#12,#0)[#0->#4,#12->#10]),Restrict(And(And(Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))),In(#12,#0)[#12->#10]),Restrict(FirstOrder(#10)))))),Project(#11,And(And(LessEq1(#11,#10),Restrict(And(And(Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))),In(#12,#0)[#12->#10]),Restrict(FirstOrder(#10))))),Const(#11,0)))))[#4->#5]),Or(Project(#18,And(And(And(Restrict(And(Sub2(#4,#0),Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))))),In(#12,#0)[#0->#4,#12->#10]),Restrict(And(And(Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))),In(#12,#0)[#12->#10]),Restrict(FirstOrder(#10)))))[#4->#5,#10->#18],Project(#11,And(And(LessEq1(#11,#10),Restrict(And(And(Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))),In(#12,#0)[#12->#10]),Restrict(FirstOrder(#10))))),Const(#11,0)))[#10->#18])),Project(#10,And(Negate(And(And(Restrict(And(Sub2(#4,#0),Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))))),In(#12,#0)[#0->#4,#12->#10]),Restrict(And(And(Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))),In(#12,#0)[#12->#10]),Restrict(FirstOrder(#10)))))),Project(#11,And(And(LessEq1(#11,#10),Restrict(And(And(Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))),In(#12,#0)[#12->#10]),Restrict(FirstOrder(#10))))),Const(#11,0))))))),Restrict(And(And(Sub2(#4,#0),Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0)))))))),And(Sub2(#4,#0),Restrict(Negate(Project(#12,And(Project(#13,And(And(Restrict(FirstOrder(#10))[#10->#12],EqPlus1(#13,#12,1)),In(#12,#0)[#12->#13])),Negate(And(Restrict(FirstOrder(#10))[#10->#12],In(#12,#0))))))))[#4->#5])))
+
+
+AUTOMATON CONSTRUCTION
+2% completed (1 automata in memory, 0MB memory used)
+5% completed (2 automata in memory, 0MB memory used)
+8% completed (3 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (3,3) -> (3,3)
+10% completed (3 automata in memory, 0MB memory used)
+Copying (3,3)
+Replacing indices
+Product &
+  (3,3)x(5,8) -> (6,10)
+  Minimizing (6,10) -> (6,10)
+13% completed (3 automata in memory, 0MB memory used)
+16% completed (4 automata in memory, 0MB memory used)
+Copying (4,6)
+Replacing indices
+Product &
+  (6,10)x(4,6) -> (10,24)
+  Minimizing (10,24) -> (6,11)
+18% completed (4 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #13
+  (6,11) -> (6,7)
+  Minimizing (6,7) -> (5,6)
+21% completed (4 automata in memory, 0MB memory used)
+Copying (4,6)
+Copying (3,3)
+Replacing indices
+Product &
+  (3,3)x(4,6) -> (4,6)
+  Minimizing (4,6) -> (4,6)
+24% completed (5 automata in memory, 0MB memory used)
+Negation
+27% completed (5 automata in memory, 0MB memory used)
+Product &
+  (5,6)x(4,6) -> (8,12)
+  Minimizing (8,12) -> (5,8)
+29% completed (4 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #12
+  (5,8) -> (7,10)
+  Minimizing (7,10) -> (4,5)
+32% completed (4 automata in memory, 0MB memory used)
+Negation
+35% completed (4 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (4,5) -> (4,5)
+37% completed (4 automata in memory, 0MB memory used)
+Copying (4,5)
+Product &
+  (3,4)x(4,5) -> (6,10)
+  Minimizing (6,10) -> (5,8)
+40% completed (4 automata in memory, 0MB memory used)
+Copying (5,8)
+Restrict
+  Minimizing (5,8) -> (4,6)
+43% completed (5 automata in memory, 0MB memory used)
+Copying (4,6)
+Replacing indices
+Product &
+  (4,6)x(4,6) -> (10,28)
+  Minimizing (10,28) -> (7,16)
+45% completed (5 automata in memory, 0MB memory used)
+Replacing indices
+Product &
+  (4,5)x(4,6) -> (9,19)
+  Minimizing (9,19) -> (6,10)
+48% completed (4 automata in memory, 0MB memory used)
+Product &
+  (6,10)x(3,3) -> (8,17)
+  Minimizing (8,17) -> (7,13)
+51% completed (3 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (7,13) -> (5,8)
+54% completed (3 automata in memory, 0MB memory used)
+Copying (5,8)
+Product &
+  (7,16)x(5,8) -> (9,22)
+  Minimizing (9,22) -> (7,16)
+56% completed (3 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+59% completed (5 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lilydemo13.mona' line 7 column 17
+  (((((ex1 x1: (0 <= x1 & (~((x1 in A1)))))) | ((ex1 x1: (0 <= x1 & ((x1 in R1
+                  ^
+  (5,8)x(5,8) -> (11,26)
+  Minimizing (11,26) -> (8,17)
+62% completed (4 automata in memory, 0MB memory used)
+64% completed (5 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lilydemo13.mona' line 7 column 15
+  (((((ex1 x1: (0 <= x1 & (~((x1 in A1)))))) | ((ex1 x1: (0 <= x1 & ((x1 in R1
+                ^
+  (8,17)x(4,4) -> (13,33)
+  Minimizing (13,33) -> (9,20)
+67% completed (4 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #11 'full-observability/mso/lilydemo13.mona' line 7 column 17
+  (((((ex1 x1: (0 <= x1 & (~((x1 in A1)))))) | ((ex1 x1: (0 <= x1 & ((x1 in R1
+                  ^
+  (9,20) -> (6,9)
+  Minimizing (6,9) -> (5,8)
+70% completed (4 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product & 'full-observability/mso/lilydemo13.mona' line 7 column 66
+  (((((ex1 x1: (0 <= x1 & (~((x1 in A1)))))) | ((ex1 x1: (0 <= x1 & ((x1 in R1
+                                                                   ^
+  (7,16)x(5,8) -> (8,19)
+  Minimizing (8,19) -> (7,16)
+72% completed (4 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #18 'full-observability/mso/lilydemo13.mona' line 7 column 48
+  (((((ex1 x1: (0 <= x1 & (~((x1 in A1)))))) | ((ex1 x1: (0 <= x1 & ((x1 in R1
+                                                 ^
+  (7,16) -> (9,21)
+  Minimizing (9,21) -> (7,14)
+75% completed (4 automata in memory, 0MB memory used)
+Copying (7,14)
+Replacing indices
+Negation 'full-observability/mso/lilydemo13.mona' line 7 column 26
+  (((((ex1 x1: (0 <= x1 & (~((x1 in A1)))))) | ((ex1 x1: (0 <= x1 & ((x1 in R1
+                           ^
+78% completed (5 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lilydemo13.mona' line 7 column 24
+  (((((ex1 x1: (0 <= x1 & (~((x1 in A1)))))) | ((ex1 x1: (0 <= x1 & ((x1 in R1
+                         ^
+  (7,16)x(5,8) -> (8,19)
+  Minimizing (8,19) -> (7,16)
+81% completed (4 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #10 'full-observability/mso/lilydemo13.mona' line 7 column 6
+  (((((ex1 x1: (0 <= x1 & (~((x1 in A1)))))) | ((ex1 x1: (0 <= x1 & ((x1 in R1
+       ^
+  (7,16) -> (9,21)
+  Minimizing (9,21) -> (7,14)
+83% completed (4 automata in memory, 0MB memory used)
+Copying (7,14)
+Replacing indices
+Product | 'full-observability/mso/lilydemo13.mona' line 7 column 127
+  (((ex1 x1: (0 <= x1 & ((x1 in A1))))) | ((ex1 x1: (0 <= x1 & (~((x1 in R1)))
+                                         ^
+  (7,14)x(7,14) -> (15,42)
+  Minimizing (15,42) -> (7,17)
+86% completed (4 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/lilydemo13.mona' line 7 column 45
+  (((((ex1 x1: (0 <= x1 & (~((x1 in A1)))))) | ((ex1 x1: (0 <= x1 & ((x1 in R1
+                                              ^
+  (7,14)x(7,14) -> (15,42)
+  Minimizing (15,42) -> (7,17)
+89% completed (3 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lilydemo13.mona' line 7 column 86
+  (ex1 x1: (0 <= x1 & ((x1 in R1))))))) & ((((ex1 x1: (0 <= x1 & ((x1 in A1)))
+                                         ^
+  (7,17)x(7,17) -> (9,27)
+  Minimizing (9,27) -> (8,22)
+91% completed (2 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,8)x(5,8) -> (7,16)
+  Minimizing (7,16) -> (5,9)
+94% completed (2 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (5,9) -> (4,7)
+97% completed (2 automata in memory, 0MB memory used)
+Product &
+  (8,22)x(4,7) -> (9,27)
+  Minimizing (9,27) -> (8,22)
+100% completed (1 automata in memory, 0MB memory used)
+Product &
+  (8,22)x(3,3) -> (8,23)
+  Minimizing (8,23) -> (6,14)
+Right-quotient
+Projecting #0
+  (6,14) -> (5,9)
+  Minimizing (5,9) -> (5,9)
+Total automaton construction time: 00:00:00.00
+
+Minimizations:   30
+Projections:     6
+Products:        19
+Copies:          13
+Replaces:        10
+Right-quotients: 5
+Negations:       3
+
+Largest number of states in a minimized automaton: 9, BDD nodes: 22
+Maximum number of automata in memory: 7
+
+Total time: 00:00:00.00

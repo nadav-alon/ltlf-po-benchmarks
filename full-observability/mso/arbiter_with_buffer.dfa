@@ -1,0 +1,663 @@
+MONA v1.4-18 for WS1S/WS2S
+Copyright (C) 1997-2013 Aarhus University
+
+PARSING
+Time: 00:00:00.00
+Main formula:
+And(True,And(All1(x1,Impl(LessEq(Int 0,Var1 x1),Or(And(Or(In(Var1 x1,Var2 TRY_0),Or(Ex1(x2,And(And(LessEq(Var1 x1,Var1 x2),Or(Ex1(x3,And(Equal1(Var1 x3,Plus1(Var1 x2,1)),Not(In(Var1 x3,Var2 ACK_0)))),Equal1(Var1 x2,Max(Var2 $)))),All1(x3,Impl(And(LessEq(Var1 x1,Var1 x3),LessEq(Var1 x3,Var1 x2)),Not(In(Var1 x3,Var2 G_0)))))),All1(x3,Impl(And(LessEq(Var1 x1,Var1 x3),LessEq(Var1 x3,Max(Var2 $))),Not(In(Var1 x3,Var2 G_0)))))),Or(Ex1(x2,And(And(LessEq(Var1 x1,Var1 x2),In(Var1 x2,Var2 G_0)),All1(x3,Impl(And(LessEq(Var1 x1,Var1 x3),Less(Var1 x3,Var1 x2)),Ex1(x4,And(Equal1(Var1 x4,Plus1(Var1 x3,1)),In(Var1 x4,Var2 ACK_0))))))),Not(In(Var1 x1,Var2 TRY_0)))),Not(In(Var1 x1,Var2 R_0))))),All1(x1,Impl(LessEq(Int 0,Var1 x1),True))))
+
+Assertions:
+True
+
+AllPos variable: $
+
+Default first-order restriction (p):
+In(Var1 p,Var2 $)
+
+Default second-order restriction (P):
+Sub(Var2 P,Var2 $)
+
+Restriction for #0 ($):
+Not(Ex1(p,And(Notin(Var1 p,Var2 $),In(Plus1(Var1 p,1),Var2 $))))
+
+Restriction for #1 (p):
+True
+
+Restriction for #2 (p): default
+
+Restriction for #3 (P): default
+
+Restriction for #4 (ACK_0): default
+
+Restriction for #5 (G_0): default
+
+Restriction for #6 (R_0): default
+
+Restriction for #7 (TRY_0): default
+
+Restriction for #8 (x1): default
+
+Restriction for #9 (x2): default
+
+Restriction for #10 (x3): default
+
+Restriction for #11 (x3): default
+
+Restriction for #12 (x3): default
+
+Restriction for #13 (x2): default
+
+Restriction for #14 (x3): default
+
+Restriction for #15 (x4): default
+
+Restriction for #16 (x1): default
+
+CODE GENERATION
+DAG hits: 1278, nodes: 96
+Time: 00:00:00.00
+
+REDUCTION
+Projections removed: 3 (of 15)
+Products removed: 7 (of 52)
+Other nodes removed: 3 (of 28)
+DAG nodes after reduction: 82
+Time: 00:00:00.00
+
+Symbol table:
+id     offset  name                 type        statespaces
+---------------------------------------------------------------
+#0     @0      $                    var2        
+#1     @1      p                    var1        
+#2     @2      p                    var1        
+#3     @3      P                    var2        
+#4     @4      ACK_0                var2        
+#5     @5      G_0                  var2        
+#6     @6      R_0                  var2        
+#7     @7      TRY_0                var2        
+#8     @8      x1                   var1        
+#9     @9      x2                   var1        
+#10    @10     x3                   var1        
+#11    @11     x3                   var1        
+#12    @12     x3                   var1        
+#13    @13     x2                   var1        
+#14    @14     x3                   var1        
+#15    @15     x4                   var1        
+#16    @16     x1                   var1        
+#17    @17     <id17>               var1        
+#18    @18     <id18>               var1        
+#19    @19     <id19>               var1        
+#20    @20     <id20>               var1        
+#21    @21     <id21>               var1        
+#22    @22     <id22>               var1        
+#23    @23     <id23>               var1        
+#24    @24     <id24>               var1        
+#25    @25     <id25>               var1        
+#26    @26     <id26>               var1        
+#27    @27     <id27>               var1        
+#28    @28     <id28>               var1        
+#29    @29     <id29>               var1        
+#30    @30     <id30>               var1        
+#31    @31     <id31>               var1        
+#32    @32     <id32>               var1        
+#33    @33     <id33>               var1        
+#34    @34     <id34>               var1        
+#35    @35     <id35>               var1        
+#36    @36     <id36>               var1        
+#37    @37     <id37>               var1        
+#38    @38     <id38>               var1        
+#39    @39     <id39>               var1        
+#40    @40     <id40>               var1        
+#41    @41     <id41>               var1        
+#42    @42     <id42>               var1        
+#43    @43     <id43>               var1        
+#44    @44     <id44>               var1        
+#45    @45     <id45>               var1        
+#46    @46     <id46>               var1        
+#47    @47     <id47>               var1        
+#48    @48     <id48>               var1        
+#49    @49     <id49>               var1        
+#50    @50     <id50>               var1        
+#51    @51     <id51>               var1        
+#52    @52     <id52>               var1        
+#53    @53     <id53>               var1        
+#54    @54     <id54>               var1        
+#55    @55     <id55>               var1        
+#56    @56     <id56>               var1        
+#57    @57     <id57>               var1        
+#58    @58     <id58>               var1        
+#59    @59     <id59>               var1        
+#60    @60     <id60>               var1        
+#61    @61     <id61>               var1        
+#62    @62     <id62>               var1        
+#63    @63     <id63>               var1        
+#64    @64     <id64>               var1        
+#65    @65     <id65>               var1        
+#66    @66     <id66>               var1        
+#67    @67     <id67>               var1        
+#68    @68     <id68>               var1        
+#69    @69     <id69>               var1        
+#70    @70     <id70>               var1        
+#71    @71     <id71>               var1        
+#72    @72     <id72>               var1        
+#73    @73     <id73>               var1        
+#74    @74     <id74>               var1        
+#75    @75     <id75>               var1        
+#76    @76     <id76>               var1        
+#77    @77     <id77>               var1        
+#78    @78     <id78>               var1        
+#79    @79     <id79>               var1        
+#80    @80     <id80>               var1        
+#81    @81     <id81>               var1        
+#82    @82     <id82>               var1        
+#83    @83     <id83>               var1        
+#84    @84     <id84>               var1        
+#85    @85     <id85>               var1        
+#86    @86     <id86>               var1        
+#87    @87     <id87>               var1        
+#88    @88     <id88>               var1        
+#89    @89     <id89>               var1        
+#90    @90     <id90>               var1        
+#91    @91     <id91>               var1        
+#92    @92     <id92>               var1        
+#93    @93     <id93>               var1        
+#94    @94     <id94>               var1        
+#95    @95     <id95>               var1        
+#96    @96     <id96>               var1        
+#97    @97     <id97>               var1        
+#98    @98     <id98>               var1        
+#99    @99     <id99>               var1        
+#100   @100    <id100>              var1        
+#101   @101    <id101>              var1        
+#102   @102    <id102>              var1        
+#103   @103    <id103>              var1        
+#104   @104    <id104>              var1        
+#105   @105    <id105>              var1        
+#106   @106    <id106>              var1        
+#107   @107    <id107>              var1        
+#108   @108    <id108>              var1        
+#109   @109    <id109>              var1        
+#110   @110    <id110>              var1        
+#111   @111    <id111>              var1        
+#112   @112    <id112>              var1        
+#113   @113    <id113>              var1        
+#114   @114    <id114>              var1        
+#115   @115    <id115>              var1        
+#116   @116    <id116>              var1        
+#117   @117    <id117>              var1        
+#118   @118    <id118>              var1        
+#119   @119    <id119>              var1        
+#120   @120    <id120>              var1        
+#121   @121    <id121>              var1        
+
+Main formula:
+And(Restrict(And(And(And(And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))[#7->#4],And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))[#7->#5]),And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))[#7->#6]),And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0)))))))))),Negate(Project(#17,Negate(Impl(Project(#18,And(And(LessEq1(#18,#17),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))),Const(#18,0))),Or(And(Or(Project(#72,And(Negate(Project(#81,Negate(Impl(And(And(And(Less1(#81,#72),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#72]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#81]),And(And(LessEq1(#17,#25),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#25]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#25->#81]),Project(#90,And(And(And(Restrict(And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))),In(#19,#0)[#0->#7,#19->#17]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#7->#4,#17->#90],And(And(Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#25],EqPlus1(#20,#19,1)[#19->#25,#20->#35])[#35->#30],Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#30])[#25->#81,#30->#90])))))),And(And(And(LessEq1(#17,#25),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#25]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#25->#72],And(And(Restrict(And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))),In(#19,#0)[#0->#7,#19->#17]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#7->#5,#17->#72]))),Negate(And(And(Restrict(And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))),In(#19,#0)[#0->#7,#19->#17]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#7->#4,#17->#30])[#4->#7,#30->#17]),Or(Or(Negate(Project(#58,Negate(Impl(And(Project(#67,And(And(And(EqMax(#44,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))[#44->#67],LessEq1(#17,#25)[#17->#58,#25->#67]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#58])),And(And(LessEq1(#17,#25),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#25]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#25->#58]),Negate(And(And(Restrict(And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))),In(#19,#0)[#0->#7,#19->#17]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#7->#4,#17->#30])[#4->#5,#30->#58])))),Project(#25,And(Negate(Project(#45,Negate(Impl(And(And(And(LessEq1(#18,#17),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#17->#25,#18->#45],Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#45]),And(And(LessEq1(#17,#25),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#25]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#25->#45]),Negate(And(And(Restrict(And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))),In(#19,#0)[#0->#7,#19->#17]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#7->#4,#17->#30])[#4->#5,#30->#45])))),And(Or(And(And(EqMax(#44,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))[#44->#25],Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#25]),Project(#30,And(Negate(And(And(Restrict(And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))),In(#19,#0)[#0->#7,#19->#17]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#7->#4,#17->#30]),And(And(Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#25],EqPlus1(#20,#19,1)[#19->#25,#20->#35])[#35->#30],Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#30])))),And(And(LessEq1(#17,#25),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))[#17->#25]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))))))),And(And(Restrict(And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))),In(#19,#0)[#0->#7,#19->#17]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17))))))),Negate(And(And(Restrict(And(Sub2(#7,#0),Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))))),In(#19,#0)[#0->#7,#19->#17]),Restrict(And(And(Restrict(Negate(Project(#19,And(Project(#20,And(And(Restrict(FirstOrder(#17))[#17->#19],EqPlus1(#20,#19,1)),In(#19,#0)[#19->#20])),Negate(And(Restrict(FirstOrder(#17))[#17->#19],In(#19,#0))))))),In(#19,#0)[#19->#17]),Restrict(FirstOrder(#17)))))[#7->#4,#17->#30])[#4->#6,#30->#17]))))))
+
+
+AUTOMATON CONSTRUCTION
+1% completed (1 automata in memory, 0MB memory used)
+2% completed (2 automata in memory, 0MB memory used)
+Copying (5,8)
+3% completed (4 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (3,3) -> (3,3)
+4% completed (4 automata in memory, 0MB memory used)
+Copying (3,3)
+Replacing indices
+Product &
+  (3,3)x(5,8) -> (6,10)
+  Minimizing (6,10) -> (6,10)
+6% completed (4 automata in memory, 0MB memory used)
+7% completed (5 automata in memory, 0MB memory used)
+Copying (4,6)
+Replacing indices
+Product &
+  (6,10)x(4,6) -> (10,24)
+  Minimizing (10,24) -> (6,11)
+8% completed (5 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #20
+  (6,11) -> (6,7)
+  Minimizing (6,7) -> (5,6)
+9% completed (5 automata in memory, 0MB memory used)
+Copying (4,6)
+Copying (3,3)
+Replacing indices
+Product &
+  (3,3)x(4,6) -> (4,6)
+  Minimizing (4,6) -> (4,6)
+10% completed (6 automata in memory, 0MB memory used)
+Negation
+12% completed (6 automata in memory, 0MB memory used)
+Product &
+  (5,6)x(4,6) -> (8,12)
+  Minimizing (8,12) -> (5,8)
+13% completed (5 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #19
+  (5,8) -> (7,10)
+  Minimizing (7,10) -> (4,5)
+14% completed (5 automata in memory, 0MB memory used)
+Negation
+15% completed (5 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (4,5) -> (4,5)
+17% completed (5 automata in memory, 0MB memory used)
+Copying (4,5)
+Product &
+  (3,4)x(4,5) -> (6,10)
+  Minimizing (6,10) -> (5,8)
+18% completed (5 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Copying (5,8)
+Replacing indices
+Product &
+  (5,8)x(5,8) -> (7,16)
+  Minimizing (7,16) -> (5,9)
+19% completed (6 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,9)x(5,8) -> (7,18)
+  Minimizing (7,18) -> (5,10)
+20% completed (6 automata in memory, 0MB memory used)
+Copying (5,8)
+Product &
+  (5,10)x(5,8) -> (7,20)
+  Minimizing (7,20) -> (5,11)
+21% completed (6 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (5,11) -> (4,9)
+23% completed (6 automata in memory, 0MB memory used)
+24% completed (7 automata in memory, 0MB memory used)
+25% completed (8 automata in memory, 0MB memory used)
+Copying (4,6)
+Replacing indices
+Copying (4,5)
+Product &
+  (4,5)x(4,6) -> (9,19)
+  Minimizing (9,19) -> (6,10)
+26% completed (9 automata in memory, 0MB memory used)
+Product &
+  (6,10)x(3,3) -> (8,17)
+  Minimizing (8,17) -> (7,13)
+28% completed (8 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (7,13) -> (5,8)
+29% completed (8 automata in memory, 0MB memory used)
+Copying (5,8)
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 17
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+                  ^
+  (5,8)x(5,8) -> (11,26)
+  Minimizing (11,26) -> (8,17)
+30% completed (8 automata in memory, 0MB memory used)
+Copying (8,17)
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 15
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+                ^
+  (8,17)x(4,4) -> (13,33)
+  Minimizing (13,33) -> (9,20)
+31% completed (8 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #18 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 17
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+                  ^
+  (9,20) -> (6,9)
+  Minimizing (6,9) -> (5,8)
+32% completed (8 automata in memory, 0MB memory used)
+34% completed (9 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 321
+  x2 in G_0)) & (all1 x3: (x1 <= x3 & x3 < x2 => ((ex1 x4: (x4=x3+1 & ((x4 in 
+                                         ^
+  (5,7)x(5,8) -> (11,24)
+  Minimizing (11,24) -> (8,16)
+35% completed (9 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (8,16)x(5,8) -> (11,24)
+  Minimizing (11,24) -> (9,19)
+36% completed (9 automata in memory, 0MB memory used)
+37% completed (10 automata in memory, 0MB memory used)
+Copying (5,7)
+Copying (5,8)
+Replacing indices
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 66
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+                                                                   ^
+  (5,7)x(5,8) -> (11,24)
+  Minimizing (11,24) -> (8,16)
+39% completed (11 automata in memory, 0MB memory used)
+Copying (5,8)
+Product &
+  (8,16)x(5,8) -> (11,24)
+  Minimizing (11,24) -> (9,19)
+40% completed (11 automata in memory, 0MB memory used)
+Copying (9,19)
+Replacing indices
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 317
+  & ((x2 in G_0)) & (all1 x3: (x1 <= x3 & x3 < x2 => ((ex1 x4: (x4=x3+1 & ((x4
+                                         ^
+  (9,19)x(9,19) -> (23,58)
+  Minimizing (23,58) -> (14,38)
+41% completed (11 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (5,8) -> (4,6)
+42% completed (11 automata in memory, 0MB memory used)
+Replacing indices
+Product &
+  (4,6)x(4,6) -> (10,28)
+  Minimizing (10,28) -> (7,16)
+43% completed (10 automata in memory, 0MB memory used)
+Copying (5,8)
+Product &
+  (7,16)x(5,8) -> (9,22)
+  Minimizing (9,22) -> (7,16)
+45% completed (10 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Replacing indices
+Copying (5,8)
+Replacing indices
+Product &
+  (5,8)x(5,8) -> (12,31)
+  Minimizing (12,31) -> (9,21)
+46% completed (11 automata in memory, 0MB memory used)
+Replacing indices
+Copying (5,8)
+Replacing indices
+Product &
+  (9,21)x(5,8) -> (13,31)
+  Minimizing (13,31) -> (10,23)
+47% completed (11 automata in memory, 0MB memory used)
+Copying (10,23)
+Replacing indices
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 349
+  <= x3 & x3 < x2 => ((ex1 x4: (x4=x3+1 & ((x4 in ACK_0)))))))))) | (~((x1 in 
+                                         ^
+  (7,16)x(10,23) -> (19,57)
+  Minimizing (19,57) -> (10,26)
+48% completed (11 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #90 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 331
+  ) & (all1 x3: (x1 <= x3 & x3 < x2 => ((ex1 x4: (x4=x3+1 & ((x4 in ACK_0)))))
+                                         ^
+  (10,26) -> (9,18)
+  Minimizing (9,18) -> (8,17)
+50% completed (11 automata in memory, 0MB memory used)
+Product => 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 327
+  G_0)) & (all1 x3: (x1 <= x3 & x3 < x2 => ((ex1 x4: (x4=x3+1 & ((x4 in ACK_0)
+                                         ^
+  (14,38)x(8,17) -> (30,86)
+  Minimizing (30,86) -> (15,43)
+51% completed (10 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 297
+  ((ex1 x2: (x1 <= x2 & ((x2 in G_0)) & (all1 x3: (x1 <= x3 & x3 < x2 => ((ex1
+                                         ^
+52% completed (10 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #81 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 297
+  ((ex1 x2: (x1 <= x2 & ((x2 in G_0)) & (all1 x3: (x1 <= x3 & x3 < x2 => ((ex1
+                                         ^
+  (15,43) -> (13,36)
+  Minimizing (13,36) -> (10,25)
+53% completed (10 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 297
+  ((ex1 x2: (x1 <= x2 & ((x2 in G_0)) & (all1 x3: (x1 <= x3 & x3 < x2 => ((ex1
+                                         ^
+54% completed (10 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (9,19)
+Replacing indices
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 279
+   G_0))))))))) & ((((ex1 x2: (x1 <= x2 & ((x2 in G_0)) & (all1 x3: (x1 <= x3 
+                                         ^
+  (9,19)x(7,16) -> (18,50)
+  Minimizing (18,50) -> (9,25)
+56% completed (11 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 295
+  ((((ex1 x2: (x1 <= x2 & ((x2 in G_0)) & (all1 x3: (x1 <= x3 & x3 < x2 => ((e
+                                         ^
+  (10,25)x(9,25) -> (18,56)
+  Minimizing (18,56) -> (10,31)
+57% completed (10 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #72 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 260
+  max $) => (~((x3 in G_0))))))))) & ((((ex1 x2: (x1 <= x2 & ((x2 in G_0)) & (
+                                         ^
+  (10,31) -> (12,37)
+  Minimizing (12,37) -> (8,22)
+58% completed (10 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Negation 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 97
+  x2: (x1 <= x2 & (((ex1 x3: (x3=x2+1 & (~((x3 in ACK_0))))) | (x2 = max $))) 
+                                         ^
+59% completed (11 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 375
+  4: (x4=x3+1 & ((x4 in ACK_0)))))))))) | (~((x1 in TRY_0))))))) | (~((x1 in R
+                                         ^
+  (8,22)x(7,16) -> (17,57)
+  Minimizing (17,57) -> (8,25)
+60% completed (11 automata in memory, 0MB memory used)
+Replacing indices
+62% completed (12 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 125
+  x3=x2+1 & (~((x3 in ACK_0))))) | (x2 = max $))) & (all1 x3: (x1 <= x3 & x3 <
+                                         ^
+  (5,8)x(4,5) -> (11,23)
+  Minimizing (11,23) -> (8,15)
+63% completed (11 automata in memory, 0MB memory used)
+Copying (8,15)
+Replacing indices
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 66
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+                                                                   ^
+  (8,15)x(5,7) -> (18,46)
+  Minimizing (18,46) -> (9,20)
+64% completed (11 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (9,20)x(5,8) -> (12,28)
+  Minimizing (12,28) -> (9,19)
+65% completed (11 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #67 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 218
+   G_0)))))))| (all1 x3: ((x1 <= x3 & x3 <= max $) => (~((x3 in G_0))))))))) &
+                                         ^
+  (9,19) -> (7,12)
+  Minimizing (7,12) -> (5,8)
+67% completed (11 automata in memory, 0MB memory used)
+Copying (9,19)
+Replacing indices
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 214
+  3 in G_0)))))))| (all1 x3: ((x1 <= x3 & x3 <= max $) => (~((x3 in G_0)))))))
+                                         ^
+  (5,8)x(9,19) -> (10,22)
+  Minimizing (10,22) -> (9,19)
+68% completed (11 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product => 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 229
+  | (all1 x3: ((x1 <= x3 & x3 <= max $) => (~((x3 in G_0))))))))) & ((((ex1 x2
+                                         ^
+  (9,19)x(7,16) -> (18,50)
+  Minimizing (18,50) -> (9,25)
+69% completed (11 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 193
+  3 & x3 <= x2 => (~((x3 in G_0)))))))| (all1 x3: ((x1 <= x3 & x3 <= max $) =>
+                                         ^
+70% completed (11 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #58 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 193
+  3 & x3 <= x2 => (~((x3 in G_0)))))))| (all1 x3: ((x1 <= x3 & x3 <= max $) =>
+                                         ^
+  (9,25) -> (10,27)
+  Minimizing (10,27) -> (7,17)
+71% completed (11 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 193
+  3 & x3 <= x2 => (~((x3 in G_0)))))))| (all1 x3: ((x1 <= x3 & x3 <= max $) =>
+                                         ^
+73% completed (11 automata in memory, 0MB memory used)
+Replacing indices
+Copying (5,8)
+Replacing indices
+Product &
+  (8,17)x(5,8) -> (11,25)
+  Minimizing (11,25) -> (9,20)
+74% completed (11 automata in memory, 0MB memory used)
+Copying (9,19)
+Replacing indices
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 157
+   (x2 = max $))) & (all1 x3: (x1 <= x3 & x3 <= x2 => (~((x3 in G_0)))))))| (a
+                                         ^
+  (9,20)x(9,19) -> (23,60)
+  Minimizing (23,60) -> (14,39)
+75% completed (11 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product => 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 168
+  $))) & (all1 x3: (x1 <= x3 & x3 <= x2 => (~((x3 in G_0)))))))| (all1 x3: ((x
+                                         ^
+  (14,39)x(7,16) -> (26,88)
+  Minimizing (26,88) -> (14,46)
+76% completed (11 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 137
+  ((x3 in ACK_0))))) | (x2 = max $))) & (all1 x3: (x1 <= x3 & x3 <= x2 => (~((
+                                         ^
+78% completed (11 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #45 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 137
+  ((x3 in ACK_0))))) | (x2 = max $))) & (all1 x3: (x1 <= x3 & x3 <= x2 => (~((
+                                         ^
+  (14,46) -> (14,40)
+  Minimizing (14,40) -> (10,27)
+79% completed (11 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 137
+  ((x3 in ACK_0))))) | (x2 = max $))) & (all1 x3: (x1 <= x3 & x3 <= x2 => (~((
+                                         ^
+80% completed (11 automata in memory, 0MB memory used)
+Replacing indices
+Replacing indices
+Product &
+  (8,15)x(5,8) -> (10,20)
+  Minimizing (10,20) -> (7,12)
+81% completed (10 automata in memory, 0MB memory used)
+Copying (7,16)
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 95
+  1 x2: (x1 <= x2 & (((ex1 x3: (x3=x2+1 & (~((x3 in ACK_0))))) | (x2 = max $))
+                                         ^
+  (7,16)x(10,23) -> (19,57)
+  Minimizing (19,57) -> (10,26)
+82% completed (10 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #30 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 77
+  in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((ex1 x3: (x3=x2+1 & (~((x3 in ACK_0)))
+                                         ^
+  (10,26) -> (9,18)
+  Minimizing (9,18) -> (8,17)
+84% completed (10 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 118
+  1 x3: (x3=x2+1 & (~((x3 in ACK_0))))) | (x2 = max $))) & (all1 x3: (x1 <= x3
+                                         ^
+  (7,12)x(8,17) -> (11,25)
+  Minimizing (11,25) -> (8,17)
+85% completed (9 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 73
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+                                                                          ^
+  (8,17)x(9,19) -> (20,51)
+  Minimizing (20,51) -> (10,24)
+86% completed (8 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 135
+  (~((x3 in ACK_0))))) | (x2 = max $))) & (all1 x3: (x1 <= x3 & x3 <= x2 => (~
+                                         ^
+  (10,27)x(10,24) -> (20,58)
+  Minimizing (20,58) -> (11,32)
+87% completed (7 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #25 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 54
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+                                                       ^
+  (11,32) -> (13,40)
+  Minimizing (13,40) -> (8,22)
+89% completed (7 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 191
+   x3 & x3 <= x2 => (~((x3 in G_0)))))))| (all1 x3: ((x1 <= x3 & x3 <= max $) 
+                                         ^
+  (7,17)x(8,22) -> (12,36)
+  Minimizing (12,36) -> (8,22)
+90% completed (6 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 50
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+                                                   ^
+  (8,22)x(7,16) -> (17,57)
+  Minimizing (17,57) -> (8,27)
+91% completed (5 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 255
+  3 <= max $) => (~((x3 in G_0))))))))) & ((((ex1 x2: (x1 <= x2 & ((x2 in G_0)
+                                         ^
+  (8,25)x(8,27) -> (11,40)
+  Minimizing (11,40) -> (9,32)
+92% completed (4 automata in memory, 0MB memory used)
+Replacing indices
+Product | 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 400
+  _0)))))))))) | (~((x1 in TRY_0))))))) | (~((x1 in R_0)))))))) & ((all1 x1: (
+                                         ^
+  (9,32)x(7,16) -> (19,79)
+  Minimizing (19,79) -> (9,36)
+93% completed (3 automata in memory, 0MB memory used)
+Product => 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 25
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+                          ^
+  (5,8)x(9,36) -> (10,39)
+  Minimizing (10,39) -> (9,36)
+95% completed (2 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 4
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+     ^
+96% completed (2 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #17 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 4
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+     ^
+  (9,36) -> (21,111)
+  Minimizing (21,111) -> (9,36)
+97% completed (2 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/arbiter_with_buffer.mona' line 7 column 4
+  (((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((
+     ^
+98% completed (2 automata in memory, 0MB memory used)
+Product &
+  (4,9)x(9,36) -> (10,43)
+  Minimizing (10,43) -> (9,36)
+100% completed (1 automata in memory, 0MB memory used)
+Product &
+  (9,36)x(3,3) -> (9,37)
+  Minimizing (9,37) -> (7,23)
+Right-quotient
+Projecting #0
+  (7,23) -> (6,18)
+  Minimizing (6,18) -> (6,18)
+Total automaton construction time: 00:00:00.00
+
+Minimizations:   64
+Projections:     13
+Products:        46
+Copies:          37
+Replaces:        34
+Right-quotients: 12
+Negations:       11
+
+Largest number of states in a minimized automaton: 15, BDD nodes: 46
+Maximum number of automata in memory: 13
+
+Total time: 00:00:00.00

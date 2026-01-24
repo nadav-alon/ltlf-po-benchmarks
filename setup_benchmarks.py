@@ -3,7 +3,6 @@ import subprocess
 import random
 import shutil
 from pathlib import Path
-
 import glob
 
 categories = {
@@ -41,6 +40,7 @@ print(f"Collected {len(benchmarks)} benchmarks total.")
 
 base_dir = Path("/home/cowclaw/ltlf-po-benchmarks/full-observability")
 ltlf_dir = base_dir / "ltlf"
+mso_dir = base_dir / "mso"
 part_dir = base_dir / "part"
 
 # Define levels of unobservability
@@ -52,9 +52,12 @@ if base_dir.exists():
     shutil.rmtree(base_dir)
 
 ltlf_dir.mkdir(parents=True, exist_ok=True)
+mso_dir.mkdir(parents=True, exist_ok=True)
 part_dir.mkdir(parents=True, exist_ok=True)
 for d in po_dirs.values():
     d.mkdir(parents=True, exist_ok=True)
+
+LTFL2FOL = "/home/cowclaw/lucas/Syft/build/bin/ltlf2fol"
 
 def run_syfco(args):
     result = subprocess.run(["syfco"] + args, capture_output=True, text=True)
@@ -63,25 +66,33 @@ def run_syfco(args):
     return result.stdout.strip()
 
 for tlsf_rel_path in benchmarks:
-    tlsf_path = Path("/home/cowclaw/ltlf-po-benchmarks") / tlsf_rel_path
+    tlsf_path = root_path / tlsf_rel_path
     if not tlsf_path.exists():
-        print(f"Skipping {tlsf_rel_path} - not found.")
         continue
     
     stem = tlsf_path.stem
     ltlf_file = ltlf_dir / f"{stem}.ltlf"
+    mso_file = mso_dir / f"{stem}.mona"
     part_file = part_dir / f"{stem}.part"
     
     print(f"Processing {stem}...")
     
-    # Generate LTL formula (quoted)
-    ltl_formula = run_syfco(["-f", "ltl", "--quote", "double", str(tlsf_path)])
+    # Generate LTL formula (UNQUOTED for lucas/ltlf2fol)
+    ltl_formula = run_syfco(["-f", "ltl", str(tlsf_path)])
     if not ltl_formula:
-        ltl_formula = run_syfco(["-f", "lily", "--quote", "double", str(tlsf_path)])
+        ltl_formula = run_syfco(["-f", "lily", str(tlsf_path)])
         
     if ltl_formula:
         with open(ltlf_file, "w") as f:
             f.write(ltl_formula + "\n")
+        
+        # Generate MONA file for lucas
+        try:
+            with open(mso_file, "w") as f:
+                subprocess.run([LTFL2FOL, "NNF", str(ltlf_file)], stdout=f, check=True)
+        except Exception as e:
+            print(f"Warning: Failed to generate MONA for {stem}: {e}")
+            if mso_file.exists(): mso_file.unlink()
     else:
         print(f"Skipping {stem} due to conversion failure.")
         continue
@@ -116,7 +127,8 @@ for tlsf_rel_path in benchmarks:
                     else:
                         f.write(".inputs:\n") # Empty inputs case
                     f.write(f".outputs: {' '.join(output_list)}\n")
-                    f.write(f".unobservables: {' '.join(unobs)}\n")
+                    if unobs:
+                        f.write(f".unobservables: {' '.join(unobs)}\n")
         else:
             # If no inputs, all levels are the same as FO
             for level in levels:

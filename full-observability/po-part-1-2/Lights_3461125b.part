@@ -1,3 +1,3 @@
-.inputs: p0b0room29light29off p0b0room29light29on p0b0switch29toggled
+.inputs: p0b0room29somebody2leaves p0b0switch29toggled p0b0room29empty
 .outputs: u0room29light0f1dturn2off1b u0room29light0f1dtoggle1b u0room29light0f1dturn2on1b u0room29light0room29light
-.unobservables: p0b0room29somebody2leaves p0b0room29somebody2enters p0b0room29empty
+.unobservables: p0b0room29light29on p0b0room29somebody2enters p0b0room29light29off

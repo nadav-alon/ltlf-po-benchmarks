@@ -1,1 +1,1 @@
-G (F "req") -> G (F "grant")
+G (F req) -> G (F grant)

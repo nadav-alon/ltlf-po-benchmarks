@@ -1,0 +1,1 @@
+G (! (u0sound2system29play0sound2system29play && ! u0sound2system29play0f1dalarm1b <-> u0sound2system29play0f1dalarm1b && ! u0sound2system29play0sound2system29play)) && G (p0b02firesensor29fire -> X u0sound2system29play0f1dalarm1b)

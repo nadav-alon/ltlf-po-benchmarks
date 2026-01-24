@@ -1,0 +1,1534 @@
+MONA v1.4-18 for WS1S/WS2S
+Copyright (C) 1997-2013 Aarhus University
+
+PARSING
+Time: 00:00:00.01
+Main formula:
+And(True,Or(And(Or(And(All1(x1,Impl(LessEq(Int 0,Var1 x1),Ex1(x2,And(LessEq(Var1 x1,Var1 x2),Or(And(Not(In(Var1 x2,Var2 F_0)),True),Or(In(Var1 x2,Var2 B_1),In(Var1 x2,Var2 B_0))))))),And(All1(x1,Impl(LessEq(Int 0,Var1 x1),Ex1(x2,And(LessEq(Var1 x1,Var1 x2),Or(And(In(Var1 x2,Var2 OPEN),And(In(Var1 x2,Var2 F_0),True)),Not(In(Var1 x2,Var2 B_1))))))),And(All1(x1,Impl(LessEq(Int 0,Var1 x1),Ex1(x2,And(LessEq(Var1 x1,Var1 x2),Or(And(In(Var1 x2,Var2 OPEN),And(Not(In(Var1 x2,Var2 F_0)),True)),Not(In(Var1 x2,Var2 B_0))))))),All1(x1,Impl(LessEq(Int 0,Var1 x1),And(Or(In(Var1 x1,Var2 B_1),Or(Not(In(Var1 x1,Var2 OPEN)),Or(Not(In(Var1 x1,Var2 F_0)),False))),And(Or(In(Var1 x1,Var2 B_0),Or(Not(In(Var1 x1,Var2 OPEN)),Or(In(Var1 x1,Var2 F_0),False))),And(Or(Or(And(Not(In(Var1 x1,Var2 B_1)),Not(In(Var1 x1,Var2 B_0))),In(Var1 x1,Var2 B_0)),Or(Not(In(Var1 x1,Var2 DOWN)),Or(Not(In(Var1 x1,Var2 F_0)),False))),And(Or(In(Var1 x1,Var2 B_1),Or(Not(In(Var1 x1,Var2 UP)),Or(In(Var1 x1,Var2 F_0),False))),And(Or(Ex1(x2,And(Equal1(Var1 x2,Plus1(Var1 x1,1)),Or(And(Not(In(Var1 x2,Var2 F_0)),True),And(In(Var1 x2,Var2 F_0),True)))),Or(Not(In(Var1 x1,Var2 F_0)),False)),And(Or(Ex1(x2,And(Equal1(Var1 x2,Plus1(Var1 x1,1)),Or(And(In(Var1 x2,Var2 F_0),True),And(Not(In(Var1 x2,Var2 F_0)),True)))),Or(In(Var1 x1,Var2 F_0),False)),And(Or(And(Not(In(Var1 x1,Var2 DOWN)),Not(In(Var1 x1,Var2 UP))),Not(In(Var1 x1,Var2 OPEN))),And(Or(Ex1(x2,And(Equal1(Var1 x2,Plus1(Var1 x1,1)),In(Var1 x2,Var2 OPEN))),Or(Not(In(Var1 x1,Var2 OBSTACLE)),Not(In(Var1 x1,Var2 OPEN)))),And(Or(Not(In(Var1 x1,Var2 DOWN)),Not(In(Var1 x1,Var2 UP))),And(And(Or(In(Var1 x1,Var2 DOWN),Or(Or(Ex1(x2,And(Equal1(Var1 x2,Plus1(Var1 x1,1)),Or(In(Var1 x2,Var2 F_0),False))),Equal1(Var1 x1,Max(Var2 $))),Or(Not(In(Var1 x1,Var2 F_0)),False))),Or(And(Ex1(x2,And(Equal1(Var1 x2,Plus1(Var1 x1,1)),And(Not(In(Var1 x2,Var2 F_0)),True))),And(In(Var1 x1,Var2 F_0),True)),Not(In(Var1 x1,Var2 DOWN)))),And(Or(In(Var1 x1,Var2 UP),Or(Or(Ex1(x2,And(Equal1(Var1 x2,Plus1(Var1 x1,1)),Or(Not(In(Var1 x2,Var2 F_0)),False))),Equal1(Var1 x1,Max(Var2 $))),Or(In(Var1 x1,Var2 F_0),False))),Or(And(Ex1(x2,And(Equal1(Var1 x2,Plus1(Var1 x1,1)),And(In(Var1 x2,Var2 F_0),True))),And(Not(In(Var1 x1,Var2 F_0)),True)),Not(In(Var1 x1,Var2 UP))))))))))))))))))),Or(Ex1(x1,And(LessEq(Int 0,Var1 x1),All1(x2,Impl(LessEq(Var1 x1,Var1 x2),In(Var1 x2,Var2 OBSTACLE))))),Ex1(x1,And(LessEq(Int 0,Var1 x1),Or(And(Or(Ex1(x2,And(Equal1(Var1 x2,Plus1(Var1 x1,1)),In(Var1 x2,Var2 B_1))),Equal1(Var1 x1,Max(Var2 $))),And(And(In(Var1 x1,Var2 OPEN),And(In(Var1 x1,Var2 F_0),True)),In(Var1 x1,Var2 B_1))),Or(And(Or(Ex1(x2,And(Equal1(Var1 x2,Plus1(Var1 x1,1)),In(Var1 x2,Var2 B_0))),Equal1(Var1 x1,Max(Var2 $))),And(And(In(Var1 x1,Var2 OPEN),And(Not(In(Var1 x1,Var2 F_0)),True)),In(Var1 x1,Var2 B_0))),Or(And(Or(Ex1(x2,And(Equal1(Var1 x2,Plus1(Var1 x1,1)),Not(In(Var1 x2,Var2 B_1)))),Equal1(Var1 x1,Max(Var2 $))),And(Or(Not(In(Var1 x1,Var2 OPEN)),Or(Not(In(Var1 x1,Var2 F_0)),False)),In(Var1 x1,Var2 B_1))),And(Or(Ex1(x2,And(Equal1(Var1 x2,Plus1(Var1 x1,1)),Not(In(Var1 x2,Var2 B_0)))),Equal1(Var1 x1,Max(Var2 $))),And(Or(Not(In(Var1 x1,Var2 OPEN)),Or(In(Var1 x1,Var2 F_0),False)),In(Var1 x1,Var2 B_0)))))))))),And(Not(In(Int 0,Var2 F_0)),True)),Or(In(Int 0,Var2 B_1),In(Int 0,Var2 B_0))))
+
+Assertions:
+True
+
+AllPos variable: $
+
+Default first-order restriction (p):
+In(Var1 p,Var2 $)
+
+Default second-order restriction (P):
+Sub(Var2 P,Var2 $)
+
+Restriction for #0 ($):
+Not(Ex1(p,And(Notin(Var1 p,Var2 $),In(Plus1(Var1 p,1),Var2 $))))
+
+Restriction for #1 (p):
+True
+
+Restriction for #2 (p): default
+
+Restriction for #3 (P): default
+
+Restriction for #4 (B_0): default
+
+Restriction for #5 (B_1): default
+
+Restriction for #6 (DOWN): default
+
+Restriction for #7 (F_0): default
+
+Restriction for #8 (OBSTACLE): default
+
+Restriction for #9 (OPEN): default
+
+Restriction for #10 (UP): default
+
+Restriction for #11 (x1): default
+
+Restriction for #12 (x2): default
+
+Restriction for #13 (x1): default
+
+Restriction for #14 (x2): default
+
+Restriction for #15 (x1): default
+
+Restriction for #16 (x2): default
+
+Restriction for #17 (x1): default
+
+Restriction for #18 (x2): default
+
+Restriction for #19 (x2): default
+
+Restriction for #20 (x2): default
+
+Restriction for #21 (x2): default
+
+Restriction for #22 (x2): default
+
+Restriction for #23 (x2): default
+
+Restriction for #24 (x2): default
+
+Restriction for #25 (x1): default
+
+Restriction for #26 (x2): default
+
+Restriction for #27 (x1): default
+
+Restriction for #28 (x2): default
+
+Restriction for #29 (x2): default
+
+Restriction for #30 (x2): default
+
+Restriction for #31 (x2): default
+
+CODE GENERATION
+DAG hits: 5660, nodes: 169
+Time: 00:00:00.00
+
+REDUCTION
+Projections removed: 2 (of 23)
+Products removed: 10 (of 115)
+Other nodes removed: 1 (of 28)
+DAG nodes after reduction: 153
+Time: 00:00:00.00
+
+Symbol table:
+id     offset  name                 type        statespaces
+---------------------------------------------------------------
+#0     @0      $                    var2        
+#1     @1      p                    var1        
+#2     @2      p                    var1        
+#3     @3      P                    var2        
+#4     @4      B_0                  var2        
+#5     @5      B_1                  var2        
+#6     @6      DOWN                 var2        
+#7     @7      F_0                  var2        
+#8     @8      OBSTACLE             var2        
+#9     @9      OPEN                 var2        
+#10    @10     UP                   var2        
+#11    @11     x1                   var1        
+#12    @12     x2                   var1        
+#13    @13     x1                   var1        
+#14    @14     x2                   var1        
+#15    @15     x1                   var1        
+#16    @16     x2                   var1        
+#17    @17     x1                   var1        
+#18    @18     x2                   var1        
+#19    @19     x2                   var1        
+#20    @20     x2                   var1        
+#21    @21     x2                   var1        
+#22    @22     x2                   var1        
+#23    @23     x2                   var1        
+#24    @24     x2                   var1        
+#25    @25     x1                   var1        
+#26    @26     x2                   var1        
+#27    @27     x1                   var1        
+#28    @28     x2                   var1        
+#29    @29     x2                   var1        
+#30    @30     x2                   var1        
+#31    @31     x2                   var1        
+#32    @32     <id32>               var1        
+#33    @33     <id33>               var1        
+#34    @34     <id34>               var1        
+#35    @35     <id35>               var1        
+#36    @36     <id36>               var1        
+#37    @37     <id37>               var1        
+#38    @38     <id38>               var1        
+#39    @39     <id39>               var1        
+#40    @40     <id40>               var1        
+#41    @41     <id41>               var1        
+#42    @42     <id42>               var1        
+#43    @43     <id43>               var1        
+#44    @44     <id44>               var1        
+#45    @45     <id45>               var1        
+#46    @46     <id46>               var1        
+#47    @47     <id47>               var1        
+#48    @48     <id48>               var1        
+#49    @49     <id49>               var1        
+#50    @50     <id50>               var1        
+#51    @51     <id51>               var1        
+#52    @52     <id52>               var1        
+#53    @53     <id53>               var1        
+#54    @54     <id54>               var1        
+#55    @55     <id55>               var1        
+#56    @56     <id56>               var1        
+#57    @57     <id57>               var1        
+#58    @58     <id58>               var1        
+#59    @59     <id59>               var1        
+#60    @60     <id60>               var1        
+#61    @61     <id61>               var1        
+#62    @62     <id62>               var1        
+#63    @63     <id63>               var1        
+#64    @64     <id64>               var1        
+#65    @65     <id65>               var1        
+#66    @66     <id66>               var1        
+#67    @67     <id67>               var1        
+#68    @68     <id68>               var1        
+#69    @69     <id69>               var1        
+#70    @70     <id70>               var1        
+#71    @71     <id71>               var1        
+#72    @72     <id72>               var1        
+#73    @73     <id73>               var1        
+#74    @74     <id74>               var1        
+#75    @75     <id75>               var1        
+#76    @76     <id76>               var1        
+#77    @77     <id77>               var1        
+#78    @78     <id78>               var1        
+#79    @79     <id79>               var1        
+#80    @80     <id80>               var1        
+#81    @81     <id81>               var1        
+#82    @82     <id82>               var1        
+#83    @83     <id83>               var1        
+#84    @84     <id84>               var1        
+#85    @85     <id85>               var1        
+#86    @86     <id86>               var1        
+#87    @87     <id87>               var1        
+#88    @88     <id88>               var1        
+#89    @89     <id89>               var1        
+#90    @90     <id90>               var1        
+#91    @91     <id91>               var1        
+#92    @92     <id92>               var1        
+#93    @93     <id93>               var1        
+#94    @94     <id94>               var1        
+#95    @95     <id95>               var1        
+#96    @96     <id96>               var1        
+#97    @97     <id97>               var1        
+#98    @98     <id98>               var1        
+#99    @99     <id99>               var1        
+#100   @100    <id100>              var1        
+#101   @101    <id101>              var1        
+#102   @102    <id102>              var1        
+#103   @103    <id103>              var1        
+#104   @104    <id104>              var1        
+#105   @105    <id105>              var1        
+#106   @106    <id106>              var1        
+#107   @107    <id107>              var1        
+#108   @108    <id108>              var1        
+#109   @109    <id109>              var1        
+#110   @110    <id110>              var1        
+#111   @111    <id111>              var1        
+#112   @112    <id112>              var1        
+#113   @113    <id113>              var1        
+#114   @114    <id114>              var1        
+#115   @115    <id115>              var1        
+#116   @116    <id116>              var1        
+#117   @117    <id117>              var1        
+#118   @118    <id118>              var1        
+#119   @119    <id119>              var1        
+#120   @120    <id120>              var1        
+#121   @121    <id121>              var1        
+#122   @122    <id122>              var1        
+#123   @123    <id123>              var1        
+#124   @124    <id124>              var1        
+#125   @125    <id125>              var1        
+#126   @126    <id126>              var1        
+#127   @127    <id127>              var1        
+#128   @128    <id128>              var1        
+#129   @129    <id129>              var1        
+#130   @130    <id130>              var1        
+#131   @131    <id131>              var1        
+#132   @132    <id132>              var1        
+#133   @133    <id133>              var1        
+#134   @134    <id134>              var1        
+#135   @135    <id135>              var1        
+#136   @136    <id136>              var1        
+#137   @137    <id137>              var1        
+#138   @138    <id138>              var1        
+#139   @139    <id139>              var1        
+#140   @140    <id140>              var1        
+#141   @141    <id141>              var1        
+#142   @142    <id142>              var1        
+#143   @143    <id143>              var1        
+#144   @144    <id144>              var1        
+#145   @145    <id145>              var1        
+#146   @146    <id146>              var1        
+#147   @147    <id147>              var1        
+#148   @148    <id148>              var1        
+#149   @149    <id149>              var1        
+#150   @150    <id150>              var1        
+#151   @151    <id151>              var1        
+#152   @152    <id152>              var1        
+#153   @153    <id153>              var1        
+#154   @154    <id154>              var1        
+#155   @155    <id155>              var1        
+#156   @156    <id156>              var1        
+#157   @157    <id157>              var1        
+#158   @158    <id158>              var1        
+#159   @159    <id159>              var1        
+#160   @160    <id160>              var1        
+#161   @161    <id161>              var1        
+#162   @162    <id162>              var1        
+#163   @163    <id163>              var1        
+#164   @164    <id164>              var1        
+#165   @165    <id165>              var1        
+#166   @166    <id166>              var1        
+#167   @167    <id167>              var1        
+#168   @168    <id168>              var1        
+#169   @169    <id169>              var1        
+#170   @170    <id170>              var1        
+#171   @171    <id171>              var1        
+#172   @172    <id172>              var1        
+#173   @173    <id173>              var1        
+#174   @174    <id174>              var1        
+#175   @175    <id175>              var1        
+#176   @176    <id176>              var1        
+#177   @177    <id177>              var1        
+#178   @178    <id178>              var1        
+#179   @179    <id179>              var1        
+#180   @180    <id180>              var1        
+#181   @181    <id181>              var1        
+#182   @182    <id182>              var1        
+#183   @183    <id183>              var1        
+#184   @184    <id184>              var1        
+#185   @185    <id185>              var1        
+#186   @186    <id186>              var1        
+#187   @187    <id187>              var1        
+#188   @188    <id188>              var1        
+#189   @189    <id189>              var1        
+#190   @190    <id190>              var1        
+#191   @191    <id191>              var1        
+#192   @192    <id192>              var1        
+#193   @193    <id193>              var1        
+#194   @194    <id194>              var1        
+#195   @195    <id195>              var1        
+#196   @196    <id196>              var1        
+#197   @197    <id197>              var1        
+#198   @198    <id198>              var1        
+#199   @199    <id199>              var1        
+#200   @200    <id200>              var1        
+#201   @201    <id201>              var1        
+#202   @202    <id202>              var1        
+#203   @203    <id203>              var1        
+#204   @204    <id204>              var1        
+#205   @205    <id205>              var1        
+#206   @206    <id206>              var1        
+#207   @207    <id207>              var1        
+#208   @208    <id208>              var1        
+#209   @209    <id209>              var1        
+#210   @210    <id210>              var1        
+#211   @211    <id211>              var1        
+#212   @212    <id212>              var1        
+#213   @213    <id213>              var1        
+#214   @214    <id214>              var1        
+#215   @215    <id215>              var1        
+#216   @216    <id216>              var1        
+#217   @217    <id217>              var1        
+#218   @218    <id218>              var1        
+#219   @219    <id219>              var1        
+#220   @220    <id220>              var1        
+#221   @221    <id221>              var1        
+#222   @222    <id222>              var1        
+#223   @223    <id223>              var1        
+#224   @224    <id224>              var1        
+#225   @225    <id225>              var1        
+#226   @226    <id226>              var1        
+#227   @227    <id227>              var1        
+#228   @228    <id228>              var1        
+#229   @229    <id229>              var1        
+#230   @230    <id230>              var1        
+#231   @231    <id231>              var1        
+#232   @232    <id232>              var1        
+#233   @233    <id233>              var1        
+#234   @234    <id234>              var1        
+#235   @235    <id235>              var1        
+#236   @236    <id236>              var1        
+#237   @237    <id237>              var1        
+#238   @238    <id238>              var1        
+#239   @239    <id239>              var1        
+#240   @240    <id240>              var1        
+#241   @241    <id241>              var1        
+#242   @242    <id242>              var1        
+#243   @243    <id243>              var1        
+#244   @244    <id244>              var1        
+#245   @245    <id245>              var1        
+#246   @246    <id246>              var1        
+#247   @247    <id247>              var1        
+#248   @248    <id248>              var1        
+#249   @249    <id249>              var1        
+#250   @250    <id250>              var1        
+#251   @251    <id251>              var1        
+#252   @252    <id252>              var1        
+#253   @253    <id253>              var1        
+#254   @254    <id254>              var1        
+#255   @255    <id255>              var1        
+#256   @256    <id256>              var1        
+#257   @257    <id257>              var1        
+#258   @258    <id258>              var1        
+#259   @259    <id259>              var1        
+#260   @260    <id260>              var1        
+#261   @261    <id261>              var1        
+#262   @262    <id262>              var1        
+#263   @263    <id263>              var1        
+#264   @264    <id264>              var1        
+#265   @265    <id265>              var1        
+#266   @266    <id266>              var1        
+#267   @267    <id267>              var1        
+#268   @268    <id268>              var1        
+#269   @269    <id269>              var1        
+#270   @270    <id270>              var1        
+#271   @271    <id271>              var1        
+#272   @272    <id272>              var1        
+#273   @273    <id273>              var1        
+#274   @274    <id274>              var1        
+#275   @275    <id275>              var1        
+#276   @276    <id276>              var1        
+#277   @277    <id277>              var1        
+#278   @278    <id278>              var1        
+#279   @279    <id279>              var1        
+#280   @280    <id280>              var1        
+#281   @281    <id281>              var1        
+#282   @282    <id282>              var1        
+#283   @283    <id283>              var1        
+#284   @284    <id284>              var1        
+#285   @285    <id285>              var1        
+#286   @286    <id286>              var1        
+#287   @287    <id287>              var1        
+#288   @288    <id288>              var1        
+#289   @289    <id289>              var1        
+#290   @290    <id290>              var1        
+#291   @291    <id291>              var1        
+#292   @292    <id292>              var1        
+#293   @293    <id293>              var1        
+#294   @294    <id294>              var1        
+#295   @295    <id295>              var1        
+#296   @296    <id296>              var1        
+#297   @297    <id297>              var1        
+#298   @298    <id298>              var1        
+#299   @299    <id299>              var1        
+#300   @300    <id300>              var1        
+#301   @301    <id301>              var1        
+#302   @302    <id302>              var1        
+#303   @303    <id303>              var1        
+#304   @304    <id304>              var1        
+#305   @305    <id305>              var1        
+#306   @306    <id306>              var1        
+#307   @307    <id307>              var1        
+#308   @308    <id308>              var1        
+#309   @309    <id309>              var1        
+#310   @310    <id310>              var1        
+#311   @311    <id311>              var1        
+#312   @312    <id312>              var1        
+#313   @313    <id313>              var1        
+#314   @314    <id314>              var1        
+#315   @315    <id315>              var1        
+#316   @316    <id316>              var1        
+#317   @317    <id317>              var1        
+#318   @318    <id318>              var1        
+#319   @319    <id319>              var1        
+#320   @320    <id320>              var1        
+#321   @321    <id321>              var1        
+#322   @322    <id322>              var1        
+#323   @323    <id323>              var1        
+#324   @324    <id324>              var1        
+#325   @325    <id325>              var1        
+#326   @326    <id326>              var1        
+#327   @327    <id327>              var1        
+#328   @328    <id328>              var1        
+#329   @329    <id329>              var1        
+#330   @330    <id330>              var1        
+#331   @331    <id331>              var1        
+#332   @332    <id332>              var1        
+#333   @333    <id333>              var1        
+#334   @334    <id334>              var1        
+#335   @335    <id335>              var1        
+#336   @336    <id336>              var1        
+#337   @337    <id337>              var1        
+#338   @338    <id338>              var1        
+#339   @339    <id339>              var1        
+#340   @340    <id340>              var1        
+#341   @341    <id341>              var1        
+#342   @342    <id342>              var1        
+#343   @343    <id343>              var1        
+#344   @344    <id344>              var1        
+#345   @345    <id345>              var1        
+#346   @346    <id346>              var1        
+#347   @347    <id347>              var1        
+#348   @348    <id348>              var1        
+#349   @349    <id349>              var1        
+#350   @350    <id350>              var1        
+#351   @351    <id351>              var1        
+#352   @352    <id352>              var1        
+#353   @353    <id353>              var1        
+#354   @354    <id354>              var1        
+#355   @355    <id355>              var1        
+#356   @356    <id356>              var1        
+#357   @357    <id357>              var1        
+#358   @358    <id358>              var1        
+#359   @359    <id359>              var1        
+#360   @360    <id360>              var1        
+#361   @361    <id361>              var1        
+#362   @362    <id362>              var1        
+#363   @363    <id363>              var1        
+#364   @364    <id364>              var1        
+#365   @365    <id365>              var1        
+#366   @366    <id366>              var1        
+#367   @367    <id367>              var1        
+#368   @368    <id368>              var1        
+#369   @369    <id369>              var1        
+#370   @370    <id370>              var1        
+#371   @371    <id371>              var1        
+#372   @372    <id372>              var1        
+#373   @373    <id373>              var1        
+#374   @374    <id374>              var1        
+#375   @375    <id375>              var1        
+#376   @376    <id376>              var1        
+#377   @377    <id377>              var1        
+#378   @378    <id378>              var1        
+#379   @379    <id379>              var1        
+#380   @380    <id380>              var1        
+#381   @381    <id381>              var1        
+#382   @382    <id382>              var1        
+#383   @383    <id383>              var1        
+#384   @384    <id384>              var1        
+#385   @385    <id385>              var1        
+#386   @386    <id386>              var1        
+#387   @387    <id387>              var1        
+#388   @388    <id388>              var1        
+#389   @389    <id389>              var1        
+#390   @390    <id390>              var1        
+#391   @391    <id391>              var1        
+#392   @392    <id392>              var1        
+#393   @393    <id393>              var1        
+#394   @394    <id394>              var1        
+#395   @395    <id395>              var1        
+#396   @396    <id396>              var1        
+#397   @397    <id397>              var1        
+#398   @398    <id398>              var1        
+#399   @399    <id399>              var1        
+#400   @400    <id400>              var1        
+#401   @401    <id401>              var1        
+#402   @402    <id402>              var1        
+#403   @403    <id403>              var1        
+#404   @404    <id404>              var1        
+#405   @405    <id405>              var1        
+#406   @406    <id406>              var1        
+#407   @407    <id407>              var1        
+#408   @408    <id408>              var1        
+#409   @409    <id409>              var1        
+#410   @410    <id410>              var1        
+#411   @411    <id411>              var1        
+#412   @412    <id412>              var1        
+#413   @413    <id413>              var1        
+#414   @414    <id414>              var1        
+#415   @415    <id415>              var1        
+#416   @416    <id416>              var1        
+#417   @417    <id417>              var1        
+#418   @418    <id418>              var1        
+#419   @419    <id419>              var1        
+#420   @420    <id420>              var1        
+#421   @421    <id421>              var1        
+#422   @422    <id422>              var1        
+#423   @423    <id423>              var1        
+#424   @424    <id424>              var1        
+#425   @425    <id425>              var1        
+#426   @426    <id426>              var1        
+#427   @427    <id427>              var1        
+#428   @428    <id428>              var1        
+#429   @429    <id429>              var1        
+#430   @430    <id430>              var1        
+#431   @431    <id431>              var1        
+#432   @432    <id432>              var1        
+#433   @433    <id433>              var1        
+#434   @434    <id434>              var1        
+#435   @435    <id435>              var1        
+#436   @436    <id436>              var1        
+#437   @437    <id437>              var1        
+#438   @438    <id438>              var1        
+#439   @439    <id439>              var1        
+#440   @440    <id440>              var1        
+#441   @441    <id441>              var1        
+#442   @442    <id442>              var1        
+#443   @443    <id443>              var1        
+#444   @444    <id444>              var1        
+#445   @445    <id445>              var1        
+#446   @446    <id446>              var1        
+#447   @447    <id447>              var1        
+#448   @448    <id448>              var1        
+#449   @449    <id449>              var1        
+#450   @450    <id450>              var1        
+#451   @451    <id451>              var1        
+#452   @452    <id452>              var1        
+#453   @453    <id453>              var1        
+#454   @454    <id454>              var1        
+#455   @455    <id455>              var1        
+#456   @456    <id456>              var1        
+#457   @457    <id457>              var1        
+#458   @458    <id458>              var1        
+#459   @459    <id459>              var1        
+#460   @460    <id460>              var1        
+
+Main formula:
+And(Restrict(And(And(And(And(And(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))[#7->#4],And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))[#7->#5]),And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))[#7->#6]),And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))[#7->#8]),And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))[#7->#9]),And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))[#7->#10])),Or(Or(Project(#436,And(Const(#33,0)[#33->#436],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])[#36->#436]))[#7->#5],Project(#436,And(Const(#33,0)[#33->#436],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])[#36->#436]))[#7->#4]),And(Negate(Project(#436,And(Const(#33,0)[#33->#436],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])[#36->#436]))),Or(And(And(And(Negate(Project(#95,Negate(Impl(Project(#33,And(Const(#33,0),And(LessEq1(#33,#32),Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32)))))))[#32->#95],And(And(And(And(And(And(And(And(And(And(And(Or(And(Project(#293,And(And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95],EqPlus1(#35,#34,1)[#34->#95,#35->#160])[#160->#155],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#155])[#155->#293],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#293])),Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#36->#95]),Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#10,#36->#95]),Or(Or(Or(Project(#274,And(And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95],EqPlus1(#35,#34,1)[#34->#95,#35->#160])[#160->#155],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#155])[#155->#274],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#36->#274])),And(And(EqMax(#247,#0),Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))))[#247->#95],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95])),And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#95]),And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#10,#36->#95])),And(Or(And(Project(#252,And(And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95],EqPlus1(#35,#34,1)[#34->#95,#35->#160])[#160->#155],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#155])[#155->#252],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#36->#252])),And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#95]),Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#6,#36->#95]),Or(Or(Or(And(And(EqMax(#247,#0),Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))))[#247->#95],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95]),Project(#233,And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#233],And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95],EqPlus1(#35,#34,1)[#34->#95,#35->#160])[#160->#155],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#155])[#155->#233]))),Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#36->#95]),And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#6,#36->#95]))),Or(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#8,#36->#95],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#9,#36->#95])[#8->#6,#9->#10]),Or(Or(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#8,#36->#95],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#9,#36->#95]),Project(#203,And(And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95],EqPlus1(#35,#34,1)[#34->#95,#35->#160])[#160->#155],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#155])[#155->#203],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#9,#36->#203])))),Or(And(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#6,#36->#95],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#10,#36->#95]),Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#9,#36->#95])),Or(Project(#155,And(Or(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#36->#155],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#155]),And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95],EqPlus1(#35,#34,1)[#34->#95,#35->#160])[#160->#155],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#155]))),And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#95])),Or(Project(#155,And(Or(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#36->#155],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#155]),And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95],EqPlus1(#35,#34,1)[#34->#95,#35->#160])[#160->#155],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#155]))),Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#36->#95])),Or(Or(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#95],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#9,#36->#95]),And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#4,#36->#95])[#4->#5,#9->#10]),Or(Or(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#36->#95],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#6,#36->#95]),Or(And(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#5,#36->#95],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#4,#36->#95]),And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#4,#36->#95]))),Or(Or(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#95],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#9,#36->#95]),And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#4,#36->#95])),Or(Or(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#8,#36->#95],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#9,#36->#95])[#8->#7],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#5,#36->#95])))))),Negate(Project(#74,Negate(Impl(Project(#33,And(Const(#33,0),And(LessEq1(#33,#32),Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32)))))))[#32->#74],Project(#78,And(Or(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#4,#36->#78],And(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#36->#78],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#9,#36->#78])),And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32)))),And(LessEq1(#32,#36),Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36]))[#32->#74,#36->#78]))))))),Negate(Project(#53,Negate(Impl(Project(#33,And(Const(#33,0),And(LessEq1(#33,#32),Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32)))))))[#32->#53],Project(#57,And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32)))),And(LessEq1(#32,#36),Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36]))[#32->#53,#36->#57],Or(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#5,#36->#57],And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#9,#36->#57],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#57]))))))))),Negate(Project(#32,Negate(Impl(Project(#33,And(Const(#33,0),And(LessEq1(#33,#32),Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))))),Project(#36,And(Or(Or(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#5],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#4]),Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))),And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32)))),And(LessEq1(#32,#36),Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36]))))))))),Or(Project(#324,And(Or(And(And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#5,#36->#324],And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#9,#36->#57],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#57])[#57->#324]),Or(And(And(EqMax(#247,#0),Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))))[#247->#95],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95])[#95->#324],Project(#203,And(And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95],EqPlus1(#35,#34,1)[#34->#95,#35->#160])[#160->#155],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#155])[#155->#203],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#9,#36->#203]))[#9->#5,#95->#324])),Or(And(And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#4,#36->#324],And(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#36->#78],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#9,#36->#78])[#78->#324]),Or(And(And(EqMax(#247,#0),Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))))[#247->#95],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95])[#95->#324],Project(#203,And(And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95],EqPlus1(#35,#34,1)[#34->#95,#35->#160])[#160->#155],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#155])[#155->#203],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#9,#36->#203]))[#9->#5,#95->#324])[#5->#4]),Or(And(And(Or(Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#8,#36->#95],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#9,#36->#95])[#8->#7,#95->#324],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#5,#36->#324]),Or(Project(#382,And(And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95],EqPlus1(#35,#34,1)[#34->#95,#35->#160])[#160->#155],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#155])[#95->#324,#155->#382],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#5,#36->#382])),And(And(EqMax(#247,#0),Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))))[#247->#95],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95])[#95->#324])),And(And(Or(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#36->#95],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#9,#36->#95])[#95->#324],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#4,#36->#324]),Or(Project(#382,And(And(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95],EqPlus1(#35,#34,1)[#34->#95,#35->#160])[#160->#155],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#155])[#95->#324,#155->#382],Negate(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36])))[#7->#5,#36->#382])),And(And(EqMax(#247,#0),Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))))[#247->#95],Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#95])[#95->#324])[#5->#4])))),Project(#33,And(Const(#33,0),And(LessEq1(#33,#32),Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32)))))))[#32->#324])),Project(#311,And(Negate(Project(#315,Negate(Impl(And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32)))),And(LessEq1(#32,#36),Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36]))[#32->#311,#36->#315],And(Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32))))[#32->#36],And(Restrict(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),Sub2(#7,#0))),In(#34,#0)[#0->#7,#34->#36]))[#7->#8,#36->#315])))),Project(#33,And(Const(#33,0),And(LessEq1(#33,#32),Restrict(And(And(Restrict(Negate(Project(#34,And(Negate(And(In(#34,#0),Restrict(FirstOrder(#32))[#32->#34])),Project(#35,And(And(EqPlus1(#35,#34,1),Restrict(FirstOrder(#32))[#32->#34]),In(#34,#0)[#34->#35])))))),In(#34,#0)[#34->#32]),Restrict(FirstOrder(#32)))))))[#32->#311])))))))
+
+
+AUTOMATON CONSTRUCTION
+1% completed (2 automata in memory, 0MB memory used)
+Copying (4,6)
+Restrict
+  Minimizing (3,3) -> (3,3)
+2% completed (4 automata in memory, 0MB memory used)
+Copying (3,3)
+Replacing indices
+Product &
+  (4,6)x(3,3) -> (4,6)
+  Minimizing (4,6) -> (4,6)
+3% completed (4 automata in memory, 0MB memory used)
+Negation
+4% completed (5 automata in memory, 0MB memory used)
+Copying (5,8)
+Copying (3,3)
+Replacing indices
+Product &
+  (5,8)x(3,3) -> (6,10)
+  Minimizing (6,10) -> (6,10)
+5% completed (6 automata in memory, 0MB memory used)
+Copying (4,6)
+Replacing indices
+Product &
+  (6,10)x(4,6) -> (10,24)
+  Minimizing (10,24) -> (6,11)
+Right-quotient
+Projecting #35
+  (6,11) -> (6,7)
+  Minimizing (6,7) -> (5,6)
+6% completed (6 automata in memory, 0MB memory used)
+Product &
+  (4,6)x(5,6) -> (8,12)
+  Minimizing (8,12) -> (5,8)
+7% completed (5 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #34
+  (5,8) -> (7,10)
+  Minimizing (7,10) -> (4,5)
+Negation
+8% completed (5 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (4,5) -> (4,5)
+9% completed (5 automata in memory, 0MB memory used)
+Copying (4,5)
+Product &
+  (4,5)x(3,4) -> (6,11)
+  Minimizing (6,11) -> (5,8)
+Copying (5,8)
+Replacing indices
+Copying (5,8)
+Replacing indices
+Product &
+  (5,8)x(5,8) -> (7,16)
+  Minimizing (7,16) -> (5,9)
+10% completed (6 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,9)x(5,8) -> (7,18)
+  Minimizing (7,18) -> (5,10)
+11% completed (6 automata in memory, 0MB memory used)
+Copying (5,8)
+Product &
+  (5,10)x(5,8) -> (7,20)
+  Minimizing (7,20) -> (5,11)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,11)x(5,8) -> (7,22)
+  Minimizing (7,22) -> (5,12)
+12% completed (6 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,12)x(5,8) -> (7,24)
+  Minimizing (7,24) -> (5,13)
+13% completed (6 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,13)x(5,8) -> (7,26)
+  Minimizing (7,26) -> (5,14)
+Restrict
+  Minimizing (5,14) -> (4,12)
+14% completed (6 automata in memory, 0MB memory used)
+15% completed (7 automata in memory, 0MB memory used)
+Copying (4,4)
+Replacing indices
+Restrict
+  Minimizing (5,8) -> (4,6)
+Copying (4,6)
+Replacing indices
+Product &
+  (4,6)x(4,6) -> (10,28)
+  Minimizing (10,28) -> (7,16)
+16% completed (8 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 21
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+                      ^
+  (4,4)x(7,16) -> (13,35)
+  Minimizing (13,35) -> (7,15)
+Right-quotient
+Projecting #436 'full-observability/mso/lift_gr1.mona' line 7 column 2468
+  x1 in B_0))))))))))))))))))) & (((~((0 in F_0))) & ((true)))))) | ((((0 in B
+                                         ^
+  (7,15) -> (7,14)
+  Minimizing (7,14) -> (7,14)
+17% completed (8 automata in memory, 0MB memory used)
+Copying (7,14)
+Replacing indices
+Copying (7,14)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 2511
+  _0))) & ((true)))))) | ((((0 in B_1)) | ((0 in B_0)))));
+                                         ^
+  (7,14)x(7,14) -> (15,41)
+  Minimizing (15,41) -> (7,17)
+18% completed (9 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 2463
+   & ((x1 in B_0))))))))))))))))))) & (((~((0 in F_0))) & ((true)))))) | ((((0
+                                         ^
+Replacing indices
+Copying (4,5)
+Product &
+  (4,5)x(4,6) -> (9,19)
+  Minimizing (9,19) -> (6,10)
+19% completed (9 automata in memory, 0MB memory used)
+Product &
+  (6,10)x(3,3) -> (8,17)
+  Minimizing (8,17) -> (7,13)
+20% completed (8 automata in memory, 0MB memory used)
+Restrict
+  Minimizing (7,13) -> (5,8)
+Copying (5,8)
+Replacing indices
+Product &
+  (5,8)x(7,16) -> (9,22)
+  Minimizing (9,22) -> (7,16)
+21% completed (8 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Replacing indices
+Copying (5,8)
+Replacing indices
+Product &
+  (5,8)x(5,8) -> (12,31)
+  Minimizing (12,31) -> (9,21)
+22% completed (9 automata in memory, 0MB memory used)
+Replacing indices
+Copying (5,8)
+Replacing indices
+Product &
+  (9,21)x(5,8) -> (13,31)
+  Minimizing (13,31) -> (10,23)
+Copying (10,23)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1670
+  alse)))))))) & ((((((ex1 x2: (x2=x1+1 & ((((x2 in F_0)) & ((true))))))) & ((
+                                         ^
+  (10,23)x(7,16) -> (19,57)
+  Minimizing (19,57) -> (10,26)
+23% completed (9 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #293 'full-observability/mso/lift_gr1.mona' line 7 column 1652
+  (x1 in F_0)) | ((false)))))))) & ((((((ex1 x2: (x2=x1+1 & ((((x2 in F_0)) & 
+                                         ^
+  (10,26) -> (9,18)
+  Minimizing (9,18) -> (8,17)
+24% completed (9 automata in memory, 0MB memory used)
+Copying (7,16)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 60
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+                                                             ^
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1704
+  1+1 & ((((x2 in F_0)) & ((true))))))) & (((~((x1 in F_0))) & ((true)))))) | 
+                                         ^
+  (8,17)x(7,16) -> (13,33)
+  Minimizing (13,33) -> (8,19)
+25% completed (10 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1740
+  ) & (((~((x1 in F_0))) & ((true)))))) | (~((x1 in UP))))))))))))))))))))))))
+                                         ^
+  (8,19)x(7,16) -> (17,51)
+  Minimizing (17,51) -> (8,24)
+26% completed (10 automata in memory, 0MB memory used)
+Copying (10,23)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1555
+  (((x1 in UP)) | (((((ex1 x2: (x2=x1+1 & (((~((x2 in F_0))) | ((false)))))) |
+                                         ^
+  (10,23)x(7,16) -> (19,57)
+  Minimizing (19,57) -> (10,26)
+Right-quotient
+Projecting #274 'full-observability/mso/lift_gr1.mona' line 7 column 1537
+   DOWN))))))) & ((((((x1 in UP)) | (((((ex1 x2: (x2=x1+1 & (((~((x2 in F_0)))
+                                         ^
+  (10,26) -> (9,18)
+  Minimizing (9,18) -> (8,17)
+27% completed (11 automata in memory, 0MB memory used)
+28% completed (12 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1344
+  (((x2 in F_0)) | ((false)))))) | (x1 = max $))) | (((~((x1 in F_0))) | ((fal
+                                         ^
+  (5,8)x(4,5) -> (11,23)
+  Minimizing (11,23) -> (8,15)
+Replacing indices
+Copying (5,8)
+Replacing indices
+Product &
+  (8,15)x(5,8) -> (10,20)
+  Minimizing (10,20) -> (7,12)
+29% completed (11 automata in memory, 0MB memory used)
+Copying (7,12)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1592
+   & (((~((x2 in F_0))) | ((false)))))) | (x1 = max $))) | ((((x1 in F_0)) | (
+                                         ^
+  (8,17)x(7,12) -> (11,25)
+  Minimizing (11,25) -> (8,17)
+30% completed (11 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1609
+  0))) | ((false)))))) | (x1 = max $))) | ((((x1 in F_0)) | ((false)))))))) & 
+                                         ^
+  (8,17)x(7,16) -> (13,33)
+  Minimizing (13,33) -> (8,19)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1531
+  (x1 in DOWN))))))) & ((((((x1 in UP)) | (((((ex1 x2: (x2=x1+1 & (((~((x2 in 
+                                         ^
+  (8,19)x(7,16) -> (17,51)
+  Minimizing (17,51) -> (8,22)
+31% completed (11 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1645
+  ) | ((((x1 in F_0)) | ((false)))))))) & ((((((ex1 x2: (x2=x1+1 & ((((x2 in F
+                                         ^
+  (8,24)x(8,22) -> (11,35)
+  Minimizing (11,35) -> (9,28)
+32% completed (10 automata in memory, 0MB memory used)
+Copying (10,23)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1418
+  alse)))))))) & ((((((ex1 x2: (x2=x1+1 & (((~((x2 in F_0))) & ((true))))))) &
+                                         ^
+  (10,23)x(7,16) -> (19,57)
+  Minimizing (19,57) -> (10,26)
+Right-quotient
+Projecting #252 'full-observability/mso/lift_gr1.mona' line 7 column 1400
+  x1 in F_0))) | ((false)))))))) & ((((((ex1 x2: (x2=x1+1 & (((~((x2 in F_0)))
+                                         ^
+  (10,26) -> (9,18)
+  Minimizing (9,18) -> (8,17)
+33% completed (11 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1455
+   & (((~((x2 in F_0))) & ((true))))))) & ((((x1 in F_0)) & ((true)))))) | (~(
+                                         ^
+  (8,17)x(7,16) -> (13,33)
+  Minimizing (13,33) -> (8,19)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1488
+  )))) & ((((x1 in F_0)) & ((true)))))) | (~((x1 in DOWN))))))) & ((((((x1 in 
+                                         ^
+  (8,19)x(7,16) -> (17,51)
+  Minimizing (17,51) -> (8,23)
+34% completed (11 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (10,23)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1303
+  (x1 in DOWN)) | (((((ex1 x2: (x2=x1+1 & ((((x2 in F_0)) | ((false)))))) | (x
+                                         ^
+  (7,16)x(10,23) -> (19,57)
+  Minimizing (19,57) -> (10,26)
+35% completed (12 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #233 'full-observability/mso/lift_gr1.mona' line 7 column 1285
+   UP))))) & ((((((((x1 in DOWN)) | (((((ex1 x2: (x2=x1+1 & ((((x2 in F_0)) | 
+                                         ^
+  (10,26) -> (9,18)
+  Minimizing (9,18) -> (8,17)
+Copying (7,12)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1337
+  1+1 & ((((x2 in F_0)) | ((false)))))) | (x1 = max $))) | (((~((x1 in F_0))) 
+                                         ^
+  (7,12)x(8,17) -> (11,25)
+  Minimizing (11,25) -> (8,17)
+36% completed (12 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1354
+  _0)) | ((false)))))) | (x1 = max $))) | (((~((x1 in F_0))) | ((false))))))))
+                                         ^
+  (8,17)x(7,16) -> (13,33)
+  Minimizing (13,33) -> (8,19)
+37% completed (12 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1279
+  (x1 in UP))))) & ((((((((x1 in DOWN)) | (((((ex1 x2: (x2=x1+1 & ((((x2 in F_
+                                         ^
+  (8,19)x(7,16) -> (17,51)
+  Minimizing (17,51) -> (8,22)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1393
+   (((~((x1 in F_0))) | ((false)))))))) & ((((((ex1 x2: (x2=x1+1 & (((~((x2 in
+                                         ^
+  (8,23)x(8,22) -> (11,35)
+  Minimizing (11,35) -> (9,28)
+38% completed (11 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1512
+   ((true)))))) | (~((x1 in DOWN))))))) & ((((((x1 in UP)) | (((((ex1 x2: (x2=
+                                         ^
+  (9,28)x(9,28) -> (23,83)
+  Minimizing (23,83) -> (11,38)
+39% completed (10 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1188
+  n OPEN))))) | (((~((x1 in OBSTACLE))) | (~((x1 in OPEN))))))) & (((((~((x1 i
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+Copying (7,19)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1256
+  (~((x1 in DOWN))) | (~((x1 in UP))))) & ((((((((x1 in DOWN)) | (((((ex1 x2: 
+                                         ^
+  (11,38)x(7,19) -> (15,54)
+  Minimizing (15,54) -> (11,38)
+40% completed (11 automata in memory, 0MB memory used)
+Copying (7,19)
+Copying (7,16)
+Replacing indices
+Copying (10,23)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1142
+  in OPEN))))) & ((((((ex1 x2: (x2=x1+1 & ((x2 in OPEN))))) | (((~((x1 in OBST
+                                         ^
+  (10,23)x(7,16) -> (19,57)
+  Minimizing (19,57) -> (10,26)
+41% completed (13 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #203 'full-observability/mso/lift_gr1.mona' line 7 column 1124
+   UP))))) | (~((x1 in OPEN))))) & ((((((ex1 x2: (x2=x1+1 & ((x2 in OPEN))))) 
+                                         ^
+  (10,26) -> (9,18)
+  Minimizing (9,18) -> (8,17)
+Copying (8,17)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1162
+  (ex1 x2: (x2=x1+1 & ((x2 in OPEN))))) | (((~((x1 in OBSTACLE))) | (~((x1 in 
+                                         ^
+  (7,19)x(8,17) -> (15,44)
+  Minimizing (15,44) -> (8,22)
+42% completed (13 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1212
+  n OBSTACLE))) | (~((x1 in OPEN))))))) & (((((~((x1 in DOWN))) | (~((x1 in UP
+                                         ^
+  (11,38)x(8,22) -> (24,105)
+  Minimizing (24,105) -> (13,60)
+43% completed (12 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1075
+  false)))))) & (((((((~((x1 in DOWN))) & (~((x1 in UP))))) | (~((x1 in OPEN))
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1095
+  (~((x1 in DOWN))) & (~((x1 in UP))))) | (~((x1 in OPEN))))) & ((((((ex1 x2: 
+                                         ^
+  (7,19)x(7,16) -> (15,53)
+  Minimizing (15,53) -> (7,23)
+44% completed (13 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1117
+  ((x1 in UP))))) | (~((x1 in OPEN))))) & ((((((ex1 x2: (x2=x1+1 & ((x2 in OPE
+                                         ^
+  (13,60)x(7,23) -> (23,112)
+  Minimizing (23,112) -> (13,60)
+45% completed (12 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 845
+  1 & (((((~((x2 in F_0))) & ((true)))) | ((((x2 in F_0)) & ((true))))))))) | 
+                                         ^
+  (7,16)x(7,16) -> (7,17)
+  Minimizing (7,17) -> (5,9)
+Copying (10,23)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 809
+  alse)))))))) & ((((((ex1 x2: (x2=x1+1 & (((((~((x2 in F_0))) & ((true)))) | 
+                                         ^
+  (5,9)x(10,23) -> (13,33)
+  Minimizing (13,33) -> (10,25)
+46% completed (14 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #155 'full-observability/mso/lift_gr1.mona' line 7 column 791
+  (x1 in F_0)) | ((false)))))))) & ((((((ex1 x2: (x2=x1+1 & (((((~((x2 in F_0)
+                                         ^
+  (10,25) -> (8,15)
+  Minimizing (8,15) -> (7,14)
+47% completed (14 automata in memory, 0MB memory used)
+Copying (7,14)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1015
+   (((~((x2 in F_0))) & ((true))))))))) | ((((x1 in F_0)) | ((false)))))) & ((
+                                         ^
+  (7,14)x(7,16) -> (11,27)
+  Minimizing (11,27) -> (7,16)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1049
+  ))) | ((((x1 in F_0)) | ((false)))))) & (((((((~((x1 in DOWN))) & (~((x1 in 
+                                         ^
+  (13,60)x(7,16) -> (18,84)
+  Minimizing (18,84) -> (12,56)
+48% completed (13 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 881
+  ) | ((((x2 in F_0)) & ((true))))))))) | (((~((x1 in F_0))) | ((false)))))) &
+                                         ^
+  (7,14)x(7,16) -> (11,27)
+  Minimizing (11,27) -> (7,16)
+49% completed (13 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 918
+   | (((~((x1 in F_0))) | ((false)))))) & ((((((ex1 x2: (x2=x1+1 & ((((((x2 in
+                                         ^
+  (12,56)x(7,16) -> (18,84)
+  Minimizing (18,84) -> (11,53)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 545
+  ((((x1 in B_0)) | (((~((x1 in OPEN))) | ((((x1 in F_0)) | ((false)))))))) & 
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+50% completed (14 automata in memory, 0MB memory used)
+Copying (7,19)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 523
+  | ((false)))))))) & ((((((x1 in B_0)) | (((~((x1 in OPEN))) | ((((x1 in F_0)
+                                         ^
+  (7,19)x(7,16) -> (15,53)
+  Minimizing (15,53) -> (7,22)
+Copying (7,22)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 784
+  ) | ((((x1 in F_0)) | ((false)))))))) & ((((((ex1 x2: (x2=x1+1 & (((((~((x2 
+                                         ^
+  (11,53)x(7,22) -> (20,114)
+  Minimizing (20,114) -> (11,60)
+51% completed (14 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 669
+  ((x1 in B_0)))) | (((~((x1 in DOWN))) | (((~((x1 in F_0))) | ((false))))))))
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+52% completed (15 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 608
+  se)))))))) & (((((((((~((x1 in B_1))) & (~((x1 in B_0))))) | ((x1 in B_0))))
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 629
+  (~((x1 in B_1))) & (~((x1 in B_0))))) | ((x1 in B_0)))) | (((~((x1 in DOWN))
+                                         ^
+  (7,19)x(7,16) -> (11,31)
+  Minimizing (11,31) -> (7,19)
+53% completed (16 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 647
+   (~((x1 in B_0))))) | ((x1 in B_0)))) | (((~((x1 in DOWN))) | (((~((x1 in F_
+                                         ^
+  (7,19)x(7,19) -> (15,58)
+  Minimizing (15,58) -> (7,25)
+54% completed (15 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 708
+   (((~((x1 in F_0))) | ((false)))))))) & ((((((x1 in B_1)) | (((~((x1 in UP))
+                                         ^
+  (11,60)x(7,25) -> (20,116)
+  Minimizing (20,116) -> (11,65)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 581
+  ) | ((((x1 in F_0)) | ((false)))))))) & (((((((((~((x1 in B_1))) & (~((x1 in
+                                         ^
+  (11,65)x(7,22) -> (19,120)
+  Minimizing (19,120) -> (11,69)
+55% completed (13 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (7,19)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 442
+  1 x1: ((0 <= x1) => ((((((x1 in B_1)) | (((~((x1 in OPEN))) | (((~((x1 in F_
+                                         ^
+  (7,19)x(7,16) -> (15,53)
+  Minimizing (15,53) -> (7,22)
+56% completed (14 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 503
+   (((~((x1 in F_0))) | ((false)))))))) & ((((((x1 in B_0)) | (((~((x1 in OPEN
+                                         ^
+  (11,69)x(7,22) -> (19,119)
+  Minimizing (19,119) -> (11,70)
+57% completed (14 automata in memory, 0MB memory used)
+Copying (5,8)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 23
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+                        ^
+  (5,8)x(5,8) -> (11,26)
+  Minimizing (11,26) -> (8,17)
+58% completed (14 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 21
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+                      ^
+  (4,4)x(8,17) -> (13,31)
+  Minimizing (13,31) -> (9,20)
+Right-quotient
+Projecting #33 'full-observability/mso/lift_gr1.mona' line 7 column 23
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+                        ^
+  (9,20) -> (6,9)
+  Minimizing (6,9) -> (5,8)
+59% completed (13 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product => 'full-observability/mso/lift_gr1.mona' line 7 column 421
+  _0))))))))))) & ((all1 x1: ((0 <= x1) => ((((((x1 in B_1)) | (((~((x1 in OPE
+                                         ^
+  (5,8)x(11,70) -> (12,73)
+  Minimizing (12,73) -> (11,70)
+60% completed (13 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 400
+  e)))))) | (~((x2 in B_0))))))))))) & ((all1 x1: ((0 <= x1) => ((((((x1 in B_
+                                         ^
+Right-quotient
+Projecting #95 'full-observability/mso/lift_gr1.mona' line 7 column 400
+  e)))))) | (~((x2 in B_0))))))))))) & ((all1 x1: ((0 <= x1) => ((((((x1 in B_
+                                         ^
+  (11,70) -> (23,304)
+  Minimizing (23,304) -> (5,14)
+61% completed (13 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 400
+  e)))))) | (~((x2 in B_0))))))))))) & ((all1 x1: ((0 <= x1) => ((((((x1 in B_
+                                         ^
+62% completed (13 automata in memory, 0MB memory used)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 334
+  x1 x2: (x1 <= x2 & ((((((x2 in OPEN)) & (((~((x2 in F_0))) & ((true)))))) | 
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+Copying (7,19)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 370
+  ) & (((~((x2 in F_0))) & ((true)))))) | (~((x2 in B_0))))))))))) & ((all1 x1
+                                         ^
+  (7,16)x(7,19) -> (15,53)
+  Minimizing (15,53) -> (7,22)
+63% completed (15 automata in memory, 0MB memory used)
+64% completed (16 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 47
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+                                                ^
+  (5,7)x(5,8) -> (11,24)
+  Minimizing (11,24) -> (8,16)
+Product &
+  (5,8)x(8,16) -> (11,24)
+  Minimizing (11,24) -> (9,19)
+65% completed (15 automata in memory, 0MB memory used)
+Copying (9,19)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 313
+  x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & ((((((x2 in OPEN)) & (((~((x2 in F_0
+                                         ^
+  (7,22)x(9,19) -> (18,66)
+  Minimizing (18,66) -> (9,33)
+66% completed (15 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #78 'full-observability/mso/lift_gr1.mona' line 7 column 294
+  ))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & ((((((x2 in OPEN)
+                                         ^
+  (9,33) -> (10,41)
+  Minimizing (10,41) -> (7,25)
+Copying (5,8)
+Replacing indices
+Product => 'full-observability/mso/lift_gr1.mona' line 7 column 290
+  ))))))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & ((((((x2 in O
+                                         ^
+  (5,8)x(7,25) -> (8,28)
+  Minimizing (8,28) -> (7,25)
+67% completed (15 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 269
+  ))))) | (~((x2 in B_1))))))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 
+                                         ^
+Right-quotient
+Projecting #74 'full-observability/mso/lift_gr1.mona' line 7 column 269
+  ))))) | (~((x2 in B_1))))))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 
+                                         ^
+  (7,25) -> (9,30)
+  Minimizing (9,30) -> (7,20)
+68% completed (15 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 269
+  ))))) | (~((x2 in B_1))))))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 
+                                         ^
+69% completed (15 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 397
+  true)))))) | (~((x2 in B_0))))))))))) & ((all1 x1: ((0 <= x1) => ((((((x1 in
+                                         ^
+  (5,14)x(7,20) -> (9,37)
+  Minimizing (9,37) -> (5,14)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 204
+  x1 x2: (x1 <= x2 & ((((((x2 in OPEN)) & ((((x2 in F_0)) & ((true)))))) | (~(
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+70% completed (16 automata in memory, 0MB memory used)
+Copying (7,19)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 237
+  EN)) & ((((x2 in F_0)) & ((true)))))) | (~((x2 in B_1))))))))))) & ((((all1 
+                                         ^
+  (7,16)x(7,19) -> (15,53)
+  Minimizing (15,53) -> (7,22)
+71% completed (16 automata in memory, 0MB memory used)
+Copying (9,19)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 183
+  x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & ((((((x2 in OPEN)) & ((((x2 in F_0))
+                                         ^
+  (9,19)x(7,22) -> (18,66)
+  Minimizing (18,66) -> (9,33)
+Right-quotient
+Projecting #57 'full-observability/mso/lift_gr1.mona' line 7 column 164
+  ))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & ((((((x2 in OPEN)
+                                         ^
+  (9,33) -> (10,41)
+  Minimizing (10,41) -> (7,25)
+72% completed (16 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product => 'full-observability/mso/lift_gr1.mona' line 7 column 160
+  ))))))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & ((((((x2 in O
+                                         ^
+  (5,8)x(7,25) -> (8,28)
+  Minimizing (8,28) -> (7,25)
+73% completed (16 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 139
+   B_1)) | ((x2 in B_0)))))))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 
+                                         ^
+Right-quotient
+Projecting #53 'full-observability/mso/lift_gr1.mona' line 7 column 139
+   B_1)) | ((x2 in B_0)))))))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 
+                                         ^
+  (7,25) -> (9,30)
+  Minimizing (9,30) -> (7,20)
+74% completed (16 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 139
+   B_1)) | ((x2 in B_0)))))))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 
+                                         ^
+75% completed (16 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 264
+  true)))))) | (~((x2 in B_1))))))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2:
+                                         ^
+  (5,14)x(7,20) -> (9,39)
+  Minimizing (9,39) -> (5,14)
+Copying (7,16)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 108
+  F_0))) & ((true)))) | ((((x2 in B_1)) | ((x2 in B_0)))))))))))) & ((((all1 x
+                                         ^
+  (7,16)x(7,16) -> (15,45)
+  Minimizing (15,45) -> (7,19)
+76% completed (16 automata in memory, 0MB memory used)
+Copying (7,16)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 90
+  2 & (((((~((x2 in F_0))) & ((true)))) | ((((x2 in B_1)) | ((x2 in B_0)))))))
+                                         ^
+  (7,19)x(7,16) -> (15,50)
+  Minimizing (15,50) -> (7,22)
+77% completed (16 automata in memory, 0MB memory used)
+Copying (9,19)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 54
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+                                                       ^
+  (7,22)x(9,19) -> (18,66)
+  Minimizing (18,66) -> (9,33)
+Right-quotient
+Projecting #36 'full-observability/mso/lift_gr1.mona' line 7 column 35
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+                                    ^
+  (9,33) -> (10,41)
+  Minimizing (10,41) -> (7,25)
+78% completed (16 automata in memory, 0MB memory used)
+Copying (5,8)
+Product => 'full-observability/mso/lift_gr1.mona' line 7 column 31
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+                                ^
+  (5,8)x(7,25) -> (8,28)
+  Minimizing (8,28) -> (7,25)
+79% completed (16 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 10
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+           ^
+Right-quotient
+Projecting #32 'full-observability/mso/lift_gr1.mona' line 7 column 10
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+           ^
+  (7,25) -> (9,30)
+  Minimizing (9,30) -> (7,20)
+80% completed (16 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 10
+  (((((((((all1 x1: ((0 <= x1) => ((ex1 x2: (x1 <= x2 & (((((~((x2 in F_0))) &
+           ^
+81% completed (16 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 134
+  x2 in B_1)) | ((x2 in B_0)))))))))))) & ((((all1 x1: ((0 <= x1) => ((ex1 x2:
+                                         ^
+  (5,14)x(7,20) -> (9,35)
+  Minimizing (9,35) -> (5,14)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 2003
+  EN)) & ((((x1 in F_0)) & ((true)))))) & ((x1 in B_1)))))) | (((((((ex1 x2: (
+                                         ^
+  (7,16)x(7,19) -> (15,53)
+  Minimizing (15,53) -> (7,22)
+82% completed (15 automata in memory, 0MB memory used)
+Replacing indices
+Copying (7,12)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1932
+  (((ex1 x2: (x2=x1+1 & ((x2 in B_1)))) | (x1 = max $))) & ((((((x1 in OPEN)) 
+                                         ^
+  (7,12)x(8,17) -> (11,25)
+  Minimizing (11,25) -> (8,17)
+83% completed (15 automata in memory, 0MB memory used)
+Copying (8,17)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1949
+  +1 & ((x2 in B_1)))) | (x1 = max $))) & ((((((x1 in OPEN)) & ((((x1 in F_0))
+                                         ^
+  (7,22)x(8,17) -> (15,47)
+  Minimizing (15,47) -> (8,25)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 2141
+  ) & (((~((x1 in F_0))) & ((true)))))) & ((x1 in B_0)))))) | (((((((ex1 x2: (
+                                         ^
+  (7,16)x(7,19) -> (15,53)
+  Minimizing (15,53) -> (7,22)
+84% completed (15 automata in memory, 0MB memory used)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 2084
+  +1 & ((x2 in B_0)))) | (x1 = max $))) & ((((((x1 in OPEN)) & (((~((x1 in F_0
+                                         ^
+  (7,22)x(8,17) -> (15,47)
+  Minimizing (15,47) -> (8,25)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 2286
+   | (((~((x1 in F_0))) | ((false)))))) & ((x1 in B_1)))))) | (((((ex1 x2: (x2
+                                         ^
+  (7,19)x(7,16) -> (15,53)
+  Minimizing (15,53) -> (7,22)
+85% completed (14 automata in memory, 0MB memory used)
+Replacing indices
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 2187
+  n B_0)))))) | (((((((ex1 x2: (x2=x1+1 & (~((x2 in B_1))))) | (x1 = max $))) 
+                                         ^
+  (10,23)x(7,16) -> (19,57)
+  Minimizing (19,57) -> (10,26)
+86% completed (13 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #382 'full-observability/mso/lift_gr1.mona' line 7 column 2169
+  rue)))))) & ((x1 in B_0)))))) | (((((((ex1 x2: (x2=x1+1 & (~((x2 in B_1)))))
+                                         ^
+  (10,26) -> (9,18)
+  Minimizing (9,18) -> (8,17)
+Replacing indices
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 2208
+  ex1 x2: (x2=x1+1 & (~((x2 in B_1))))) | (x1 = max $))) & (((((~((x1 in OPEN)
+                                         ^
+  (8,17)x(7,12) -> (11,25)
+  Minimizing (11,25) -> (8,17)
+87% completed (12 automata in memory, 0MB memory used)
+Copying (8,17)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 2225
+  & (~((x2 in B_1))))) | (x1 = max $))) & (((((~((x1 in OPEN))) | (((~((x1 in 
+                                         ^
+  (7,22)x(8,17) -> (15,47)
+  Minimizing (15,47) -> (8,25)
+88% completed (12 automata in memory, 0MB memory used)
+Replacing indices
+Copying (7,16)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 2426
+  ))) | ((((x1 in F_0)) | ((false)))))) & ((x1 in B_0))))))))))))))))))) & (((
+                                         ^
+  (7,19)x(7,16) -> (15,53)
+  Minimizing (15,53) -> (7,22)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 2368
+  & (~((x2 in B_0))))) | (x1 = max $))) & (((((~((x1 in OPEN))) | ((((x1 in F_
+                                         ^
+  (7,22)x(8,17) -> (15,47)
+  Minimizing (15,47) -> (8,25)
+89% completed (11 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 2306
+  ) | ((false)))))) & ((x1 in B_1)))))) | (((((ex1 x2: (x2=x1+1 & (~((x2 in B_
+                                         ^
+  (8,25)x(8,25) -> (18,78)
+  Minimizing (18,78) -> (10,42)
+90% completed (10 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 2161
+  )) & ((true)))))) & ((x1 in B_0)))))) | (((((((ex1 x2: (x2=x1+1 & (~((x2 in 
+                                         ^
+  (8,25)x(10,42) -> (18,76)
+  Minimizing (18,76) -> (12,50)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 2023
+  )) & ((true)))))) & ((x1 in B_1)))))) | (((((((ex1 x2: (x2=x1+1 & ((x2 in B_
+                                         ^
+  (8,25)x(12,50) -> (20,86)
+  Minimizing (20,86) -> (14,58)
+91% completed (8 automata in memory, 0MB memory used)
+Copying (5,8)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1888
+  OBSTACLE)))))))) | ((ex1 x1: (0 <= x1 & (((((((ex1 x2: (x2=x1+1 & ((x2 in B_
+                                         ^
+  (14,58)x(5,8) -> (15,61)
+  Minimizing (15,61) -> (14,58)
+92% completed (8 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #324 'full-observability/mso/lift_gr1.mona' line 7 column 1870
+  <= x2) => ((x2 in OBSTACLE)))))))) | ((ex1 x1: (0 <= x1 & (((((((ex1 x2: (x2
+                                         ^
+  (14,58) -> (36,139)
+  Minimizing (36,139) -> (14,54)
+Replacing indices
+Replacing indices
+Product => 'full-observability/mso/lift_gr1.mona' line 7 column 1839
+  x1: (0 <= x1 & ((all1 x2: ((x1 <= x2) => ((x2 in OBSTACLE)))))))) | ((ex1 x1
+                                         ^
+  (9,19)x(7,16) -> (18,50)
+  Minimizing (18,50) -> (9,25)
+93% completed (7 automata in memory, 0MB memory used)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 1817
+  ))))))))))) | ((((ex1 x1: (0 <= x1 & ((all1 x2: ((x1 <= x2) => ((x2 in OBSTA
+                                         ^
+94% completed (7 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #315 'full-observability/mso/lift_gr1.mona' line 7 column 1817
+  ))))))))))) | ((((ex1 x1: (0 <= x1 & ((all1 x2: ((x1 <= x2) => ((x2 in OBSTA
+                                         ^
+  (9,25) -> (10,27)
+  Minimizing (10,27) -> (7,17)
+Negation 'full-observability/mso/lift_gr1.mona' line 7 column 1817
+  ))))))))))) | ((((ex1 x1: (0 <= x1 & ((all1 x2: ((x1 <= x2) => ((x2 in OBSTA
+                                         ^
+95% completed (7 automata in memory, 0MB memory used)
+Replacing indices
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 1814
+  )))))))))))))) | ((((ex1 x1: (0 <= x1 & ((all1 x2: ((x1 <= x2) => ((x2 in OB
+                                         ^
+  (7,17)x(5,8) -> (8,20)
+  Minimizing (8,20) -> (7,17)
+96% completed (6 automata in memory, 0MB memory used)
+Right-quotient
+Projecting #311 'full-observability/mso/lift_gr1.mona' line 7 column 1796
+  )))))))))))))))))))))))))))))))) | ((((ex1 x1: (0 <= x1 & ((all1 x2: ((x1 <=
+                                         ^
+  (7,17) -> (9,20)
+  Minimizing (9,20) -> (7,14)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1867
+  x1 <= x2) => ((x2 in OBSTACLE)))))))) | ((ex1 x1: (0 <= x1 & (((((((ex1 x2: 
+                                         ^
+  (14,54)x(7,14) -> (29,113)
+  Minimizing (29,113) -> (15,59)
+97% completed (5 automata in memory, 0MB memory used)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 1791
+  P)))))))))))))))))))))))))))))))))))) | ((((ex1 x1: (0 <= x1 & ((all1 x2: ((
+                                         ^
+  (5,14)x(15,59) -> (17,74)
+  Minimizing (17,74) -> (15,63)
+98% completed (4 automata in memory, 0MB memory used)
+Product & 'full-observability/mso/lift_gr1.mona' line 7 column 2459
+  )))) & ((x1 in B_0))))))))))))))))))) & (((~((0 in F_0))) & ((true)))))) | (
+                                         ^
+  (7,14)x(15,63) -> (29,137)
+  Minimizing (29,137) -> (16,72)
+Product | 'full-observability/mso/lift_gr1.mona' line 7 column 2494
+  )) & (((~((0 in F_0))) & ((true)))))) | ((((0 in B_1)) | ((0 in B_0)))));
+                                         ^
+  (7,17)x(16,72) -> (31,141)
+  Minimizing (31,141) -> (16,68)
+99% completed (2 automata in memory, 0MB memory used)
+Product &
+  (4,12)x(16,68) -> (17,78)
+  Minimizing (17,78) -> (16,68)
+100% completed (1 automata in memory, 0MB memory used)
+Product &
+  (16,68)x(3,3) -> (16,69)
+  Minimizing (16,69) -> (14,49)
+Right-quotient
+Projecting #0
+  (14,49) -> (13,37)
+  Minimizing (13,37) -> (13,37)
+Total automaton construction time: 00:00:00.00
+
+Minimizations:   133
+Projections:     22
+Products:        106
+Copies:          98
+Replaces:        94
+Right-quotients: 21
+Negations:       14
+
+Largest number of states in a minimized automaton: 16, BDD nodes: 72
+Maximum number of automata in memory: 18
+
+Total time: 00:00:00.02

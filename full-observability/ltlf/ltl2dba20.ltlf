@@ -1,1 +1,1 @@
-G ("p" -> F "q") && G ("r" -> F "s") <-> G (F "acc")
+G (p -> F q) && G (r -> F s) <-> G (F acc)

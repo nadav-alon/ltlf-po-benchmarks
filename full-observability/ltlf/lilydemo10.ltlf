@@ -1,1 +1,1 @@
-G (F "req") || F "cancel" -> G (F "grant") || G "ack"
+G (F req) || F cancel -> G (F grant) || G ack

@@ -1,1 +1,1 @@
-! (G ("req" -> F "ack") && G ("go" -> F "grant"))
+! (G (req -> F ack) && G (go -> F grant))

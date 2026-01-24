@@ -1,3 +1,3 @@
-.inputs: go
+.inputs: req
 .outputs: ack grant
-.unobservables: req
+.unobservables: go
