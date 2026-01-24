@@ -10,8 +10,7 @@
 #SBATCH --exclude=cn[31-44],gpu[1-4],gpu[6-8]
 
 # Configuration
-TIMEOUT=180
-TEST_DIR="lucas"
+TIMEOUT=${TIMEOUT:-180}
 LUCAS_PATH="~/work/lucas/Syft/build/bin/Syft"
 CHRISTIAN_PATH="~/work/ltlf-synth-unrel-input-aaai2025/Syft/build/bin/Syft"
 

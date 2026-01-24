@@ -155,7 +155,7 @@ if [ "$DRY_RUN" = true ]; then
     JOB_ID="DRY_RUN_ID"
     EXIT_STATUS=0
 else
-    JOB_ID=$(sbatch --parsable --array=$ARRAY_RANGE "$SLURM_SCRIPT")
+    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",NUM_USELESS_UNOBSERVABLES="$NUM_USELESS_UNOBSERVABLES",TEST_DIR="$TEST_DIR",PART_DIR="$PART_DIR" --array=$ARRAY_RANGE "$SLURM_SCRIPT")
     EXIT_STATUS=$?
 fi
 
