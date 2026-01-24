@@ -25,6 +25,8 @@ SHARDS_PER_COMBINATION=16
 # Semantics (default to moore if not set)
 SEMANTICS=${SEMANTICS:-"moore"}
 NUM_USELESS_UNOBSERVABLES=${NUM_USELESS_UNOBSERVABLES:-0}
+TEST_DIR=${TEST_DIR:-"lucas"}
+PART_DIR=${PART_DIR:-"part"}
 
 # Define all combinations
 MODES_LONG=("lucas:belief-states" "lucas:projection-based" "lucas:mso" "christian:direct" "christian:belief" "christian:mso" "spot:ltlf" "spot:ltl" "spot:ltlfilt" "spot:ltlf-fo")
@@ -68,6 +70,8 @@ echo "Array Task ID: $SLURM_ARRAY_TASK_ID"
 echo "Running on node: $(hostname)"
 echo "Testing: $MODE_LONG"
 echo "Semantics: $SEMANTICS"
+echo "Test Dir: $TEST_DIR"
+echo "Part Dir: $PART_DIR"
 echo "Shard: $SHARD_ID of $SHARDS_PER_COMBINATION"
 echo "Output file: $OUTPUT_FILE"
 echo "========================================="
@@ -83,7 +87,8 @@ python3 runTests.py \
     --shard-id=$SHARD_ID \
     --num-shards=$SHARDS_PER_COMBINATION \
     --semantics=$SEMANTICS \
-    --num-useless-unobservables=$NUM_USELESS_UNOBSERVABLES
+    --num-useless-unobservables=$NUM_USELESS_UNOBSERVABLES \
+    --part-dir=$PART_DIR
 
 EXIT_CODE=$?
 

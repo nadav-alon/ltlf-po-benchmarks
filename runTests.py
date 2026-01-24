@@ -194,8 +194,8 @@ class ChristianSyftSolver(Solver):
         return f'"{self.path}" {input_file} {part_file} {sem_val} {mode}'
 
     def parse_output(self, output_bytes)-> (int, float):
-        l_str = str(output_bytes)
-        lines = l_str.split("\\n")
+        l_str = output_bytes.decode('utf-8', errors='ignore')
+        lines = l_str.split("\n")
         # Try to find the time in output 
         try:
             rr = re.findall("[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", lines[-2])
@@ -260,13 +260,13 @@ class LucasSyftSolver(Solver):
 
     def parse_output(self, output_bytes):
         # Reuse logic or customize if lucas output differs significantly
-        l_str = str(output_bytes)
+        l_str = output_bytes.decode('utf-8', errors='ignore')
         result = None 
         if "unrealizable" in l_str: result = 0
         elif "realizable" in l_str: result = 1
         
         # Lucas Syft often prints time in ms at the end
-        lines = l_str.strip().split("\\n")
+        lines = l_str.strip().split("\n")
         time_ms = 0.0
         for line in reversed(lines):
             rr = re.findall(r"(\d+\.?\d*)\s*ms", line)
@@ -324,13 +324,13 @@ class SpotSolver(Solver):
             return f"{transformation} | ltlfilt --part-file={part_file} --from-ltlf --relabel=io | ltlsynt --real --verbose --algo=ds"
 
     def parse_output(self, output_bytes):
-        l_str = str(output_bytes)
+        l_str = output_bytes.decode('utf-8', errors='ignore')
         result = None 
         if "UNREALIZABLE" in l_str: result = 0
         elif "REALIZABLE" in l_str: result = 1
         
         # Spot often prints time in ms or seconds at the end
-        lines = l_str.strip().split("\\n")
+        lines = l_str.strip().split("\n")
         time_ms = 0.0
         for line in reversed(lines):
             # Matches "123 ms"
@@ -392,7 +392,7 @@ class Statistics():
 statistics = Statistics()
 
 
-def collectTest(testDir):
+def collectTest(testDir, partDir="part"):
     global statistics
     p = Path(testDir).resolve()
     
@@ -415,7 +415,7 @@ def collectTest(testDir):
         if "ltlf" in parts:
             idx = parts.index("ltlf")
             part_parts = list(parts)
-            part_parts[idx] = "part"
+            part_parts[idx] = partDir
             part_file = Path(*part_parts).with_suffix(".part")
             
             if not part_file.exists():
@@ -433,7 +433,7 @@ def collectTest(testDir):
 TIMEOUT_CODE = -2
 ERROR_CODE = -1
 
-def executeTest(test, timeout, solver: Solver, mode="direct", iter=1, semantics="moore"):
+def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", iter=1, semantics="moore"):
     temp_dir = tempfile.mkdtemp()
     try:
         test_path = Path(test).resolve()
@@ -454,7 +454,7 @@ def executeTest(test, timeout, solver: Solver, mode="direct", iter=1, semantics=
         
         # Construct part file path
         part_parts = list(parts)
-        part_parts[ltlf_idx] = "part"
+        part_parts[ltlf_idx] = partDir
         original_part = Path(*part_parts).with_suffix(".part")
 
         # Construct mso directory path
@@ -593,6 +593,7 @@ if __name__ == "__main__":
     parser.add_argument("--num-shards", type=int, default=1, help="Total number of shards")
     parser.add_argument("--semantics", type=str, default="moore", choices=["moore", "mealy"], help="Semantics")
     parser.add_argument("--num-useless-unobservables", type=int, default=0, help="Number of useless unobservables")
+    parser.add_argument("--part-dir", type=str, default="part", help="Part directory name (relative to ltlf directory)")
     args = parser.parse_args()
 
     commit_hash = get_git_revision_hash()
@@ -614,7 +615,7 @@ if __name__ == "__main__":
         if solver_name == 'christian' else LucasSyftSolver(str(syft_path), name="lucas") \
         if solver_name == 'lucas' else SpotSolver(str(syft_path), name="spot") 
     
-    tests = sorted(collectTest(test_dir))
+    tests = sorted(collectTest(test_dir, args.part_dir))
     
     if args.num_shards > 1:
         total_tests = len(tests)
@@ -624,7 +625,7 @@ if __name__ == "__main__":
         print(f"Running all {len(tests)} tests.")
 
     for test in tests:
-        executeTest(test, timeout, solver, internal_mode, iterations, args.semantics)
+        executeTest(test, timeout, solver, args.part_dir, internal_mode, iterations, args.semantics)
 
     print("===========")
     print("Statistics:")

@@ -9,6 +9,8 @@ TARGETS=()
 DRY_RUN=false
 SEMANTICS="moore"
 NUM_USELESS_UNOBSERVABLES=0
+TEST_DIR="lucas"
+PART_DIR="part"
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -32,6 +34,22 @@ while [[ $# -gt 0 ]]; do
             NUM_USELESS_UNOBSERVABLES="${1#*=}"
             shift
             ;;
+        --test-dir)
+            TEST_DIR="$2"
+            shift 2
+            ;;
+        --test-dir=*)
+            TEST_DIR="${1#*=}"
+            shift
+            ;;
+        --part-dir)
+            PART_DIR="$2"
+            shift 2
+            ;;
+        --part-dir=*)
+            PART_DIR="${1#*=}"
+            shift
+            ;;
         *)
             TARGETS+=("$1")
             shift
@@ -41,6 +59,8 @@ done
 
 export SEMANTICS
 export NUM_USELESS_UNOBSERVABLES
+export TEST_DIR
+export PART_DIR
 
 # If no targets provided, default to all
 if [ ${#TARGETS[@]} -eq 0 ]; then
@@ -121,6 +141,8 @@ echo "Submitting SLURM Job Array"
 echo "Targets: $DESC_STR"
 echo "Semantics: $SEMANTICS"
 echo "Useless Unobs: $NUM_USELESS_UNOBSERVABLES"
+echo "Test Dir: $TEST_DIR"
+echo "Part Dir: $PART_DIR"
 echo "Range: $ARRAY_RANGE"
 echo "========================================="
 echo ""
@@ -129,7 +151,7 @@ echo ""
 if [ "$DRY_RUN" = true ]; then
     echo "--- DRY RUN: No jobs will be submitted ---"
     echo "Command that would be run:"
-    echo "SEMANTICS=$SEMANTICS NUM_USELESS_UNOBSERVABLES=$NUM_USELESS_UNOBSERVABLES sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
+    echo "SEMANTICS=$SEMANTICS NUM_USELESS_UNOBSERVABLES=$NUM_USELESS_UNOBSERVABLES TEST_DIR=$TEST_DIR PART_DIR=$PART_DIR sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
     JOB_ID="DRY_RUN_ID"
     EXIT_STATUS=0
 else
