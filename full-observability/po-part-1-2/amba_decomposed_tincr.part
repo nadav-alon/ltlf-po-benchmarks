@@ -1,0 +1,3 @@
+.inputs: DECIDE HREADY INCR
+.outputs: READY1
+.unobservables: BUSREQ LOCKED

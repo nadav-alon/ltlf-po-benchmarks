@@ -1,0 +1,3 @@
+.inputs: goup
+.outputs: ss
+.unobservables: ws godown

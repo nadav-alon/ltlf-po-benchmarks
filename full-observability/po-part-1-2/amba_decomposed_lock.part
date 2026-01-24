@@ -1,0 +1,3 @@
+.inputs: DECIDE HLOCK_0 HGRANT_0
+.outputs: LOCKED
+.unobservables: HGRANT_1 HLOCK_1

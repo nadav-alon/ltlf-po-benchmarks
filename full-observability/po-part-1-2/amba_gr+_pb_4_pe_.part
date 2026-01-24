@@ -1,0 +1,3 @@
+.inputs: hburst0 hlock3 hlock2 hbusreq2 hbusreq1 hready
+.outputs: req_ready stateG10_3 stateG10_2 stateG10_1 stateG3_2 stateG3_1 stateG3_0 stateG2 stateA1_1 stateA1_0 busreq hgrant3 hgrant2 hgrant1 hgrant0 locked decide start hmastlock hmaster1 hmaster0
+.unobservables: hburst1 hlock0 hbusreq3 hbusreq0 hlock1

@@ -598,6 +598,15 @@ if __name__ == "__main__":
 
     commit_hash = get_git_revision_hash()
 
+    print("Starting Run with Parameters:")
+    print(f"  Mode: {args.mode}")
+    print(f"  Test Dir: {args.test_dir}")
+    print(f"  Part Dir: {args.part_dir}")
+    print(f"  Semantics: {args.semantics}")
+    print(f"  Useless Unobservables: {args.num_useless_unobservables}")
+    print(f"  Shard: {args.shard_id}/{args.num_shards}")
+    print("-" * 30)
+
     # Derive solver and internal mode
     solver_name, internal_mode = args.mode.split(":")
     
@@ -651,6 +660,11 @@ if __name__ == "__main__":
         csvfile.write(f"# Commit: {commit_hash}\n")
         csvfile.write(f"# Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         csvfile.write(f"# Machine: {platform.node()}\n")
+        csvfile.write(f"# Mode: {args.mode}\n")
+        csvfile.write(f"# Test Dir: {args.test_dir}\n")
+        csvfile.write(f"# Part Dir: {args.part_dir}\n")
+        csvfile.write(f"# Semantics: {args.semantics}\n")
+        csvfile.write(f"# Useless Unobservables: {args.num_useless_unobservables}\n")
         csvfile.write(f"# OS: {sys_info['os']}\n")
         csvfile.write(f"# CPU: {sys_info['cpu']}\n")
         csvfile.write(f"# Cores: {sys_info['cores']}\n")

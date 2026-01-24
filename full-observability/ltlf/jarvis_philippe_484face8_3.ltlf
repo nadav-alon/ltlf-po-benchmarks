@@ -1,1 +1,0 @@
-G (! ("u0dish2washer0on" && ! "u0dish2washer0dish2washer" <-> "u0dish2washer0dish2washer" && ! "u0dish2washer0on")) && (G (G (F "p0p0new2day0time")) -> G ("u0dish2washer0on" <-> "p0p0after2work0time" && "p0p0full0dish2washer2status"))

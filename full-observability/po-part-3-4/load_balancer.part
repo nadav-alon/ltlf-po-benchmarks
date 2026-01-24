@@ -1,0 +1,3 @@
+.inputs: idle
+.outputs: grant_0 grant_1
+.unobservables: request_1 request_0

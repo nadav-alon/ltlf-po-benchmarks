@@ -1,3 +1,0 @@
-.inputs: u s q p
-.outputs: acc
-.unobservables: r

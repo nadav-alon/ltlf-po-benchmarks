@@ -1,0 +1,3 @@
+.inputs: DECIDE LOCKED
+.outputs: READY3
+.unobservables: SINGLE HREADY

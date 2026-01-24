@@ -1,0 +1,3 @@
+.inputs: r_m r_0
+.outputs: g_m g_0 g_1
+.unobservables: r_1

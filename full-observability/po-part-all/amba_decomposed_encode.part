@@ -1,0 +1,3 @@
+.inputs:
+.outputs: HMASTER_0
+.unobservables: HGRANT_0 HREADY HGRANT_1

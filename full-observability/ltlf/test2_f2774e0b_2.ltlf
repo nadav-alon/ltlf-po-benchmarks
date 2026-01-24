@@ -1,0 +1,1 @@
+G (! ("u0d0d" && ! "u0d0f1dfun0p1db0in251b1b" <-> "u0d0f1dfun0p1db0in251b1b" && ! "u0d0d") && ! ("u0e0e" && ! "u0e0f1dfun0p1db0in31b1b" <-> "u0e0f1dfun0p1db0in31b1b" && ! "u0e0e")) && G ("p0b0in25" && "p0b0in3" -> "u0d0f1dfun0p1db0in251b1b" || "u0e0e") && G ("p0b0in25" || "p0b0in4" <-> "u0e0f1dfun0p1db0in31b1b")

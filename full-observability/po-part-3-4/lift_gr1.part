@@ -1,0 +1,3 @@
+.inputs: b_1
+.outputs: open down up f_0
+.unobservables: obstacle b_0

@@ -1,0 +1,3 @@
+.inputs:
+.outputs: allFinished
+.unobservables: finished_1 finished_2 finished_0

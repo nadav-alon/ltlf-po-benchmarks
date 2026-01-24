@@ -1,0 +1,3 @@
+.inputs: i0
+.outputs: a2 a1 a0
+.unobservables: i1

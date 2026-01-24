@@ -1,0 +1,3 @@
+.inputs: rx_0
+.outputs: serve right left down up
+.unobservables: tx_0 ty_0 ry_0

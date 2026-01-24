@@ -1,0 +1,3 @@
+.inputs: moy38_1 moy38_0 mox38_2 mox38_1 mox38_0 deliveryrequest4 y3 x2
+.outputs: deliverypickedup4 pendingdelivery4 drop pickup down up right left
+.unobservables: y1 moy38_2 y2 x0 x1 door56 moy38_3 y0
