@@ -1,0 +1,1 @@
+G (! "HGRANT_0" && true || true && (! "HGRANT_1")) && G ("HGRANT_0" || "HGRANT_1") -> G (("DECIDE" && X "HGRANT_0" -> X "LOCKED" <-> X "HLOCK_0") && ("DECIDE" && X "HGRANT_1" -> X "LOCKED" <-> X "HLOCK_1") && (! "DECIDE" -> X "LOCKED" <-> "LOCKED"))

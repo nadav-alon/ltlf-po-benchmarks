@@ -1,0 +1,3 @@
+.inputs: etc
+.outputs: shlr sflr sts
+.unobservables: ec

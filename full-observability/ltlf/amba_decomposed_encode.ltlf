@@ -1,0 +1,1 @@
+G (! "HGRANT_0" && true || true && (! "HGRANT_1")) && G ("HGRANT_0" || "HGRANT_1") -> G (("HREADY" -> X (true && ! "HMASTER_0") <-> "HGRANT_0") && ("HREADY" -> X (true && "HMASTER_0") <-> "HGRANT_1") && (! "HREADY" -> X "HMASTER_0" <-> "HMASTER_0"))

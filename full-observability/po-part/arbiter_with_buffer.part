@@ -1,0 +1,3 @@
+.inputs: r_0
+.outputs: ack_0 g_0
+.unobservables: try_0

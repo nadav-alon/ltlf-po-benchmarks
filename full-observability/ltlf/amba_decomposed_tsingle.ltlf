@@ -1,0 +1,1 @@
+! "DECIDE" && G (F "HREADY") && G (! "READY3" -> X (! "DECIDE")) -> G (("DECIDE" -> X (X (("SINGLE" && "LOCKED" -> (! "READY3" U "HREADY" && ! "READY3" && X "READY3")) && (! ("SINGLE" && "LOCKED") -> "READY3")))) && ("READY3" && X (! "DECIDE") -> X "READY3") && ("READY3" && X "DECIDE" -> X (! "READY3" && X (! "READY3")))) && "READY3"

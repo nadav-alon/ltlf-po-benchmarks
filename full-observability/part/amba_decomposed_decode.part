@@ -1,0 +1,2 @@
+.inputs: HBURST_0 HBURST_1
+.outputs: INCR BURST4 SINGLE

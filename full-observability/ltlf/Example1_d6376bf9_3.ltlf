@@ -1,0 +1,1 @@
+G (! ("u02maschine2a29intent02maschine2a29intent" && ! "u02maschine2a29intent0f1dstop1b" <-> "u02maschine2a29intent0f1dstop1b" && ! "u02maschine2a29intent02maschine2a29intent")) && G ("p0b02maschine2b29failed" -> "u02maschine2a29intent0f1dstop1b")

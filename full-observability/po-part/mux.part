@@ -1,0 +1,3 @@
+.inputs: in_0 in_2 in_4 in_5 in_6 in_7 in_9 select_0 select_1 select_2 select_3
+.outputs: out
+.unobservables: in_3 in_8 in_1

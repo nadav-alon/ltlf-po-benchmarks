@@ -1,0 +1,1 @@
+G ((! "HBURST_0" && ! "HBURST_1" -> "SINGLE") && ("HBURST_0" && ! "HBURST_1" -> "BURST4") && (! "HBURST_0" && "HBURST_1" -> "INCR") && ! ("SINGLE" && ("BURST4" || "INCR")) && ! ("BURST4" && "INCR"))

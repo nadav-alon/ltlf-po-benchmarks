@@ -4,18 +4,40 @@ import random
 import shutil
 from pathlib import Path
 
-benchmarks = [
-    "SYNTCOMP-benchmarks/tlsf/ltl_f/generated_TLSF/workstation_resupply_pb_1_pe_.tlsf",
-    "SYNTCOMP-benchmarks/tlsf/ltl_f/generated_TLSF/workstation_resupply_pb_2_pe_.tlsf",
-    "SYNTCOMP-benchmarks/tlsf/simple_arbiter/parametric/simple_arbiter.tlsf",
-    "SYNTCOMP-benchmarks/tlsf/ltl2dba/non_parametric_from_acacia/ltl2dba01.tlsf",
-    "SYNTCOMP-benchmarks/tlsf/ltl2dba/non_parametric_from_acacia/ltl2dba02.tlsf",
-    "SYNTCOMP-benchmarks/tlsf/ltl2dba/non_parametric_from_acacia/ltl2dba03.tlsf",
-    "SYNTCOMP-benchmarks/tlsf/ltl2dba/non_parametric_from_acacia/ltl2dba04.tlsf",
-    "SYNTCOMP-benchmarks/tlsf/ltl2dba/non_parametric_from_acacia/ltl2dba05.tlsf",
-    "SYNTCOMP-benchmarks/tlsf/ltl2dba/non_parametric_from_acacia/ltl2dba06.tlsf",
-    "SYNTCOMP-benchmarks/tlsf/ltl2dba/non_parametric_from_acacia/ltl2dba07.tlsf"
-]
+import glob
+
+categories = {
+    "ltl_f": 100, # mostly small
+    "amba": 30,
+    "ltl2dba": 50,
+    "arbiters_zoo": 50,
+    "generalized_buffer": 20,
+    "load_balancer": 20,
+    "lift": 20,
+    "lily": 50,
+    "robot_grid": 20,
+    "prioritized_arbiter": 20,
+    "simple_arbiter": 20,
+    "tsl_smart_home_jarvis": 50,
+    "collector": 20,
+    "mux": 10
+}
+
+benchmarks = []
+root_path = Path("/home/cowclaw/ltlf-po-benchmarks")
+for category, limit in categories.items():
+    tlsf_files = list(root_path.glob(f"SYNTCOMP-benchmarks/tlsf/{category}/**/*.tlsf"))
+    # Filter out unrealizable if they are in specific folders that separate them
+    tlsf_files = [f for f in tlsf_files if "unreal" not in str(f).lower()]
+    
+    # Take a sample if there are too many
+    if len(tlsf_files) > limit:
+        tlsf_files = random.sample(tlsf_files, limit)
+    
+    for f in tlsf_files:
+        benchmarks.append(str(f.relative_to(root_path)))
+
+print(f"Collected {len(benchmarks)} benchmarks total.")
 
 base_dir = Path("/home/cowclaw/ltlf-po-benchmarks/full-observability")
 ltlf_dir = base_dir / "ltlf"

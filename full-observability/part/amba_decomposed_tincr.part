@@ -1,0 +1,2 @@
+.inputs: BUSREQ DECIDE LOCKED HREADY INCR
+.outputs: READY1

@@ -1,0 +1,3 @@
+.inputs: p0b0room29warnlight29of p0b0room29warnlight29off
+.outputs: u0room29warnlight29control0f1dturn2off1b u0room29warnlight29control0f1dturn2on1b u0room29warnlight29control0room29warnlight29control
+.unobservables: p0b0room29warnlight29on

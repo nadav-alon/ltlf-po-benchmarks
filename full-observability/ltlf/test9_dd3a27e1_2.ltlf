@@ -1,0 +1,1 @@
+G (! ("u0c0c" && ! "u0c0f1dval31b" <-> "u0c0f1dval31b" && ! "u0c0c")) && (G (F (! "p0b0in3")) && G ("u0c0f1dval31b" -> X "p0b0in25") -> G (F "p0b0in25") && G ("p0b0in3" -> X (! "p0b0in25")))
