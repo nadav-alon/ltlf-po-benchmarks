@@ -12,3 +12,4 @@ spot/*
 !/spot/install.sh
 
 run-*.sh
+SYNTCOMP-benchmarks/
