@@ -1,0 +1,42 @@
+MONA DFA
+number of variables: 8
+variables: PEEK_ENV_0 PEEK_ENV_1 PEEK_SYS_0 PEEK_SYS_1 PLATE_ENV_0 PLATE_SYS_0 TURN_ENV TURN_SYS
+orders: 2 2 2 2 2 2 2 2
+states: 6
+initial: 0
+bdd nodes: 31
+final: -1 -1 -1 1 1 -1
+behaviour: 0 1 4 23 1 27
+bdd:
+ -1 1 0
+ 0 11 2
+ 1 4 3
+ 2 5 4
+ -1 2 0
+ 3 6 4
+ 4 4 7
+ 5 8 4
+ 6 10 9
+ -1 4 0
+ -1 3 0
+ 1 4 12
+ 2 18 13
+ 3 4 14
+ 4 15 4
+ 5 4 16
+ 6 17 0
+ -1 5 0
+ 3 21 19
+ 4 20 4
+ 5 16 4
+ 4 4 22
+ 5 4 8
+ 0 24 2
+ 1 4 25
+ 2 26 4
+ 3 21 4
+ 0 28 4
+ 1 4 29
+ 2 30 13
+ 3 4 19
+end

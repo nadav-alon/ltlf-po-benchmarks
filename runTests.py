@@ -231,7 +231,7 @@ class LucasSyftSolver(Solver):
         
         obs, inp_type, dfa_suffix, part_suffix = config.get(mode, ("partial", "dfa", ".dfa", ""))
         
-        dfa_file = input_file + dfa_suffix
+        dfa_file = os.path.join(os.path.dirname(input_file), Path(input_file).stem + dfa_suffix)
         actual_part_file = part_file + part_suffix
         
         # Check if actual_part_file exists, else use base part_file
@@ -459,7 +459,11 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
 
         # Construct mso directory path
         mso_parts = list(parts)
-        mso_parts[ltlf_idx] = "mso"
+        mso_level = "mso"
+        if partDir.startswith("po-part-"):
+            mso_level = partDir.replace("po-part-", "po-mso-")
+        
+        mso_parts[ltlf_idx] = mso_level
         mso_dir = Path(*mso_parts).parent
 
         inputfile = os.path.join(temp_dir, test_name)
@@ -484,13 +488,14 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
             if os.path.exists(part_src):
                 shutil.copy2(part_src, partfile + part_suffix)
         
-        # Copy .mona files from mso directory if they exist
+        # Copy .mona and .dfa files from mso directory if they exist
         if mso_dir.exists():
-            for mona_suffix in [".mona", ".mona.rev.neg", ".mona.quant"]:
-                mona_src = mso_dir / (test_stem + mona_suffix)
-                if mona_src.exists():
-                    mona_dst = os.path.join(temp_dir, test_stem + mona_suffix)
-                    shutil.copy2(mona_src, mona_dst)
+            suffixes = [".mona", ".mona.rev.neg", ".mona.quant", ".dfa", ".dfa.rev.neg", ".dfa.quant"]
+            for sfx in suffixes:
+                src = mso_dir / (test_stem + sfx)
+                if src.exists():
+                    dst = os.path.join(temp_dir, test_stem + sfx)
+                    shutil.copy2(src, dst)
 
         command = solver.get_command(inputfile, partfile, mode, semantics)
         if not command:
