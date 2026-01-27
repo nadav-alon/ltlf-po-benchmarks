@@ -10,15 +10,21 @@
 #SBATCH --exclude=cn[31-44],gpu[1-4],gpu[6-8]
 
 # This script should be run from the ltlf-fin-benchmarks directory on HPC
-
 mkdir -p logs
+
+echo "Checking environment:"
+python3 --version
+mona -V | head -n 1
+ls -l mona_tasks.json
+
+echo "Starting Task ID: $SLURM_ARRAY_TASK_ID"
 
 python3 run_mona_hpc.py \
     --tasks mona_tasks.json \
-    --shard-id $SLURM_ARRAY_TASK_ID \
+    --shard-id "$SLURM_ARRAY_TASK_ID" \
     --num-shards 20 \
     --workers 8
 
 # After all shards finish, you can combine them:
-# head -n 1 mona_results_0.csv > mona_results_combined.csv
-# for i in {0..19}; do if [ -f mona_results_$i.csv ]; then tail -n +2 mona_results_$i.csv >> mona_results_combined.csv; fi; done
+# head -n 1 mona_results_0.csv > mona_results.csv
+# for i in {0..19}; do if [ -f mona_results_$i.csv ]; then tail -n +2 mona_results_$i.csv >> mona_results.csv; fi; done

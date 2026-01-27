@@ -81,8 +81,14 @@ def main():
     parser.add_argument("--num-shards", type=int, default=1)
     args = parser.parse_args()
 
+    if not os.path.exists(args.tasks):
+        print(f"Error: {args.tasks} not found!")
+        return
+
     with open(args.tasks, 'r') as f:
         all_tasks = json.load(f)
+    
+    print(f"Total tasks in JSON: {len(all_tasks)}")
 
     # Sharding logic for job arrays
     if args.shard_id is not None:
@@ -90,16 +96,26 @@ def main():
         start = args.shard_id * shard_size
         end = min(start + shard_size, len(all_tasks))
         tasks = all_tasks[start:end]
-        print(f"Processing shard {args.shard_id}/{args.num_shards}: tasks {start} to {end}")
+        print(f"Processing shard {args.shard_id}/{args.num_shards}: tasks {start} to {end} ({len(tasks)} tasks)")
         output_file = f"mona_results_{args.shard_id}.csv"
     else:
         tasks = all_tasks
         output_file = args.output
+        print(f"Processing all {len(tasks)} tasks")
+
+    if not tasks:
+        print("No tasks to process in this shard.")
+        return
 
     results = []
+    print(f"Starting ProcessPoolExecutor with {args.workers} workers...")
     with ProcessPoolExecutor(max_workers=args.workers) as executor:
-        results = list(executor.map(run_mona_task, tasks))
+        for i, res in enumerate(executor.map(run_mona_task, tasks)):
+            results.append(res)
+            if (i + 1) % 10 == 0:
+                print(f"Completed {i + 1}/{len(tasks)} tasks...")
 
+    print(f"Writing {len(results)} results to {output_file}...")
     with open(output_file, 'w', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=["mona_file", "status", "runtime", "wall_time", "error"])
         writer.writeheader()
