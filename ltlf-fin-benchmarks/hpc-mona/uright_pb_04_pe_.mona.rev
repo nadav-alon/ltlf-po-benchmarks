@@ -1,0 +1,5 @@
+#p1 U (p2 U (p3 U p4))
+# past #(p1 U (p2 U (p3 U p4)))
+m2l-str;
+var2 P1, P2, P3, P4;
+(ex1 x1: (x1 <= max $ & 0 <= x1 & ((ex1 x2: (x2 <= x1 & 0 <= x2 & ((ex1 x3: (x3 <= x2 & 0 <= x3 & ((x3 in P4)) & (all1 x4: (x4 <= x2 & x3 < x4 => ((x4 in P3))))))) & (all1 x3: (x3 <= x1 & x2 < x3 => ((x3 in P2))))))) & (all1 x2: (x2 <= max $ & x1 < x2 => ((x2 in P1))))));

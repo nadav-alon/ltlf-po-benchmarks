@@ -1,0 +1,3 @@
+inputs p22 p21 p19 p18 p12 p11 p8
+outputs p24 p23 p20 p16 p15 p14 p10 p9 p6 p5 p4
+unobservables p13 p2 p17 p1 p3 p7

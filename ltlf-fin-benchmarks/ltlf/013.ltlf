@@ -1,0 +1,1 @@
+G (p2 -> N (! p2)) && (true -> (G (false || ! N p7 || p3) && G (false || ! N p8 || p4) && G (false || ! N p9 || p5) && G (false || ! N p10 || p6) && true)) && (true -> (G (false || ! N p13 || p11) && G (false || ! N p14 || p12) && true))

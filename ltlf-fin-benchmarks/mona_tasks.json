@@ -1,0 +1,5942 @@
+[
+  {
+    "mona_file": "hpc-mona/uright_pb_08_pe_.mona",
+    "dfa_file": "mso/uright_pb_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_08_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_08_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_08_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_08_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_08_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_08_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_08_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_08_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_08_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_08_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_08_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_03_pe_.mona",
+    "dfa_file": "mso/uright_pb_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_03_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_03_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_03_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_03_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_03_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_03_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_03_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_03_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_03_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_03_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_03_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_03_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_03_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_03_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_03_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_03_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_03_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_02_pe_.mona",
+    "dfa_file": "mso/uright_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_02_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_02_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_02_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_02_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_02_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_02_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_02_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_02_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_02_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_02_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_19_pe_.mona",
+    "dfa_file": "mso/gfand_pb_19_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_19_pe_.mona.rev",
+    "dfa_file": "mso/gfand_pb_19_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_19_pe_.mona.rev.neg",
+    "dfa_file": "mso/gfand_pb_19_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_19_pe_.mona",
+    "dfa_file": "po-mso-0/gfand_pb_19_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_19_pe_.mona.quant",
+    "dfa_file": "po-mso-0/gfand_pb_19_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_19_pe_.mona.rev",
+    "dfa_file": "po-mso-0/gfand_pb_19_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_19_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/gfand_pb_19_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_19_pe_.mona",
+    "dfa_file": "po-mso-1-2/gfand_pb_19_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_19_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/gfand_pb_19_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_19_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/gfand_pb_19_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_19_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/gfand_pb_19_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_19_pe_.mona",
+    "dfa_file": "po-mso-all/gfand_pb_19_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_19_pe_.mona.quant",
+    "dfa_file": "po-mso-all/gfand_pb_19_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_19_pe_.mona.rev",
+    "dfa_file": "po-mso-all/gfand_pb_19_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_19_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/gfand_pb_19_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_10_pe_.mona",
+    "dfa_file": "mso/gfand_pb_10_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_10_pe_.mona.rev",
+    "dfa_file": "mso/gfand_pb_10_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_10_pe_.mona.rev.neg",
+    "dfa_file": "mso/gfand_pb_10_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_10_pe_.mona",
+    "dfa_file": "po-mso-0/gfand_pb_10_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_10_pe_.mona.quant",
+    "dfa_file": "po-mso-0/gfand_pb_10_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_10_pe_.mona.rev",
+    "dfa_file": "po-mso-0/gfand_pb_10_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_10_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/gfand_pb_10_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_10_pe_.mona",
+    "dfa_file": "po-mso-1-2/gfand_pb_10_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_10_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/gfand_pb_10_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_10_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/gfand_pb_10_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_10_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/gfand_pb_10_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_10_pe_.mona",
+    "dfa_file": "po-mso-all/gfand_pb_10_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_10_pe_.mona.quant",
+    "dfa_file": "po-mso-all/gfand_pb_10_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_10_pe_.mona.rev",
+    "dfa_file": "po-mso-all/gfand_pb_10_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_10_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/gfand_pb_10_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_07_pe_.mona",
+    "dfa_file": "mso/uright_pb_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_07_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_07_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_07_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_07_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_07_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_07_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_07_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_07_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_07_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_07_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_07_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_01_pe_.mona",
+    "dfa_file": "mso/uright_pb_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_01_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_01_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_01_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_01_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_01_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_01_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_01_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_01_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_01_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_01_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_01_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_01_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_01_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_01_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_01_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_01_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_01_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_18_pe_.mona",
+    "dfa_file": "mso/uright_pb_18_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_18_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_18_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_18_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_18_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_18_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_18_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_18_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_18_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_18_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_18_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_18_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_18_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_18_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_18_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_18_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_18_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_18_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_18_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_18_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_18_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_18_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_18_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_18_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_18_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_18_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_18_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_18_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_18_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_03_pe_.mona",
+    "dfa_file": "mso/gfand_pb_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_03_pe_.mona.rev",
+    "dfa_file": "mso/gfand_pb_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_03_pe_.mona.rev.neg",
+    "dfa_file": "mso/gfand_pb_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_03_pe_.mona",
+    "dfa_file": "po-mso-0/gfand_pb_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_03_pe_.mona.quant",
+    "dfa_file": "po-mso-0/gfand_pb_03_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_03_pe_.mona.rev",
+    "dfa_file": "po-mso-0/gfand_pb_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_03_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/gfand_pb_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_03_pe_.mona",
+    "dfa_file": "po-mso-1-2/gfand_pb_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_03_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/gfand_pb_03_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_03_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/gfand_pb_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_03_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/gfand_pb_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_03_pe_.mona",
+    "dfa_file": "po-mso-all/gfand_pb_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_03_pe_.mona.quant",
+    "dfa_file": "po-mso-all/gfand_pb_03_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_03_pe_.mona.rev",
+    "dfa_file": "po-mso-all/gfand_pb_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_03_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/gfand_pb_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_14_pe_.mona",
+    "dfa_file": "mso/gfand_pb_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_14_pe_.mona.rev",
+    "dfa_file": "mso/gfand_pb_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_14_pe_.mona.rev.neg",
+    "dfa_file": "mso/gfand_pb_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_14_pe_.mona",
+    "dfa_file": "po-mso-0/gfand_pb_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_14_pe_.mona.quant",
+    "dfa_file": "po-mso-0/gfand_pb_14_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_14_pe_.mona.rev",
+    "dfa_file": "po-mso-0/gfand_pb_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_14_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/gfand_pb_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_14_pe_.mona",
+    "dfa_file": "po-mso-1-2/gfand_pb_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_14_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/gfand_pb_14_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_14_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/gfand_pb_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_14_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/gfand_pb_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_14_pe_.mona",
+    "dfa_file": "po-mso-all/gfand_pb_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_14_pe_.mona.quant",
+    "dfa_file": "po-mso-all/gfand_pb_14_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_14_pe_.mona.rev",
+    "dfa_file": "po-mso-all/gfand_pb_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_14_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/gfand_pb_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_17_pe_.mona",
+    "dfa_file": "mso/uright_pb_17_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_17_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_17_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_17_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_17_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_17_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_17_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_17_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_17_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_17_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_17_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_17_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_17_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_17_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_17_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_17_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_17_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_17_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_17_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_17_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_17_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_17_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_17_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_17_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_17_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_17_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_17_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_17_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_17_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_06_pe_.mona",
+    "dfa_file": "mso/uright_pb_06_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_06_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_06_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_06_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_06_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_06_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_06_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_06_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_06_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_06_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_06_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_06_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_06_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_06_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_06_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_06_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_06_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_06_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_06_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_06_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_06_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_06_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_06_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_06_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_06_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_06_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_06_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_06_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_06_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_11_pe_.mona",
+    "dfa_file": "mso/uright_pb_11_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_11_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_11_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_11_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_11_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_11_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_11_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_11_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_11_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_11_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_11_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_11_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_11_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_11_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_11_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_11_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_11_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_11_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_11_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_11_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_11_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_11_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_11_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_11_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_11_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_11_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_11_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_11_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_11_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_16_pe_.mona",
+    "dfa_file": "mso/gfand_pb_16_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_16_pe_.mona.rev",
+    "dfa_file": "mso/gfand_pb_16_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_16_pe_.mona.rev.neg",
+    "dfa_file": "mso/gfand_pb_16_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_16_pe_.mona",
+    "dfa_file": "po-mso-0/gfand_pb_16_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_16_pe_.mona.quant",
+    "dfa_file": "po-mso-0/gfand_pb_16_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_16_pe_.mona.rev",
+    "dfa_file": "po-mso-0/gfand_pb_16_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_16_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/gfand_pb_16_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_16_pe_.mona",
+    "dfa_file": "po-mso-1-2/gfand_pb_16_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_16_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/gfand_pb_16_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_16_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/gfand_pb_16_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_16_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/gfand_pb_16_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_16_pe_.mona",
+    "dfa_file": "po-mso-all/gfand_pb_16_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_16_pe_.mona.quant",
+    "dfa_file": "po-mso-all/gfand_pb_16_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_16_pe_.mona.rev",
+    "dfa_file": "po-mso-all/gfand_pb_16_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_16_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/gfand_pb_16_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_14_pe_.mona",
+    "dfa_file": "mso/uright_pb_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_14_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_14_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_14_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_14_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_14_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_14_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_14_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_14_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_14_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_14_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_14_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_14_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_14_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_14_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_14_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_14_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_14_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_13_pe_.mona",
+    "dfa_file": "mso/uright_pb_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_13_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_13_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_13_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_13_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_13_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_13_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_13_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_13_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_13_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_13_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_13_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_07_pe_.mona",
+    "dfa_file": "mso/gfand_pb_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_07_pe_.mona.rev",
+    "dfa_file": "mso/gfand_pb_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_07_pe_.mona.rev.neg",
+    "dfa_file": "mso/gfand_pb_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_07_pe_.mona",
+    "dfa_file": "po-mso-0/gfand_pb_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_07_pe_.mona.quant",
+    "dfa_file": "po-mso-0/gfand_pb_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_07_pe_.mona.rev",
+    "dfa_file": "po-mso-0/gfand_pb_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/gfand_pb_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_07_pe_.mona",
+    "dfa_file": "po-mso-1-2/gfand_pb_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_07_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/gfand_pb_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_07_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/gfand_pb_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/gfand_pb_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_07_pe_.mona",
+    "dfa_file": "po-mso-all/gfand_pb_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_07_pe_.mona.quant",
+    "dfa_file": "po-mso-all/gfand_pb_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_07_pe_.mona.rev",
+    "dfa_file": "po-mso-all/gfand_pb_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/gfand_pb_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_02_pe_.mona",
+    "dfa_file": "mso/gfand_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_02_pe_.mona.rev",
+    "dfa_file": "mso/gfand_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/gfand_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "mso/gfand_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_02_pe_.mona",
+    "dfa_file": "po-mso-0/gfand_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_02_pe_.mona.quant",
+    "dfa_file": "po-mso-0/gfand_pb_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_02_pe_.mona.rev",
+    "dfa_file": "po-mso-0/gfand_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_gfand_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/gfand_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_02_pe_.mona",
+    "dfa_file": "po-mso-1-2/gfand_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_02_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/gfand_pb_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_02_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/gfand_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_gfand_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/gfand_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_02_pe_.mona",
+    "dfa_file": "po-mso-all/gfand_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_02_pe_.mona.quant",
+    "dfa_file": "po-mso-all/gfand_pb_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_02_pe_.mona.rev",
+    "dfa_file": "po-mso-all/gfand_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_gfand_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/gfand_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_20_pe_.mona",
+    "dfa_file": "mso/uright_pb_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_20_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_20_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_20_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_20_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_20_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_20_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_20_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_20_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_20_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_20_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_20_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_20_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_20_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_20_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_20_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_20_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_20_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_04_pe_.mona",
+    "dfa_file": "mso/uright_pb_04_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_04_pe_.mona.rev",
+    "dfa_file": "mso/uright_pb_04_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/uright_pb_04_pe_.mona.rev.neg",
+    "dfa_file": "mso/uright_pb_04_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_04_pe_.mona",
+    "dfa_file": "po-mso-0/uright_pb_04_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_04_pe_.mona.quant",
+    "dfa_file": "po-mso-0/uright_pb_04_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_04_pe_.mona.rev",
+    "dfa_file": "po-mso-0/uright_pb_04_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_uright_pb_04_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/uright_pb_04_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_04_pe_.mona",
+    "dfa_file": "po-mso-1-2/uright_pb_04_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_04_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/uright_pb_04_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_04_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/uright_pb_04_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_uright_pb_04_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/uright_pb_04_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_04_pe_.mona",
+    "dfa_file": "po-mso-all/uright_pb_04_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_04_pe_.mona.quant",
+    "dfa_file": "po-mso-all/uright_pb_04_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_04_pe_.mona.rev",
+    "dfa_file": "po-mso-all/uright_pb_04_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_uright_pb_04_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/uright_pb_04_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/126.mona",
+    "dfa_file": "mso/126.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/126.mona.rev",
+    "dfa_file": "mso/126.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/126.mona.rev.neg",
+    "dfa_file": "mso/126.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_126.mona",
+    "dfa_file": "po-mso-0/126.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_126.mona.quant",
+    "dfa_file": "po-mso-0/126.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_126.mona.rev",
+    "dfa_file": "po-mso-0/126.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_126.mona.rev.neg",
+    "dfa_file": "po-mso-0/126.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_126.mona",
+    "dfa_file": "po-mso-1-2/126.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_126.mona.quant",
+    "dfa_file": "po-mso-1-2/126.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_126.mona.rev",
+    "dfa_file": "po-mso-1-2/126.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_126.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/126.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_126.mona",
+    "dfa_file": "po-mso-all/126.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_126.mona.quant",
+    "dfa_file": "po-mso-all/126.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_126.mona.rev",
+    "dfa_file": "po-mso-all/126.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_126.mona.rev.neg",
+    "dfa_file": "po-mso-all/126.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/164.mona",
+    "dfa_file": "mso/164.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/164.mona.rev",
+    "dfa_file": "mso/164.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/164.mona.rev.neg",
+    "dfa_file": "mso/164.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_164.mona",
+    "dfa_file": "po-mso-0/164.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_164.mona.quant",
+    "dfa_file": "po-mso-0/164.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_164.mona.rev",
+    "dfa_file": "po-mso-0/164.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_164.mona.rev.neg",
+    "dfa_file": "po-mso-0/164.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_164.mona",
+    "dfa_file": "po-mso-1-2/164.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_164.mona.quant",
+    "dfa_file": "po-mso-1-2/164.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_164.mona.rev",
+    "dfa_file": "po-mso-1-2/164.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_164.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/164.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_164.mona",
+    "dfa_file": "po-mso-all/164.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_164.mona.quant",
+    "dfa_file": "po-mso-all/164.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_164.mona.rev",
+    "dfa_file": "po-mso-all/164.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_164.mona.rev.neg",
+    "dfa_file": "po-mso-all/164.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/26.mona",
+    "dfa_file": "mso/26.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/26.mona.rev",
+    "dfa_file": "mso/26.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/26.mona.rev.neg",
+    "dfa_file": "mso/26.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_26.mona",
+    "dfa_file": "po-mso-0/26.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_26.mona.quant",
+    "dfa_file": "po-mso-0/26.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_26.mona.rev",
+    "dfa_file": "po-mso-0/26.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_26.mona.rev.neg",
+    "dfa_file": "po-mso-0/26.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_26.mona",
+    "dfa_file": "po-mso-1-2/26.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_26.mona.quant",
+    "dfa_file": "po-mso-1-2/26.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_26.mona.rev",
+    "dfa_file": "po-mso-1-2/26.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_26.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/26.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_26.mona",
+    "dfa_file": "po-mso-all/26.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_26.mona.quant",
+    "dfa_file": "po-mso-all/26.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_26.mona.rev",
+    "dfa_file": "po-mso-all/26.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_26.mona.rev.neg",
+    "dfa_file": "po-mso-all/26.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/063.mona",
+    "dfa_file": "mso/063.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/063.mona.rev",
+    "dfa_file": "mso/063.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/063.mona.rev.neg",
+    "dfa_file": "mso/063.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_063.mona",
+    "dfa_file": "po-mso-0/063.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_063.mona.quant",
+    "dfa_file": "po-mso-0/063.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_063.mona.rev",
+    "dfa_file": "po-mso-0/063.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_063.mona.rev.neg",
+    "dfa_file": "po-mso-0/063.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_063.mona",
+    "dfa_file": "po-mso-1-2/063.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_063.mona.quant",
+    "dfa_file": "po-mso-1-2/063.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_063.mona.rev",
+    "dfa_file": "po-mso-1-2/063.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_063.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/063.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_063.mona",
+    "dfa_file": "po-mso-all/063.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_063.mona.quant",
+    "dfa_file": "po-mso-all/063.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_063.mona.rev",
+    "dfa_file": "po-mso-all/063.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_063.mona.rev.neg",
+    "dfa_file": "po-mso-all/063.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/089.mona",
+    "dfa_file": "mso/089.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/089.mona.rev",
+    "dfa_file": "mso/089.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/089.mona.rev.neg",
+    "dfa_file": "mso/089.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_089.mona",
+    "dfa_file": "po-mso-0/089.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_089.mona.quant",
+    "dfa_file": "po-mso-0/089.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_089.mona.rev",
+    "dfa_file": "po-mso-0/089.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_089.mona.rev.neg",
+    "dfa_file": "po-mso-0/089.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_089.mona",
+    "dfa_file": "po-mso-1-2/089.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_089.mona.quant",
+    "dfa_file": "po-mso-1-2/089.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_089.mona.rev",
+    "dfa_file": "po-mso-1-2/089.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_089.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/089.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_089.mona",
+    "dfa_file": "po-mso-all/089.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_089.mona.quant",
+    "dfa_file": "po-mso-all/089.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_089.mona.rev",
+    "dfa_file": "po-mso-all/089.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_089.mona.rev.neg",
+    "dfa_file": "po-mso-all/089.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/22.mona",
+    "dfa_file": "mso/22.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/22.mona.rev",
+    "dfa_file": "mso/22.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/22.mona.rev.neg",
+    "dfa_file": "mso/22.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_22.mona",
+    "dfa_file": "po-mso-0/22.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_22.mona.quant",
+    "dfa_file": "po-mso-0/22.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_22.mona.rev",
+    "dfa_file": "po-mso-0/22.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_22.mona.rev.neg",
+    "dfa_file": "po-mso-0/22.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_22.mona",
+    "dfa_file": "po-mso-1-2/22.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_22.mona.quant",
+    "dfa_file": "po-mso-1-2/22.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_22.mona.rev",
+    "dfa_file": "po-mso-1-2/22.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_22.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/22.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_22.mona",
+    "dfa_file": "po-mso-all/22.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_22.mona.quant",
+    "dfa_file": "po-mso-all/22.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_22.mona.rev",
+    "dfa_file": "po-mso-all/22.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_22.mona.rev.neg",
+    "dfa_file": "po-mso-all/22.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/151.mona",
+    "dfa_file": "mso/151.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/151.mona.rev",
+    "dfa_file": "mso/151.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/151.mona.rev.neg",
+    "dfa_file": "mso/151.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_151.mona",
+    "dfa_file": "po-mso-0/151.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_151.mona.quant",
+    "dfa_file": "po-mso-0/151.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_151.mona.rev",
+    "dfa_file": "po-mso-0/151.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_151.mona.rev.neg",
+    "dfa_file": "po-mso-0/151.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_151.mona",
+    "dfa_file": "po-mso-1-2/151.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_151.mona.quant",
+    "dfa_file": "po-mso-1-2/151.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_151.mona.rev",
+    "dfa_file": "po-mso-1-2/151.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_151.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/151.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_151.mona",
+    "dfa_file": "po-mso-all/151.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_151.mona.quant",
+    "dfa_file": "po-mso-all/151.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_151.mona.rev",
+    "dfa_file": "po-mso-all/151.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_151.mona.rev.neg",
+    "dfa_file": "po-mso-all/151.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/181.mona",
+    "dfa_file": "mso/181.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/181.mona.rev",
+    "dfa_file": "mso/181.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/181.mona.rev.neg",
+    "dfa_file": "mso/181.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_181.mona",
+    "dfa_file": "po-mso-0/181.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_181.mona.quant",
+    "dfa_file": "po-mso-0/181.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_181.mona.rev",
+    "dfa_file": "po-mso-0/181.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_181.mona.rev.neg",
+    "dfa_file": "po-mso-0/181.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_181.mona",
+    "dfa_file": "po-mso-1-2/181.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_181.mona.quant",
+    "dfa_file": "po-mso-1-2/181.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_181.mona.rev",
+    "dfa_file": "po-mso-1-2/181.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_181.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/181.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_181.mona",
+    "dfa_file": "po-mso-all/181.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_181.mona.quant",
+    "dfa_file": "po-mso-all/181.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_181.mona.rev",
+    "dfa_file": "po-mso-all/181.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_181.mona.rev.neg",
+    "dfa_file": "po-mso-all/181.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/062.mona",
+    "dfa_file": "mso/062.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/062.mona.rev",
+    "dfa_file": "mso/062.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/062.mona.rev.neg",
+    "dfa_file": "mso/062.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_062.mona",
+    "dfa_file": "po-mso-0/062.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_062.mona.quant",
+    "dfa_file": "po-mso-0/062.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_062.mona.rev",
+    "dfa_file": "po-mso-0/062.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_062.mona.rev.neg",
+    "dfa_file": "po-mso-0/062.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_062.mona",
+    "dfa_file": "po-mso-1-2/062.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_062.mona.quant",
+    "dfa_file": "po-mso-1-2/062.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_062.mona.rev",
+    "dfa_file": "po-mso-1-2/062.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_062.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/062.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_062.mona",
+    "dfa_file": "po-mso-all/062.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_062.mona.quant",
+    "dfa_file": "po-mso-all/062.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_062.mona.rev",
+    "dfa_file": "po-mso-all/062.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_062.mona.rev.neg",
+    "dfa_file": "po-mso-all/062.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/33.mona",
+    "dfa_file": "mso/33.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/33.mona.rev",
+    "dfa_file": "mso/33.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/33.mona.rev.neg",
+    "dfa_file": "mso/33.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_33.mona",
+    "dfa_file": "po-mso-0/33.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_33.mona.quant",
+    "dfa_file": "po-mso-0/33.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_33.mona.rev",
+    "dfa_file": "po-mso-0/33.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_33.mona.rev.neg",
+    "dfa_file": "po-mso-0/33.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_33.mona",
+    "dfa_file": "po-mso-1-2/33.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_33.mona.quant",
+    "dfa_file": "po-mso-1-2/33.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_33.mona.rev",
+    "dfa_file": "po-mso-1-2/33.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_33.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/33.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_33.mona",
+    "dfa_file": "po-mso-all/33.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_33.mona.quant",
+    "dfa_file": "po-mso-all/33.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_33.mona.rev",
+    "dfa_file": "po-mso-all/33.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_33.mona.rev.neg",
+    "dfa_file": "po-mso-all/33.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/180.mona",
+    "dfa_file": "mso/180.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/180.mona.rev",
+    "dfa_file": "mso/180.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/180.mona.rev.neg",
+    "dfa_file": "mso/180.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_180.mona",
+    "dfa_file": "po-mso-0/180.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_180.mona.quant",
+    "dfa_file": "po-mso-0/180.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_180.mona.rev",
+    "dfa_file": "po-mso-0/180.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_180.mona.rev.neg",
+    "dfa_file": "po-mso-0/180.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_180.mona",
+    "dfa_file": "po-mso-1-2/180.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_180.mona.quant",
+    "dfa_file": "po-mso-1-2/180.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_180.mona.rev",
+    "dfa_file": "po-mso-1-2/180.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_180.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/180.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_180.mona",
+    "dfa_file": "po-mso-all/180.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_180.mona.quant",
+    "dfa_file": "po-mso-all/180.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_180.mona.rev",
+    "dfa_file": "po-mso-all/180.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_180.mona.rev.neg",
+    "dfa_file": "po-mso-all/180.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/187.mona",
+    "dfa_file": "mso/187.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/187.mona.rev",
+    "dfa_file": "mso/187.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/187.mona.rev.neg",
+    "dfa_file": "mso/187.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_187.mona",
+    "dfa_file": "po-mso-0/187.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_187.mona.quant",
+    "dfa_file": "po-mso-0/187.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_187.mona.rev",
+    "dfa_file": "po-mso-0/187.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_187.mona.rev.neg",
+    "dfa_file": "po-mso-0/187.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_187.mona",
+    "dfa_file": "po-mso-1-2/187.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_187.mona.quant",
+    "dfa_file": "po-mso-1-2/187.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_187.mona.rev",
+    "dfa_file": "po-mso-1-2/187.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_187.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/187.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_187.mona",
+    "dfa_file": "po-mso-all/187.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_187.mona.quant",
+    "dfa_file": "po-mso-all/187.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_187.mona.rev",
+    "dfa_file": "po-mso-all/187.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_187.mona.rev.neg",
+    "dfa_file": "po-mso-all/187.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/013.mona",
+    "dfa_file": "mso/013.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/013.mona.rev",
+    "dfa_file": "mso/013.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/013.mona.rev.neg",
+    "dfa_file": "mso/013.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_013.mona",
+    "dfa_file": "po-mso-0/013.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_013.mona.quant",
+    "dfa_file": "po-mso-0/013.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_013.mona.rev",
+    "dfa_file": "po-mso-0/013.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_013.mona.rev.neg",
+    "dfa_file": "po-mso-0/013.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_013.mona",
+    "dfa_file": "po-mso-1-2/013.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_013.mona.quant",
+    "dfa_file": "po-mso-1-2/013.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_013.mona.rev",
+    "dfa_file": "po-mso-1-2/013.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_013.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/013.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_013.mona",
+    "dfa_file": "po-mso-all/013.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_013.mona.quant",
+    "dfa_file": "po-mso-all/013.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_013.mona.rev",
+    "dfa_file": "po-mso-all/013.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_013.mona.rev.neg",
+    "dfa_file": "po-mso-all/013.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/129.mona",
+    "dfa_file": "mso/129.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/129.mona.rev",
+    "dfa_file": "mso/129.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/129.mona.rev.neg",
+    "dfa_file": "mso/129.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_129.mona",
+    "dfa_file": "po-mso-0/129.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_129.mona.quant",
+    "dfa_file": "po-mso-0/129.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_129.mona.rev",
+    "dfa_file": "po-mso-0/129.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_129.mona.rev.neg",
+    "dfa_file": "po-mso-0/129.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_129.mona",
+    "dfa_file": "po-mso-1-2/129.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_129.mona.quant",
+    "dfa_file": "po-mso-1-2/129.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_129.mona.rev",
+    "dfa_file": "po-mso-1-2/129.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_129.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/129.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_129.mona",
+    "dfa_file": "po-mso-all/129.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_129.mona.quant",
+    "dfa_file": "po-mso-all/129.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_129.mona.rev",
+    "dfa_file": "po-mso-all/129.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_129.mona.rev.neg",
+    "dfa_file": "po-mso-all/129.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/45.mona",
+    "dfa_file": "mso/45.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/45.mona.rev",
+    "dfa_file": "mso/45.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/45.mona.rev.neg",
+    "dfa_file": "mso/45.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_45.mona",
+    "dfa_file": "po-mso-0/45.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_45.mona.quant",
+    "dfa_file": "po-mso-0/45.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_45.mona.rev",
+    "dfa_file": "po-mso-0/45.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_45.mona.rev.neg",
+    "dfa_file": "po-mso-0/45.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_45.mona",
+    "dfa_file": "po-mso-1-2/45.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_45.mona.quant",
+    "dfa_file": "po-mso-1-2/45.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_45.mona.rev",
+    "dfa_file": "po-mso-1-2/45.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_45.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/45.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_45.mona",
+    "dfa_file": "po-mso-all/45.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_45.mona.quant",
+    "dfa_file": "po-mso-all/45.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_45.mona.rev",
+    "dfa_file": "po-mso-all/45.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_45.mona.rev.neg",
+    "dfa_file": "po-mso-all/45.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/19.mona",
+    "dfa_file": "mso/19.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/19.mona.rev",
+    "dfa_file": "mso/19.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/19.mona.rev.neg",
+    "dfa_file": "mso/19.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_19.mona",
+    "dfa_file": "po-mso-0/19.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_19.mona.quant",
+    "dfa_file": "po-mso-0/19.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_19.mona.rev",
+    "dfa_file": "po-mso-0/19.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_19.mona.rev.neg",
+    "dfa_file": "po-mso-0/19.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_19.mona",
+    "dfa_file": "po-mso-1-2/19.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_19.mona.quant",
+    "dfa_file": "po-mso-1-2/19.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_19.mona.rev",
+    "dfa_file": "po-mso-1-2/19.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_19.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/19.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_19.mona",
+    "dfa_file": "po-mso-all/19.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_19.mona.quant",
+    "dfa_file": "po-mso-all/19.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_19.mona.rev",
+    "dfa_file": "po-mso-all/19.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_19.mona.rev.neg",
+    "dfa_file": "po-mso-all/19.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/081.mona",
+    "dfa_file": "mso/081.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/081.mona.rev",
+    "dfa_file": "mso/081.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/081.mona.rev.neg",
+    "dfa_file": "mso/081.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_081.mona",
+    "dfa_file": "po-mso-0/081.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_081.mona.quant",
+    "dfa_file": "po-mso-0/081.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_081.mona.rev",
+    "dfa_file": "po-mso-0/081.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_081.mona.rev.neg",
+    "dfa_file": "po-mso-0/081.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_081.mona",
+    "dfa_file": "po-mso-1-2/081.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_081.mona.quant",
+    "dfa_file": "po-mso-1-2/081.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_081.mona.rev",
+    "dfa_file": "po-mso-1-2/081.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_081.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/081.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_081.mona",
+    "dfa_file": "po-mso-all/081.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_081.mona.quant",
+    "dfa_file": "po-mso-all/081.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_081.mona.rev",
+    "dfa_file": "po-mso-all/081.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_081.mona.rev.neg",
+    "dfa_file": "po-mso-all/081.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/182.mona",
+    "dfa_file": "mso/182.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/182.mona.rev",
+    "dfa_file": "mso/182.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/182.mona.rev.neg",
+    "dfa_file": "mso/182.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_182.mona",
+    "dfa_file": "po-mso-0/182.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_182.mona.quant",
+    "dfa_file": "po-mso-0/182.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_182.mona.rev",
+    "dfa_file": "po-mso-0/182.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_182.mona.rev.neg",
+    "dfa_file": "po-mso-0/182.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_182.mona",
+    "dfa_file": "po-mso-1-2/182.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_182.mona.quant",
+    "dfa_file": "po-mso-1-2/182.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_182.mona.rev",
+    "dfa_file": "po-mso-1-2/182.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_182.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/182.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_182.mona",
+    "dfa_file": "po-mso-all/182.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_182.mona.quant",
+    "dfa_file": "po-mso-all/182.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_182.mona.rev",
+    "dfa_file": "po-mso-all/182.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_182.mona.rev.neg",
+    "dfa_file": "po-mso-all/182.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/133.mona",
+    "dfa_file": "mso/133.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/133.mona.rev",
+    "dfa_file": "mso/133.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/133.mona.rev.neg",
+    "dfa_file": "mso/133.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_133.mona",
+    "dfa_file": "po-mso-0/133.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_133.mona.quant",
+    "dfa_file": "po-mso-0/133.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_133.mona.rev",
+    "dfa_file": "po-mso-0/133.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_133.mona.rev.neg",
+    "dfa_file": "po-mso-0/133.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_133.mona",
+    "dfa_file": "po-mso-1-2/133.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_133.mona.quant",
+    "dfa_file": "po-mso-1-2/133.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_133.mona.rev",
+    "dfa_file": "po-mso-1-2/133.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_133.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/133.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_133.mona",
+    "dfa_file": "po-mso-all/133.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_133.mona.quant",
+    "dfa_file": "po-mso-all/133.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_133.mona.rev",
+    "dfa_file": "po-mso-all/133.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_133.mona.rev.neg",
+    "dfa_file": "po-mso-all/133.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/015.mona",
+    "dfa_file": "mso/015.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/015.mona.rev",
+    "dfa_file": "mso/015.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/015.mona.rev.neg",
+    "dfa_file": "mso/015.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_015.mona",
+    "dfa_file": "po-mso-0/015.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_015.mona.quant",
+    "dfa_file": "po-mso-0/015.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_015.mona.rev",
+    "dfa_file": "po-mso-0/015.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_015.mona.rev.neg",
+    "dfa_file": "po-mso-0/015.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_015.mona",
+    "dfa_file": "po-mso-1-2/015.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_015.mona.quant",
+    "dfa_file": "po-mso-1-2/015.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_015.mona.rev",
+    "dfa_file": "po-mso-1-2/015.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_015.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/015.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_015.mona",
+    "dfa_file": "po-mso-all/015.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_015.mona.quant",
+    "dfa_file": "po-mso-all/015.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_015.mona.rev",
+    "dfa_file": "po-mso-all/015.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_015.mona.rev.neg",
+    "dfa_file": "po-mso-all/015.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/097.mona",
+    "dfa_file": "mso/097.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/097.mona.rev",
+    "dfa_file": "mso/097.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/097.mona.rev.neg",
+    "dfa_file": "mso/097.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_097.mona",
+    "dfa_file": "po-mso-0/097.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_097.mona.quant",
+    "dfa_file": "po-mso-0/097.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_097.mona.rev",
+    "dfa_file": "po-mso-0/097.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_097.mona.rev.neg",
+    "dfa_file": "po-mso-0/097.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_097.mona",
+    "dfa_file": "po-mso-1-2/097.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_097.mona.quant",
+    "dfa_file": "po-mso-1-2/097.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_097.mona.rev",
+    "dfa_file": "po-mso-1-2/097.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_097.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/097.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_097.mona",
+    "dfa_file": "po-mso-all/097.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_097.mona.quant",
+    "dfa_file": "po-mso-all/097.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_097.mona.rev",
+    "dfa_file": "po-mso-all/097.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_097.mona.rev.neg",
+    "dfa_file": "po-mso-all/097.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/35.mona",
+    "dfa_file": "mso/35.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/35.mona.rev",
+    "dfa_file": "mso/35.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/35.mona.rev.neg",
+    "dfa_file": "mso/35.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_35.mona",
+    "dfa_file": "po-mso-0/35.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_35.mona.quant",
+    "dfa_file": "po-mso-0/35.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_35.mona.rev",
+    "dfa_file": "po-mso-0/35.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_35.mona.rev.neg",
+    "dfa_file": "po-mso-0/35.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_35.mona",
+    "dfa_file": "po-mso-1-2/35.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_35.mona.quant",
+    "dfa_file": "po-mso-1-2/35.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_35.mona.rev",
+    "dfa_file": "po-mso-1-2/35.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_35.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/35.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_35.mona",
+    "dfa_file": "po-mso-all/35.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_35.mona.quant",
+    "dfa_file": "po-mso-all/35.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_35.mona.rev",
+    "dfa_file": "po-mso-all/35.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_35.mona.rev.neg",
+    "dfa_file": "po-mso-all/35.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/064.mona",
+    "dfa_file": "mso/064.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/064.mona.rev",
+    "dfa_file": "mso/064.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/064.mona.rev.neg",
+    "dfa_file": "mso/064.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_064.mona",
+    "dfa_file": "po-mso-0/064.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_064.mona.quant",
+    "dfa_file": "po-mso-0/064.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_064.mona.rev",
+    "dfa_file": "po-mso-0/064.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_064.mona.rev.neg",
+    "dfa_file": "po-mso-0/064.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_064.mona",
+    "dfa_file": "po-mso-1-2/064.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_064.mona.quant",
+    "dfa_file": "po-mso-1-2/064.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_064.mona.rev",
+    "dfa_file": "po-mso-1-2/064.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_064.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/064.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_064.mona",
+    "dfa_file": "po-mso-all/064.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_064.mona.quant",
+    "dfa_file": "po-mso-all/064.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_064.mona.rev",
+    "dfa_file": "po-mso-all/064.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_064.mona.rev.neg",
+    "dfa_file": "po-mso-all/064.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/30.mona",
+    "dfa_file": "mso/30.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/30.mona.rev",
+    "dfa_file": "mso/30.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/30.mona.rev.neg",
+    "dfa_file": "mso/30.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_30.mona",
+    "dfa_file": "po-mso-0/30.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_30.mona.quant",
+    "dfa_file": "po-mso-0/30.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_30.mona.rev",
+    "dfa_file": "po-mso-0/30.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_30.mona.rev.neg",
+    "dfa_file": "po-mso-0/30.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_30.mona",
+    "dfa_file": "po-mso-1-2/30.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_30.mona.quant",
+    "dfa_file": "po-mso-1-2/30.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_30.mona.rev",
+    "dfa_file": "po-mso-1-2/30.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_30.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/30.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_30.mona",
+    "dfa_file": "po-mso-all/30.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_30.mona.quant",
+    "dfa_file": "po-mso-all/30.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_30.mona.rev",
+    "dfa_file": "po-mso-all/30.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_30.mona.rev.neg",
+    "dfa_file": "po-mso-all/30.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/21.mona",
+    "dfa_file": "mso/21.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/21.mona.rev",
+    "dfa_file": "mso/21.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/21.mona.rev.neg",
+    "dfa_file": "mso/21.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_21.mona",
+    "dfa_file": "po-mso-0/21.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_21.mona.quant",
+    "dfa_file": "po-mso-0/21.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_21.mona.rev",
+    "dfa_file": "po-mso-0/21.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_21.mona.rev.neg",
+    "dfa_file": "po-mso-0/21.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_21.mona",
+    "dfa_file": "po-mso-1-2/21.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_21.mona.quant",
+    "dfa_file": "po-mso-1-2/21.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_21.mona.rev",
+    "dfa_file": "po-mso-1-2/21.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_21.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/21.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_21.mona",
+    "dfa_file": "po-mso-all/21.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_21.mona.quant",
+    "dfa_file": "po-mso-all/21.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_21.mona.rev",
+    "dfa_file": "po-mso-all/21.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_21.mona.rev.neg",
+    "dfa_file": "po-mso-all/21.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/14.mona",
+    "dfa_file": "mso/14.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/14.mona.rev",
+    "dfa_file": "mso/14.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/14.mona.rev.neg",
+    "dfa_file": "mso/14.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_14.mona",
+    "dfa_file": "po-mso-0/14.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_14.mona.quant",
+    "dfa_file": "po-mso-0/14.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_14.mona.rev",
+    "dfa_file": "po-mso-0/14.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_14.mona.rev.neg",
+    "dfa_file": "po-mso-0/14.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_14.mona",
+    "dfa_file": "po-mso-1-2/14.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_14.mona.quant",
+    "dfa_file": "po-mso-1-2/14.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_14.mona.rev",
+    "dfa_file": "po-mso-1-2/14.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_14.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/14.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_14.mona",
+    "dfa_file": "po-mso-all/14.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_14.mona.quant",
+    "dfa_file": "po-mso-all/14.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_14.mona.rev",
+    "dfa_file": "po-mso-all/14.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_14.mona.rev.neg",
+    "dfa_file": "po-mso-all/14.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/160.mona",
+    "dfa_file": "mso/160.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/160.mona.rev",
+    "dfa_file": "mso/160.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/160.mona.rev.neg",
+    "dfa_file": "mso/160.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_160.mona",
+    "dfa_file": "po-mso-0/160.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_160.mona.quant",
+    "dfa_file": "po-mso-0/160.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_160.mona.rev",
+    "dfa_file": "po-mso-0/160.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_160.mona.rev.neg",
+    "dfa_file": "po-mso-0/160.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_160.mona",
+    "dfa_file": "po-mso-1-2/160.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_160.mona.quant",
+    "dfa_file": "po-mso-1-2/160.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_160.mona.rev",
+    "dfa_file": "po-mso-1-2/160.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_160.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/160.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_160.mona",
+    "dfa_file": "po-mso-all/160.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_160.mona.quant",
+    "dfa_file": "po-mso-all/160.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_160.mona.rev",
+    "dfa_file": "po-mso-all/160.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_160.mona.rev.neg",
+    "dfa_file": "po-mso-all/160.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/158.mona",
+    "dfa_file": "mso/158.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/158.mona.rev",
+    "dfa_file": "mso/158.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/158.mona.rev.neg",
+    "dfa_file": "mso/158.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_158.mona",
+    "dfa_file": "po-mso-0/158.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_158.mona.quant",
+    "dfa_file": "po-mso-0/158.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_158.mona.rev",
+    "dfa_file": "po-mso-0/158.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_158.mona.rev.neg",
+    "dfa_file": "po-mso-0/158.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_158.mona",
+    "dfa_file": "po-mso-1-2/158.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_158.mona.quant",
+    "dfa_file": "po-mso-1-2/158.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_158.mona.rev",
+    "dfa_file": "po-mso-1-2/158.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_158.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/158.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_158.mona",
+    "dfa_file": "po-mso-all/158.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_158.mona.quant",
+    "dfa_file": "po-mso-all/158.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_158.mona.rev",
+    "dfa_file": "po-mso-all/158.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_158.mona.rev.neg",
+    "dfa_file": "po-mso-all/158.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/111.mona",
+    "dfa_file": "mso/111.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/111.mona.rev",
+    "dfa_file": "mso/111.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/111.mona.rev.neg",
+    "dfa_file": "mso/111.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_111.mona",
+    "dfa_file": "po-mso-0/111.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_111.mona.quant",
+    "dfa_file": "po-mso-0/111.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_111.mona.rev",
+    "dfa_file": "po-mso-0/111.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_111.mona.rev.neg",
+    "dfa_file": "po-mso-0/111.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_111.mona",
+    "dfa_file": "po-mso-1-2/111.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_111.mona.quant",
+    "dfa_file": "po-mso-1-2/111.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_111.mona.rev",
+    "dfa_file": "po-mso-1-2/111.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_111.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/111.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_111.mona",
+    "dfa_file": "po-mso-all/111.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_111.mona.quant",
+    "dfa_file": "po-mso-all/111.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_111.mona.rev",
+    "dfa_file": "po-mso-all/111.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_111.mona.rev.neg",
+    "dfa_file": "po-mso-all/111.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/13.mona",
+    "dfa_file": "mso/13.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/13.mona.rev",
+    "dfa_file": "mso/13.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/13.mona.rev.neg",
+    "dfa_file": "mso/13.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_13.mona",
+    "dfa_file": "po-mso-0/13.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_13.mona.quant",
+    "dfa_file": "po-mso-0/13.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_13.mona.rev",
+    "dfa_file": "po-mso-0/13.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_13.mona.rev.neg",
+    "dfa_file": "po-mso-0/13.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_13.mona",
+    "dfa_file": "po-mso-1-2/13.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_13.mona.quant",
+    "dfa_file": "po-mso-1-2/13.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_13.mona.rev",
+    "dfa_file": "po-mso-1-2/13.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_13.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/13.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_13.mona",
+    "dfa_file": "po-mso-all/13.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_13.mona.quant",
+    "dfa_file": "po-mso-all/13.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_13.mona.rev",
+    "dfa_file": "po-mso-all/13.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_13.mona.rev.neg",
+    "dfa_file": "po-mso-all/13.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_2_pe_.mona",
+    "dfa_file": "mso/scutella_pb_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_2_pe_.mona.rev",
+    "dfa_file": "mso/scutella_pb_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_2_pe_.mona.rev.neg",
+    "dfa_file": "mso/scutella_pb_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_2_pe_.mona",
+    "dfa_file": "po-mso-0/scutella_pb_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_2_pe_.mona.quant",
+    "dfa_file": "po-mso-0/scutella_pb_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_2_pe_.mona.rev",
+    "dfa_file": "po-mso-0/scutella_pb_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/scutella_pb_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_2_pe_.mona",
+    "dfa_file": "po-mso-1-2/scutella_pb_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_2_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/scutella_pb_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_2_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/scutella_pb_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/scutella_pb_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_2_pe_.mona",
+    "dfa_file": "po-mso-all/scutella_pb_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_2_pe_.mona.quant",
+    "dfa_file": "po-mso-all/scutella_pb_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_2_pe_.mona.rev",
+    "dfa_file": "po-mso-all/scutella_pb_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/scutella_pb_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_3_pe_.mona",
+    "dfa_file": "mso/scutella_pb_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_3_pe_.mona.rev",
+    "dfa_file": "mso/scutella_pb_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_3_pe_.mona.rev.neg",
+    "dfa_file": "mso/scutella_pb_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_3_pe_.mona",
+    "dfa_file": "po-mso-0/scutella_pb_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_3_pe_.mona.quant",
+    "dfa_file": "po-mso-0/scutella_pb_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_3_pe_.mona.rev",
+    "dfa_file": "po-mso-0/scutella_pb_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/scutella_pb_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_3_pe_.mona",
+    "dfa_file": "po-mso-1-2/scutella_pb_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_3_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/scutella_pb_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_3_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/scutella_pb_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/scutella_pb_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_3_pe_.mona",
+    "dfa_file": "po-mso-all/scutella_pb_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_3_pe_.mona.quant",
+    "dfa_file": "po-mso-all/scutella_pb_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_3_pe_.mona.rev",
+    "dfa_file": "po-mso-all/scutella_pb_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/scutella_pb_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_1_pe_.mona",
+    "dfa_file": "mso/scutella_pb_1_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_1_pe_.mona.rev",
+    "dfa_file": "mso/scutella_pb_1_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_1_pe_.mona.rev.neg",
+    "dfa_file": "mso/scutella_pb_1_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_1_pe_.mona",
+    "dfa_file": "po-mso-0/scutella_pb_1_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_1_pe_.mona.quant",
+    "dfa_file": "po-mso-0/scutella_pb_1_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_1_pe_.mona.rev",
+    "dfa_file": "po-mso-0/scutella_pb_1_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_1_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/scutella_pb_1_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_1_pe_.mona",
+    "dfa_file": "po-mso-1-2/scutella_pb_1_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_1_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/scutella_pb_1_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_1_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/scutella_pb_1_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_1_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/scutella_pb_1_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_1_pe_.mona",
+    "dfa_file": "po-mso-all/scutella_pb_1_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_1_pe_.mona.quant",
+    "dfa_file": "po-mso-all/scutella_pb_1_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_1_pe_.mona.rev",
+    "dfa_file": "po-mso-all/scutella_pb_1_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_1_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/scutella_pb_1_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_4_pe_.mona",
+    "dfa_file": "mso/scutella_pb_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_4_pe_.mona.rev",
+    "dfa_file": "mso/scutella_pb_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/scutella_pb_4_pe_.mona.rev.neg",
+    "dfa_file": "mso/scutella_pb_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_4_pe_.mona",
+    "dfa_file": "po-mso-0/scutella_pb_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_4_pe_.mona.quant",
+    "dfa_file": "po-mso-0/scutella_pb_4_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_4_pe_.mona.rev",
+    "dfa_file": "po-mso-0/scutella_pb_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_scutella_pb_4_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/scutella_pb_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_4_pe_.mona",
+    "dfa_file": "po-mso-1-2/scutella_pb_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_4_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/scutella_pb_4_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_4_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/scutella_pb_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_scutella_pb_4_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/scutella_pb_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_4_pe_.mona",
+    "dfa_file": "po-mso-all/scutella_pb_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_4_pe_.mona.quant",
+    "dfa_file": "po-mso-all/scutella_pb_4_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_4_pe_.mona.rev",
+    "dfa_file": "po-mso-all/scutella_pb_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_scutella_pb_4_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/scutella_pb_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_11_13_pe_.mona",
+    "dfa_file": "mso/nim_pb_11_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_11_13_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_11_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_11_13_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_11_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_11_13_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_11_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_11_13_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_11_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_11_13_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_11_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_11_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_11_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_11_13_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_11_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_11_13_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_11_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_11_13_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_11_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_11_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_11_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_11_13_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_11_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_11_13_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_11_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_11_13_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_11_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_11_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_11_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/countersDouble_pb_02_pe_.mona",
+    "dfa_file": "mso/countersDouble_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/countersDouble_pb_02_pe_.mona.rev",
+    "dfa_file": "mso/countersDouble_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/countersDouble_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "mso/countersDouble_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_countersDouble_pb_02_pe_.mona",
+    "dfa_file": "po-mso-0/countersDouble_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_countersDouble_pb_02_pe_.mona.quant",
+    "dfa_file": "po-mso-0/countersDouble_pb_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_countersDouble_pb_02_pe_.mona.rev",
+    "dfa_file": "po-mso-0/countersDouble_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_countersDouble_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/countersDouble_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_countersDouble_pb_02_pe_.mona",
+    "dfa_file": "po-mso-1-2/countersDouble_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_countersDouble_pb_02_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/countersDouble_pb_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_countersDouble_pb_02_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/countersDouble_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_countersDouble_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/countersDouble_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_countersDouble_pb_02_pe_.mona",
+    "dfa_file": "po-mso-all/countersDouble_pb_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_countersDouble_pb_02_pe_.mona.quant",
+    "dfa_file": "po-mso-all/countersDouble_pb_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_countersDouble_pb_02_pe_.mona.rev",
+    "dfa_file": "po-mso-all/countersDouble_pb_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_countersDouble_pb_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/countersDouble_pb_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_01_03_pe_.mona",
+    "dfa_file": "mso/nim_pb_01_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_01_03_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_01_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_01_03_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_01_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_01_03_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_01_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_01_03_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_01_03_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_01_03_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_01_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_01_03_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_01_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_01_03_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_01_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_01_03_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_01_03_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_01_03_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_01_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_01_03_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_01_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_01_03_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_01_03_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_01_03_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_01_03_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_01_03_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_01_03_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_01_03_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_01_03_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_03_15_pe_.mona",
+    "dfa_file": "mso/nim_pb_03_15_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_03_15_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_03_15_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_03_15_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_03_15_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_15_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_03_15_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_15_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_03_15_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_15_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_03_15_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_15_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_03_15_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_15_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_03_15_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_15_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_03_15_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_15_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_03_15_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_15_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_03_15_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_15_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_03_15_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_15_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_03_15_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_15_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_03_15_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_15_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_03_15_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_05_12_pe_.mona",
+    "dfa_file": "mso/nim_pb_05_12_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_05_12_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_05_12_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_05_12_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_05_12_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_12_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_05_12_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_12_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_05_12_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_12_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_05_12_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_12_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_05_12_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_12_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_05_12_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_12_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_05_12_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_12_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_05_12_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_12_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_05_12_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_12_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_05_12_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_12_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_05_12_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_12_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_05_12_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_12_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_05_12_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_08_pe_.mona",
+    "dfa_file": "mso/nim_pb_04_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_08_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_04_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_08_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_04_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_08_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_04_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_08_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_04_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_08_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_04_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_04_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_08_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_04_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_08_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_04_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_08_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_04_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_04_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_08_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_04_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_08_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_04_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_08_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_04_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_04_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_04_pe_.mona",
+    "dfa_file": "mso/nim_pb_04_04_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_04_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_04_04_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_04_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_04_04_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_04_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_04_04_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_04_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_04_04_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_04_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_04_04_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_04_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_04_04_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_04_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_04_04_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_04_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_04_04_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_04_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_04_04_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_04_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_04_04_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_04_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_04_04_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_04_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_04_04_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_04_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_04_04_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_04_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_04_04_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_07_08_pe_.mona",
+    "dfa_file": "mso/nim_pb_07_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_07_08_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_07_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_07_08_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_07_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_07_08_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_07_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_07_08_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_07_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_07_08_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_07_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_07_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_07_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_07_08_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_07_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_07_08_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_07_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_07_08_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_07_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_07_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_07_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_07_08_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_07_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_07_08_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_07_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_07_08_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_07_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_07_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_07_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_16_20_pe_.mona",
+    "dfa_file": "mso/nim_pb_16_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_16_20_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_16_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_16_20_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_16_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_16_20_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_16_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_16_20_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_16_20_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_16_20_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_16_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_16_20_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_16_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_16_20_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_16_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_16_20_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_16_20_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_16_20_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_16_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_16_20_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_16_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_16_20_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_16_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_16_20_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_16_20_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_16_20_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_16_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_16_20_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_16_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_05_02_pe_.mona",
+    "dfa_file": "mso/nim_pb_05_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_05_02_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_05_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_05_02_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_05_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_02_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_05_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_02_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_05_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_02_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_05_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_05_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_02_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_05_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_02_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_05_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_02_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_05_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_05_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_02_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_05_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_02_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_05_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_02_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_05_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_05_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_15_19_pe_.mona",
+    "dfa_file": "mso/nim_pb_15_19_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_15_19_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_15_19_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_15_19_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_15_19_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_19_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_15_19_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_19_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_15_19_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_19_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_15_19_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_19_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_15_19_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_19_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_15_19_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_19_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_15_19_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_19_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_15_19_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_19_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_15_19_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_19_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_15_19_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_19_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_15_19_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_19_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_15_19_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_19_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_15_19_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_15_13_pe_.mona",
+    "dfa_file": "mso/nim_pb_15_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_15_13_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_15_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_15_13_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_15_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_13_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_15_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_13_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_15_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_13_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_15_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_15_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_13_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_15_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_13_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_15_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_13_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_15_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_15_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_13_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_15_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_13_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_15_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_13_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_15_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_15_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_07_pe_.mona",
+    "dfa_file": "mso/nim_pb_04_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_07_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_04_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_07_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_04_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_07_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_04_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_07_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_04_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_07_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_04_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_04_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_07_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_04_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_07_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_04_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_07_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_04_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_04_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_07_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_04_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_07_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_04_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_07_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_04_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_04_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_16_02_pe_.mona",
+    "dfa_file": "mso/nim_pb_16_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_16_02_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_16_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_16_02_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_16_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_16_02_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_16_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_16_02_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_16_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_16_02_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_16_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_16_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_16_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_16_02_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_16_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_16_02_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_16_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_16_02_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_16_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_16_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_16_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_16_02_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_16_02_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_16_02_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_16_02_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_16_02_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_16_02_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_16_02_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_16_02_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_07_01_pe_.mona",
+    "dfa_file": "mso/nim_pb_07_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_07_01_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_07_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_07_01_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_07_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_07_01_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_07_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_07_01_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_07_01_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_07_01_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_07_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_07_01_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_07_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_07_01_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_07_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_07_01_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_07_01_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_07_01_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_07_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_07_01_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_07_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_07_01_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_07_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_07_01_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_07_01_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_07_01_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_07_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_07_01_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_07_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/counter_pb_10_pe_.mona",
+    "dfa_file": "mso/counter_pb_10_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/counter_pb_10_pe_.mona.rev",
+    "dfa_file": "mso/counter_pb_10_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/counter_pb_10_pe_.mona.rev.neg",
+    "dfa_file": "mso/counter_pb_10_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_counter_pb_10_pe_.mona",
+    "dfa_file": "po-mso-0/counter_pb_10_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_counter_pb_10_pe_.mona.quant",
+    "dfa_file": "po-mso-0/counter_pb_10_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_counter_pb_10_pe_.mona.rev",
+    "dfa_file": "po-mso-0/counter_pb_10_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_counter_pb_10_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/counter_pb_10_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_counter_pb_10_pe_.mona",
+    "dfa_file": "po-mso-1-2/counter_pb_10_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_counter_pb_10_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/counter_pb_10_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_counter_pb_10_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/counter_pb_10_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_counter_pb_10_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/counter_pb_10_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_counter_pb_10_pe_.mona",
+    "dfa_file": "po-mso-all/counter_pb_10_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_counter_pb_10_pe_.mona.quant",
+    "dfa_file": "po-mso-all/counter_pb_10_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_counter_pb_10_pe_.mona.rev",
+    "dfa_file": "po-mso-all/counter_pb_10_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_counter_pb_10_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/counter_pb_10_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_12_12_pe_.mona",
+    "dfa_file": "mso/nim_pb_12_12_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_12_12_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_12_12_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_12_12_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_12_12_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_12_12_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_12_12_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_12_12_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_12_12_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_12_12_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_12_12_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_12_12_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_12_12_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_12_12_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_12_12_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_12_12_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_12_12_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_12_12_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_12_12_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_12_12_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_12_12_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_12_12_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_12_12_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_12_12_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_12_12_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_12_12_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_12_12_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_12_12_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_12_12_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_11_18_pe_.mona",
+    "dfa_file": "mso/nim_pb_11_18_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_11_18_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_11_18_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_11_18_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_11_18_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_11_18_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_11_18_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_11_18_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_11_18_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_11_18_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_11_18_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_11_18_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_11_18_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_11_18_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_11_18_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_11_18_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_11_18_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_11_18_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_11_18_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_11_18_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_11_18_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_11_18_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_11_18_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_11_18_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_11_18_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_11_18_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_11_18_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_11_18_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_11_18_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_08_15_pe_.mona",
+    "dfa_file": "mso/nim_pb_08_15_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_08_15_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_08_15_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_08_15_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_08_15_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_08_15_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_08_15_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_08_15_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_08_15_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_08_15_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_08_15_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_08_15_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_08_15_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_08_15_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_08_15_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_08_15_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_08_15_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_08_15_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_08_15_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_08_15_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_08_15_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_08_15_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_08_15_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_08_15_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_08_15_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_08_15_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_08_15_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_08_15_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_08_15_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/countersDouble_pb_11_pe_.mona",
+    "dfa_file": "mso/countersDouble_pb_11_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/countersDouble_pb_11_pe_.mona.rev",
+    "dfa_file": "mso/countersDouble_pb_11_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/countersDouble_pb_11_pe_.mona.rev.neg",
+    "dfa_file": "mso/countersDouble_pb_11_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_countersDouble_pb_11_pe_.mona",
+    "dfa_file": "po-mso-0/countersDouble_pb_11_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_countersDouble_pb_11_pe_.mona.quant",
+    "dfa_file": "po-mso-0/countersDouble_pb_11_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_countersDouble_pb_11_pe_.mona.rev",
+    "dfa_file": "po-mso-0/countersDouble_pb_11_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_countersDouble_pb_11_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/countersDouble_pb_11_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_countersDouble_pb_11_pe_.mona",
+    "dfa_file": "po-mso-1-2/countersDouble_pb_11_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_countersDouble_pb_11_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/countersDouble_pb_11_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_countersDouble_pb_11_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/countersDouble_pb_11_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_countersDouble_pb_11_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/countersDouble_pb_11_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_countersDouble_pb_11_pe_.mona",
+    "dfa_file": "po-mso-all/countersDouble_pb_11_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_countersDouble_pb_11_pe_.mona.quant",
+    "dfa_file": "po-mso-all/countersDouble_pb_11_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_countersDouble_pb_11_pe_.mona.rev",
+    "dfa_file": "po-mso-all/countersDouble_pb_11_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_countersDouble_pb_11_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/countersDouble_pb_11_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_15_08_pe_.mona",
+    "dfa_file": "mso/nim_pb_15_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_15_08_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_15_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_15_08_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_15_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_08_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_15_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_08_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_15_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_08_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_15_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_15_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_15_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_08_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_15_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_08_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_15_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_08_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_15_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_15_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_15_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_08_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_15_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_08_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_15_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_08_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_15_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_15_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_15_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_05_09_pe_.mona",
+    "dfa_file": "mso/nim_pb_05_09_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_05_09_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_05_09_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_05_09_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_05_09_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_09_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_05_09_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_09_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_05_09_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_09_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_05_09_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_05_09_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_05_09_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_09_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_05_09_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_09_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_05_09_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_09_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_05_09_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_05_09_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_05_09_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_09_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_05_09_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_09_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_05_09_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_09_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_05_09_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_05_09_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_05_09_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_13_01_pe_.mona",
+    "dfa_file": "mso/nim_pb_13_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_13_01_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_13_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_13_01_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_13_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_13_01_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_13_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_13_01_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_13_01_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_13_01_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_13_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_13_01_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_13_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_13_01_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_13_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_13_01_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_13_01_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_13_01_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_13_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_13_01_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_13_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_13_01_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_13_01_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_13_01_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_13_01_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_13_01_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_13_01_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_13_01_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_13_01_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_03_20_pe_.mona",
+    "dfa_file": "mso/nim_pb_03_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_03_20_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_03_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_03_20_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_03_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_20_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_03_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_20_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_03_20_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_20_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_03_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_20_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_03_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_20_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_03_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_20_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_03_20_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_20_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_03_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_20_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_03_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_20_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_03_20_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_20_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_03_20_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_20_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_03_20_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_20_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_03_20_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_06_14_pe_.mona",
+    "dfa_file": "mso/nim_pb_06_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_06_14_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_06_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_06_14_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_06_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_06_14_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_06_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_06_14_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_06_14_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_06_14_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_06_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_06_14_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_06_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_06_14_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_06_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_06_14_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_06_14_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_06_14_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_06_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_06_14_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_06_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_06_14_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_06_14_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_06_14_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_06_14_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_06_14_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_06_14_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_06_14_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_06_14_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_03_07_pe_.mona",
+    "dfa_file": "mso/nim_pb_03_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_03_07_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_03_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_03_07_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_03_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_07_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_03_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_07_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_03_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_07_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_03_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_03_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_03_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_07_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_03_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_07_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_03_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_07_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_03_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_03_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_03_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_07_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_03_07_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_07_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_03_07_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_07_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_03_07_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_03_07_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_03_07_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_17_pe_.mona",
+    "dfa_file": "mso/nim_pb_04_17_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_17_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_04_17_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_04_17_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_04_17_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_17_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_04_17_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_17_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_04_17_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_17_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_04_17_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_04_17_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_04_17_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_17_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_04_17_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_17_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_04_17_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_17_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_04_17_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_04_17_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_04_17_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_17_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_04_17_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_17_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_04_17_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_17_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_04_17_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_04_17_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_04_17_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_02_13_pe_.mona",
+    "dfa_file": "mso/nim_pb_02_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_02_13_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_02_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_02_13_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_02_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_02_13_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_02_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_02_13_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_02_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_02_13_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_02_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_02_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_02_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_02_13_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_02_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_02_13_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_02_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_02_13_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_02_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_02_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_02_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_02_13_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_02_13_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_02_13_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_02_13_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_02_13_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_02_13_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_02_13_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_02_13_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_17_08_pe_.mona",
+    "dfa_file": "mso/nim_pb_17_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_17_08_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_17_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_17_08_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_17_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_17_08_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_17_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_17_08_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_17_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_17_08_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_17_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_17_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_17_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_17_08_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_17_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_17_08_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_17_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_17_08_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_17_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_17_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_17_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_17_08_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_17_08_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_17_08_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_17_08_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_17_08_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_17_08_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_17_08_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_17_08_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_10_06_pe_.mona",
+    "dfa_file": "mso/nim_pb_10_06_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_10_06_pe_.mona.rev",
+    "dfa_file": "mso/nim_pb_10_06_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/nim_pb_10_06_pe_.mona.rev.neg",
+    "dfa_file": "mso/nim_pb_10_06_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_10_06_pe_.mona",
+    "dfa_file": "po-mso-0/nim_pb_10_06_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_10_06_pe_.mona.quant",
+    "dfa_file": "po-mso-0/nim_pb_10_06_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_10_06_pe_.mona.rev",
+    "dfa_file": "po-mso-0/nim_pb_10_06_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_nim_pb_10_06_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/nim_pb_10_06_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_10_06_pe_.mona",
+    "dfa_file": "po-mso-1-2/nim_pb_10_06_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_10_06_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/nim_pb_10_06_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_10_06_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/nim_pb_10_06_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_nim_pb_10_06_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/nim_pb_10_06_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_10_06_pe_.mona",
+    "dfa_file": "po-mso-all/nim_pb_10_06_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_10_06_pe_.mona.quant",
+    "dfa_file": "po-mso-all/nim_pb_10_06_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_10_06_pe_.mona.rev",
+    "dfa_file": "po-mso-all/nim_pb_10_06_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_nim_pb_10_06_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/nim_pb_10_06_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_6_pe_.mona",
+    "dfa_file": "mso/chomp_pb_4_6_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_6_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_4_6_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_6_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_4_6_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_6_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_4_6_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_6_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_4_6_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_6_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_4_6_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_6_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_4_6_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_6_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_6_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_6_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_6_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_6_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_6_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_6_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_6_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_6_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_4_6_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_6_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_4_6_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_6_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_4_6_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_6_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_4_6_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_5_pe_.mona",
+    "dfa_file": "mso/chomp_pb_2_5_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_5_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_2_5_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_5_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_2_5_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_5_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_2_5_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_5_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_2_5_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_5_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_2_5_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_5_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_2_5_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_5_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_5_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_5_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_5_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_5_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_5_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_5_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_5_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_5_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_2_5_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_5_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_2_5_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_5_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_2_5_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_5_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_2_5_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_5_pe_.mona",
+    "dfa_file": "mso/chomp_pb_4_5_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_5_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_4_5_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_5_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_4_5_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_5_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_4_5_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_5_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_4_5_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_5_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_4_5_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_5_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_4_5_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_5_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_5_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_5_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_5_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_5_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_5_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_5_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_5_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_5_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_4_5_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_5_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_4_5_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_5_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_4_5_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_5_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_4_5_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_4_pe_.mona",
+    "dfa_file": "mso/chomp_pb_4_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_4_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_4_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_4_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_4_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_4_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_4_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_4_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_4_4_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_4_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_4_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_4_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_4_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_4_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_4_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_4_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_4_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_4_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_4_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_4_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_4_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_4_4_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_4_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_4_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_4_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_4_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_7_pe_.mona",
+    "dfa_file": "mso/chomp_pb_2_7_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_7_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_2_7_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_7_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_2_7_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_7_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_2_7_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_7_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_2_7_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_7_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_2_7_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_7_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_2_7_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_7_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_7_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_7_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_7_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_7_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_7_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_7_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_7_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_7_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_2_7_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_7_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_2_7_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_7_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_2_7_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_7_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_2_7_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_8_pe_.mona",
+    "dfa_file": "mso/chomp_pb_3_8_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_8_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_3_8_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_8_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_3_8_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_8_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_3_8_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_8_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_3_8_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_8_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_3_8_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_8_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_3_8_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_8_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_8_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_8_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_8_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_8_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_8_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_8_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_8_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_8_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_3_8_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_8_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_3_8_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_8_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_3_8_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_8_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_3_8_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_2_pe_.mona",
+    "dfa_file": "mso/chomp_pb_2_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_2_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_2_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_2_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_2_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_2_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_2_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_2_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_2_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_2_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_2_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_2_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_2_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_2_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_2_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_2_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_2_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_2_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_2_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_2_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_2_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_2_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_3_pe_.mona",
+    "dfa_file": "mso/chomp_pb_4_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_3_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_4_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_3_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_4_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_3_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_4_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_3_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_4_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_3_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_4_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_4_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_3_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_3_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_3_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_3_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_4_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_3_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_4_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_3_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_4_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_4_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_3_pe_.mona",
+    "dfa_file": "mso/chomp_pb_3_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_3_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_3_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_3_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_3_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_3_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_3_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_3_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_3_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_3_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_3_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_3_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_3_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_3_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_3_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_3_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_3_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_3_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_3_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_3_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_3_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_3_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_7_pe_.mona",
+    "dfa_file": "mso/chomp_pb_4_7_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_7_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_4_7_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_7_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_4_7_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_7_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_4_7_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_7_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_4_7_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_7_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_4_7_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_7_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_4_7_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_7_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_7_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_7_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_7_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_7_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_7_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_7_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_7_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_7_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_4_7_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_7_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_4_7_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_7_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_4_7_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_7_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_4_7_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_2_pe_.mona",
+    "dfa_file": "mso/chomp_pb_4_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_2_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_4_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_4_2_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_4_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_2_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_4_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_2_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_4_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_2_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_4_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_4_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_4_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_2_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_2_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_2_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_4_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_4_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_2_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_4_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_2_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_4_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_2_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_4_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_4_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_4_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_6_pe_.mona",
+    "dfa_file": "mso/chomp_pb_2_6_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_6_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_2_6_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_6_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_2_6_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_6_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_2_6_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_6_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_2_6_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_6_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_2_6_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_6_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_2_6_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_6_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_6_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_6_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_6_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_6_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_6_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_6_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_6_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_6_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_2_6_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_6_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_2_6_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_6_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_2_6_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_6_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_2_6_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_4_pe_.mona",
+    "dfa_file": "mso/chomp_pb_3_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_4_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_3_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_4_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_3_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_4_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_3_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_4_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_3_4_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_4_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_3_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_4_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_3_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_4_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_4_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_4_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_4_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_4_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_4_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_3_4_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_4_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_3_4_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_4_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_3_4_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_4_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_3_4_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_3_pe_.mona",
+    "dfa_file": "mso/chomp_pb_2_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_3_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_2_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_2_3_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_2_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_3_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_2_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_3_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_2_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_3_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_2_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_2_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_2_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_3_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_3_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_3_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_2_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_2_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_3_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_2_3_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_3_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_2_3_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_3_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_2_3_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_2_3_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_2_3_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_2_pe_.mona",
+    "dfa_file": "mso/chomp_pb_3_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_2_pe_.mona.rev",
+    "dfa_file": "mso/chomp_pb_3_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/chomp_pb_3_2_pe_.mona.rev.neg",
+    "dfa_file": "mso/chomp_pb_3_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_2_pe_.mona",
+    "dfa_file": "po-mso-0/chomp_pb_3_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_2_pe_.mona.quant",
+    "dfa_file": "po-mso-0/chomp_pb_3_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_2_pe_.mona.rev",
+    "dfa_file": "po-mso-0/chomp_pb_3_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-0_chomp_pb_3_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-0/chomp_pb_3_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_2_pe_.mona",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_2_pe_.mona.quant",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_2_pe_.mona.rev",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-1-2_chomp_pb_3_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-1-2/chomp_pb_3_2_pe_.dfa.rev.neg"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_2_pe_.mona",
+    "dfa_file": "po-mso-all/chomp_pb_3_2_pe_.dfa"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_2_pe_.mona.quant",
+    "dfa_file": "po-mso-all/chomp_pb_3_2_pe_.dfa.quant"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_2_pe_.mona.rev",
+    "dfa_file": "po-mso-all/chomp_pb_3_2_pe_.dfa.rev"
+  },
+  {
+    "mona_file": "hpc-mona/po-mso-all_chomp_pb_3_2_pe_.mona.rev.neg",
+    "dfa_file": "po-mso-all/chomp_pb_3_2_pe_.dfa.rev.neg"
+  }
+]
