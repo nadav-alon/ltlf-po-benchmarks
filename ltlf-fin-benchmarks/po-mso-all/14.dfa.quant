@@ -1,0 +1,18 @@
+MONA DFA
+number of variables: 10
+variables: P156 P166 P174 P181 P187 P27 P65 P81 P88 P89
+orders: 2 2 2 2 2 2 2 2 2 2
+states: 3
+initial: 0
+bdd nodes: 7
+final: -1 -1 1
+behaviour: 0 1 1
+bdd:
+ -1 1 0
+ 0 0 2
+ 1 0 3
+ 2 0 4
+ 3 0 5
+ 4 0 6
+ -1 2 0
+end

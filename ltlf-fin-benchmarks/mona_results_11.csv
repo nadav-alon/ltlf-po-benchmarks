@@ -1,0 +1,121 @@
+mona_file,status,runtime,wall_time,error
+hpc-mona/countersDouble_pb_02_pe_.mona,SUCCESS,0.0022458329999999996,0.06389331817626953,
+hpc-mona/countersDouble_pb_02_pe_.mona.rev,SUCCESS,0.002377193,0.05387592315673828,
+hpc-mona/countersDouble_pb_02_pe_.mona.rev.neg,SUCCESS,0.002563356,0.05231285095214844,
+hpc-mona/po-mso-0_countersDouble_pb_02_pe_.mona,SUCCESS,0.002443649,0.06765437126159668,
+hpc-mona/po-mso-0_countersDouble_pb_02_pe_.mona.quant,SUCCESS,0.002416723,0.06764888763427734,
+hpc-mona/po-mso-0_countersDouble_pb_02_pe_.mona.rev,SUCCESS,0.0024969829999999995,0.05341768264770508,
+hpc-mona/po-mso-0_countersDouble_pb_02_pe_.mona.rev.neg,SUCCESS,0.0025128769999999997,0.05272221565246582,
+hpc-mona/po-mso-1-2_countersDouble_pb_02_pe_.mona,SUCCESS,0.002444387,0.06679892539978027,
+hpc-mona/po-mso-1-2_countersDouble_pb_02_pe_.mona.quant,SUCCESS,0.0015427970000000003,0.06553840637207031,
+hpc-mona/po-mso-1-2_countersDouble_pb_02_pe_.mona.rev,SUCCESS,0.0018258140000000003,0.05043649673461914,
+hpc-mona/po-mso-1-2_countersDouble_pb_02_pe_.mona.rev.neg,SUCCESS,0.0015939509999999997,0.04944157600402832,
+hpc-mona/po-mso-all_countersDouble_pb_02_pe_.mona,SUCCESS,0.0016656459999999998,0.0629432201385498,
+hpc-mona/po-mso-all_countersDouble_pb_02_pe_.mona.quant,SUCCESS,0.0015710109999999998,0.0645895004272461,
+hpc-mona/po-mso-all_countersDouble_pb_02_pe_.mona.rev,SUCCESS,0.0015029580000000004,0.05200028419494629,
+hpc-mona/po-mso-all_countersDouble_pb_02_pe_.mona.rev.neg,SUCCESS,0.0016820519999999999,0.05148816108703613,
+hpc-mona/nim_pb_01_03_pe_.mona,SUCCESS,0.0016633709999999994,0.12547802925109863,
+hpc-mona/nim_pb_01_03_pe_.mona.rev,SUCCESS,0.0014828790000000003,0.10315656661987305,
+hpc-mona/nim_pb_01_03_pe_.mona.rev.neg,SUCCESS,0.0015771740000000006,0.10260009765625,
+hpc-mona/po-mso-0_nim_pb_01_03_pe_.mona,SUCCESS,0.0014929159999999995,0.12511897087097168,
+hpc-mona/po-mso-0_nim_pb_01_03_pe_.mona.quant,SUCCESS,0.0016126689999999997,0.1272907257080078,
+hpc-mona/po-mso-0_nim_pb_01_03_pe_.mona.rev,SUCCESS,0.0015306380000000008,0.1069180965423584,
+hpc-mona/po-mso-0_nim_pb_01_03_pe_.mona.rev.neg,SUCCESS,0.0016598299999999993,0.10526227951049805,
+hpc-mona/po-mso-1-2_nim_pb_01_03_pe_.mona,SUCCESS,0.0014726559999999993,0.12807703018188477,
+hpc-mona/po-mso-1-2_nim_pb_01_03_pe_.mona.quant,SUCCESS,0.0014918809999999996,0.1262953281402588,
+hpc-mona/po-mso-1-2_nim_pb_01_03_pe_.mona.rev,SUCCESS,0.00146167,0.10406994819641113,
+hpc-mona/po-mso-1-2_nim_pb_01_03_pe_.mona.rev.neg,SUCCESS,0.001480126,0.10234260559082031,
+hpc-mona/po-mso-all_nim_pb_01_03_pe_.mona,SUCCESS,0.0015925780000000007,0.12619304656982422,
+hpc-mona/po-mso-all_nim_pb_01_03_pe_.mona.quant,SUCCESS,0.001459218,0.1265552043914795,
+hpc-mona/po-mso-all_nim_pb_01_03_pe_.mona.rev,SUCCESS,0.001475759,0.10280299186706543,
+hpc-mona/po-mso-all_nim_pb_01_03_pe_.mona.rev.neg,SUCCESS,0.0015094840000000002,0.10262846946716309,
+hpc-mona/nim_pb_03_15_pe_.mona,ERROR,0.001489784000000001,0.32265377044677734,"token too large, exceeds YYLMAX
+"
+hpc-mona/nim_pb_03_15_pe_.mona.rev,ERROR,0.0014850320000000007,0.321791410446167,"token too large, exceeds YYLMAX
+"
+hpc-mona/nim_pb_03_15_pe_.mona.rev.neg,ERROR,0.0016345209999999999,0.32216691970825195,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_03_15_pe_.mona,ERROR,0.0014943049999999996,0.32178544998168945,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_03_15_pe_.mona.quant,ERROR,0.0014576779999999987,0.3226001262664795,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_03_15_pe_.mona.rev,ERROR,0.001516412,0.3224599361419678,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_03_15_pe_.mona.rev.neg,ERROR,0.001650083,0.32387852668762207,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_03_15_pe_.mona,ERROR,0.0015202419999999998,0.3223888874053955,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_03_15_pe_.mona.quant,ERROR,0.0014774899999999997,0.32306599617004395,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_03_15_pe_.mona.rev,ERROR,0.0014909170000000013,0.3224372863769531,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_03_15_pe_.mona.rev.neg,ERROR,0.0016346339999999994,0.32206130027770996,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_03_15_pe_.mona,ERROR,0.0014851630000000011,0.32289743423461914,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_03_15_pe_.mona.quant,ERROR,0.0014618419999999997,0.32262110710144043,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_03_15_pe_.mona.rev,ERROR,0.0015288720000000006,0.3228473663330078,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_03_15_pe_.mona.rev.neg,ERROR,0.0015160720000000003,0.32273125648498535,"token too large, exceeds YYLMAX
+"
+hpc-mona/nim_pb_05_12_pe_.mona,ERROR,0.0016252099999999985,0.322434663772583,"token too large, exceeds YYLMAX
+"
+hpc-mona/nim_pb_05_12_pe_.mona.rev,ERROR,0.001480495,0.3237431049346924,"token too large, exceeds YYLMAX
+"
+hpc-mona/nim_pb_05_12_pe_.mona.rev.neg,ERROR,0.0014690150000000006,0.3225278854370117,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_05_12_pe_.mona,ERROR,0.0016156239999999995,0.322695255279541,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_05_12_pe_.mona.quant,ERROR,0.001477809,0.3223550319671631,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_05_12_pe_.mona.rev,ERROR,0.0014839960000000013,0.3224349021911621,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_05_12_pe_.mona.rev.neg,ERROR,0.0015018070000000008,0.3226022720336914,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_05_12_pe_.mona,ERROR,0.0015026219999999986,0.3267221450805664,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_05_12_pe_.mona.quant,ERROR,0.001619559999999999,0.3227565288543701,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_05_12_pe_.mona.rev,ERROR,0.0014600100000000012,0.3221621513366699,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_05_12_pe_.mona.rev.neg,ERROR,0.001474052,0.32233262062072754,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_05_12_pe_.mona,ERROR,0.001649859,0.3227410316467285,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_05_12_pe_.mona.quant,ERROR,0.0014630570000000002,0.3223288059234619,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_05_12_pe_.mona.rev,ERROR,0.0014629570000000008,0.3224318027496338,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_05_12_pe_.mona.rev.neg,ERROR,0.0014716030000000019,0.3222794532775879,"token too large, exceeds YYLMAX
+"
+hpc-mona/nim_pb_04_08_pe_.mona,ERROR,0.0015016269999999984,0.32233572006225586,"token too large, exceeds YYLMAX
+"
+hpc-mona/nim_pb_04_08_pe_.mona.rev,ERROR,0.0015489160000000009,0.3225994110107422,"token too large, exceeds YYLMAX
+"
+hpc-mona/nim_pb_04_08_pe_.mona.rev.neg,ERROR,0.001434961000000002,0.3231029510498047,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_04_08_pe_.mona,ERROR,0.0014723820000000012,0.3226761817932129,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_04_08_pe_.mona.quant,ERROR,0.001633693000000002,0.32257747650146484,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_04_08_pe_.mona.rev,ERROR,0.0014783140000000014,0.32224059104919434,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-0_nim_pb_04_08_pe_.mona.rev.neg,ERROR,0.0014533140000000007,0.3224954605102539,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_04_08_pe_.mona,ERROR,0.0014989709999999982,0.3226964473724365,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_04_08_pe_.mona.quant,ERROR,0.0015098100000000003,0.3224964141845703,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_04_08_pe_.mona.rev,ERROR,0.001485699,0.32227611541748047,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-1-2_nim_pb_04_08_pe_.mona.rev.neg,ERROR,0.0014424350000000023,0.2771468162536621,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_04_08_pe_.mona,ERROR,0.0014845339999999992,0.265181303024292,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_04_08_pe_.mona.quant,ERROR,0.0015793820000000007,0.265857458114624,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_04_08_pe_.mona.rev,ERROR,0.0014343080000000022,0.3223683834075928,"token too large, exceeds YYLMAX
+"
+hpc-mona/po-mso-all_nim_pb_04_08_pe_.mona.rev.neg,ERROR,0.001420717000000002,0.3170485496520996,"token too large, exceeds YYLMAX
+"
