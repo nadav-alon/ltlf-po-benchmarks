@@ -111,24 +111,6 @@ def get_unobservables_from_part(part_file):
                         unobs.update(line_content[1:])
     return unobs
 
-def add_useless_unobservables(part_file, num_useless_unobservables):
-    with open(part_file, 'r') as f:
-        outputs = get_variables_from_part(part_file, 'outputs')
-        unobservables = get_variables_from_part(part_file, 'unobservables')
-        inputs = get_variables_from_part(part_file, 'inputs')
-    with open(part_file, 'w') as f:
-        f.write('.inputs: ' + ' '.join(inputs) + '\n')
-        f.write('.outputs: ' + ' '.join(outputs) + '\n')
-        f.write('.unobservables: ' + ' '.join(unobservables + [f'u_useless_{i}' for i in range(num_useless_unobservables)]) + '\n')
-
-def make_fully_observable(part_file):
-    with open(part_file, 'r') as f:
-        outputs = get_variables_from_part(part_file, 'outputs')
-        unobservables = get_variables_from_part(part_file, 'unobservables')
-        inputs = get_variables_from_part(part_file, 'inputs')
-    with open(part_file, 'w') as f:
-        f.write('.inputs: ' + ' '.join(inputs + unobservables) + '\n')
-        f.write('.outputs: ' + ' '.join(outputs) + '\n')
 
 def get_safe_true(part_file, exclude_unobs=False):
     vars = set(get_variables_from_part(part_file))
@@ -293,42 +275,25 @@ class SpotSolver(Solver):
                     f.write(fix_part_content_for_christian(content))
             part_file = spot_part
 
-        if mode == "ltlf-fo":
-            make_fully_observable(part_file)
-        
-        if args.num_useless_unobservables > 0:
-            add_useless_unobservables(part_file, args.num_useless_unobservables)
-            with open(input_file, 'r') as f:
-                content = f.read().strip()
-            with open(input_file, 'w') as f:
-                f.write(content + '\n')
-                for i in range(args.num_useless_unobservables):
-                    f.write(f"G (u_useless_{i} | ~u_useless_{i})\n")
+        # Spot tools expect the LTLf formula directly, not a .ltlf file.
+        # The input_file is actually the path to the LTLf formula.
+        with open(input_file, 'r') as f:
+            ltlf_formula = f.read().strip()
 
-        transformation = f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&'"
-        
-        if mode == "ltlfilt":
-            with open(part_file, 'r') as f:
-                content = f.read()
-            # add alive to outputs to account for the new variable introduced by ltlfilt --from-ltlf
-            # fix: replace '.outputs:' instead of '.output' to avoid mangling the keyword
-            if '.outputs:' in content:
-                content = content.replace('.outputs:', '.outputs: alive ')
-            elif '.output:' in content:
-                content = content.replace('.output:', '.output: alive ')
-            else:
-                content += "\n.outputs: alive\n"
-            
-            with open(part_file, 'w') as f:
-                f.write(content)
-        
+        transformation = f'echo "{ltlf_formula}"'
         verify_flag = " --verify" if verify else ""
-        if mode == "ltlf" or mode == "ltlf-fo":
+
+        if mode == "ltlf":
+            if verify:
+                print("Verification not supported for spot in ltlf mode.")
             return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics={semantics} --verbose -H"
         elif mode == "ltl":
             return f"{transformation} | ltlsynt --part-file={part_file} --verbose --algo=ds -H{verify_flag}"
         elif mode == "ltlfilt":
             return f"{transformation} | ltlfilt --part-file={part_file} --from-ltlf --relabel=io | ltlsynt --verbose --algo=ds -H{verify_flag}"
+        else:
+            print(f"[{self.get_name()}] Error: Unknown mode '{mode}' for SpotSolver.")
+            return ""
 
     def parse_output(self, output_bytes):
         l_str = output_bytes.decode('utf-8', errors='ignore')
@@ -365,51 +330,29 @@ class SpotSolver(Solver):
         return result, time_ms, time_source
 
 
-def get_expected_result(test_path):
-    parts = list(test_path.parts)
-    if "ltlf" not in parts:
-        return None
-    
-    try:
-        idx = parts.index("ltlf")
-        expected_parts = list(parts)
-        expected_parts[idx] = "expected"
-        expected_file = Path(*expected_parts).with_suffix(".txt")
-        
-        if expected_file.exists():
-            with open(expected_file, 'r') as f:
-                content = f.read().strip().lower()
-                if "unrealizable" in content:
-                    return 0
-                if "realizable" in content:
-                    return 1
-    except Exception:
-        pass
-    return None
-
-
-class Statistics():
+class Statistics:
     def __init__(self):
-        self.stats = {'passed': 0, 'failed': 0, 'timeout': 0, 'other': 0, 'na': 0, 'error': 0, 'inconsistent': 0, 'verified': 0, 'verification_failed': 0}
+        self.stats = {
+            'realizable': 0, 
+            'unrealizable': 0, 
+            'timeout': 0, 
+            'error': 0, 
+            'inconsistent': 0, 
+            'verified': 0, 
+            'verification_failed': 0
+        }
         self.results = {} # test_path -> (time, status, verified, time_source)
         self.lock = threading.Lock()
 
-
     def add_result(self, test_path, time, status, outcome, verified=None, time_source="tool"):
         with self.lock:
-            self.results[test_path] = (time, status, verified, time_source)
-            if outcome == 'passed': self.stats['passed'] += 1
-            elif outcome == 'failed': self.stats['failed'] += 1
-            elif outcome == 'timeout': self.stats['timeout'] += 1
-            elif outcome == 'other': self.stats['other'] += 1
-            elif outcome == 'na': self.stats['na'] += 1
-            elif outcome == 'error': self.stats['error'] += 1
-            elif outcome == 'inconsistent': self.stats['inconsistent'] += 1
-            
+            if outcome in self.stats:
+                self.stats[outcome] += 1
             if verified is True:
                 self.stats['verified'] += 1
             elif verified is False:
                 self.stats['verification_failed'] += 1
+            self.results[test_path] = (time, status, verified, time_source)
 
 # for statistics 
 statistics = Statistics()
@@ -597,13 +540,15 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
             except subprocess.TimeoutExpired:
                 print(f"Timeout for {test}")
                 results.append(TIMEOUT_CODE)
-                times.append(timeout)
+                times.append(timeout * 1000) # Store in ms
+                time_sources.append("wall")
                 continue
 
             except subprocess.CalledProcessError as e:
                 print(f"Failed to run {test}: {e}, {e.output}")
                 results.append(ERROR_CODE)
                 times.append(0)
+                time_sources.append("wall")
                 continue
         
 
@@ -646,33 +591,22 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
                     if start_idx != -1:
                         with open(test_res_dir / "controller.hoa", "w") as f:
                             f.write("\n".join(lines[start_idx:]))
-        expected = get_expected_result(test_path)
-
         if TIMEOUT_CODE in results:
-            if mode == "ltlf-fo" and expected == 0:
-                outcome = "na"
-            else:
-                outcome = "failed" if expected is not None else "timeout"
-            statistics.add_result(test, average_time, TIMEOUT_CODE, outcome, verified=verify_status, time_source=final_time_source)
+            outcome = "timeout"
         elif ERROR_CODE in results:
-            if mode == "ltlf-fo" and expected == 0:
-                outcome = "na"
-            else:
-                outcome = "failed" if expected is not None else "error"
-            statistics.add_result(test, average_time, ERROR_CODE, outcome, verified=verify_status, time_source=final_time_source)
+            outcome = "error"
         elif not all(elem == results[0] for elem in (results if results else [None])):
-            outcome = "failed" if expected is not None else "inconsistent"
-            statistics.add_result(test, average_time, -1, outcome, verified=verify_status, time_source=final_time_source)
+            outcome = "inconsistent"
         else:
-            status = results[0] if results else -1
-            if expected is not None:
-                if mode == "ltlf-fo" and expected == 0:
-                    outcome = "na" # Don't count as pass/fail for FO compared to unrealizable PO
-                else:
-                    outcome = "passed" if status == expected else "failed"
+            status = results[0] if results else ERROR_CODE
+            if status == 1:
+                outcome = "realizable"
+            elif status == 0:
+                outcome = "unrealizable"
             else:
-                outcome = "other"
-            statistics.add_result(test, average_time, status, outcome, verified=verify_status, time_source=final_time_source)
+                outcome = "error"
+        
+        statistics.add_result(test, average_time, results[0] if results else ERROR_CODE, outcome, verified=verify_status, time_source=final_time_source)
     finally:
         shutil.rmtree(temp_dir)
         
@@ -682,7 +616,7 @@ if __name__ == "__main__":
     MODES = [
         "christian:direct", "christian:belief", "christian:mso",
         "lucas:belief-states", "lucas:projection-based", "lucas:mso",
-        "spot:ltlf", "spot:ltl", "spot:ltlfilt", "spot:ltlf-fo"
+        "spot:ltlf", "spot:ltl", "spot:ltlfilt"
     ]
     parser = argparse.ArgumentParser(description="Run tests for Syft.")
     parser.add_argument("--timeout", type=int, default=1500, help="Timeout in seconds")
@@ -694,7 +628,6 @@ if __name__ == "__main__":
     parser.add_argument("--shard-id", type=int, default=0, help="Shard index (0-indexed)")
     parser.add_argument("--num-shards", type=int, default=1, help="Total number of shards")
     parser.add_argument("--semantics", type=str, default="moore", choices=["moore", "mealy"], help="Semantics")
-    parser.add_argument("--num-useless-unobservables", type=int, default=0, help="Number of useless unobservables")
     parser.add_argument("--part-dir", type=str, default="part", help="Part directory name (relative to ltlf directory)")
     parser.add_argument("--results-dir", type=str, help="Directory to save detailed results (logs, controllers)")
     parser.add_argument("--verify", action="store_true", help="Perform verification on the resulting controller")
@@ -707,7 +640,6 @@ if __name__ == "__main__":
     print(f"  Test Dir: {args.test_dir}")
     print(f"  Part Dir: {args.part_dir}")
     print(f"  Semantics: {args.semantics}")
-    print(f"  Useless Unobservables: {args.num_useless_unobservables}")
     print(f"  Shard: {args.shard_id}/{args.num_shards}")
     print("-" * 30)
 
@@ -744,11 +676,9 @@ if __name__ == "__main__":
     print("===========")
     print("Statistics:")
     print("===========")
-    print(f"Passed: {statistics.stats['passed']}")
-    print(f"Failed: {statistics.stats['failed']}")
+    print(f"Realizable: {statistics.stats['realizable']}")
+    print(f"Unrealizable: {statistics.stats['unrealizable']}")
     print(f"Timeout: {statistics.stats['timeout']}")
-    print(f"Other: {statistics.stats['other']}")
-    print(f"N/A: {statistics.stats['na']}")
     print(f"Error: {statistics.stats['error']}")
     print(f"Inconsistent: {statistics.stats['inconsistent']}")
     if args.verify:
@@ -772,7 +702,6 @@ if __name__ == "__main__":
         csvfile.write(f"# Test Dir: {args.test_dir}\n")
         csvfile.write(f"# Part Dir: {args.part_dir}\n")
         csvfile.write(f"# Semantics: {args.semantics}\n")
-        csvfile.write(f"# Useless Unobservables: {args.num_useless_unobservables}\n")
         csvfile.write(f"# OS: {sys_info['os']}\n")
         csvfile.write(f"# CPU: {sys_info['cpu']}\n")
         csvfile.write(f"# Cores: {sys_info['cores']}\n")
