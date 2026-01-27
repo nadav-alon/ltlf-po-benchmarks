@@ -74,6 +74,10 @@ class Solver():
         """
         raise NotImplementedError
 
+    def preprocess(self, input_file, part_file, mode, semantics="moore", verify=False)-> float:
+        """Returns the time spent on preprocessing (e.g., automaton construction) in ms."""
+        return 0.0
+
     def get_name(self)-> str:
         return self.name
 
@@ -138,6 +142,67 @@ def fix_part_content_for_christian(content):
         new_content.append(line)
     new_content = '\n'.join(new_content)
     return new_content
+
+def quantify_mona_content(original_content, unobservables):
+    """
+    Quantifies the MONA formula based on the unobservables list.
+    Based on lucas-quantify.py: filters out quantified variables from the var2 declaration.
+    """
+    lines = original_content.splitlines()
+    new_lines = []
+    formula_started = False
+    
+    unobs_set = {v.upper() for v in unobservables}
+    
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith('var2') and not formula_started:
+            # Re-build the var2 line excluding quantified variables
+            # Format: var2 V1, V2, ...;
+            vars_part = stripped[4:].rstrip(';').replace(',', ' ').split()
+            remaining_vars = [v for v in vars_part if v.upper() not in unobs_set]
+            
+            if remaining_vars:
+                new_lines.append(f"var2 {', '.join(remaining_vars)};")
+            
+            if unobservables:
+                quant_prefix = " ".join([f"all2 {v.upper()}:" for v in sorted(list(unobservables))])
+                new_lines.append(f"{quant_prefix} (")
+                formula_started = True
+        elif stripped and not any(stripped.startswith(k) for k in ['#', 'm2l-str', 'var2']):
+            new_lines.append(line)
+        else:
+            new_lines.append(line)
+    
+    if formula_started:
+        last_line = new_lines[-1]
+        if last_line.strip().endswith(';'):
+            new_lines[-1] = last_line.rstrip(';') + ");"
+        else:
+            new_lines.append(");")
+            
+    return "\n".join(new_lines) + "\n"
+
+def negate_mona_content(original_content):
+    """
+    Negates the MONA formula. Based on lucas-negate.py.
+    """
+    lines = original_content.splitlines()
+    new_lines = []
+    formula_part = []
+    
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith('var2') or stripped.startswith('m2l-str') or stripped.startswith('#'):
+            new_lines.append(line)
+        elif stripped:
+            formula_part.append(line)
+    
+    if formula_part:
+        formula_str = " ".join(formula_part).rstrip(';')
+        new_lines.append(f"~({formula_str});")
+            
+    return "\n".join(new_lines) + "\n"
 
 class ChristianSyftSolver(Solver):
     def get_command(self, input_file, part_file, mode, semantics, verify=False)-> str:
@@ -204,42 +269,91 @@ class ChristianSyftSolver(Solver):
 
 
 class LucasSyftSolver(Solver):
+    def preprocess(self, input_file, part_file, mode, semantics="moore", verify=False)-> float:
+        """
+        Dynamically generates the MONA DFA from the LTLf file.
+        Detects ltlf2fol and ltlf2pfol in the Syft directory.
+        """
+        # Mapping mode to tools and suffixes
+        # belief-states -> ltlf2fol -> dfa
+        # projection-based -> ltlf2pfol -> negate -> dfa.rev.neg
+        # mso -> ltlf2fol -> quantify -> dfa.quant
+        
+        config = {
+            "belief-states":    ("ltlf2fol",  ".dfa",         None),
+            "projection-based": ("ltlf2pfol", ".dfa.rev.neg", "negate"),
+            "mso":              ("ltlf2fol",  ".dfa.quant",   "quantify")
+        }
+        tool_name, dfa_suffix, post_process = config.get(mode, ("ltlf2fol", ".dfa", None))
+        
+        syft_bin_dir = self.path.parent
+        tool_path = syft_bin_dir / tool_name
+        
+        if not tool_path.exists():
+            print(f"[{self.get_name()}] Error: Tool {tool_path} not found.")
+            return 0.0
+
+        target_dfa = os.path.join(os.path.dirname(input_file), Path(input_file).stem + dfa_suffix)
+        
+        if not os.path.exists(target_dfa):
+            start = time.time()
+            
+            # Step 1: LTLf to FOL/PFOL conversion
+            # ltlf2fol expects <format> <input_file> (e.g., BNF input.ltlf)
+            # ltlf2pfol expects <input_file>
+            try:
+                cmd = [str(tool_path), "BNF", input_file] if tool_name == "ltlf2fol" else [str(tool_path), input_file]
+                proc = subprocess.run(cmd, text=True, capture_output=True, check=True)
+                mona_content = proc.stdout
+            except subprocess.CalledProcessError as e:
+                print(f"[{self.get_name()}] Error running {tool_name}: {e}\n{e.stderr}")
+                return 0.0
+
+            # Step 2: Post-processing (Quantification or Negation)
+            if post_process == "quantify":
+                # Determine part file for quantification info
+                part_suffix = ".quant" if mode == "mso" else ""
+                actual_part = part_file + part_suffix
+                if not os.path.exists(actual_part):
+                    actual_part = part_file
+                unobs = get_unobservables_from_part(actual_part)
+                mona_content = quantify_mona_content(mona_content, unobs)
+            elif post_process == "negate":
+                mona_content = negate_mona_content(mona_content)
+
+            # Step 3: Compile with MONA
+            mona_tmp = os.path.join(os.path.dirname(input_file), Path(input_file).stem + dfa_suffix.replace(".dfa", ".mona"))
+            with open(mona_tmp, 'w') as f:
+                f.write(mona_content)
+                
+            mona_proc = subprocess.run(["mona", "-u", "-xw", mona_tmp], text=True, capture_output=True)
+            end = time.time()
+            
+            if mona_proc.returncode == 0:
+                with open(target_dfa, 'w') as f:
+                    f.write(mona_proc.stdout)
+                return (end - start) * 1000
+            else:
+                print(f"[{self.get_name()}] MONA failed on {mona_tmp}:\n{mona_proc.stderr}")
+                return 0.0
+                
+        return 0.0
+
     def get_command(self, input_file, part_file, mode, semantics, verify=False)-> str:
-        # Configuration based on lucas-benchmarks-instructions.txt:
-        # belief-states: partial dfa, uses .dfa, .part
-        # projection-based: partial cordfa, uses .dfa.rev.neg, .part.rev.neg
-        # mso: full dfa, uses .dfa.quant, .part.quant
         config = {
             "belief-states":    ("partial", "dfa", ".dfa", ""),
             "projection-based": ("partial", "cordfa", ".dfa.rev.neg", ".rev.neg"),
             "mso":              ("full",    "dfa", ".dfa.quant",   ".quant")
         }
-        
         obs, inp_type, dfa_suffix, part_suffix = config.get(mode, ("partial", "dfa", ".dfa", ""))
-        
         dfa_file = os.path.join(os.path.dirname(input_file), Path(input_file).stem + dfa_suffix)
         actual_part_file = part_file + part_suffix
-        
-        # Check if actual_part_file exists, else use base part_file
         if not os.path.exists(actual_part_file):
-            print(f"Missing part file for {input_file}, missing suffix {part_suffix}")
             actual_part_file = part_file
         
         if not os.path.exists(dfa_file):
-            # Try to find a source MONA file to generate the DFA
-            # For .dfa, look for .mona; for .dfa.quant, look for .mona.quant; for .dfa.rev.neg, look for .mona.rev.neg
-            mona_source_suffix = dfa_suffix.replace(".dfa", ".mona")
-            stem = Path(input_file).stem
-            mona_source = os.path.join(os.path.dirname(input_file), stem + mona_source_suffix)
-            
-            if os.path.exists(mona_source):
-                # Run MONA on the source file to get the DFA
-                mona_out = subprocess.run(["mona", "-u", "-xw", mona_source], text=True, capture_output=True)
-                with open(dfa_file, 'w') as f:
-                    f.write(mona_out.stdout)
-            else:
-                print(f"[{self.get_name()}] Error: {dfa_file} not found and no source {mona_source} to generate it.")
-                return ""
+            print(f"[{self.get_name()}] Error: {dfa_file} not found. Preprocess may have failed.")
+            return ""
 
         sem_val = 1 if semantics == "mealy" else 0
         return f'"{self.path}" {dfa_file} {actual_part_file} {sem_val} {obs} {inp_type}'
@@ -341,18 +455,18 @@ class Statistics:
             'verified': 0, 
             'verification_failed': 0
         }
-        self.results = {} # test_path -> (time, status, verified, time_source)
+        self.results = {} # test_path -> (time, automaton_time, status, verified, time_source)
         self.lock = threading.Lock()
 
-    def add_result(self, test_path, time, status, outcome, verified=None, time_source="tool"):
+    def add_result(self, test_path, time, automaton_time, status, outcome, verified=None, time_source="tool"):
         with self.lock:
+            self.results[str(test_path)] = (time, automaton_time, status, verified, time_source)
             if outcome in self.stats:
                 self.stats[outcome] += 1
             if verified is True:
                 self.stats['verified'] += 1
             elif verified is False:
                 self.stats['verification_failed'] += 1
-            self.results[test_path] = (time, status, verified, time_source)
 
 # for statistics 
 statistics = Statistics()
@@ -385,7 +499,7 @@ def collectTest(testDir, partDir="part"):
             part_file = Path(*part_parts).with_suffix(".part")
             
             if not part_file.exists():
-                statistics.add_result(test_path, 0, 0, "other")
+                statistics.add_result(test_path, 0, 0, ERROR_CODE, "error")
                 print(f"Missing part file for {test_path} (expected at {part_file})")
                 continue
             
@@ -478,8 +592,10 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
                     dst = os.path.join(temp_dir, test_stem + sfx)
                     shutil.copy2(src, dst)
 
+        automaton_time = solver.preprocess(inputfile, partfile, mode, semantics, verify=verify)
         command = solver.get_command(inputfile, partfile, mode, semantics, verify=verify)
         if not command:
+            statistics.add_result(test, 0, automaton_time, ERROR_CODE, "error")
             return
 
         times = []
@@ -511,7 +627,7 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
                     print(f"raw output: {l}")
                     expected = get_expected_result(test_path)
                     outcome = "failed" if expected is not None else "other"
-                    statistics.add_result(test, t_val, 0, outcome, time_source=t_source or "wall")
+                    statistics.add_result(test, t_val, automaton_time, 0, outcome, time_source=t_source or "wall")
                     print(f"Failed to parse output for {test}")
                     return
                 
@@ -568,6 +684,7 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
                 header += f"# Mode: {mode}\n"
                 header += f"# Semantics: {semantics}\n"
                 header += f"# Reported Runtime: {average_time:.2f} ms ({final_time_source})\n"
+                header += f"# Automaton Construction Time: {automaton_time:.2f} ms\n"
                 header += "-" * 40 + "\n"
                 f.write(header.encode('utf-8'))
                 f.write(last_output)
@@ -606,7 +723,7 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
             else:
                 outcome = "error"
         
-        statistics.add_result(test, average_time, results[0] if results else ERROR_CODE, outcome, verified=verify_status, time_source=final_time_source)
+        statistics.add_result(test, average_time, automaton_time, results[0] if results else ERROR_CODE, outcome, verified=verify_status, time_source=final_time_source)
     finally:
         shutil.rmtree(temp_dir)
         
@@ -707,9 +824,9 @@ if __name__ == "__main__":
         csvfile.write(f"# Cores: {sys_info['cores']}\n")
         csvfile.write(f"# RAM: {sys_info['mem']}\n")
         writer = csv.writer(csvfile)
-        writer.writerow(["test", "time", "status", "verified", "time_source"])
-        for test, (time, status, verified, time_source) in statistics.results.items():
-            writer.writerow([test, time, status, verified, time_source])
+        writer.writerow(["test", "time", "automaton_time", "status", "verified", "time_source"])
+        for test, (time, auto_time, status, verified, time_source) in statistics.results.items():
+            writer.writerow([test, time, auto_time, status, verified, time_source])
 
 
 
