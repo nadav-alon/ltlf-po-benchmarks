@@ -13,3 +13,5 @@ spot/*
 
 run-*.sh
 SYNTCOMP-benchmarks/
+
+.vscode

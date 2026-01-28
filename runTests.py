@@ -146,41 +146,74 @@ def fix_part_content_for_christian(content):
 def quantify_mona_content(original_content, unobservables):
     """
     Quantifies the MONA formula based on the unobservables list.
-    Based on lucas-quantify.py: filters out quantified variables from the var2 declaration.
+    Collects all variables from var2 declarations and outputs a single unified var2 line.
     """
     lines = original_content.splitlines()
     new_lines = []
-    formula_started = False
     
-    unobs_set = {v.upper() for v in unobservables}
+    all_vars = []
+    unobs_set = {v.strip().upper() for v in unobservables}
+    
+    # First pass: collect all variables and filter out non-header/non-var2 lines
+    m2l_line = None
+    header_comment = None
     
     for line in lines:
         stripped = line.strip()
-        if stripped.startswith('var2') and not formula_started:
-            # Re-build the var2 line excluding quantified variables
+        if stripped.startswith('var2'):
             # Format: var2 V1, V2, ...;
             vars_part = stripped[4:].rstrip(';').replace(',', ' ').split()
-            remaining_vars = [v for v in vars_part if v.upper() not in unobs_set]
+            all_vars.extend(vars_part)
+        elif stripped.startswith('m2l-str'):
+            m2l_line = line
+        elif stripped.startswith('#'):
+            if not header_comment:
+                header_comment = line
+        elif stripped:
+            # This is likely the start of the formula
+            break
             
-            if remaining_vars:
-                new_lines.append(f"var2 {', '.join(remaining_vars)};")
-            
-            if unobservables:
-                quant_prefix = " ".join([f"all2 {v.upper()}:" for v in sorted(list(unobservables))])
-                new_lines.append(f"{quant_prefix} (")
-                formula_started = True
-        elif stripped and not any(stripped.startswith(k) for k in ['#', 'm2l-str', 'var2']):
-            new_lines.append(line)
-        else:
-            new_lines.append(line)
+    # Remove duplicates from all_vars but preserve order if possible
+    seen = set()
+    unique_vars = [v for v in all_vars if not (v.upper() in seen or seen.add(v.upper()))]
     
-    if formula_started:
-        last_line = new_lines[-1]
-        if last_line.strip().endswith(';'):
-            new_lines[-1] = last_line.rstrip(';') + ");"
-        else:
-            new_lines.append(");")
+    remaining_vars = [v for v in unique_vars if v.upper() not in unobs_set]
+    
+    if header_comment:
+        new_lines.append(header_comment)
+    if m2l_line:
+        new_lines.append(m2l_line)
+        
+    if remaining_vars:
+        new_lines.append(f"var2 {', '.join(remaining_vars)};")
+    
+    if unobservables:
+        quant_prefix = " ".join([f"all2 {v.upper()}:" for v in sorted(list(unobs_set))])
+        new_lines.append(f"{quant_prefix} (")
+        
+    # Second pass: append the actual formula
+    formula_lines = []
+    in_formula = False
+    for line in lines:
+        stripped = line.strip()
+        if not stripped.startswith('var2') and not stripped.startswith('m2l-str') and not stripped.startswith('#'):
+            in_formula = True
+        if in_formula:
+            formula_lines.append(line)
             
+    if formula_lines:
+        formula_str = "\n".join(formula_lines).strip()
+        if formula_str.endswith(';'):
+            formula_str = formula_str[:-1]
+        new_lines.append(formula_str)
+        
+    if unobservables:
+        new_lines.append(");")
+    else:
+        # If no quantification, still need the semicolon
+        if new_lines and not new_lines[-1].strip().endswith(';'):
+             new_lines[-1] = new_lines[-1].rstrip() + ";"
+
     return "\n".join(new_lines) + "\n"
 
 def negate_mona_content(original_content):
@@ -317,6 +350,9 @@ class LucasSyftSolver(Solver):
                 if not os.path.exists(actual_part):
                     actual_part = part_file
                 unobs = get_unobservables_from_part(actual_part)
+                # Fallback to base part file if no unobservables in .quant file
+                if not unobs and actual_part != part_file:
+                    unobs = get_unobservables_from_part(part_file)
                 mona_content = quantify_mona_content(mona_content, unobs)
             elif post_process == "negate":
                 mona_content = negate_mona_content(mona_content)
@@ -389,12 +425,7 @@ class SpotSolver(Solver):
                     f.write(fix_part_content_for_christian(content))
             part_file = spot_part
 
-        # Spot tools expect the LTLf formula directly, not a .ltlf file.
-        # The input_file is actually the path to the LTLf formula.
-        with open(input_file, 'r') as f:
-            ltlf_formula = f.read().strip()
-
-        transformation = f'echo "{ltlf_formula}"'
+        transformation = f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&'"
         verify_flag = " --verify" if verify else ""
 
         if mode == "ltlf":
@@ -404,7 +435,8 @@ class SpotSolver(Solver):
         elif mode == "ltl":
             return f"{transformation} | ltlsynt --part-file={part_file} --verbose --algo=ds -H{verify_flag}"
         elif mode == "ltlfilt":
-            return f"{transformation} | ltlfilt --part-file={part_file} --from-ltlf --relabel=io | ltlsynt --verbose --algo=ds -H{verify_flag}"
+            return f"{transformation} | ltlfilt --part-file={part_file} --from-ltlf --relabel=io | ltlsynt --real --verbose --algo=ds"
+            # return f"{transformation} | ltlfilt --part-file={part_file} --from-ltlf --relabel=io | ltlsynt --verbose --algo=ds -H{verify_flag}"
         else:
             print(f"[{self.get_name()}] Error: Unknown mode '{mode}' for SpotSolver.")
             return ""
