@@ -326,7 +326,7 @@ class LucasSyftSolver(Solver):
             with open(mona_tmp, 'w') as f:
                 f.write(mona_content)
                 
-            mona_proc = subprocess.run(["mona", "-xw", mona_tmp], text=True, capture_output=True)
+            mona_proc = subprocess.run(["mona", "-u", "-xw", mona_tmp], text=True, capture_output=True)
             end = time.time()
             
             if mona_proc.returncode == 0:
