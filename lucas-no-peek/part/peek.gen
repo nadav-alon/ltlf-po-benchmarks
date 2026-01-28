@@ -1,0 +1,56 @@
+n=$1
+m=$2
+
+echo -n "inputs"
+
+# Half of the environment's plates, rounded down, are visible
+# (n = 1) -> $(seq 0 -1)
+# (n = 2) -> $(seq 0 0)
+# (n = 3) -> $(seq 0 0)
+# (n = 4) -> $(seq 0 1)
+for i in $(seq 0 $(((n / 2) - 1)))
+do
+	echo -n " PLATE_ENV_${i}"
+done
+
+# System can observe its own holes
+for i in $(seq 0 $((m - 1)))
+do
+	echo -n " PEEK_SYS_${i}"
+done
+
+echo ""
+
+echo -n "outputs"
+
+for p in ENV SYS
+do
+	echo -n " TURN_${p}"
+done
+
+for i in $(seq 0 $((n - 1)))
+do
+	echo -n " PLATE_SYS_${i}"
+done
+
+echo ""
+
+echo -n "unobservables"
+
+# Half of the environment's plates, rounded up, are hidden
+# (n = 1) -> $(seq 0 0)
+# (n = 2) -> $(seq 1 1)
+# (n = 3) -> $(seq 1 2)
+# (n = 4) -> $(seq 2 3)
+for i in $(seq $((n / 2)) $((n - 1)))
+do
+	echo -n " PLATE_ENV_${i}"
+done
+
+# Environment's holes are also hidden
+for i in $(seq 0 $((m - 1)))
+do
+	echo -n " PEEK_ENV_${i}"
+done
+
+echo ""

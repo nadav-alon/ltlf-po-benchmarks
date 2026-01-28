@@ -1,0 +1,21 @@
+n=$1
+
+echo "inputs HIT"
+
+echo -n "outputs"
+
+for i in $(seq 0 $((n - 1)))
+do
+	echo -n " GUESS_${i}"
+done
+
+echo ""
+
+echo -n "unobservables"
+
+for i in $(seq 0 $((n - 1)))
+do
+	echo -n " TARGET_${i}"
+done
+
+echo ""

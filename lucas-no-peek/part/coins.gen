@@ -1,0 +1,21 @@
+n=$1
+
+echo "inputs FLIPPED_TO_HEAD VALID"
+
+echo -n "outputs"
+
+for i in $(seq 0 $((n - 1)))
+do
+	echo -n " FLIP_${i}"
+done
+
+echo ""
+
+echo -n "unobservables SWAP"
+
+for i in $(seq 0 $((n - 1)))
+do
+	echo -n " COIN_${i}"
+done
+
+echo ""
