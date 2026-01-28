@@ -435,8 +435,29 @@ class SpotSolver(Solver):
         elif mode == "ltl":
             return f"{transformation} | ltlsynt --part-file={part_file} --verbose --algo=ds -H{verify_flag}"
         elif mode == "ltlfilt":
-            return f"{transformation} | ltlfilt --part-file={part_file} --from-ltlf --relabel=io | ltlsynt --real --verbose --algo=ds"
-            # return f"{transformation} | ltlfilt --part-file={part_file} --from-ltlf --relabel=io | ltlsynt --verbose --algo=ds -H{verify_flag}"
+            with open(part_file, 'r') as f:
+                content = f.read().lower()
+            # add alive to outputs to account for the new variable introduced by ltlfilt --from-ltlf
+            # fix: replace '.outputs:' instead of '.output' to avoid mangling the keyword
+            if '.outputs:' in content:
+                content = content.replace('.outputs:', '.outputs: alive ')
+            elif '.output:' in content:
+                content = content.replace('.output:', '.output: alive ')
+            else:
+                content += "\n.outputs: alive\n"
+            
+            
+            with open(part_file, 'w') as f:
+                print(f"DEBUG: Part File ({part_file}):\n{content}\n")
+                f.write(content)
+
+            unobs = get_unobservables_from_part(part_file)
+            inputs = get_variables_from_part(part_file, "inputs")
+            outputs = get_variables_from_part(part_file, "outputs")
+
+            all_inputs = sorted(list(set(inputs) | set(unobs)))
+
+            return f"{transformation} | ltlfilt --from-ltlf | ltlsynt --verbose --algo=ds -H --unobservable-ins='{', '.join(unobs)}' --ins='{', '.join(all_inputs)}' --outs='{', '.join(outputs)}'"
         else:
             print(f"[{self.get_name()}] Error: Unknown mode '{mode}' for SpotSolver.")
             return ""
