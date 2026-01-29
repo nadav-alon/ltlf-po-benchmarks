@@ -147,6 +147,7 @@ def fix_part_content_for_christian(content):
     for line in content.splitlines():
         trimmed = line.strip()
         if not trimmed: continue
+        if trimmed.lower().startswith('semantics'): continue
         if not trimmed.startswith('.'):
             if trimmed.lower().startswith('inputs'):
                 line = '.inputs: ' + ' '.join(trimmed.split()[1:]).replace(':', '')
@@ -663,9 +664,8 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
         # Auto-detect semantics from part file
         part_semantics = get_semantics_from_part(partfile)
         actual_semantics = part_semantics if part_semantics else semantics
-        if part_semantics and part_semantics != semantics:
-            # We don't print here to avoid cluttering parallel output, but we use the correct one
-            pass
+        if part_semantics:
+            print(f"[{test_path.name}] Using semantics from part file: {actual_semantics}")
 
         automaton_time = solver.preprocess(inputfile, partfile, mode, actual_semantics, verify=verify)
         command = solver.get_command(inputfile, partfile, mode, actual_semantics, verify=verify)

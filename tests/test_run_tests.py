@@ -189,5 +189,76 @@ class TestSolversIsolated(unittest.TestCase):
         solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
         self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "belief-states")
 
+
+class TestGames(unittest.TestCase):
+    def setUp(self):
+        self.test_dir = tempfile.mkdtemp()
+        
+    def tearDown(self):
+        shutil.rmtree(self.test_dir)
+
+    def run_game_test(self, solver, ltlf_path, part_dir, expected_val, mode):
+        ltlf_src = REPO_ROOT / ltlf_path
+        test_stem = ltlf_src.stem
+        
+        # Determine part file source
+        parts = list(ltlf_src.parts)
+        if "ltlf" in parts:
+            idx = parts.index("ltlf")
+            part_parts = list(parts)
+            part_parts[idx] = part_dir
+            original_part = Path(*part_parts).with_suffix(".part")
+        else:
+            original_part = ltlf_src.with_suffix(".part")
+
+        # Copy files to temp dir
+        inputfile = os.path.join(self.test_dir, ltlf_src.name)
+        partfile = os.path.join(self.test_dir, test_stem + ".part")
+        shutil.copy2(ltlf_src, inputfile)
+        if original_part.exists():
+            shutil.copy2(original_part, partfile)
+
+        # Preprocess and execute
+        part_semantics = runTests.get_semantics_from_part(partfile)
+        semantics = part_semantics if part_semantics else "moore"
+
+        auto_time = solver.preprocess(inputfile, partfile, mode, semantics=semantics)
+        print(f"auto time {auto_time}")
+        cmd = solver.get_command(inputfile, partfile, mode, semantics=semantics)
+        print(f"cmd {cmd}")
+        self.assertTrue(cmd)
+        
+        try:
+            output = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT, timeout=60, cwd=REPO_ROOT)
+        except subprocess.CalledProcessError as e:
+            output = e.output
+        
+        result, _, _ = solver.parse_output(output)
+        self.assertEqual(result, expected_val, f"Solver {solver.get_name()} for {ltlf_path} ({mode}) returned {result}, expected {expected_val}.")
+
+    def test_spot_counter(self):
+        solver = runTests.SpotSolver("ltlfsynt", name="spot")
+        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/counter_pb_01_pe_.ltlf", "part", 1, "ltlf")
+
+    def test_spot_nim_unreal(self):
+        solver = runTests.SpotSolver("ltlfsynt", name="spot")
+        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/nim_pb_01_01_pe_.ltlf", "part", 0, "ltlf")
+
+    def test_spot_nim_real(self):
+        solver = runTests.SpotSolver("ltlfsynt", name="spot")
+        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/nim_pb_03_02_pe_.ltlf", "part", 1, "ltlf")
+
+    def test_lucas_counter(self):
+        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
+        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/counter_pb_01_pe_.ltlf", "part", 1, "belief-states")
+
+    def test_lucas_nim_unreal(self):
+        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
+        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/nim_pb_01_01_pe_.ltlf", "part", 0, "belief-states")
+
+    def test_lucas_nim_real(self):
+        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
+        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/nim_pb_03_02_pe_.ltlf", "part", 1, "belief-states")
+
 if __name__ == "__main__":
     unittest.main()
