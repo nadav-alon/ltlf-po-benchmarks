@@ -169,5 +169,25 @@ class TestSolversIsolated(unittest.TestCase):
         solver = runTests.SpotSolver("ltlfsynt", name="spot")
         self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "ltlfilt")
 
+    def test_lucas_proj_peek_1_1_1(self):
+        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
+        self.run_solver_logic(solver, "peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf", "projection")
+
+    def test_lucas_proj_peek_1_1_89(self):
+        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
+        self.run_solver_logic(solver, "peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf", "projection")
+    
+    def test_lucas_proj_coins_3(self):
+        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
+        self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "projection")
+
+    def test_lucas_proj_coins_4(self):
+        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
+        self.run_solver_logic(solver, "coins_4", "lucas/ltlf/coins_4.ltlf", "projection")
+
+    def test_lucas_proj_seek_5(self):
+        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
+        self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "belief-states")
+
 if __name__ == "__main__":
     unittest.main()
