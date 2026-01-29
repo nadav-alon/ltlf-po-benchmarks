@@ -1,0 +1,4 @@
+semantics moore
+inputs 
+outputs carry_3 carry_2 carry_1 carry_0 counter_3 counter_2 counter_1 counter_0
+unobservables init_counter_1 inc init_counter_2 init_counter_0 init_counter_3

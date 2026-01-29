@@ -1,0 +1,1 @@
+N counter_0 -> init_counter_0 && (init_counter_0 -> X counter_0) && (G (! inc -> N inc) -> (N (G (N carry_0 -> inc && (inc -> X carry_0) && (N counter_0 -> ! (counter_0 <-> N carry_0) && (! (counter_0 <-> X carry_0) -> X counter_0)))) && N (F (! counter_0))))

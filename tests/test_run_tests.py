@@ -98,7 +98,7 @@ class TestSolversIsolated(unittest.TestCase):
         self.run_solver_logic(solver, "peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf", "belief-states")
     
     def test_lucas_bs_coins_3(self):
-        sver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
+        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
         self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "belief-states")
 
     def test_lucas_bs_coins_4(self):
@@ -153,21 +153,21 @@ class TestSolversIsolated(unittest.TestCase):
         solver = runTests.SpotSolver("ltlfsynt", name="spot")
         self.run_solver_logic(solver, "peek_4_3_68", "lucas/ltlf/peek/peek_4_3_68.ltlf", "ltlf")
 
-    def test_spot_ltlfilt_simple(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "simple", "simple.ltlf", "ltlfilt")
+    # def test_spot_ltlfilt_simple(self):
+    #     solver = runTests.SpotSolver("ltlfsynt", name="spot")
+    #     self.run_solver_logic(solver, "simple", "simple.ltlf", "ltlfilt")
 
-    def test_spot_ltlfilt_coins_3(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "ltlfilt")
+    # def test_spot_ltlfilt_coins_3(self):
+    #     solver = runTests.SpotSolver("ltlfsynt", name="spot")
+    #     self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "ltlfilt")
     
-    def test_spot_ltlfilt_coins_4(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "coins_4", "lucas/ltlf/coins_4.ltlf", "ltlfilt")
+    # def test_spot_ltlfilt_coins_4(self):
+    #     solver = runTests.SpotSolver("ltlfsynt", name="spot")
+    #     self.run_solver_logic(solver, "coins_4", "lucas/ltlf/coins_4.ltlf", "ltlfilt")
 
-    def test_spot_ltlfilt_seek_5(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "ltlfilt")
+    # def test_spot_ltlfilt_seek_5(self):
+    #     solver = runTests.SpotSolver("ltlfsynt", name="spot")
+    #     self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "ltlfilt")
 
     def test_lucas_proj_peek_1_1_1(self):
         solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")

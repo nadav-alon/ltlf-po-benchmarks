@@ -116,6 +116,21 @@ def get_unobservables_from_part(part_file):
     return unobs
 
 
+def get_semantics_from_part(part_file):
+    """Parses semantics (mealy/moore) from the part file if present."""
+    if os.path.exists(part_file):
+        with open(part_file, 'r') as f:
+            for line in f:
+                line = line.strip().lower()
+                if line.startswith('semantics'):
+                    parts = line.split()
+                    if len(parts) > 1:
+                        val = parts[1].strip()
+                        if val in ['mealy', 'moore']:
+                            return val
+    return None
+
+
 def get_safe_true(part_file, exclude_unobs=False):
     vars = set(get_variables_from_part(part_file))
     if exclude_unobs:
@@ -638,15 +653,22 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
         
         # Copy .mona and .dfa files from mso directory if they exist
         if mso_dir.exists():
-            suffixes = [".mona", ".mona.rev.neg", ".mona.quant", ".dfa", ".dfa.rev.neg", ".dfa.quant"]
+            suffixes = [".mona", ".mona.rev.neg", ".mona.rev", ".mona.quant", ".dfa", ".dfa.rev.neg", ".dfa.rev", ".dfa.quant"]
             for sfx in suffixes:
                 src = mso_dir / (test_stem + sfx)
                 if src.exists():
                     dst = os.path.join(temp_dir, test_stem + sfx)
                     shutil.copy2(src, dst)
 
-        automaton_time = solver.preprocess(inputfile, partfile, mode, semantics, verify=verify)
-        command = solver.get_command(inputfile, partfile, mode, semantics, verify=verify)
+        # Auto-detect semantics from part file
+        part_semantics = get_semantics_from_part(partfile)
+        actual_semantics = part_semantics if part_semantics else semantics
+        if part_semantics and part_semantics != semantics:
+            # We don't print here to avoid cluttering parallel output, but we use the correct one
+            pass
+
+        automaton_time = solver.preprocess(inputfile, partfile, mode, actual_semantics, verify=verify)
+        command = solver.get_command(inputfile, partfile, mode, actual_semantics, verify=verify)
         if not command:
             statistics.add_result(test, 0, automaton_time, ERROR_CODE, "error")
             return
@@ -735,7 +757,7 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
                 header += f"# Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
                 header += f"# Solver: {solver.get_name()}\n"
                 header += f"# Mode: {mode}\n"
-                header += f"# Semantics: {semantics}\n"
+                header += f"# Semantics: {actual_semantics} (detected: {part_semantics})\n"
                 header += f"# Reported Runtime: {average_time:.2f} ms ({final_time_source})\n"
                 header += f"# Automaton Construction Time: {automaton_time:.2f} ms\n"
                 header += "-" * 40 + "\n"

@@ -1,0 +1,4 @@
+semantics mealy
+inputs change_env_0
+outputs heap_0_1 heap_0_0 turn_env turn_sys change_sys_0 select_sys_0
+unobservables select_env_0
