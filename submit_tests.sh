@@ -60,6 +60,17 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+if [ ! -d "$TEST_DIR" ]; then
+    echo "Error: Test directory '$TEST_DIR' not found!"
+    exit 1
+fi
+
+if [ ! -d "$TEST_DIR/$PART_DIR" ]; then
+    echo "Error: Part directory '$PART_DIR' not found in '$TEST_DIR'!"
+    exit 1
+fi
+
+
 export SEMANTICS
 
 export TEST_DIR
