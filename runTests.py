@@ -806,6 +806,16 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
         
 
 
+def str2bool(v):
+    if isinstance(v, bool):
+        return v
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
+
 if __name__ == "__main__":
     MODES = [
         "christian:direct", "christian:belief", "christian:mso",
@@ -825,7 +835,7 @@ if __name__ == "__main__":
     parser.add_argument("--part-dir", type=str, default="part", help="Part directory name (relative to ltlf directory)")
     parser.add_argument("--results-dir", type=str, help="Directory to save detailed results (logs, controllers)")
     parser.add_argument("--verify", action="store_true", help="Perform verification on the resulting controller")
-    parser.add_argument("--on-the-fly", default=True, type=bool, help="Perform translation on the fly")
+    parser.add_argument("--on-the-fly", type=str2bool, nargs='?', const=True, default=True, help="Perform translation on the fly")
     args = parser.parse_args()
 
     commit_hash = get_git_revision_hash()
@@ -836,6 +846,7 @@ if __name__ == "__main__":
     print(f"  Part Dir: {args.part_dir}")
     print(f"  Semantics: {args.semantics}")
     print(f"  Shard: {args.shard_id}/{args.num_shards}")
+    print(f"  On The Fly: {args.on_the_fly}")
     print("-" * 30)
 
     # Derive solver and internal mode
@@ -897,6 +908,7 @@ if __name__ == "__main__":
         csvfile.write(f"# Test Dir: {args.test_dir}\n")
         csvfile.write(f"# Part Dir: {args.part_dir}\n")
         csvfile.write(f"# Semantics: {args.semantics}\n")
+        csvfile.write(f"# On The Fly: {args.on_the_fly}\n")
         csvfile.write(f"# OS: {sys_info['os']}\n")
         csvfile.write(f"# CPU: {sys_info['cpu']}\n")
         csvfile.write(f"# Cores: {sys_info['cores']}\n")

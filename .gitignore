@@ -15,3 +15,7 @@ run-*.sh
 SYNTCOMP-benchmarks/
 
 .vscode
+
+# Python
+__pycache__/
+*.pyc

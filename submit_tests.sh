@@ -12,6 +12,7 @@ NUM_USELESS_UNOBSERVABLES=0
 TEST_DIR="lucas"
 PART_DIR="part"
 EMAIL="alonadav2000@gmail.com"
+ON_THE_FLY=true
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -51,6 +52,14 @@ while [[ $# -gt 0 ]]; do
             PART_DIR="${1#*=}"
             shift
             ;;
+        --on-the-fly)
+            ON_THE_FLY=true
+            shift
+            ;;
+        --on-the-fly=*)
+            ON_THE_FLY="${1#*=}"
+            shift
+            ;;
         --mail|--email)
             EMAIL="$2"
             shift 2
@@ -70,6 +79,7 @@ export SEMANTICS
 export NUM_USELESS_UNOBSERVABLES
 export TEST_DIR
 export PART_DIR
+export ON_THE_FLY
 
 # If no targets provided, default to all
 if [ ${#TARGETS[@]} -eq 0 ]; then
@@ -132,7 +142,7 @@ for TARGET in "${TARGETS[@]}"; do
 
     if [ "$FOUND" = false ]; then
         echo "Error: Unknown target '$TARGET'"
-        echo "Usage: ./submit_tests.sh [all|lucas|christian|spot|solver:mode] [--dry-run] [--email your@email.com]"
+        echo "Usage: ./submit_tests.sh [all|lucas|christian|spot|solver:mode] [--dry-run] [--email your@email.com] [--on-the-fly]"
         echo ""
         echo "Available solvers: lucas, christian, spot"
         echo "Available combinations:"
@@ -152,6 +162,7 @@ echo "Semantics: $SEMANTICS"
 echo "Useless Unobs: $NUM_USELESS_UNOBSERVABLES"
 echo "Test Dir: $TEST_DIR"
 echo "Part Dir: $PART_DIR"
+echo "On The Fly: $ON_THE_FLY"
 echo "Range: $ARRAY_RANGE"
 if [ -n "$EMAIL" ]; then
     echo "Email: $EMAIL (will notify on completion)"
@@ -163,14 +174,14 @@ echo ""
 if [ "$DRY_RUN" = true ]; then
     echo "--- DRY RUN: No jobs will be submitted ---"
     echo "Command that would be run:"
-    echo "SEMANTICS=$SEMANTICS NUM_USELESS_UNOBSERVABLES=$NUM_USELESS_UNOBSERVABLES TEST_DIR=$TEST_DIR PART_DIR=$PART_DIR sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
+    echo "SEMANTICS=$SEMANTICS NUM_USELESS_UNOBSERVABLES=$NUM_USELESS_UNOBSERVABLES TEST_DIR=$TEST_DIR PART_DIR=$PART_DIR ON_THE_FLY=$ON_THE_FLY sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
     if [ -n "$EMAIL" ]; then
         echo "Notification that would be scheduled: sbatch --dependency=afterany:JOB_ID --mail-type=END --mail-user=$EMAIL ..."
     fi
     JOB_ID="DRY_RUN_ID"
     EXIT_STATUS=0
 else
-    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",NUM_USELESS_UNOBSERVABLES="$NUM_USELESS_UNOBSERVABLES",TEST_DIR="$TEST_DIR",PART_DIR="$PART_DIR" --array=$ARRAY_RANGE "$SLURM_SCRIPT")
+    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",NUM_USELESS_UNOBSERVABLES="$NUM_USELESS_UNOBSERVABLES",TEST_DIR="$TEST_DIR",PART_DIR="$PART_DIR",ON_THE_FLY="$ON_THE_FLY" --array=$ARRAY_RANGE "$SLURM_SCRIPT")
     EXIT_STATUS=$?
 fi
 

@@ -25,6 +25,7 @@ SHARDS_PER_COMBINATION=16
 SEMANTICS=${SEMANTICS:-"moore"}
 TEST_DIR=${TEST_DIR:-"lucas"}
 PART_DIR=${PART_DIR:-"part"}
+ON_THE_FLY=${ON_THE_FLY:-true}
 
 # Define all combinations
 MODES_LONG=("lucas:belief-states" "lucas:projection-based" "lucas:mso" "christian:direct" "christian:belief" "christian:mso" "spot:ltlf" "spot:ltl" "spot:ltlfilt")
@@ -70,6 +71,7 @@ echo "Testing: $MODE_LONG"
 echo "Semantics: $SEMANTICS"
 echo "Test Dir: $TEST_DIR"
 echo "Part Dir: $PART_DIR"
+echo "On The Fly: $ON_THE_FLY"
 echo "Shard: $SHARD_ID of $SHARDS_PER_COMBINATION"
 echo "Output file: $OUTPUT_FILE"
 echo "========================================="
@@ -85,7 +87,8 @@ python3 runTests.py \
     --shard-id=$SHARD_ID \
     --num-shards=$SHARDS_PER_COMBINATION \
     --semantics=$SEMANTICS \
-    --part-dir=$PART_DIR
+    --part-dir=$PART_DIR \
+    --on-the-fly=$ON_THE_FLY
 
 EXIT_CODE=$?
 
