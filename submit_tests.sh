@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script to submit test combinations to SLURM
-# Usage: ./submit_tests.sh [target1 target2 ...] [--dry-run] [--email your@email.com]
+# Usage: ./submit_tests.sh [target1 target2 ...] [--dry-run] [--on-the-fly] 
 # Targets can be: all, lucas, christian, spot, or solver:mode
 
 # Argument parsing
@@ -11,7 +11,7 @@ SEMANTICS="moore"
 NUM_USELESS_UNOBSERVABLES=0
 TEST_DIR="lucas"
 PART_DIR="part"
-EMAIL="alonadav2000@gmail.com"
+
 ON_THE_FLY=true
 
 while [[ $# -gt 0 ]]; do
@@ -60,14 +60,7 @@ while [[ $# -gt 0 ]]; do
             ON_THE_FLY="${1#*=}"
             shift
             ;;
-        --mail|--email)
-            EMAIL="$2"
-            shift 2
-            ;;
-        --mail=*|--email=*)
-            EMAIL="${1#*=}"
-            shift
-            ;;
+
         *)
             TARGETS+=("$1")
             shift
@@ -142,7 +135,7 @@ for TARGET in "${TARGETS[@]}"; do
 
     if [ "$FOUND" = false ]; then
         echo "Error: Unknown target '$TARGET'"
-        echo "Usage: ./submit_tests.sh [all|lucas|christian|spot|solver:mode] [--dry-run] [--email your@email.com] [--on-the-fly]"
+        echo "Usage: ./submit_tests.sh [all|lucas|christian|spot|solver:mode] [--dry-run] [--on-the-fly]"
         echo ""
         echo "Available solvers: lucas, christian, spot"
         echo "Available combinations:"
@@ -164,9 +157,7 @@ echo "Test Dir: $TEST_DIR"
 echo "Part Dir: $PART_DIR"
 echo "On The Fly: $ON_THE_FLY"
 echo "Range: $ARRAY_RANGE"
-if [ -n "$EMAIL" ]; then
-    echo "Email: $EMAIL (will notify on completion)"
-fi
+
 echo "========================================="
 echo ""
 
@@ -175,9 +166,7 @@ if [ "$DRY_RUN" = true ]; then
     echo "--- DRY RUN: No jobs will be submitted ---"
     echo "Command that would be run:"
     echo "SEMANTICS=$SEMANTICS NUM_USELESS_UNOBSERVABLES=$NUM_USELESS_UNOBSERVABLES TEST_DIR=$TEST_DIR PART_DIR=$PART_DIR ON_THE_FLY=$ON_THE_FLY sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
-    if [ -n "$EMAIL" ]; then
-        echo "Notification that would be scheduled: sbatch --dependency=afterany:JOB_ID --mail-type=END --mail-user=$EMAIL ..."
-    fi
+
     JOB_ID="DRY_RUN_ID"
     EXIT_STATUS=0
 else
@@ -225,19 +214,7 @@ if [ $EXIT_STATUS -eq 0 ]; then
     echo "Cancel all tasks with:"
     echo "  scancel $JOB_ID"
 
-    if [ -n "$EMAIL" ] && [ "$DRY_RUN" = false ]; then
-        # Submit a notification job that depends on the entire array finishing
-        # We use afterany so it triggers even if some tasks fail
-        NOTIFY_JOB_ID=$(sbatch --parsable --dependency=afterany:$JOB_ID --job-name="notify_${JOB_ID}" --mail-type=END --mail-user="$EMAIL" --wrap="echo 'Job array $JOB_ID ($DESC_STR) has completed.'")
-        if [ $? -eq 0 ]; then
-            echo ""
-            echo "✉ Completion notification scheduled for $EMAIL"
-            echo "  Notification Job ID: $NOTIFY_JOB_ID"
-        else
-            echo ""
-            echo "⚠ Warning: Failed to schedule email notification"
-        fi
-    fi
+
 else
     echo "✗ Failed to submit job"
     exit 1
