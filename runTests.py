@@ -54,7 +54,7 @@ class Solver():
         self.path = Path(path).expanduser().resolve()
         self.name = name if name else str(self.path)
 
-    def get_command(self, input_file, part_file, mode, semantics="moore", verify=False)-> str:
+    def get_command(self, input_file, part_file, mode, semantics="moore", verify=False, on_the_fly=True)-> str:
         """Returns the command string to execute.
 
         Args:
@@ -254,7 +254,7 @@ def negate_mona_content(original_content):
     return "\n".join(new_lines) + "\n"
 
 class ChristianSyftSolver(Solver):
-    def get_command(self, input_file, part_file, mode, semantics, verify=False)-> str:
+    def get_command(self, input_file, part_file, mode, semantics, verify=False, on_the_fly=True)-> str:
         # Christian's Syft expects .main and .backup files
         # and handles ltlf2fol conversion internally
         
@@ -391,7 +391,7 @@ class LucasSyftSolver(Solver):
                 
         return 0.0
 
-    def get_command(self, input_file, part_file, mode, semantics, verify=False)-> str:
+    def get_command(self, input_file, part_file, mode, semantics, verify=False, on_the_fly=True)-> str:
         config = {
             "belief-states":    ("partial", "dfa", ".dfa", ""),
             "projection-based": ("partial", "cordfa", ".dfa.rev.neg", ".rev.neg"),
@@ -431,7 +431,7 @@ class LucasSyftSolver(Solver):
         return result, time_ms, time_source
 
 class SpotSolver(Solver):
-    def get_command(self, input_file, part_file, mode, semantics, verify=False)-> str:
+    def get_command(self, input_file, part_file, mode, semantics, verify=False, on_the_fly=True)-> str:
         if not part_file.endswith('.spot.part'):
             spot_part = part_file + '.spot.part'
             if not os.path.exists(spot_part):
@@ -444,10 +444,12 @@ class SpotSolver(Solver):
         transformation = f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&'"
         verify_flag = " --verify" if verify else ""
 
+        restricted_flag = "" if on_the_fly else " --translation=restricted"
+
         if mode == "ltlf":
             if verify:
                 print("Verification not supported for spot in ltlf mode.")
-            return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics={semantics} --verbose -H"
+            return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics={semantics} --verbose {restricted_flag}"
         elif mode == "ltl":
             return f"{transformation} | ltlsynt --part-file={part_file} --verbose --algo=ds -H{verify_flag}"
         elif mode == "ltlfilt":
@@ -582,7 +584,7 @@ def collectTest(testDir, partDir="part"):
 TIMEOUT_CODE = -2
 ERROR_CODE = -1
 
-def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", iter_count=1, semantics="moore", results_dir=None, verify=False, test_dir_origin=None):
+def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", iter_count=1, semantics="moore", results_dir=None, verify=False, test_dir_origin=None, on_the_fly=True):
     temp_dir = tempfile.mkdtemp()
     try:
         test_path = Path(test).resolve()
@@ -668,7 +670,7 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
             print(f"[{test_path.name}] Using semantics from part file: {actual_semantics}")
 
         automaton_time = solver.preprocess(inputfile, partfile, mode, actual_semantics, verify=verify)
-        command = solver.get_command(inputfile, partfile, mode, actual_semantics, verify=verify)
+        command = solver.get_command(inputfile, partfile, mode, actual_semantics, verify=verify, on_the_fly=on_the_fly)
         if not command:
             statistics.add_result(test, 0, automaton_time, ERROR_CODE, "error")
             return
@@ -823,6 +825,7 @@ if __name__ == "__main__":
     parser.add_argument("--part-dir", type=str, default="part", help="Part directory name (relative to ltlf directory)")
     parser.add_argument("--results-dir", type=str, help="Directory to save detailed results (logs, controllers)")
     parser.add_argument("--verify", action="store_true", help="Perform verification on the resulting controller")
+    parser.add_argument("--on-the-fly", default=True, type=bool, help="Perform translation on the fly")
     args = parser.parse_args()
 
     commit_hash = get_git_revision_hash()
@@ -863,7 +866,7 @@ if __name__ == "__main__":
 
     for test in tests:
         executeTest(test, timeout, solver, args.part_dir, internal_mode, iterations, args.semantics, 
-                    results_dir=args.results_dir, verify=args.verify, test_dir_origin=test_dir)
+                    results_dir=args.results_dir, verify=args.verify, test_dir_origin=test_dir, on_the_fly=args.on_the_fly)
 
     print("===========")
     print("Statistics:")

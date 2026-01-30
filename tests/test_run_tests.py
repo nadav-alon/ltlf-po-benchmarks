@@ -17,7 +17,7 @@ import runTests
 REPO_ROOT = Path(project_root)
 LUCAS_SYFT_PATH = REPO_ROOT.parent / "lucas" / "Syft" / "build" / "bin" / "Syft"
 
-class TestSolversIsolated(unittest.TestCase):
+class BaseSolverTest(unittest.TestCase):
     def setUp(self):
         self.test_dir = tempfile.mkdtemp()
         
@@ -34,7 +34,7 @@ class TestSolversIsolated(unittest.TestCase):
                 return 0
             return None
 
-    def run_solver_logic(self, solver, example_name, ltlf_rel_path, mode, semantics="moore"):
+    def run_solver_logic(self, solver, example_name, ltlf_rel_path, mode, semantics="moore", on_the_fly=True):
         """
         Isolated test logic for a solver.
         Mimics execution steps in runTests.executeTest but runs in isolation.
@@ -72,7 +72,7 @@ class TestSolversIsolated(unittest.TestCase):
             print(f"DEBUG: Input File ({inputfile}):\n{f.read()}")
         
         # 2. Get command
-        cmd = solver.get_command(inputfile, partfile, mode, semantics=semantics)
+        cmd = solver.get_command(inputfile, partfile, mode, semantics=semantics, on_the_fly=on_the_fly)
         print(f"DEBUG: Command for {example_name} in {mode}:\n{cmd}")
         self.assertTrue(cmd, f"Failed to get command for {example_name} in {mode}")
         
@@ -88,7 +88,7 @@ class TestSolversIsolated(unittest.TestCase):
         
         self.assertEqual(result, expected_val, f"Solver {solver.get_name()} for {example_name} ({mode}) returned {result}, expected {expected_val}. Output: {output.decode()}")
 
-    # --- Individual Test Methods ---
+class TestLucasBeliefStates(BaseSolverTest):
     def test_lucas_bs_peek_1_1_1(self):
         solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
         self.run_solver_logic(solver, "peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf", "belief-states")
@@ -109,6 +109,7 @@ class TestSolversIsolated(unittest.TestCase):
         solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
         self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "belief-states")
 
+class TestLucasMSO(BaseSolverTest):
     def test_lucas_mso_peek_1_1_1(self):
         solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
         self.run_solver_logic(solver, "peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf", "mso")
@@ -129,6 +130,7 @@ class TestSolversIsolated(unittest.TestCase):
         solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
         self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "mso")
 
+class TestSpotLTLf(BaseSolverTest):
     def test_spot_ltlf_coins_3(self):
         solver = runTests.SpotSolver("ltlfsynt", name="spot")
         self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "ltlf")
@@ -153,22 +155,32 @@ class TestSolversIsolated(unittest.TestCase):
         solver = runTests.SpotSolver("ltlfsynt", name="spot")
         self.run_solver_logic(solver, "peek_4_3_68", "lucas/ltlf/peek/peek_4_3_68.ltlf", "ltlf")
 
-    # def test_spot_ltlfilt_simple(self):
-    #     solver = runTests.SpotSolver("ltlfsynt", name="spot")
-    #     self.run_solver_logic(solver, "simple", "simple.ltlf", "ltlfilt")
+class TestSpotLTLf_restricted(BaseSolverTest):
+    def test_spot_ltlf_coins_3(self):
+        solver = runTests.SpotSolver("ltlfsynt", name="spot")
+        self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "ltlf", on_the_fly=False)
 
-    # def test_spot_ltlfilt_coins_3(self):
-    #     solver = runTests.SpotSolver("ltlfsynt", name="spot")
-    #     self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "ltlfilt")
-    
-    # def test_spot_ltlfilt_coins_4(self):
-    #     solver = runTests.SpotSolver("ltlfsynt", name="spot")
-    #     self.run_solver_logic(solver, "coins_4", "lucas/ltlf/coins_4.ltlf", "ltlfilt")
+    def test_spot_ltlf_coins_4(self):
+        solver = runTests.SpotSolver("ltlfsynt", name="spot")
+        self.run_solver_logic(solver, "coins_4", "lucas/ltlf/coins_4.ltlf", "ltlf", on_the_fly=False)
 
-    # def test_spot_ltlfilt_seek_5(self):
-    #     solver = runTests.SpotSolver("ltlfsynt", name="spot")
-    #     self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "ltlfilt")
+    def test_spot_ltlf_seek_5(self):
+        solver = runTests.SpotSolver("ltlfsynt", name="spot")
+        self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "ltlf", on_the_fly=False)
 
+    def test_spot_ltlf_peek_1_1_1(self):
+        solver = runTests.SpotSolver("ltlfsynt", name="spot")
+        self.run_solver_logic(solver, "peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf", "ltlf", on_the_fly=False)
+
+    def test_spot_ltlf_peek_1_1_89(self):
+        solver = runTests.SpotSolver("ltlfsynt", name="spot")
+        self.run_solver_logic(solver, "peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf", "ltlf", on_the_fly=False)
+
+    def test_spot_ltlf_peek_4_3_68(self):
+        solver = runTests.SpotSolver("ltlfsynt", name="spot")
+        self.run_solver_logic(solver, "peek_4_3_68", "lucas/ltlf/peek/peek_4_3_68.ltlf", "ltlf", on_the_fly=False)
+
+class TestLucasProjection(BaseSolverTest):
     def test_lucas_proj_peek_1_1_1(self):
         solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
         self.run_solver_logic(solver, "peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf", "projection")
@@ -187,7 +199,8 @@ class TestSolversIsolated(unittest.TestCase):
 
     def test_lucas_proj_seek_5(self):
         solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "belief-states")
+        # Fixed copy-paste error: explicitly using "projection" mode as per method name intention
+        self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "projection")
 
 
 class TestGames(unittest.TestCase):
