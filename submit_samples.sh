@@ -4,16 +4,16 @@
 # Usage: ./submit_samples.sh [target1 target2 ...] [--dry-run] [--on-the-fly] 
 # Targets can be: all, lucas, christian, spot, or solver:mode
 
-# Default values
+# Argument parsing
+TARGETS=()
+DRY_RUN=false
 SEMANTICS="moore"
+
 TEST_DIR="ltlf-fin-benchmarks"
 ON_THE_FLY=true
-DRY_RUN=false
 SLURM_SCRIPT="test_samples_slurm.sh"
 NUM_SAMPLES=30
 
-# Argument parsing
-TARGETS=()
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --dry-run)

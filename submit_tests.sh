@@ -12,16 +12,11 @@ SEMANTICS="moore"
 TEST_DIR="lucas"
 PART_DIR="part"
 ON_THE_FLY=true
-ITERATE_SAMPLES=false
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --dry-run)
             DRY_RUN=true
-            shift
-            ;;
-        --iterate-samples)
-            ITERATE_SAMPLES=true
             shift
             ;;
         --semantics)
@@ -170,43 +165,16 @@ echo "========================================="
 echo ""
 
 # Submission block
-if [ "$ITERATE_SAMPLES" = true ]; then
-    echo "--- Iterating through po-part-1-2_* folders ---"
-    # Find all sample folders
-    SAMPLE_DIRS=$(ls -d $TEST_DIR/po-part-1-2_* 2>/dev/null | sort -V)
-    if [ -z "$SAMPLE_DIRS" ]; then
-        echo "Error: No po-part-1-2_* folders found in $TEST_DIR"
-        exit 1
-    fi
+if [ "$DRY_RUN" = true ]; then
+    echo "--- DRY RUN: No jobs will be submitted ---"
+    echo "Command that would be run:"
+    echo "SEMANTICS=$SEMANTICS TEST_DIR=$TEST_DIR PART_DIR=$PART_DIR ON_THE_FLY=$ON_THE_FLY sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
 
-    for S_DIR in $SAMPLE_DIRS; do
-        CURRENT_PART_DIR=$(basename "$S_DIR")
-        echo "Submitting for $CURRENT_PART_DIR..."
-        
-        if [ "$DRY_RUN" = true ]; then
-            echo "  [DRY RUN] SEMANTICS=$SEMANTICS TEST_DIR=$TEST_DIR PART_DIR=$CURRENT_PART_DIR ON_THE_FLY=$ON_THE_FLY sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
-        else
-            JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",TEST_DIR="$TEST_DIR",PART_DIR="$CURRENT_PART_DIR",ON_THE_FLY="$ON_THE_FLY" --array=$ARRAY_RANGE "$SLURM_SCRIPT")
-            if [ $? -eq 0 ]; then
-                echo "  ✓ Job $JOB_ID submitted for $CURRENT_PART_DIR"
-            else
-                echo "  ✗ Failed to submit for $CURRENT_PART_DIR"
-            fi
-        fi
-    done
+    JOB_ID="DRY_RUN_ID"
     EXIT_STATUS=0
 else
-    if [ "$DRY_RUN" = true ]; then
-        echo "--- DRY RUN: No jobs will be submitted ---"
-        echo "Command that would be run:"
-        echo "SEMANTICS=$SEMANTICS TEST_DIR=$TEST_DIR PART_DIR=$PART_DIR ON_THE_FLY=$ON_THE_FLY sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
-
-        JOB_ID="DRY_RUN_ID"
-        EXIT_STATUS=0
-    else
-        JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",TEST_DIR="$TEST_DIR",PART_DIR="$PART_DIR",ON_THE_FLY="$ON_THE_FLY" --array=$ARRAY_RANGE "$SLURM_SCRIPT")
-        EXIT_STATUS=$?
-    fi
+    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",TEST_DIR="$TEST_DIR",PART_DIR="$PART_DIR",ON_THE_FLY="$ON_THE_FLY" --array=$ARRAY_RANGE "$SLURM_SCRIPT")
+    EXIT_STATUS=$?
 fi
 
 if [ $EXIT_STATUS -eq 0 ]; then
