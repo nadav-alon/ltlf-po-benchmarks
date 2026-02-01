@@ -1,0 +1,4 @@
+semantics mealy
+inputs ix_1 ix_2 iy_0 iy_1 iy_3 iy_6
+outputs os_0 os_1 os_10 os_11 os_12 os_13 os_14 os_15 os_16 os_17 os_18 os_19 os_2 os_20 os_21 os_22 os_23 os_3 os_4 os_5 os_6 os_7 os_8 os_9 oti oto ox_0 ox_1 ox_2 oy_0 oy_1 oy_2 oy_3 oy_4 oy_5 oy_6 oy_7
+unobservables ix_0 iy_2 iy_4 iy_5 iy_7
