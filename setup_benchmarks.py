@@ -8,7 +8,7 @@ import itertools
 from pathlib import Path
 
 # Target: 150 benchmarks total
-MAX_SAMPLES = 30
+MAX_SAMPLES = 10
 categories = {
     "Two-player-Game/Single-Counter": 20,
     "Two-player-Game/Double-Counter": 20,
@@ -130,6 +130,15 @@ def negate_mona_content(content):
     return "\n".join(new_lines) + "\n"
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Setup benchmarks with a specific number of samples.")
+    parser.add_argument("--num-samples", type=int, default=10, help="Number of samples per level (max 30)")
+    args = parser.parse_args()
+
+    global MAX_SAMPLES
+    MAX_SAMPLES = min(max(1, args.num_samples), 30)
+    print(f"Setting MAX_SAMPLES to {MAX_SAMPLES}")
+
     random.seed(42)
     benchmarks = []
     root_path = Path("/home/cowclaw/ltlf-po-benchmarks")

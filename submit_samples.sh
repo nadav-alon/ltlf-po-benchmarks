@@ -12,7 +12,7 @@ SEMANTICS="moore"
 TEST_DIR="ltlf-fin-benchmarks"
 LEVEL="1-2"
 SLURM_SCRIPT="test_samples_slurm.sh"
-NUM_SAMPLES=30
+NUM_SAMPLES=10
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -44,6 +44,14 @@ while [[ $# -gt 0 ]]; do
             LEVEL="${1#*=}"
             shift
             ;;
+        --num-samples)
+            NUM_SAMPLES="$2"
+            shift 2
+            ;;
+        --num-samples=*)
+            NUM_SAMPLES="${1#*=}"
+            shift
+            ;;
         *)
             TARGETS+=("$1")
             shift
@@ -62,6 +70,11 @@ if [[ ! " 1-2 1-4 3-4 all " =~ " $LEVEL " ]]; then
     exit 1
 fi
 
+if [[ ! "$NUM_SAMPLES" =~ ^[0-9]+$ ]] || [ "$NUM_SAMPLES" -lt 1 ] || [ "$NUM_SAMPLES" -gt 30 ]; then
+    echo "Error: Invalid number of samples '$NUM_SAMPLES'. Must be between 1 and 30."
+    exit 1
+fi
+
 if [ ! -f "$SLURM_SCRIPT" ]; then
     echo "Error: Slurm script '$SLURM_SCRIPT' not found!"
     exit 1
@@ -74,12 +87,12 @@ if [ ! -f "$META_SCRIPT" ]; then
     exit 1
 fi
 
-SHARDS=$(grep "SHARDS_PER_COMBINATION=" "$META_SCRIPT" | cut -d'=' -f2)
+SHARDS_PER_COMBINATION=$(grep "SHARDS_PER_COMBINATION=" "$META_SCRIPT" | cut -d'=' -f2)
 MODES_STR=$(grep "^MODES_LONG=" "$META_SCRIPT" | sed 's/MODES_LONG=(//;s/)//' | tr -d '"')
 read -a MODES <<< "$MODES_STR"
 
 NUM_MODES=${#MODES[@]}
-TASKS_PER_SAMPLE=$((NUM_MODES * SHARDS))
+TASKS_PER_SAMPLE=$((NUM_MODES * SHARDS_PER_COMBINATION))
 
 if [ ${#TARGETS[@]} -eq 0 ]; then
     TARGETS=("all")
@@ -100,8 +113,8 @@ for TARGET in "${TARGETS[@]}"; do
         for i in "${!MODES[@]}"; do
             SOLVER=$(echo ${MODES[$i]} | cut -d':' -f1)
             if [ "$SOLVER" == "$TARGET" ]; then
-                if [ $START -lt 0 ]; then START=$((i * SHARDS)); fi
-                END=$(( (i + 1) * SHARDS - 1 ))
+                if [ $START -lt 0 ]; then START=$((i * SHARDS_PER_COMBINATION)); fi
+                END=$(( (i + 1) * SHARDS_PER_COMBINATION - 1 ))
             fi
         done
         if [ $START -ge 0 ]; then
@@ -112,8 +125,8 @@ for TARGET in "${TARGETS[@]}"; do
     else
         for i in "${!MODES[@]}"; do
             if [ "${MODES[$i]}" == "$TARGET" ]; then
-                START=$((i * SHARDS))
-                END=$((START + SHARDS - 1))
+                START=$((i * SHARDS_PER_COMBINATION))
+                END=$((START + SHARDS_PER_COMBINATION - 1))
                 INTERNAL_RANGES+=("$START-$END")
                 DESCS+=("Mode $TARGET")
                 FOUND=true
@@ -155,9 +168,9 @@ echo "========================================="
 if [ "$DRY_RUN" = true ]; then
     echo "--- DRY RUN: No job will be submitted ---"
     echo "Command that would be run:"
-    echo "SEMANTICS=$SEMANTICS TEST_DIR=$TEST_DIR LEVEL=$LEVEL sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
+    echo "SEMANTICS=$SEMANTICS TEST_DIR=$TEST_DIR LEVEL=$LEVEL TASKS_PER_SAMPLE=$TASKS_PER_SAMPLE SHARDS_PER_COMBINATION=$SHARDS_PER_COMBINATION sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
 else
-    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",TEST_DIR="$TEST_DIR",LEVEL="$LEVEL" --array=$ARRAY_RANGE "$SLURM_SCRIPT")
+    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",TEST_DIR="$TEST_DIR",LEVEL="$LEVEL",TASKS_PER_SAMPLE="$TASKS_PER_SAMPLE",SHARDS_PER_COMBINATION="$SHARDS_PER_COMBINATION" --array=$ARRAY_RANGE "$SLURM_SCRIPT")
     if [ $? -eq 0 ]; then
         echo "✓ Job $JOB_ID submitted successfully!"
         echo "  Array tasks: $ARRAY_RANGE"

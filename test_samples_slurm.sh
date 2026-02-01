@@ -19,8 +19,8 @@ export PATH="$PWD/spot/local/bin:$PATH"
 export LD_LIBRARY_PATH="$PWD/spot/local/lib:$LD_LIBRARY_PATH"
 
 # Number of shards per combination
-SHARDS_PER_COMBINATION=16
-TASKS_PER_SAMPLE=144
+SHARDS_PER_COMBINATION=${SHARDS_PER_COMBINATION:-16}
+TASKS_PER_SAMPLE=${TASKS_PER_SAMPLE:-144}
 
 # Semantics (default to moore if not set)
 SEMANTICS=${SEMANTICS:-"moore"}
