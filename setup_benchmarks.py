@@ -3,9 +3,12 @@ import subprocess
 import random
 import shutil
 import json
+import math
+import itertools
 from pathlib import Path
 
 # Target: 150 benchmarks total
+MAX_SAMPLES = 30
 categories = {
     "Two-player-Game/Single-Counter": 20,
     "Two-player-Game/Double-Counter": 20,
@@ -13,7 +16,31 @@ categories = {
     "chomp_game": 22
 }
 
+def get_unique_samples(items, k, max_n):
+    n = len(items)
+    if n == 0 or k == 0:
+        return [tuple()]
+    
+    total_possible = math.comb(n, k)
+    if total_possible <= 10000:
+        all_combos = list(itertools.combinations(items, k))
+        random.shuffle(all_combos)
+        return all_combos[:max_n]
+    
+    seen = set()
+    samples = []
+    # Avoid infinite loop if somehow logic fails, though total_possible > 10000 here
+    attempts = 0
+    while len(samples) < max_n and attempts < max_n * 100:
+        s = tuple(sorted(random.sample(items, k)))
+        if s not in seen:
+            seen.add(s)
+            samples.append(s)
+        attempts += 1
+    return samples
+
 def run_syfco(args):
+# ... (rest of the helper functions unchanged)
     result = subprocess.run(["syfco"] + args, capture_output=True, text=True)
     if result.returncode != 0:
         return None
@@ -103,6 +130,7 @@ def negate_mona_content(content):
     return "\n".join(new_lines) + "\n"
 
 def main():
+    random.seed(42)
     benchmarks = []
     root_path = Path("/home/cowclaw/ltlf-po-benchmarks")
     tlsf_fin_path = root_path / "SYNTCOMP-benchmarks/tlsf-fin"
@@ -113,9 +141,9 @@ def main():
             print(f"Warning: Category path {category_path} not found.")
             continue
             
-        tlsf_files = list(category_path.rglob("*.tlsf"))
-        priority = [f for f in tlsf_files if "_pb_" in f.stem and "_pe_" in f.stem]
-        others = [f for f in tlsf_files if f not in priority]
+        tlsf_files = sorted(list(category_path.rglob("*.tlsf")))
+        priority = sorted([f for f in tlsf_files if "_pb_" in f.stem and "_pe_" in f.stem])
+        others = sorted([f for f in tlsf_files if f not in priority])
         
         selected = []
         if len(priority) >= limit:
@@ -136,19 +164,33 @@ def main():
     mso_dir = base_dir / "mso"
     part_dir = base_dir / "part"
 
-    levels = ["1-2", "all"]
-    po_part_dirs = {level: base_dir / f"po-part-{level}" for level in levels}
-    po_mso_dirs = {level: base_dir / f"po-mso-{level}" for level in levels}
-    po_mso_dirs["0"] = base_dir / "po-mso-0"
-
     if base_dir.exists():
         shutil.rmtree(base_dir)
 
     ltlf_dir.mkdir(parents=True, exist_ok=True)
     mso_dir.mkdir(parents=True, exist_ok=True)
     part_dir.mkdir(parents=True, exist_ok=True)
-    for d in po_part_dirs.values(): d.mkdir(parents=True, exist_ok=True)
-    for d in po_mso_dirs.values(): d.mkdir(parents=True, exist_ok=True)
+
+    po_part_dirs = {}
+    po_mso_dirs = {}
+    
+    # Levels and sample directories
+    levels = ["1-2", "all"]
+    for level in levels:
+        if level == "all":
+            po_part_dirs[level] = base_dir / "po-part-all"
+            po_mso_dirs[level] = base_dir / "po-mso-all"
+            po_part_dirs[level].mkdir(parents=True, exist_ok=True)
+            po_mso_dirs[level].mkdir(parents=True, exist_ok=True)
+        else:
+            for s in range(1, MAX_SAMPLES + 1):
+                po_part_dirs[(level, s)] = base_dir / f"po-part-{level}_{s}"
+                po_mso_dirs[(level, s)] = base_dir / f"po-mso-{level}_{s}"
+                po_part_dirs[(level, s)].mkdir(parents=True, exist_ok=True)
+                po_mso_dirs[(level, s)].mkdir(parents=True, exist_ok=True)
+    
+    po_mso_dirs["0"] = base_dir / "po-mso-0"
+    po_mso_dirs["0"].mkdir(parents=True, exist_ok=True)
 
     LTFL2FOL = "/home/cowclaw/lucas/Syft/build/bin/ltlf2fol"
     LTFL2PFOL = "/home/cowclaw/lucas/Syft/build/bin/ltlf2pfol"
@@ -199,8 +241,8 @@ def main():
         inputs = run_syfco(["-ins", str(tlsf_path)])
         outputs = run_syfco(["-outs", str(tlsf_path)])
         
-        input_list = [i.strip(";,") for i in (inputs or "").replace(",", " ").split() if i.strip(";,")]
-        output_list = [o.strip(";,") for o in (outputs or "").replace(",", " ").split() if o.strip(";,")]
+        input_list = sorted([i.strip(";,") for i in (inputs or "").replace(",", " ").split() if i.strip(";,")])
+        output_list = sorted([o.strip(";,") for o in (outputs or "").replace(",", " ").split() if o.strip(";,")])
         
         # Write Base Part File
         base_part_file = part_dir / f"{stem}.part"
@@ -219,29 +261,41 @@ def main():
 
         # PO levels
         for level in levels:
-            count = (len(input_list) // 2) if level == "1-2" else len(input_list)
-            count = max(1, count) if level == "1-2" and input_list else count
+            if level == "all":
+                unobs_samples = [tuple(input_list)]
+            else:
+                count = (len(input_list) // 2)
+                count = max(1, count) if input_list else 0
+                unobs_samples = get_unique_samples(input_list, count, MAX_SAMPLES)
             
-            unobs = random.sample(input_list, count) if input_list else []
-            obs = [i for i in input_list if i not in unobs]
-            
-            # PO Part
-            po_file = po_part_dirs[level] / f"{stem}.part"
-            with open(po_file, "w") as f:
-                f.write(f"semantics {semantics}\n")
-                f.write(f"inputs {' '.join(obs)}\n")
-                f.write(f"outputs {' '.join(output_list)}\n")
-                if unobs: f.write(f"unobservables {' '.join(unobs)}\n")
-            
-            # PO MSO
-            level_mso_dir = po_mso_dirs[level]
-            shutil.copy2(mso_file, level_mso_dir / f"{stem}.mona")
-            with open(level_mso_dir / f"{stem}.mona.quant", "w") as f:
-                f.write(quantify_mona_content(mso_content, unobs))
-            if rev_mona_file.exists(): shutil.copy2(rev_mona_file, level_mso_dir / f"{stem}.mona.rev")
-            if rev_neg_mona_file.exists(): shutil.copy2(rev_neg_mona_file, level_mso_dir / f"{stem}.mona.rev.neg")
+            for i, unobs in enumerate(unobs_samples):
+                sample_idx = i + 1
+                obs = [v for v in input_list if v not in unobs]
+                
+                # Determine directories
+                if level == "all":
+                    level_part_dir = po_part_dirs[level]
+                    level_mso_dir = po_mso_dirs[level]
+                else:
+                    level_part_dir = po_part_dirs[(level, sample_idx)]
+                    level_mso_dir = po_mso_dirs[(level, sample_idx)]
+                
+                # PO Part
+                po_file = level_part_dir / f"{stem}.part"
+                with open(po_file, "w") as f:
+                    f.write(f"semantics {semantics}\n")
+                    f.write(f"inputs {' '.join(obs)}\n")
+                    f.write(f"outputs {' '.join(output_list)}\n")
+                    if unobs: f.write(f"unobservables {' '.join(unobs)}\n")
+                
+                # PO MSO
+                shutil.copy2(mso_file, level_mso_dir / f"{stem}.mona")
+                with open(level_mso_dir / f"{stem}.mona.quant", "w") as f:
+                    f.write(quantify_mona_content(mso_content, unobs))
+                if rev_mona_file.exists(): shutil.copy2(rev_mona_file, level_mso_dir / f"{stem}.mona.rev")
+                if rev_neg_mona_file.exists(): shutil.copy2(rev_neg_mona_file, level_mso_dir / f"{stem}.mona.rev.neg")
 
-    print(f"Done. Prepared 150 benchmarks in ltlf-fin-benchmarks.")
+    print(f"Done. Prepared benchmarks in {base_dir}.")
 
 if __name__ == "__main__":
     main()
