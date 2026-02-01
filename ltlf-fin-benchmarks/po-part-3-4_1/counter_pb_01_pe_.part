@@ -1,4 +1,0 @@
-semantics moore
-inputs inc
-outputs carry_0 counter_0
-unobservables init_counter_0

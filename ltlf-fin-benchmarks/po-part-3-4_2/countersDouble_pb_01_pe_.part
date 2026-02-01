@@ -1,4 +1,0 @@
-semantics moore
-inputs init_counter_0
-outputs carry_env_0 carry_sys_0 counter_env_0 counter_sys_0 inc_sys
-unobservables inc_env
