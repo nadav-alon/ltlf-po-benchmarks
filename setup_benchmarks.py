@@ -158,6 +158,7 @@ def main():
             benchmarks.append(f)
 
     print(f"Collected {len(benchmarks)} benchmarks total.")
+    rng_state = random.getstate()
 
     base_dir = Path("/home/cowclaw/ltlf-po-benchmarks/ltlf-fin-benchmarks")
     ltlf_dir = base_dir / "ltlf"
@@ -175,7 +176,7 @@ def main():
     po_mso_dirs = {}
     
     # Levels and sample directories
-    levels = ["1-2", "all"]
+    levels = ["1-2", "1-4", "3-4", "all"]
     for level in levels:
         if level == "all":
             po_part_dirs[level] = base_dir / "po-part-all"
@@ -259,12 +260,37 @@ def main():
         if rev_mona_file.exists(): shutil.copy2(rev_mona_file, po_mso_dirs["0"] / f"{stem}.mona.rev")
         if rev_neg_mona_file.exists(): shutil.copy2(rev_neg_mona_file, po_mso_dirs["0"] / f"{stem}.mona.rev.neg")
 
-        # PO levels
-        for level in levels:
+    # PO levels
+    for level in levels:
+        random.setstate(rng_state)
+        print(f"Generating samples for level {level}...")
+        for tlsf_path in benchmarks:
+            stem = tlsf_path.stem
+            mso_file = mso_dir / f"{stem}.mona"
+            if not mso_file.exists(): continue
+            with open(mso_file, "r") as f: mso_content = f.read()
+            rev_mona_file = mso_dir / f"{stem}.mona.rev"
+            rev_neg_mona_file = mso_dir / f"{stem}.mona.rev.neg"
+            
+            inputs = run_syfco(["-ins", str(tlsf_path)])
+            outputs = run_syfco(["-outs", str(tlsf_path)])
+            semantics = detect_semantics(tlsf_path)
+            
+            input_list = sorted([i.strip(";,") for i in (inputs or "").replace(",", " ").split() if i.strip(";,")])
+            output_list = sorted([o.strip(";,") for o in (outputs or "").replace(",", " ").split() if o.strip(";,")])
+
             if level == "all":
                 unobs_samples = [tuple(input_list)]
             else:
-                count = (len(input_list) // 2)
+                if level == "1-2":
+                    count = len(input_list) // 2
+                elif level == "1-4":
+                    count = len(input_list) // 4
+                elif level == "3-4":
+                    count = (3 * len(input_list)) // 4
+                else:
+                    count = 0
+                
                 count = max(1, count) if input_list else 0
                 unobs_samples = get_unique_samples(input_list, count, MAX_SAMPLES)
             
