@@ -10,7 +10,7 @@ DRY_RUN=false
 SEMANTICS="moore"
 
 TEST_DIR="ltlf-fin-benchmarks"
-ON_THE_FLY=true
+LEVEL="1-2"
 SLURM_SCRIPT="test_samples_slurm.sh"
 NUM_SAMPLES=30
 
@@ -36,12 +36,12 @@ while [[ $# -gt 0 ]]; do
             TEST_DIR="${1#*=}"
             shift
             ;;
-        --on-the-fly)
-            ON_THE_FLY="$2"
+        --level)
+            LEVEL="$2"
             shift 2
             ;;
-        --on-the-fly=*)
-            ON_THE_FLY="${1#*=}"
+        --level=*)
+            LEVEL="${1#*=}"
             shift
             ;;
         *)
@@ -54,6 +54,11 @@ done
 # Robustness Checks
 if [ ! -d "$TEST_DIR" ]; then
     echo "Error: Test directory '$TEST_DIR' not found!"
+    exit 1
+fi
+
+if [[ ! " 1-2 1-4 3-4 all " =~ " $LEVEL " ]]; then
+    echo "Error: Unknown level '$LEVEL'. Valid levels: 1-2, 1-4, 3-4, all"
     exit 1
 fi
 
@@ -142,16 +147,17 @@ echo "Submitting Consolidated Multi-Sample Job"
 echo "Targets: $DESC_STR (across $NUM_SAMPLES samples)"
 echo "Semantics: $SEMANTICS"
 echo "Test Dir: $TEST_DIR"
-echo "On The Fly: $ON_THE_FLY"
+echo "Level: $LEVEL"
+echo "On The Fly: both (true then false)"
 echo "Range: [Optimized Array Range]"
 echo "========================================="
 
 if [ "$DRY_RUN" = true ]; then
     echo "--- DRY RUN: No job will be submitted ---"
     echo "Command that would be run:"
-    echo "SEMANTICS=$SEMANTICS TEST_DIR=$TEST_DIR ON_THE_FLY=$ON_THE_FLY sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
+    echo "SEMANTICS=$SEMANTICS TEST_DIR=$TEST_DIR LEVEL=$LEVEL sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
 else
-    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",TEST_DIR="$TEST_DIR",ON_THE_FLY="$ON_THE_FLY" --array=$ARRAY_RANGE "$SLURM_SCRIPT")
+    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",TEST_DIR="$TEST_DIR",LEVEL="$LEVEL" --array=$ARRAY_RANGE "$SLURM_SCRIPT")
     if [ $? -eq 0 ]; then
         echo "✓ Job $JOB_ID submitted successfully!"
         echo "  Array tasks: $ARRAY_RANGE"
@@ -163,7 +169,7 @@ else
         echo "  logs/${JOB_ID}/po-part-1-2_*/"
         echo ""
         echo "Results will be in:"
-        echo "  results/${JOB_ID}/po-part-1-2_*/"
+        echo "  results/${JOB_ID}/po-part-${LEVEL}_*/"
         echo ""
         echo "Cancel all tasks with:"
         echo "  scancel $JOB_ID"

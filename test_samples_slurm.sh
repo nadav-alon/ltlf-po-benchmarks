@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=16G
-#SBATCH --time=03:00:00
+#SBATCH --time=06:30:00
 #SBATCH --exclude=cn[31-44],gpu[1-4],gpu[6-8]
 # #SBATCH --array=0-4319
 
@@ -25,7 +25,7 @@ TASKS_PER_SAMPLE=144
 # Semantics (default to moore if not set)
 SEMANTICS=${SEMANTICS:-"moore"}
 TEST_DIR=${TEST_DIR:-"ltlf-fin-benchmarks"}
-ON_THE_FLY=${ON_THE_FLY:-true}
+LEVEL=${LEVEL:-"1-2"}
 
 # --- Multi-Sample Decoding Logic ---
 # The $SLURM_ARRAY_TASK_ID covers 144 tasks per sample.
@@ -38,8 +38,12 @@ ON_THE_FLY=${ON_THE_FLY:-true}
 SAMPLE_ID=$(($SLURM_ARRAY_TASK_ID / $TASKS_PER_SAMPLE + 1))
 INTERNAL_ID=$(($SLURM_ARRAY_TASK_ID % $TASKS_PER_SAMPLE))
 
-# Dynamically set the PART_DIR based on the decoded Sample ID
-PART_DIR="po-part-1-2_${SAMPLE_ID}"
+# Dynamically set the PART_DIR based on the decoded Sample ID and LEVEL
+if [ "$LEVEL" = "all" ]; then
+    PART_DIR="po-part-all"
+else
+    PART_DIR="po-part-${LEVEL}_${SAMPLE_ID}"
+fi
 
 # Define all combinations
 MODES_LONG=("lucas:belief-states" "lucas:projection-based" "lucas:mso" "christian:direct" "christian:belief" "christian:mso" "spot:ltlf" "spot:ltl" "spot:ltlfilt")
@@ -92,28 +96,44 @@ echo "Output file: $OUTPUT_FILE"
 echo "========================================="
 echo ""
 
-# Run the test
-python3 runTests.py \
-    --mode=$MODE_LONG \
-    --test-dir=$TEST_DIR \
-    --path=$SYFT_PATH \
-    --timeout=$TIMEOUT \
-    --output=$OUTPUT_FILE \
-    --shard-id=$SHARD_ID \
-    --num-shards=$SHARDS_PER_COMBINATION \
-    --semantics=$SEMANTICS \
-    --part-dir=$PART_DIR \
-    --on-the-fly=$ON_THE_FLY
+# Run the tests sequentially (on-the-fly=true and on-the-fly=false)
+# We use 'timeout' to ensure each run has a fair share (exactly 3 hours each if needed)
+SOFT_TIMEOUT="3h"
 
-EXIT_CODE=$?
+for OTF_VAL in true false; do
+    SUFFIX="otf"
+    if [ "$OTF_VAL" = "false" ]; then SUFFIX="off"; fi
+    
+    OUTPUT_FILE="results/${BASE_JOB_ID}/${PART_DIR}/${SAFE_MODE}/shard_${SHARD_ID}_${SUFFIX}.csv"
+    
+    echo "-----------------------------------------"
+    echo "Running with ON_THE_FLY=$OTF_VAL"
+    echo "Timeout: $SOFT_TIMEOUT"
+    echo "Output: $OUTPUT_FILE"
+    echo "-----------------------------------------"
+    
+    # Run the test
+    timeout $SOFT_TIMEOUT python3 runTests.py \
+        --mode=$MODE_LONG \
+        --test-dir=$TEST_DIR \
+        --path=$SYFT_PATH \
+        --timeout=$TIMEOUT \
+        --output=$OUTPUT_FILE \
+        --shard-id=$SHARD_ID \
+        --num-shards=$SHARDS_PER_COMBINATION \
+        --semantics=$SEMANTICS \
+        --part-dir=$PART_DIR \
+        --on-the-fly=$OTF_VAL
 
-echo ""
-echo "========================================="
-if [ $EXIT_CODE -eq 0 ]; then
-    echo "✓ Test completed successfully"
-else
-    echo "✗ Test failed with exit code: $EXIT_CODE"
-fi
-echo "========================================="
+    RET=$?
+    if [ $RET -eq 124 ]; then
+        echo "✗ Test timed out after $SOFT_TIMEOUT"
+    elif [ $RET -ne 0 ]; then
+        echo "✗ Test failed with exit code: $RET"
+    else
+        echo "✓ Test completed successfully"
+    fi
+    echo ""
+done
 
-exit $EXIT_CODE
+exit 0
