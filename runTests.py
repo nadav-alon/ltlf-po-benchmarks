@@ -11,6 +11,7 @@ import threading
 import shutil
 import platform
 from datetime import datetime
+import json
 
 
 def get_git_revision_hash():
@@ -526,12 +527,12 @@ class Statistics:
             'verified': 0, 
             'verification_failed': 0
         }
-        self.results = {} # test_path -> (time, automaton_time, status, verified, time_source)
+        self.results = {} # test_path -> (time, automaton_time, generation_time, status, verified, time_source)
         self.lock = threading.Lock()
 
-    def add_result(self, test_path, time, automaton_time, status, outcome, verified=None, time_source="tool"):
+    def add_result(self, test_path, time, automaton_time, generation_time, status, outcome, verified=None, time_source="tool"):
         with self.lock:
-            self.results[str(test_path)] = (time, automaton_time, status, verified, time_source)
+            self.results[str(test_path)] = (time, automaton_time, generation_time, status, verified, time_source)
             if outcome in self.stats:
                 self.stats[outcome] += 1
             if verified is True:
@@ -560,8 +561,10 @@ def collectTest(testDir, partDir="part"):
 
     for file in test_files:
         test_path = file.resolve()
+        test_stem = test_path.stem
         
-        # Try to find part file by replacing "ltlf" with "part" in the path
+        # Strategy: find the index of "ltlf" in the parts of the path
+        # and replace it with "part" or "mso" to find related files
         parts = list(test_path.parts)
         if "ltlf" in parts:
             idx = parts.index("ltlf")
@@ -570,9 +573,24 @@ def collectTest(testDir, partDir="part"):
             part_file = Path(*part_parts).with_suffix(".part")
             
             if not part_file.exists():
-                statistics.add_result(test_path, 0, 0, ERROR_CODE, "error")
-                print(f"Missing part file for {test_path} (expected at {part_file})")
-                continue
+                # Check for samples.json for on-the-fly generation
+                samples = load_samples(test_path.parent.parent)
+                level_match = re.search(r"po-part-(.+)_(\d+)", partDir)
+                can_generate = False
+                if level_match:
+                    level = level_match.group(1)
+                    sample_idx = level_match.group(2)
+                    sample_key = f"{level}_{sample_idx}_{test_stem}"
+                    if sample_key in samples:
+                        # Check if base part exists
+                        base_part = Path(test_path.parent.parent / "part" / (test_stem + ".part"))
+                        if base_part.exists():
+                            can_generate = True
+                
+                if not can_generate:
+                    statistics.add_result(test_path, 0, 0, 0, ERROR_CODE, "error")
+                    print(f"Missing part file for {test_path} (expected at {part_file})")
+                    continue
             
             tests.append(test_path)
         else:
@@ -584,10 +602,32 @@ def collectTest(testDir, partDir="part"):
 TIMEOUT_CODE = -2
 ERROR_CODE = -1
 
+SAMPLES_DATA = None
+def load_samples(test_dir_origin):
+    global SAMPLES_DATA
+    if SAMPLES_DATA is not None:
+        return SAMPLES_DATA
+    
+    samples_json = Path(test_dir_origin) / "samples.json"
+    if not samples_json.exists():
+        samples_json = Path(test_dir_origin).parent / "samples.json"
+    
+    if samples_json.exists():
+        try:
+            with open(samples_json, "r") as f:
+                SAMPLES_DATA = json.load(f)
+        except Exception as e:
+            print(f"Error loading samples.json: {e}")
+            SAMPLES_DATA = {}
+    else:
+        SAMPLES_DATA = {}
+    return SAMPLES_DATA
+
 def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", iter_count=1, semantics="moore", results_dir=None, verify=False, test_dir_origin=None, on_the_fly=True):
+    test_path = Path(test).resolve()
+    generation_time = 0.0
     temp_dir = tempfile.mkdtemp()
     try:
-        test_path = Path(test).resolve()
         
         # Determine relative path for result saving
         rel_path = test_path.name
@@ -637,10 +677,61 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
 
         # Copy the test files
         shutil.copy2(test, inputfile)
-        if original_part.exists():
-            shutil.copy2(original_part, partfile)
+        
+        # Determine if we need to generate part/mso on the fly
+        start_gen = time.time()
+        samples = load_samples(test_dir_origin or test_path.parent.parent)
+        level_match = re.search(r"po-part-(.+)_(\d+)", partDir)
+        if level_match:
+            level = level_match.group(1)
+            sample_idx = level_match.group(2)
+            sample_key = f"{level}_{sample_idx}_{test_stem}"
+            unobs = samples.get(sample_key, [])
+            
+            # Generate .part file on the fly
+            if original_part.exists():
+                shutil.copy2(original_part, partfile)
+            else:
+                # Need base part info
+                base_part = Path(test_path.parent.parent / "part" / (test_stem + ".part"))
+                if base_part.exists():
+                    with open(base_part, "r") as f:
+                        base_content = f.read()
+                    
+                    # Ensure unobservables is at the end or replaced
+                    new_content = []
+                    for line in base_content.splitlines():
+                        if not line.startswith("unobservables"):
+                            new_content.append(line)
+                    if unobs:
+                        new_content.append(f"unobservables {' '.join(unobs)}")
+                    
+                    with open(partfile, "w") as f:
+                        f.write("\n".join(new_content) + "\n")
+                else:
+                    print(f"Warning: Base part file {base_part} not found for on-the-fly generation.")
+
+            # Generate .mona.quant on the fly if needed
+            if mode == "mso" or "lucas" in solver.get_name():
+                base_mona = Path(test_path.parent.parent / "mso" / (test_stem + ".mona"))
+                if base_mona.exists():
+                    with open(base_mona, "r") as f:
+                        mona_content = f.read()
+                    quant_content = quantify_mona_content(mona_content, unobs)
+                    with open(os.path.join(temp_dir, test_stem + ".mona.quant"), "w") as f:
+                        f.write(quant_content)
+                    # Also copy base for belief-states if needed
+                    shutil.copy2(base_mona, os.path.join(temp_dir, test_stem + ".mona"))
+                else:
+                    print(f"Warning: Base MONA file {base_mona} not found.")
+
         else:
-            print(f"Warning: Part file {original_part} not found.")
+            # Traditional behavior
+            if original_part.exists():
+                shutil.copy2(original_part, partfile)
+            else:
+                print(f"Warning: Part file {original_part} not found.")
+        generation_time = (time.time() - start_gen) * 1000
         
         # Copy DFA files if they exist (next to the .ltlf file)
         for dfa_suffix in [".dfa", ".dfa.rev.neg", ".dfa.quant"]:
@@ -672,7 +763,7 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
         automaton_time = solver.preprocess(inputfile, partfile, mode, actual_semantics, verify=verify)
         command = solver.get_command(inputfile, partfile, mode, actual_semantics, verify=verify, on_the_fly=on_the_fly)
         if not command:
-            statistics.add_result(test, 0, automaton_time, ERROR_CODE, "error")
+            statistics.add_result(test, 0, automaton_time, generation_time, ERROR_CODE, "error")
             return
 
         times = []
@@ -762,6 +853,7 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
                 header += f"# Semantics: {actual_semantics} (detected: {part_semantics})\n"
                 header += f"# Reported Runtime: {average_time:.2f} ms ({final_time_source})\n"
                 header += f"# Automaton Construction Time: {automaton_time:.2f} ms\n"
+                header += f"# Resource Generation Time: {generation_time:.2f} ms\n"
                 header += "-" * 40 + "\n"
                 f.write(header.encode('utf-8'))
                 f.write(last_output)
@@ -800,7 +892,7 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
             else:
                 outcome = "error"
         
-        statistics.add_result(test, average_time, automaton_time, results[0] if results else ERROR_CODE, outcome, verified=verify_status, time_source=final_time_source)
+        statistics.add_result(test, average_time, automaton_time, generation_time, results[0] if results else ERROR_CODE, outcome, verified=verify_status, time_source=final_time_source)
     finally:
         shutil.rmtree(temp_dir)
         
@@ -914,9 +1006,9 @@ if __name__ == "__main__":
         csvfile.write(f"# Cores: {sys_info['cores']}\n")
         csvfile.write(f"# RAM: {sys_info['mem']}\n")
         writer = csv.writer(csvfile)
-        writer.writerow(["test", "time", "automaton_time", "status", "verified", "time_source"])
-        for test, (time, auto_time, status, verified, time_source) in statistics.results.items():
-            writer.writerow([test, time, auto_time, status, verified, time_source])
+        writer.writerow(["test", "time", "automaton_time", "generation_time", "status", "verified", "time_source"])
+        for test, (time, auto_time, gen_time, status, verified, time_source) in statistics.results.items():
+            writer.writerow([test, time, auto_time, gen_time, status, verified, time_source])
 
 
 

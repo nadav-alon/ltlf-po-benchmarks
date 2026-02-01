@@ -11,6 +11,14 @@ spot/*
 !/spot/spot-2.14.4.dev.tar.gz
 !/spot/install.sh
 
+# Benchmarks
+ltlf-fin-benchmarks/po-part-*
+ltlf-fin-benchmarks/po-mso-*
+ltlf-fin-benchmarks/**/*.rev
+ltlf-fin-benchmarks/**/*.rev.neg
+ltlf-fin-benchmarks/**/*.quant
+ltlf-fin-benchmarks/**/*.dfa*
+
 run-*.sh
 SYNTCOMP-benchmarks/
 

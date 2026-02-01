@@ -261,23 +261,15 @@ def main():
         if rev_neg_mona_file.exists(): shutil.copy2(rev_neg_mona_file, po_mso_dirs["0"] / f"{stem}.mona.rev.neg")
 
     # PO levels
+    all_samples = {}
     for level in levels:
         random.setstate(rng_state)
         print(f"Generating samples for level {level}...")
         for tlsf_path in benchmarks:
             stem = tlsf_path.stem
-            mso_file = mso_dir / f"{stem}.mona"
-            if not mso_file.exists(): continue
-            with open(mso_file, "r") as f: mso_content = f.read()
-            rev_mona_file = mso_dir / f"{stem}.mona.rev"
-            rev_neg_mona_file = mso_dir / f"{stem}.mona.rev.neg"
             
             inputs = run_syfco(["-ins", str(tlsf_path)])
-            outputs = run_syfco(["-outs", str(tlsf_path)])
-            semantics = detect_semantics(tlsf_path)
-            
             input_list = sorted([i.strip(";,") for i in (inputs or "").replace(",", " ").split() if i.strip(";,")])
-            output_list = sorted([o.strip(";,") for o in (outputs or "").replace(",", " ").split() if o.strip(";,")])
 
             if level == "all":
                 unobs_samples = [tuple(input_list)]
@@ -296,32 +288,12 @@ def main():
             
             for i, unobs in enumerate(unobs_samples):
                 sample_idx = i + 1
-                obs = [v for v in input_list if v not in unobs]
-                
-                # Determine directories
-                if level == "all":
-                    level_part_dir = po_part_dirs[level]
-                    level_mso_dir = po_mso_dirs[level]
-                else:
-                    level_part_dir = po_part_dirs[(level, sample_idx)]
-                    level_mso_dir = po_mso_dirs[(level, sample_idx)]
-                
-                # PO Part
-                po_file = level_part_dir / f"{stem}.part"
-                with open(po_file, "w") as f:
-                    f.write(f"semantics {semantics}\n")
-                    f.write(f"inputs {' '.join(obs)}\n")
-                    f.write(f"outputs {' '.join(output_list)}\n")
-                    if unobs: f.write(f"unobservables {' '.join(unobs)}\n")
-                
-                # PO MSO
-                shutil.copy2(mso_file, level_mso_dir / f"{stem}.mona")
-                with open(level_mso_dir / f"{stem}.mona.quant", "w") as f:
-                    f.write(quantify_mona_content(mso_content, unobs))
-                if rev_mona_file.exists(): shutil.copy2(rev_mona_file, level_mso_dir / f"{stem}.mona.rev")
-                if rev_neg_mona_file.exists(): shutil.copy2(rev_neg_mona_file, level_mso_dir / f"{stem}.mona.rev.neg")
+                all_samples[f"{level}_{sample_idx}_{stem}"] = list(unobs)
 
-    print(f"Done. Prepared benchmarks in {base_dir}.")
+    with open(base_dir / "samples.json", "w") as f:
+        json.dump(all_samples, f, indent=2)
+
+    print(f"Done. Prepared base benchmarks and samples.json in {base_dir}.")
 
 if __name__ == "__main__":
     main()
