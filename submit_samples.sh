@@ -98,16 +98,21 @@ if [ ${#TARGETS[@]} -eq 0 ]; then
     TARGETS=("all")
 fi
 
-INTERNAL_RANGES=()
+SHORT_INTERNAL_RANGES=()
+LONG_INTERNAL_RANGES=()
 DESCS=()
+
+# Split point: First 6 modes (0-5) are Lucas/Christian (Short), last 3 are Spot (Long)
+SPLIT_IDX=$((6 * SHARDS_PER_COMBINATION))
 
 for TARGET in "${TARGETS[@]}"; do
     FOUND=false
     if [ "$TARGET" == "all" ]; then
-        INTERNAL_RANGES+=("0-$((TASKS_PER_SAMPLE - 1))")
-        DESCS+=("All combinations")
+        SHORT_INTERNAL_RANGES+=("0-$((SPLIT_IDX - 1))")
+        LONG_INTERNAL_RANGES+=("${SPLIT_IDX}-$((TASKS_PER_SAMPLE - 1))")
+        DESCS+=("All tools")
         FOUND=true
-    elif [[ "$TARGET" == "lucas" || "$TARGET" == "christian" || "$TARGET" == "spot" ]]; then
+    elif [[ "$TARGET" == "lucas" || "$TARGET" == "christian" ]]; then
         START=-1
         END=-1
         for i in "${!MODES[@]}"; do
@@ -118,7 +123,22 @@ for TARGET in "${TARGETS[@]}"; do
             fi
         done
         if [ $START -ge 0 ]; then
-            INTERNAL_RANGES+=("$START-$END")
+            SHORT_INTERNAL_RANGES+=("$START-$END")
+            DESCS+=("Solver $TARGET")
+            FOUND=true
+        fi
+    elif [ "$TARGET" == "spot" ]; then
+        START=-1
+        END=-1
+        for i in "${!MODES[@]}"; do
+            SOLVER=$(echo ${MODES[$i]} | cut -d':' -f1)
+            if [ "$SOLVER" == "$TARGET" ]; then
+                if [ $START -lt 0 ]; then START=$((i * SHARDS_PER_COMBINATION)); fi
+                END=$(( (i + 1) * SHARDS_PER_COMBINATION - 1 ))
+            fi
+        done
+        if [ $START -ge 0 ]; then
+            LONG_INTERNAL_RANGES+=("$START-$END")
             DESCS+=("Solver $TARGET")
             FOUND=true
         fi
@@ -127,7 +147,11 @@ for TARGET in "${TARGETS[@]}"; do
             if [ "${MODES[$i]}" == "$TARGET" ]; then
                 START=$((i * SHARDS_PER_COMBINATION))
                 END=$((START + SHARDS_PER_COMBINATION - 1))
-                INTERNAL_RANGES+=("$START-$END")
+                if [ $START -lt $SPLIT_IDX ]; then
+                    SHORT_INTERNAL_RANGES+=("$START-$END")
+                else
+                    LONG_INTERNAL_RANGES+=("$START-$END")
+                fi
                 DESCS+=("Mode $TARGET")
                 FOUND=true
                 break
@@ -141,18 +165,22 @@ for TARGET in "${TARGETS[@]}"; do
     fi
 done
 
-# Build Consolidated Array Range
-# For each sample s (0..29), add (s * TASKS_PER_SAMPLE) to the internal ranges
-FINAL_RANGES=()
-for i in $(seq 0 $((NUM_SAMPLES - 1))); do
-    OFFSET=$((i * TASKS_PER_SAMPLE))
-    for R in "${INTERNAL_RANGES[@]}"; do
-        IFS='-' read -r R_START R_END <<< "$R"
-        FINAL_RANGES+=("$((R_START + OFFSET))-$((R_END + OFFSET))")
+# Function to build final ranges for a bucket
+build_final_range() {
+    local INTERNAL_RANGES=("$@")
+    local FINAL_RANGES=()
+    for i in $(seq 0 $((NUM_SAMPLES - 1))); do
+        OFFSET=$((i * TASKS_PER_SAMPLE))
+        for R in "${INTERNAL_RANGES[@]}"; do
+            IFS='-' read -r R_START R_END <<< "$R"
+            FINAL_RANGES+=("$((R_START + OFFSET))-$((R_END + OFFSET))")
+        done
     done
-done
+    echo $(IFS=,; echo "${FINAL_RANGES[*]}")
+}
 
-ARRAY_RANGE=$(IFS=,; echo "${FINAL_RANGES[*]}")
+SHORT_ARRAY_RANGE=$(build_final_range "${SHORT_INTERNAL_RANGES[@]}")
+LONG_ARRAY_RANGE=$(build_final_range "${LONG_INTERNAL_RANGES[@]}")
 DESC_STR=$(IFS=,; echo "${DESCS[*]}")
 
 echo "========================================="
@@ -161,32 +189,37 @@ echo "Targets: $DESC_STR (across $NUM_SAMPLES samples)"
 echo "Semantics: $SEMANTICS"
 echo "Test Dir: $TEST_DIR"
 echo "Level: $LEVEL"
-echo "On The Fly: both (true then false)"
-echo "Range: [Optimized Array Range]"
+echo "Timing: Lucas/Christian (3.5h), Spot (6.5h)"
 echo "========================================="
 
-if [ "$DRY_RUN" = true ]; then
-    echo "--- DRY RUN: No job will be submitted ---"
-    echo "Command that would be run:"
-    echo "SEMANTICS=$SEMANTICS TEST_DIR=$TEST_DIR LEVEL=$LEVEL TASKS_PER_SAMPLE=$TASKS_PER_SAMPLE SHARDS_PER_COMBINATION=$SHARDS_PER_COMBINATION sbatch --parsable --array=$ARRAY_RANGE \"$SLURM_SCRIPT\""
-else
-    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",TEST_DIR="$TEST_DIR",LEVEL="$LEVEL",TASKS_PER_SAMPLE="$TASKS_PER_SAMPLE",SHARDS_PER_COMBINATION="$SHARDS_PER_COMBINATION" --array=$ARRAY_RANGE "$SLURM_SCRIPT")
-    if [ $? -eq 0 ]; then
-        echo "✓ Job $JOB_ID submitted successfully!"
-        echo "  Array tasks: $ARRAY_RANGE"
-        echo ""
-        echo "Monitor jobs with:"
-        echo "  squeue -j $JOB_ID"
-        echo ""
-        echo "Check logs in (nested by Sample ID):"
-        echo "  logs/${JOB_ID}/po-part-1-2_*/"
-        echo ""
-        echo "Results will be in:"
-        echo "  results/${JOB_ID}/po-part-${LEVEL}_*/"
-        echo ""
-        echo "Cancel all tasks with:"
-        echo "  scancel $JOB_ID"
-    else
-        echo "✗ Failed to submit job"
+submit_job() {
+    local RANGE=$1
+    local TIME=$2
+    local LABEL=$3
+    
+    if [ -z "$RANGE" ]; then return 0; fi
+
+    echo "Submitting $LABEL Job..."
+    if [ "$DRY_RUN" = true ]; then
+        echo "  [DRY RUN] sbatch --time=$TIME --array=$RANGE $SLURM_SCRIPT"
+        return 0
     fi
+
+    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",TEST_DIR="$TEST_DIR",LEVEL="$LEVEL",TASKS_PER_SAMPLE="$TASKS_PER_SAMPLE",SHARDS_PER_COMBINATION="$SHARDS_PER_COMBINATION" --time="$TIME" --array="$RANGE" "$SLURM_SCRIPT")
+    
+    if [ $? -eq 0 ]; then
+        echo "  ✓ Job $JOB_ID submitted successfully! ($TIME limit)"
+        echo "    Array tasks: $RANGE"
+    else
+        echo "  ✗ Failed to submit $LABEL job"
+    fi
+}
+
+submit_job "$SHORT_ARRAY_RANGE" "03:30:00" "SHORT (Lucas/Christian)"
+submit_job "$LONG_ARRAY_RANGE" "06:30:00" "LONG (Spot)"
+
+if [ "$DRY_RUN" != true ]; then
+    echo ""
+    echo "Monitor jobs with: squeue -u $USER"
+    echo "Results will be in: results/<JOB_ID>/po-part-${LEVEL}_*/"
 fi

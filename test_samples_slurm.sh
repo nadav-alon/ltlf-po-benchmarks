@@ -100,11 +100,25 @@ echo ""
 # We use 'timeout' to ensure each run has a fair share (exactly 3 hours each if needed)
 SOFT_TIMEOUT="3h"
 
-for OTF_VAL in true false; do
+# Run the tests. 
+# For Spot, we run both on-the-fly=true and on-the-fly=false for comparison.
+# For other tools, we only run once as the flag doesn't affect them.
+if [ "$SOLVER" = "spot" ]; then
+    OTF_VARIANTS="true false"
+else
+    OTF_VARIANTS="true"
+fi
+
+for OTF_VAL in $OTF_VARIANTS; do
     SUFFIX="otf"
     if [ "$OTF_VAL" = "false" ]; then SUFFIX="off"; fi
     
-    OUTPUT_FILE="results/${BASE_JOB_ID}/${PART_DIR}/${SAFE_MODE}/shard_${SHARD_ID}_${SUFFIX}.csv"
+    # For non-spot solvers, we don't need a suffix since there's only one run
+    if [ "$SOLVER" != "spot" ]; then
+        OUTPUT_FILE="results/${BASE_JOB_ID}/${PART_DIR}/${SAFE_MODE}/shard_${SHARD_ID}.csv"
+    else
+        OUTPUT_FILE="results/${BASE_JOB_ID}/${PART_DIR}/${SAFE_MODE}/shard_${SHARD_ID}_${SUFFIX}.csv"
+    fi
     
     echo "-----------------------------------------"
     echo "Running with ON_THE_FLY=$OTF_VAL"
