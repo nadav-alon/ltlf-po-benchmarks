@@ -450,7 +450,17 @@ class SpotSolver(Solver):
         if mode == "ltlf":
             if verify:
                 print("Verification not supported for spot in ltlf mode.")
-            return  f"{transformation} | ltlfsynt --part-file={part_file} --semantics={semantics} --verbose {restricted_flag}"
+            
+            unobs = get_unobservables_from_part(part_file)
+            inputs = get_variables_from_part(part_file, "inputs")
+            outputs = get_variables_from_part(part_file, "outputs")
+            
+            if unobs:
+                all_inputs = sorted(list(set(inputs) | set(unobs)))
+                # Note: using single quotes for formula and comma-separated lists to prevent shell expansion
+                return f"{transformation} | ltlfsynt --part-file={part_file} --semantics={semantics} --verbose {restricted_flag} --unobservable-ins='{','.join(unobs)}'"
+            
+            return f"{transformation} | ltlfsynt --part-file={part_file} --semantics={semantics} --verbose {restricted_flag}"
         elif mode == "ltl":
             return f"{transformation} | ltlsynt --part-file={part_file} --verbose --algo=ds -H{verify_flag}"
         elif mode == "ltlfilt":
@@ -681,10 +691,11 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
         # Determine if we need to generate part/mso on the fly
         start_gen = time.time()
         samples = load_samples(test_dir_origin or test_path.parent.parent)
-        level_match = re.search(r"po-part-(.+)_(\d+)", partDir)
+        # Robustly match po-part-LEVEL or po-part-LEVEL_SAMPLE
+        level_match = re.search(r"po-part-(.+?)(?:_(\d+))?$", partDir)
         if level_match:
             level = level_match.group(1)
-            sample_idx = level_match.group(2)
+            sample_idx = level_match.group(2) or "1"
             sample_key = f"{level}_{sample_idx}_{test_stem}"
             unobs = samples.get(sample_key, [])
             
