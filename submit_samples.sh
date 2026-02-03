@@ -65,7 +65,7 @@ if [ ! -d "$TEST_DIR" ]; then
     exit 1
 fi
 
-if [[ ! " 1-2 1-4 3-4 all " =~ " $LEVEL " ]]; then
+if [[ ! " part 1-2 1-4 3-4 all " =~ " $LEVEL " ]]; then
     echo "Error: Unknown level '$LEVEL'. Valid levels: 1-2, 1-4, 3-4, all"
     exit 1
 fi

@@ -41,6 +41,8 @@ INTERNAL_ID=$(($SLURM_ARRAY_TASK_ID % $TASKS_PER_SAMPLE))
 # Dynamically set the PART_DIR based on the decoded Sample ID and LEVEL
 if [ "$LEVEL" = "all" ]; then
     PART_DIR="po-part-all"
+elif [ "$LEVEL" = "part" ]; then
+    PART_DIR="part"
 else
     PART_DIR="po-part-${LEVEL}_${SAMPLE_ID}"
 fi
