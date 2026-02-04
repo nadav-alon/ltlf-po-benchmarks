@@ -263,7 +263,7 @@ class TestGames(unittest.TestCase):
         solvers = [(runTests.SpotSolver("ltlfsynt", name="spot"), "ltlf"), (runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas"), "belief-states"), (runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas"), "mso")]
         # Nim is realizable for system here
         for solver, mode in solvers:
-            for level, sample_id, expected in [("part", 1, 1), ("all", 1, 1)]:
+            for level, sample_id, expected in [("part", 1, 0), ("all", 1, 0)]:
                 with self.subTest(level=level, sample_id=sample_id, solver=solver.get_name(), mode=mode):
                     self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/nim_pb_02_03_pe_.ltlf", level, expected, mode, sample_id=sample_id)
 

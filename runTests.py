@@ -346,6 +346,9 @@ class LucasSyftSolver(Solver):
         target_dfa = os.path.join(os.path.dirname(input_file), Path(input_file).stem + dfa_suffix)
         
         if not os.path.exists(target_dfa):
+            # Pre-filter part file for Lucas to handle unobservables correctly
+            filter_part_file_for_lucas(part_file)
+            
             start = time.time()
             
             try:
@@ -663,6 +666,43 @@ def load_samples(test_dir_origin):
         # print(f"Warning: samples.json not found searching up from {test_dir_origin}")
         SAMPLES_DATA = {}
     return SAMPLES_DATA
+
+def filter_part_file_for_lucas(part_file):
+    """
+    Lucas Syft has a bug where if a variable is in both 'inputs' and 'unobservables',
+    it treats it as an observable input. This function removes unobservables from inputs.
+    """
+    if not os.path.exists(part_file):
+        return
+    
+    with open(part_file, 'r') as f:
+        lines = f.readlines()
+    
+    unobs = []
+    for line in lines:
+        if line.lower().strip().startswith('unobservables') or line.lower().strip().startswith('.unobservables'):
+            parts = line.strip().split()
+            if parts[0].endswith(':'):
+                unobs.extend(parts[1:])
+            else:
+                unobs.extend(parts[1:])
+    
+    if not unobs:
+        return
+
+    new_lines = []
+    for line in lines:
+        if line.lower().strip().startswith('inputs') or line.lower().strip().startswith('.inputs'):
+            parts = line.strip().split()
+            header = parts[0]
+            current_inputs = parts[1:]
+            filtered_inputs = [i for i in current_inputs if i not in unobs]
+            new_lines.append(f"{header} {' '.join(filtered_inputs)}\n")
+        else:
+            new_lines.append(line)
+            
+    with open(part_file, 'w') as f:
+        f.writelines(new_lines)
 
 def prepare_test_artifacts(test, partDir, solver, mode, sample_id, temp_dir, test_dir_origin=None, semantics="moore"):
     """
