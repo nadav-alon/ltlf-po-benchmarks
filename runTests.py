@@ -585,11 +585,11 @@ def collectTest(testDir, partDir="part"):
             if not part_file.exists():
                 # Check for samples.json for on-the-fly generation
                 samples = load_samples(test_path.parent.parent)
-                level_match = re.search(r"po-part-(.+)_(\d+)", partDir)
+                level_match = re.search(r"po-part-(.+?)(?:_(\d+))?$", partDir)
                 can_generate = False
                 if level_match:
                     level = level_match.group(1)
-                    sample_idx = level_match.group(2)
+                    sample_idx = level_match.group(2) if level_match.group(2) else "1"
                     sample_key = f"{level}_{sample_idx}_{test_stem}"
                     if sample_key in samples:
                         # Check if base part exists
@@ -695,7 +695,7 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
         level_match = re.search(r"po-part-(.+?)(?:_(\d+))?$", partDir)
         if level_match:
             level = level_match.group(1)
-            sample_idx = level_match.group(2) or "1"
+            sample_idx = level_match.group(2) if level_match.group(2) else "1"
             sample_key = f"{level}_{sample_idx}_{test_stem}"
             unobs = samples.get(sample_key, [])
             
