@@ -210,28 +210,34 @@ def main():
         semantics = detect_semantics(tlsf_path)
         
         ltlf_file = ltlf_dir / f"{stem}.ltlf"
+        ltlf_for_mona = ltlf_dir / f"{stem}_for_mona.ltlf"
         mso_file = mso_dir / f"{stem}.mona"
         rev_mona_file = mso_dir / f"{stem}.mona.rev"
         rev_neg_mona_file = mso_dir / f"{stem}.mona.rev.neg"
         
         print(f"Processing {stem} (Semantics: {semantics})...")
         
-        ltl_formula = run_syfco(["-f", "ltlxba-fin", str(tlsf_path)])
+        ltl_formula = run_syfco(["-f", "ltlxba-fin", "-m", "fully", str(tlsf_path)])
         if ltl_formula:
-            ltl_formula = ltl_formula.replace("X[!]", "N")
             with open(ltlf_file, "w") as f:
                 f.write(ltl_formula + "\n")
+
+            ltlf_formula = ltl_formula.replace("X[!]", "*").replace("X", "N").replace("*", "X")
+
+            with open(ltlf_for_mona, "w") as f:
+                f.write(ltlf_formula + "\n")
+                
             
             # 1. Standard MONA (for belief-states)
             try:
                 with open(mso_file, "w") as f:
-                    subprocess.run([LTFL2FOL, "NNF", str(ltlf_file)], stdout=f, check=True)
+                    subprocess.run([LTFL2FOL, "NNF", str(ltlf_for_mona)], stdout=f, check=True)
             except Exception as e:
                 print(f"Warning: Failed to generate MSO for {stem}: {e}")
 
             # 2. PFOL (for projection-based)
             try:
-                proc = subprocess.run([LTFL2PFOL, str(ltlf_file)], capture_output=True, text=True, check=True)
+                proc = subprocess.run([LTFL2PFOL, str(ltlf_for_mona)], capture_output=True, text=True, check=True)
                 rev_neg_content = proc.stdout
                 
                 with open(rev_neg_mona_file, "w") as f:

@@ -348,11 +348,8 @@ class LucasSyftSolver(Solver):
         if not os.path.exists(target_dfa):
             start = time.time()
             
-            # Step 1: LTLf to FOL/PFOL conversion
-            # ltlf2fol expects <format> <input_file> (e.g., BNF input.ltlf)
-            # ltlf2pfol expects <input_file>
             try:
-                cmd = [str(tool_path), "BNF", input_file] if tool_name == "ltlf2fol" else [str(tool_path), input_file]
+                cmd = [str(tool_path), "NNF", input_file] if tool_name == "ltlf2fol" else [str(tool_path), input_file]
                 proc = subprocess.run(cmd, text=True, capture_output=True, check=True)
                 mona_content = proc.stdout
             except subprocess.CalledProcessError as e:
@@ -442,7 +439,7 @@ class SpotSolver(Solver):
                     f.write(fix_part_content_for_christian(content))
             part_file = spot_part
 
-        transformation = f"sed 's/X/X[!]/g;s/N/X/g;s/^/(/;s/$/)/' {input_file} | paste -sd'&'"
+        transformation = f"cat {input_file} | paste -sd'&'"
         verify_flag = " --verify" if verify else ""
 
         restricted_flag = "" if on_the_fly else " --translation=restricted"
@@ -554,7 +551,7 @@ class Statistics:
 statistics = Statistics()
 
 
-def collectTest(testDir, partDir="part"):
+def collectTest(testDir, partDir="part", sample_id=1):
     global statistics
     p = Path(testDir).resolve()
     
@@ -569,6 +566,8 @@ def collectTest(testDir, partDir="part"):
     else:
         test_files = list(p.rglob("**/ltlf/**/*.ltlf"))
 
+    samples = load_samples(testDir)
+
     for file in test_files:
         test_path = file.resolve()
         test_stem = test_path.stem
@@ -582,26 +581,47 @@ def collectTest(testDir, partDir="part"):
             part_parts[idx] = partDir
             part_file = Path(*part_parts).with_suffix(".part")
             
-            if not part_file.exists():
-                # Check for samples.json for on-the-fly generation
-                samples = load_samples(test_path.parent.parent)
-                level_match = re.search(r"po-part-(.+?)(?:_(\d+))?$", partDir)
-                can_generate = False
-                if level_match:
-                    level = level_match.group(1)
-                    sample_idx = level_match.group(2) if level_match.group(2) else "1"
-                    sample_key = f"{level}_{sample_idx}_{test_stem}"
-                    if sample_key in samples:
-                        # Check if base part exists
-                        base_part = Path(test_path.parent.parent / "part" / (test_stem + ".part"))
-                        if base_part.exists():
-                            can_generate = True
-                
-                if not can_generate:
-                    statistics.add_result(test_path, 0, 0, 0, ERROR_CODE, "error")
-                    print(f"Missing part file for {test_path} (expected at {part_file})")
-                    continue
+            # Use regex to identify level and explicit sample index
+            level_match = re.search(r"po-part-(.+?)(?:_(\d+))?$", partDir)
+            if level_match:
+                level = level_match.group(1)
+                # If the directory name has a suffix (e.g. _4), that's the sample index.
+                # Otherwise, use the explicitly provided sample_id.
+                s_idx = int(level_match.group(2)) if level_match.group(2) else sample_id
+            else:
+                level = partDir
+                s_idx = sample_id
             
+            sample_key = f"{level}_{s_idx}_{test_stem}"
+
+            # Skip logic: only run tests as many times as they have part files/samples
+            if not part_file.exists():
+                # On-the-fly generation case
+                if level_match:
+                    if sample_key not in samples:
+                        continue
+                    # Check if base part exists
+                    base_part_parts = list(parts)
+                    base_part_parts[idx] = "part"
+                    base_part = Path(*base_part_parts).with_suffix(".part")
+                    if not base_part.exists():
+                        continue
+                else:
+                    # Non-PO levels must have part files on disk to be collected
+                    continue
+            else:
+                # File exists on disk, but we might be running a redundant Slurm task for a singleton level
+                # (e.g., Job 10 running LEVEL=all, which should only run once)
+                if not level_match or not level_match.group(2):
+                    if s_idx > 1:
+                        continue
+                
+                # For levels that DO have entries in samples.json, still respect the limit
+                if level_match and sample_key not in samples and level != "all":
+                     # If it's on disk but not in samples, maybe it's custom. We allow it if s_idx=1.
+                     if s_idx > 1:
+                         continue
+
             tests.append(test_path)
         else:
             print(f"Test file {test_path} not under an 'ltlf' directory, skipping.")
@@ -618,11 +638,21 @@ def load_samples(test_dir_origin):
     if SAMPLES_DATA is not None:
         return SAMPLES_DATA
     
-    samples_json = Path(test_dir_origin) / "samples.json"
-    if not samples_json.exists():
-        samples_json = Path(test_dir_origin).parent / "samples.json"
+    current = Path(test_dir_origin).resolve()
+    # If it's a file, start from its parent
+    if current.is_file():
+        current = current.parent
+        
+    samples_json = None
+    # Search upwards for samples.json
+    while current != current.parent:
+        candidate = current / "samples.json"
+        if candidate.exists():
+            samples_json = candidate
+            break
+        current = current.parent
     
-    if samples_json.exists():
+    if samples_json and samples_json.exists():
         try:
             with open(samples_json, "r") as f:
                 SAMPLES_DATA = json.load(f)
@@ -630,10 +660,182 @@ def load_samples(test_dir_origin):
             print(f"Error loading samples.json: {e}")
             SAMPLES_DATA = {}
     else:
+        # print(f"Warning: samples.json not found searching up from {test_dir_origin}")
         SAMPLES_DATA = {}
     return SAMPLES_DATA
 
-def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", iter_count=1, semantics="moore", results_dir=None, verify=False, test_dir_origin=None, on_the_fly=True):
+def prepare_test_artifacts(test, partDir, solver, mode, sample_id, temp_dir, test_dir_origin=None, semantics="moore"):
+    """
+    Sets up the test environment in temp_dir. 
+    Handles on-the-fly generation of part files and MONA files.
+    Returns (inputfile, partfile, actual_semantics, generation_time)
+    """
+    test_path = Path(test).resolve()
+    test_name = test_path.name
+    test_stem = test_path.stem
+    
+    # Strategy: find the index of "ltlf" in the parts of the path
+    # and replace it with "part" or "mso" to find related files
+    parts = list(test_path.parts)
+    if "ltlf" not in parts:
+        ltlf_idx = -1
+    else:
+        ltlf_idx = parts.index("ltlf")
+    
+    # Construct part file path
+    if ltlf_idx != -1:
+        part_parts = list(parts)
+        part_parts[ltlf_idx] = partDir
+        original_part = Path(*part_parts).with_suffix(".part")
+    else:
+        original_part = test_path.with_suffix(".part")
+
+    # Construct mso directory path
+    if ltlf_idx != -1:
+        mso_parts = list(parts)
+        mso_level = "mso"
+        if partDir.startswith("po-part-"):
+            mso_level = partDir.replace("po-part-", "po-mso-")
+        
+        mso_parts[ltlf_idx] = mso_level
+        mso_dir = Path(*mso_parts).parent
+    else:
+        mso_dir = test_path.parent / "mso"
+
+    inputfile = os.path.join(temp_dir, test_name)
+    partfile = os.path.join(temp_dir, test_stem + ".part")
+
+    # Copy the test files
+    shutil.copy2(test, inputfile)
+    
+    # Determine if we need to generate part/mso on the fly
+    start_gen = time.time()
+    if test_dir_origin:
+        benchmark_root = test_dir_origin
+    elif ltlf_idx != -1:
+        benchmark_root = Path(*parts[:ltlf_idx])
+    else:
+        benchmark_root = test_path.parent.parent
+        
+    samples = load_samples(benchmark_root)
+    # Robustly match po-part-LEVEL or po-part-LEVEL_SAMPLE
+    level_match = re.search(r"po-part-(.+?)(?:_(\d+))?$", partDir)
+    unobs = []
+    if level_match:
+        level = level_match.group(1)
+        s_idx = int(level_match.group(2)) if level_match.group(2) else sample_id
+        sample_key = f"{level}_{s_idx}_{test_stem}"
+        unobs = samples.get(sample_key, [])
+        
+        # Generate .part file on the fly
+        if original_part.exists():
+            shutil.copy2(original_part, partfile)
+        else:
+            # Need base part info
+            if ltlf_idx != -1:
+                base_part_parts = list(parts)
+                base_part_parts[ltlf_idx] = "part"
+                base_part = Path(*base_part_parts).with_suffix(".part")
+            else:
+                base_part = original_part # Fallback
+            
+            if base_part.exists():
+                with open(base_part, "r") as f:
+                    base_content = f.read()
+                
+                # Heuristic: decide if it needs a dot based on base file style
+                has_dots = any(line.strip().startswith(".") for line in base_content.splitlines())
+                
+                # Ensure unobservables is at the end or replaced
+                new_content = []
+                for line in base_content.splitlines():
+                    trimmed = line.strip().lower()
+                    if not (trimmed.startswith("unobservables") or trimmed.startswith(".unobservables")):
+                        new_content.append(line)
+                
+                if unobs:
+                    keyword = ".unobservables:" if has_dots else "unobservables"
+                    new_content.append(f"{keyword} {' '.join(unobs)}")
+                
+                with open(partfile, "w") as f:
+                    f.write("\n".join(new_content) + "\n")
+            else:
+                print(f"Warning: Base part file {base_part} not found for on-the-fly generation.")
+
+        # Generate .mona.quant on the fly if needed
+        if mode == "mso" or "lucas" in solver.get_name():
+            if ltlf_idx != -1:
+                base_mona_parts = list(parts)
+                base_mona_parts[ltlf_idx] = "mso"
+                base_mona = Path(*base_mona_parts).with_suffix(".mona")
+            else:
+                base_mona = mso_dir / (test_stem + ".mona")
+            
+            if base_mona.exists():
+                with open(base_mona, "r") as f:
+                    mona_content = f.read()
+                quant_content = quantify_mona_content(mona_content, unobs)
+                with open(os.path.join(temp_dir, test_stem + ".mona.quant"), "w") as f:
+                    f.write(quant_content)
+                # Also copy base for belief-states if needed
+                shutil.copy2(base_mona, os.path.join(temp_dir, test_stem + ".mona"))
+            else:
+                print(f"Warning: Base MONA file {base_mona} not found.")
+
+    else:
+        # Traditional behavior
+        if original_part.exists():
+            shutil.copy2(original_part, partfile)
+        else:
+            print(f"Warning: Part file {original_part} not found.")
+    generation_time = (time.time() - start_gen) * 1000
+    
+    # Copy DFA files if they exist (next to the .ltlf file)
+    for dfa_suffix in [".dfa", ".dfa.rev.neg", ".dfa.quant"]:
+        dfa_src = str(test) + dfa_suffix
+        if os.path.exists(dfa_src):
+            shutil.copy2(dfa_src, inputfile + dfa_suffix)
+    
+    # Copy part file variants if they exist
+    for part_suffix in [".rev.neg", ".quant"]:
+        part_src = str(original_part) + part_suffix
+        if os.path.exists(part_src):
+            shutil.copy2(part_src, partfile + part_suffix)
+    
+    # Copy .mona and .dfa files from mso directory if they exist
+    if mso_dir.exists():
+        suffixes = [".mona", ".mona.rev.neg", ".mona.rev", ".mona.quant", ".dfa", ".dfa.rev.neg", ".dfa.rev", ".dfa.quant"]
+        for sfx in suffixes:
+            src = mso_dir / (test_stem + sfx)
+            if src.exists():
+                dst = os.path.join(temp_dir, test_stem + sfx)
+                if not os.path.exists(dst): # Don't overwrite what we might have generated
+                    shutil.copy2(src, dst)
+
+    # Auto-detect semantics from part file
+    part_semantics = get_semantics_from_part(partfile)
+    actual_semantics = part_semantics if part_semantics else semantics
+
+    if 'lucas' in solver.get_name():
+        with open(inputfile, 'r') as f:
+            content = f.read()
+        
+        with open(inputfile, 'w') as f:
+            content = content.replace("X[!]", "*").replace("X", "N").replace("*", "X")
+            f.write(content)
+    
+    with open(partfile, 'r') as f:
+        content = f.read()
+    
+    with open(partfile, 'w') as f:
+        if content.splitlines()[0].startswith("semantics"):
+            f.write("\n".join(content.splitlines()[1:]))
+        else:
+            f.write(content)
+    
+    return inputfile, partfile, actual_semantics, generation_time
+
+def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", iter_count=1, semantics="moore", results_dir=None, verify=False, test_dir_origin=None, on_the_fly=True, sample_id=1):
     test_path = Path(test).resolve()
     generation_time = 0.0
     temp_dir = tempfile.mkdtemp()
@@ -647,129 +849,11 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
             except ValueError:
                 pass
         
-        # FO tests are always run to collect timing data, but we label them 'na' 
-        # if the benchmark was unrealizable in PO (since realizability changes).
-        test_name = test_path.name
-        test_stem = test_path.stem
-        
-        # Strategy: find the index of "ltlf" in the parts of the path
-        # and replace it with "part" or "mso" to find related files
-        parts = list(test_path.parts)
-        if "ltlf" not in parts:
-            # Try to handle cases where it's not under 'ltlf' but maybe it's a file
-            ltlf_idx = -1
-        else:
-            ltlf_idx = parts.index("ltlf")
-        
-        # Construct part file path
-        if ltlf_idx != -1:
-            part_parts = list(parts)
-            part_parts[ltlf_idx] = partDir
-            original_part = Path(*part_parts).with_suffix(".part")
-        else:
-            # Fallback: look for .part next to the file
-            original_part = test_path.with_suffix(".part")
-
-        # Construct mso directory path
-        if ltlf_idx != -1:
-            mso_parts = list(parts)
-            mso_level = "mso"
-            if partDir.startswith("po-part-"):
-                mso_level = partDir.replace("po-part-", "po-mso-")
-            
-            mso_parts[ltlf_idx] = mso_level
-            mso_dir = Path(*mso_parts).parent
-        else:
-            mso_dir = test_path.parent / "mso"
-
-        inputfile = os.path.join(temp_dir, test_name)
-        partfile = os.path.join(temp_dir, test_stem + ".part")
-
-        # Copy the test files
-        shutil.copy2(test, inputfile)
-        
-        # Determine if we need to generate part/mso on the fly
-        start_gen = time.time()
-        samples = load_samples(test_dir_origin or test_path.parent.parent)
-        # Robustly match po-part-LEVEL or po-part-LEVEL_SAMPLE
-        level_match = re.search(r"po-part-(.+?)(?:_(\d+))?$", partDir)
-        if level_match:
-            level = level_match.group(1)
-            sample_idx = level_match.group(2) if level_match.group(2) else "1"
-            sample_key = f"{level}_{sample_idx}_{test_stem}"
-            unobs = samples.get(sample_key, [])
-            
-            # Generate .part file on the fly
-            if original_part.exists():
-                shutil.copy2(original_part, partfile)
-            else:
-                # Need base part info
-                base_part = Path(test_path.parent.parent / "part" / (test_stem + ".part"))
-                if base_part.exists():
-                    with open(base_part, "r") as f:
-                        base_content = f.read()
-                    
-                    # Ensure unobservables is at the end or replaced
-                    new_content = []
-                    for line in base_content.splitlines():
-                        if not line.startswith("unobservables"):
-                            new_content.append(line)
-                    if unobs:
-                        new_content.append(f"unobservables {' '.join(unobs)}")
-                    
-                    with open(partfile, "w") as f:
-                        f.write("\n".join(new_content) + "\n")
-                else:
-                    print(f"Warning: Base part file {base_part} not found for on-the-fly generation.")
-
-            # Generate .mona.quant on the fly if needed
-            if mode == "mso" or "lucas" in solver.get_name():
-                base_mona = Path(test_path.parent.parent / "mso" / (test_stem + ".mona"))
-                if base_mona.exists():
-                    with open(base_mona, "r") as f:
-                        mona_content = f.read()
-                    quant_content = quantify_mona_content(mona_content, unobs)
-                    with open(os.path.join(temp_dir, test_stem + ".mona.quant"), "w") as f:
-                        f.write(quant_content)
-                    # Also copy base for belief-states if needed
-                    shutil.copy2(base_mona, os.path.join(temp_dir, test_stem + ".mona"))
-                else:
-                    print(f"Warning: Base MONA file {base_mona} not found.")
-
-        else:
-            # Traditional behavior
-            if original_part.exists():
-                shutil.copy2(original_part, partfile)
-            else:
-                print(f"Warning: Part file {original_part} not found.")
-        generation_time = (time.time() - start_gen) * 1000
-        
-        # Copy DFA files if they exist (next to the .ltlf file)
-        for dfa_suffix in [".dfa", ".dfa.rev.neg", ".dfa.quant"]:
-            dfa_src = str(test) + dfa_suffix
-            if os.path.exists(dfa_src):
-                shutil.copy2(dfa_src, inputfile + dfa_suffix)
-        
-        # Copy part file variants if they exist
-        for part_suffix in [".rev.neg", ".quant"]:
-            part_src = str(original_part) + part_suffix
-            if os.path.exists(part_src):
-                shutil.copy2(part_src, partfile + part_suffix)
-        
-        # Copy .mona and .dfa files from mso directory if they exist
-        if mso_dir.exists():
-            suffixes = [".mona", ".mona.rev.neg", ".mona.rev", ".mona.quant", ".dfa", ".dfa.rev.neg", ".dfa.rev", ".dfa.quant"]
-            for sfx in suffixes:
-                src = mso_dir / (test_stem + sfx)
-                if src.exists():
-                    dst = os.path.join(temp_dir, test_stem + sfx)
-                    shutil.copy2(src, dst)
-
-        # Auto-detect semantics from part file
-        part_semantics = get_semantics_from_part(partfile)
-        actual_semantics = part_semantics if part_semantics else semantics
-        if part_semantics:
-            print(f"[{test_path.name}] Using semantics from part file: {actual_semantics}")
+        inputfile, partfile, actual_semantics, generation_time = prepare_test_artifacts(
+            test, partDir, solver, mode, sample_id, temp_dir, test_dir_origin, semantics
+        )
+        if actual_semantics != semantics:
+             print(f"[{test_path.name}] Using semantics from part file: {actual_semantics}")
 
         automaton_time = solver.preprocess(inputfile, partfile, mode, actual_semantics, verify=verify)
         command = solver.get_command(inputfile, partfile, mode, actual_semantics, verify=verify, on_the_fly=on_the_fly)
@@ -939,6 +1023,7 @@ if __name__ == "__main__":
     parser.add_argument("--results-dir", type=str, help="Directory to save detailed results (logs, controllers)")
     parser.add_argument("--verify", action="store_true", help="Perform verification on the resulting controller")
     parser.add_argument("--on-the-fly", type=str2bool, nargs='?', const=True, default=True, help="Perform translation on the fly")
+    parser.add_argument("--sample-id", type=int, default=1, help="Sample index for singleton levels")
     args = parser.parse_args()
 
     commit_hash = get_git_revision_hash()
@@ -969,7 +1054,7 @@ if __name__ == "__main__":
         if solver_name == 'christian' else LucasSyftSolver(str(syft_path), name="lucas") \
         if solver_name == 'lucas' else SpotSolver(str(syft_path), name="spot") 
     
-    tests = sorted(collectTest(test_dir, args.part_dir))
+    tests = sorted(collectTest(test_dir, args.part_dir, args.sample_id))
     
     if args.num_shards > 1:
         total_tests = len(tests)
@@ -980,7 +1065,8 @@ if __name__ == "__main__":
 
     for test in tests:
         executeTest(test, timeout, solver, args.part_dir, internal_mode, iterations, args.semantics, 
-                    results_dir=args.results_dir, verify=args.verify, test_dir_origin=test_dir, on_the_fly=args.on_the_fly)
+                    results_dir=args.results_dir, verify=args.verify, test_dir_origin=test_dir, 
+                    on_the_fly=args.on_the_fly, sample_id=args.sample_id)
 
     print("===========")
     print("Statistics:")

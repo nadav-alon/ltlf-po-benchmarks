@@ -139,7 +139,8 @@ for OTF_VAL in $OTF_VARIANTS; do
         --num-shards=$SHARDS_PER_COMBINATION \
         --semantics=$SEMANTICS \
         --part-dir=$PART_DIR \
-        --on-the-fly=$OTF_VAL
+        --on-the-fly=$OTF_VAL \
+        --sample-id=$SAMPLE_ID
 
     RET=$?
     if [ $RET -eq 124 ]; then

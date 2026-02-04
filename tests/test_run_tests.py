@@ -1,4 +1,5 @@
 import os
+import re
 import unittest
 import shutil
 import tempfile
@@ -45,22 +46,10 @@ class BaseSolverTest(unittest.TestCase):
         ltlf_src = REPO_ROOT / ltlf_rel_path
         test_stem = ltlf_src.stem
         
-        # Determine part file source
-        parts = list(ltlf_src.parts)
-        if "ltlf" in parts:
-            idx = parts.index("ltlf")
-            part_parts = list(parts)
-            part_parts[idx] = "part"
-            original_part = Path(*part_parts).with_suffix(".part")
-        else:
-            original_part = ltlf_src.with_suffix(".part")
-
-        # Copy files to temp dir
-        inputfile = os.path.join(self.test_dir, ltlf_src.name)
-        partfile = os.path.join(self.test_dir, test_stem + ".part")
-        shutil.copy2(ltlf_src, inputfile)
-        if original_part.exists():
-            shutil.copy2(original_part, partfile)
+        # Prepare artifacts using shared logic from runTests
+        inputfile, partfile, semantics, _ = runTests.prepare_test_artifacts(
+            ltlf_src, "part", solver, mode, 1, self.test_dir, semantics=semantics
+        )
 
         # 1. Preprocess
         auto_time = solver.preprocess(inputfile, partfile, mode, semantics=semantics)
@@ -210,68 +199,73 @@ class TestGames(unittest.TestCase):
     def tearDown(self):
         shutil.rmtree(self.test_dir)
 
-    def run_game_test(self, solver, ltlf_path, part_dir, expected_val, mode):
+    def run_game_test(self, solver, ltlf_path, level, expected_val, mode, sample_id=1):
         ltlf_src = REPO_ROOT / ltlf_path
         test_stem = ltlf_src.stem
         
-        # Determine part file source
-        parts = list(ltlf_src.parts)
-        if "ltlf" in parts:
-            idx = parts.index("ltlf")
-            part_parts = list(parts)
-            part_parts[idx] = part_dir
-            original_part = Path(*part_parts).with_suffix(".part")
+        # Determine part directory name (matching runTests logic)
+        if level == "part":
+            part_dir_name = "part"
+        elif level == "all":
+            part_dir_name = "po-part-all"
         else:
-            original_part = ltlf_src.with_suffix(".part")
+            part_dir_name = f"po-part-{level}"
 
-        # Copy files to temp dir
-        inputfile = os.path.join(self.test_dir, ltlf_src.name)
-        partfile = os.path.join(self.test_dir, test_stem + ".part")
-        shutil.copy2(ltlf_src, inputfile)
-        if original_part.exists():
-            shutil.copy2(original_part, partfile)
-
-        # Preprocess and execute
-        part_semantics = runTests.get_semantics_from_part(partfile)
-        semantics = part_semantics if part_semantics else "moore"
-
-        auto_time = solver.preprocess(inputfile, partfile, mode, semantics=semantics)
-        print(f"auto time {auto_time}")
-        cmd = solver.get_command(inputfile, partfile, mode, semantics=semantics)
-        print(f"cmd {cmd}")
-        self.assertTrue(cmd)
+        # We should use a unique name for the partfile in the shared test_dir if multiple subtests run
+        # However, prepare_test_artifacts uses test_stem + ".part" inside temp_dir.
+        # Since we use a fresh temp_dir in execTest but here self.test_dir is reused?
+        # No, run_game_test is called within a test method, and setUp/tearDown handle self.test_dir.
+        # But wait, test_spot_counter runs multiple subTests!
+        # I should probably use a unique temp_dir per run_game_test call too, or make prepare_test_artifacts more flexible.
         
+        actual_temp = tempfile.mkdtemp(dir=self.test_dir)
         try:
-            output = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT, timeout=60, cwd=REPO_ROOT)
-        except subprocess.CalledProcessError as e:
-            output = e.output
-        
-        result, _, _ = solver.parse_output(output)
-        self.assertEqual(result, expected_val, f"Solver {solver.get_name()} for {ltlf_path} ({mode}) returned {result}, expected {expected_val}.")
+            # Use same logic as runTests.py
+            benchmark_root = REPO_ROOT / "ltlf-fin-benchmarks"
+            inputfile, partfile, actual_semantics, _ = runTests.prepare_test_artifacts(
+                ltlf_src, part_dir_name, solver, mode, sample_id, actual_temp, test_dir_origin=benchmark_root
+            )
 
-    def test_spot_counter(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/counter_pb_01_pe_.ltlf", "part", 1, "ltlf")
+            print(f"DEBUG: inputfile {inputfile}")
+            with open(inputfile, 'r') as f:
+                print(f"DEBUG: inputfile content {f.read()}")
+            print(f"DEBUG: partfile {partfile}")
+            with open(partfile, 'r') as f:
+                print(f"DEBUG: partfile content {f.read()}")
+            print(f"DEBUG: actual_semantics {actual_semantics}")
 
-    def test_spot_nim_unreal(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/nim_pb_01_01_pe_.ltlf", "part", 0, "ltlf")
+            # Preprocess and execute
+            auto_time = solver.preprocess(inputfile, partfile, mode, semantics=actual_semantics)
+            print(f"DEBUG: auto time {auto_time} for {test_stem} at {level}")
+            cmd = solver.get_command(inputfile, partfile, mode, semantics=actual_semantics)
+            print(f"DEBUG: cmd {cmd}")
+            self.assertTrue(cmd)
+            
+            try:
+                output = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT, timeout=60, cwd=REPO_ROOT)
+            except subprocess.CalledProcessError as e:
+                output = e.output
+            
+            result, _, _ = solver.parse_output(output)
+            self.assertEqual(result, expected_val, f"Solver {solver.get_name()} for {ltlf_path} ({mode}) at level {level} (sample {sample_id}) returned {result}, expected {expected_val}. Output: {output.decode()}")
+        finally:
+            shutil.rmtree(actual_temp)
 
-    def test_spot_nim_real(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/nim_pb_03_02_pe_.ltlf", "part", 1, "ltlf")
+    def test_counter(self):
+        solvers = [(runTests.SpotSolver("ltlfsynt", name="spot"), "ltlf"), (runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas"), "belief-states"), (runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas"), "mso")]
+        # All modes are realizable for this small counter instance
+        for solver, mode in solvers:
+            for level, sample_id, expected in [("part", 1, 1), ("all", 1, 0), ("1-2", 1, 0)]:
+                with self.subTest(level=level, sample_id=sample_id, solver=solver.get_name(), mode=mode):
+                    self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/counter_pb_01_pe_.ltlf", level, expected, mode, sample_id=sample_id)
 
-    def test_lucas_counter(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/counter_pb_01_pe_.ltlf", "part", 1, "belief-states")
-
-    def test_lucas_nim_unreal(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/nim_pb_01_01_pe_.ltlf", "part", 0, "belief-states")
-
-    def test_lucas_nim_real(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/nim_pb_03_02_pe_.ltlf", "part", 1, "belief-states")
+    def test_nim_real(self):
+        solvers = [(runTests.SpotSolver("ltlfsynt", name="spot"), "ltlf"), (runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas"), "belief-states"), (runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas"), "mso")]
+        # Nim is realizable for system here
+        for solver, mode in solvers:
+            for level, sample_id, expected in [("part", 1, 1), ("all", 1, 1)]:
+                with self.subTest(level=level, sample_id=sample_id, solver=solver.get_name(), mode=mode):
+                    self.run_game_test(solver, "ltlf-fin-benchmarks/ltlf/nim_pb_02_03_pe_.ltlf", level, expected, mode, sample_id=sample_id)
 
 if __name__ == "__main__":
     unittest.main()
