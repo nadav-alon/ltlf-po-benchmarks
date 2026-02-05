@@ -99,20 +99,26 @@ class Solver():
 
 def get_variables_from_part(part_file, var_type='all'):
     vars = set()
-    postfix = '' if var_type == 'all' else var_type
-    line_titles = [var_type] if var_type != 'all' else ['inputs', 'outputs', 'unobservables']
+    targets = ['inputs', 'outputs', 'unobservables'] if var_type == 'all' else [var_type]
+    
     if os.path.exists(part_file):
         with open(part_file, 'r') as f:
             for line in f:
                 line = line.strip()
-                if line.startswith(f'.{postfix}') and ':' in line:
-                    vars.update(line.split(':')[1].strip().split())
-                elif any(line.startswith(k) for k in line_titles):
-                    parts = line.split()
-                    if len(parts) > 0 and (parts[0].endswith(':') or len(parts) > 1):
-                        line_content = line.replace(':', ' ').split()
-                    if len(line_content) > 1:
-                        vars.update(line_content[1:])
+                if not line: continue
+                
+                # Normalize line: replace ':' with ' ' and split
+                clean_line = line.replace(':', ' ')
+                parts = clean_line.split()
+                if not parts: continue
+    
+                header = parts[0]
+                if header.startswith('.'):
+                    header = header[1:]
+                
+                if header in targets:
+                    vars.update(parts[1:])
+                    
     return sorted(list(vars))
 
 
@@ -1087,6 +1093,8 @@ if __name__ == "__main__":
     parser.add_argument("--verify", action="store_true", help="Perform verification on the resulting controller")
     parser.add_argument("--on-the-fly", type=str2bool, nargs='?', const=True, default=True, help="Perform translation on the fly")
     parser.add_argument("--sample-id", type=int, default=1, help="Sample index for singleton levels")
+    parser.add_argument("--limit", type=int, default=0, help="Limit number of tests to run (0 for all)")
+    parser.add_argument("--filter", type=str, help="Filter tests by name (substring match)")
     args = parser.parse_args()
 
     commit_hash = get_git_revision_hash()
@@ -1119,12 +1127,20 @@ if __name__ == "__main__":
     
     tests = sorted(collectTest(test_dir, args.part_dir, args.sample_id))
     
+    if args.filter:
+        tests = [t for t in tests if args.filter in t.name]
+        print(f"Filtered to {len(tests)} tests matching '{args.filter}'")
+
     if args.num_shards > 1:
         total_tests = len(tests)
         tests = tests[args.shard_id::args.num_shards]
         print(f"Shard {args.shard_id}/{args.num_shards}: Running {len(tests)} out of {total_tests} tests.")
     else:
         print(f"Running all {len(tests)} tests.")
+
+    if args.limit > 0:
+        print(f"Limiting to first {args.limit} tests.")
+        tests = tests[:args.limit]
 
     for test in tests:
         executeTest(test, timeout, solver, args.part_dir, internal_mode, iterations, args.semantics, 
