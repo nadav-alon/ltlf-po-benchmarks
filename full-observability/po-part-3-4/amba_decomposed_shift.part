@@ -1,3 +1,0 @@
-.inputs: HREADY
-.outputs: HMASTLOCK
-.unobservables: LOCKED

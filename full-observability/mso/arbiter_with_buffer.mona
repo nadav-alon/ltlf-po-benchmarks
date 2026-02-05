@@ -1,7 +1,0 @@
-#G true && G (r_0 -> (try_0 <-> X ack_0 U g_0))
-#(! ((F (! true)) || (F (! ((! r_0) || (! ((! ((! try_0) || ((X ack_0) U g_0))) || (! ((! ((X ack_0) U g_0)) || try_0)))))))))
-#NNF format
-#((G true) && (G ((! r_0) || (((! try_0) || ((X ack_0) U g_0)) && (((N (! ack_0)) V (! g_0)) || try_0)))))
-m2l-str;
-var2 ACK_0, G_0, R_0, TRY_0;
-(((all1 x1: ((0 <= x1) => ((((((((x1 in TRY_0)) | (((ex1 x2: (x1 <= x2 & (((ex1 x3: (x3=x2+1 & (~((x3 in ACK_0))))) | (x2 = max $))) & (all1 x3: (x1 <= x3 & x3 <= x2 => (~((x3 in G_0)))))))| (all1 x3: ((x1 <= x3 & x3 <= max $) => (~((x3 in G_0))))))))) & ((((ex1 x2: (x1 <= x2 & ((x2 in G_0)) & (all1 x3: (x1 <= x3 & x3 < x2 => ((ex1 x4: (x4=x3+1 & ((x4 in ACK_0)))))))))) | (~((x1 in TRY_0))))))) | (~((x1 in R_0)))))))) & ((all1 x1: ((0 <= x1) => ((true))))));

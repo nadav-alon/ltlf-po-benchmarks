@@ -1,7 +1,0 @@
-#G ((HREADY -> X HMASTLOCK <-> LOCKED) && (! HREADY -> X HMASTLOCK <-> HMASTLOCK))
-#(! (F (((! ((! ((! HREADY) || (X HMASTLOCK))) || LOCKED)) || (! ((! LOCKED) || ((! HREADY) || (X HMASTLOCK))))) || ((! ((! (HREADY || (X HMASTLOCK))) || HMASTLOCK)) || (! ((! HMASTLOCK) || (HREADY || (X HMASTLOCK))))))))
-#NNF format
-#(G ((((HREADY && (N (! HMASTLOCK))) || LOCKED) && ((! LOCKED) || ((! HREADY) || (X HMASTLOCK)))) && ((((! HREADY) && (N (! HMASTLOCK))) || HMASTLOCK) && ((! HMASTLOCK) || (HREADY || (X HMASTLOCK))))))
-m2l-str;
-var2 HMASTLOCK, HREADY, LOCKED;
-(all1 x1: ((0 <= x1) => ((((((((((ex1 x2: (x2=x1+1 & ((x2 in HMASTLOCK))))) | ((x1 in HREADY)))) | (~((x1 in HMASTLOCK))))) & ((((x1 in HMASTLOCK)) | (((((ex1 x2: (x2=x1+1 & (~((x2 in HMASTLOCK))))) | (x1 = max $))) & (~((x1 in HREADY))))))))) & ((((((((ex1 x2: (x2=x1+1 & ((x2 in HMASTLOCK))))) | (~((x1 in HREADY))))) | (~((x1 in LOCKED))))) & ((((x1 in LOCKED)) | (((((ex1 x2: (x2=x1+1 & (~((x2 in HMASTLOCK))))) | (x1 = max $))) & ((x1 in HREADY))))))))))));

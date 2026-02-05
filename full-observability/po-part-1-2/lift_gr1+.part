@@ -1,3 +1,0 @@
-.inputs: obstacle b_1
-.outputs: req_pwr open down up f_0
-.unobservables: grant_pwr b_0

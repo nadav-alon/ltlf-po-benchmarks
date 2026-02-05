@@ -163,7 +163,7 @@ def get_safe_true(part_file, exclude_unobs=False):
     # Return a list of tautologies, one for each variable
     return " && ".join([f"{v} | ~{v}" for v in sorted(list(vars))])
 
-def fix_part_content_for_christian(content):
+def normalize_part_with_dots(content):
     new_content = []
     for line in content.splitlines():
         trimmed = line.strip()
@@ -286,7 +286,7 @@ class ChristianSyftSolver(Solver):
                     content = f.read()
                 # Christian's tool expects .inputs: .outputs: .unobservables:
                 
-                new_content = fix_part_content_for_christian(content)
+                new_content = normalize_part_with_dots(content)
                 with open(christian_part, 'w') as f:
                     f.write(new_content)
             part_file = christian_part
@@ -427,6 +427,14 @@ class LucasSyftSolver(Solver):
         if not os.path.exists(dfa_file):
             print(f"[{self.get_name()}] Error: {dfa_file} not found. Preprocess may have failed.")
             return ""
+        
+        if args.dry_run:
+            if not os.path.exists('dry_run_results'):
+                os.mkdir('dry_run_results')
+            with open(os.path.join('dry_run_results', Path(input_file).stem + f'.{mode}.dfa'), 'w') as f:
+                print(f'writing {dfa_file} to {f.name}')
+                with open(dfa_file, 'r') as d:
+                    f.write(d.read())
 
         sem_val = 1 if semantics == "mealy" else 0
         return f'"{self.path}" {dfa_file} {actual_part_file} {sem_val} {obs} {inp_type}'
@@ -461,7 +469,7 @@ class SpotSolver(Solver):
                     with open(part_file, 'r') as f:
                         content = f.read()
                 with open(spot_part, 'w') as f:
-                    f.write(fix_part_content_for_christian(content))
+                    f.write(normalize_part_with_dots(content))
             part_file = spot_part
 
         transformation = f"cat {input_file} | paste -sd'&'"
@@ -926,6 +934,16 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
 
         automaton_time = solver.preprocess(inputfile, partfile, mode, actual_semantics, verify=verify)
         command = solver.get_command(inputfile, partfile, mode, actual_semantics, verify=verify, on_the_fly=on_the_fly)
+        if args.dry_run:
+            print(f"[{test_path.name}] Command: {command}")
+            if not os.path.exists('dry_run_results'):
+                os.mkdir('dry_run_results')
+            with open(os.path.join('dry_run_results', test_path.name), 'w') as f:
+                f.write(command)
+            with open(os.path.join('dry_run_results', test_path.name + '.part'), 'w') as f:
+                with open(partfile, 'r') as p:
+                    f.write(p.read())
+            return
         if not command:
             statistics.add_result(test, 0, automaton_time, generation_time, ERROR_CODE, "error")
             return
@@ -1095,6 +1113,7 @@ if __name__ == "__main__":
     parser.add_argument("--sample-id", type=int, default=1, help="Sample index for singleton levels")
     parser.add_argument("--limit", type=int, default=0, help="Limit number of tests to run (0 for all)")
     parser.add_argument("--filter", type=str, help="Filter tests by name (substring match)")
+    parser.add_argument("--dry-run", action="store_true", help="Dry run")
     args = parser.parse_args()
 
     commit_hash = get_git_revision_hash()

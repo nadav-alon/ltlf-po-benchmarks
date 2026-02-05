@@ -1,3 +1,0 @@
-.inputs: mox38_2 deliveryrequest22 deliveryrequest4 y2 y1
-.outputs: MOSpeederMonitor38 deliverypickedup22 pendingdelivery22 deliverypickedup14 pendingdelivery14 deliverypickedup4 pendingdelivery4 drop pickup down up right left
-.unobservables: mox38_1 x1 moy38_1 door56 deliveryrequest14 x2 door26 x0 door72 moy38_0 moy38_2 moy38_3 y3 mox38_0 y0

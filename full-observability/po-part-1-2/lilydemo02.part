@@ -1,3 +1,0 @@
-.inputs: go req
-.outputs: grant
-.unobservables: cancel

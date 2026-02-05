@@ -1,7 +1,0 @@
-#! (G (req -> F ack) && G (go -> F grant))
-#((F (! ((! req) || (F ack)))) || (F (! ((! go) || (F grant)))))
-#NNF format
-#((F (req && (G (! ack)))) || (F (go && (G (! grant)))))
-m2l-str;
-var2 ACK, GO, GRANT, REQ;
-(((ex1 x1: (0 <= x1 & ((((all1 x2: ((x1 <= x2) => (~((x2 in GRANT)))))) & ((x1 in GO))))))) | ((ex1 x1: (0 <= x1 & ((((all1 x2: ((x1 <= x2) => (~((x2 in ACK)))))) & ((x1 in REQ))))))));

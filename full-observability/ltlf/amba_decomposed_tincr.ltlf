@@ -1,1 +1,0 @@
-! DECIDE && G (F HREADY) && ! F (G BUSREQ) && G (! READY1 -> X (! DECIDE)) -> G ((DECIDE -> X (X ((INCR && LOCKED -> (! READY1 W HREADY && ! BUSREQ)) && (! (INCR && LOCKED) -> READY1)))) && (READY1 && X (! DECIDE) -> X READY1) && (READY1 && X DECIDE -> X (! READY1 && X (! READY1)))) && READY1

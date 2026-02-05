@@ -1,7 +1,0 @@
-#G ((! HBURST_0 && ! HBURST_1 -> SINGLE) && (HBURST_0 && ! HBURST_1 -> BURST4) && (! HBURST_0 && HBURST_1 -> INCR) && ! (SINGLE && (BURST4 || INCR)) && ! (BURST4 && INCR))
-#(! (F (((((! ((HBURST_0 || HBURST_1) || SINGLE)) || (! (((! HBURST_0) || HBURST_1) || BURST4))) || (! ((HBURST_0 || (! HBURST_1)) || INCR))) || (! ((! SINGLE) || (! (BURST4 || INCR))))) || (! ((! BURST4) || (! INCR))))))
-#NNF format
-#(G ((((((HBURST_0 || HBURST_1) || SINGLE) && (((! HBURST_0) || HBURST_1) || BURST4)) && ((HBURST_0 || (! HBURST_1)) || INCR)) && ((! SINGLE) || ((! BURST4) && (! INCR)))) && ((! BURST4) || (! INCR))))
-m2l-str;
-var2 BURST4, HBURST_0, HBURST_1, INCR, SINGLE;
-(all1 x1: ((0 <= x1) => (((((~((x1 in INCR))) | (~((x1 in BURST4))))) & (((((((~((x1 in INCR))) & (~((x1 in BURST4))))) | (~((x1 in SINGLE))))) & ((((((x1 in INCR)) | (((~((x1 in HBURST_1))) | ((x1 in HBURST_0)))))) & ((((((x1 in BURST4)) | ((((x1 in HBURST_1)) | (~((x1 in HBURST_0))))))) & ((((x1 in SINGLE)) | ((((x1 in HBURST_1)) | ((x1 in HBURST_0))))))))))))))));

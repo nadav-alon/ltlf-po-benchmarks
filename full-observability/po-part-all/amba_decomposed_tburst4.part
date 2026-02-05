@@ -1,3 +1,0 @@
-.inputs:
-.outputs: READY2
-.unobservables: BURST4 HREADY LOCKED DECIDE

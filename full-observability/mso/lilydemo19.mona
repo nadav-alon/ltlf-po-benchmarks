@@ -1,7 +1,0 @@
-#G (F ets) -> G ((hl -> (hl U ets)) && (fl -> (fl U ets)) && ! (hl && fl) && (ec -> F fl) && F hl)
-#((F (! (F ets))) || (! (F (((((! ((! hl) || (hl U ets))) || (! ((! fl) || (fl U ets)))) || (! ((! hl) || (! fl)))) || (! ((! ec) || (F fl)))) || (! (F hl))))))
-#NNF format
-#((F (G (! ets))) || (G ((((((! hl) || (hl U ets)) && ((! fl) || (fl U ets))) && ((! hl) || (! fl))) && ((! ec) || (F fl))) && (F hl))))
-m2l-str;
-var2 EC, ETS, FL, HL;
-(((all1 x1: ((0 <= x1) => ((((ex1 x2: (x1 <= x2 & ((x2 in HL))))) & ((((((ex1 x2: (x1 <= x2 & ((x2 in FL))))) | (~((x1 in EC))))) & (((((~((x1 in FL))) | (~((x1 in HL))))) & ((((((ex1 x2: (x1 <= x2 & ((x2 in ETS)) & (all1 x3: (x1 <= x3 & x3 < x2 => ((x3 in FL))))))) | (~((x1 in FL))))) & ((((ex1 x2: (x1 <= x2 & ((x2 in ETS)) & (all1 x3: (x1 <= x3 & x3 < x2 => ((x3 in HL))))))) | (~((x1 in HL)))))))))))))))) | ((ex1 x1: (0 <= x1 & ((all1 x2: ((x1 <= x2) => (~((x2 in ETS))))))))));

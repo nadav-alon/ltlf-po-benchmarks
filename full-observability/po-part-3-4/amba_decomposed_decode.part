@@ -1,3 +1,0 @@
-.inputs: HBURST_0
-.outputs: INCR BURST4 SINGLE
-.unobservables: HBURST_1
