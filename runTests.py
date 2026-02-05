@@ -13,6 +13,20 @@ import platform
 from datetime import datetime
 import json
 
+def parse_part_dir(part_dir, sample_id=1):
+    """
+    Parses part directory name to extract level and sample index.
+    Supports formats: 'part', 'po-part-LEVEL', 'po-part-LEVEL_SAMPLEID'
+    Returns (level, s_idx, is_part_dir, has_explicit_sample)
+    """
+    match = re.search(r"(?:po-)?part(?:-(.+?))?(?:_(\d+))?$", part_dir)
+    if match:
+        level = match.group(1) if match.group(1) else "part"
+        has_explicit_sample = match.group(2) is not None
+        s_idx = int(match.group(2)) if has_explicit_sample else sample_id
+        return level, s_idx, True, has_explicit_sample
+    return part_dir, sample_id, False, False
+
 
 def get_git_revision_hash():
     try:
@@ -436,8 +450,10 @@ class SpotSolver(Solver):
         if not part_file.endswith('.spot.part'):
             spot_part = part_file + '.spot.part'
             if not os.path.exists(spot_part):
-                with open(part_file, 'r') as f:
-                    content = f.read()
+                content = ""
+                if os.path.exists(part_file):
+                    with open(part_file, 'r') as f:
+                        content = f.read()
                 with open(spot_part, 'w') as f:
                     f.write(fix_part_content_for_christian(content))
             part_file = spot_part
@@ -584,24 +600,15 @@ def collectTest(testDir, partDir="part", sample_id=1):
             part_parts[idx] = partDir
             part_file = Path(*part_parts).with_suffix(".part")
             
-            # Use regex to identify level and explicit sample index
-            level_match = re.search(r"po-part-(.+?)(?:_(\d+))?$", partDir)
-            if level_match:
-                level = level_match.group(1)
-                # If the directory name has a suffix (e.g. _4), that's the sample index.
-                # Otherwise, use the explicitly provided sample_id.
-                s_idx = int(level_match.group(2)) if level_match.group(2) else sample_id
-            else:
-                level = partDir
-                s_idx = sample_id
-            
+            level, s_idx, level_match, has_explicit_sample = parse_part_dir(partDir, sample_id)
             sample_key = f"{level}_{s_idx}_{test_stem}"
 
             # Skip logic: only run tests as many times as they have part files/samples
             if not part_file.exists():
                 # On-the-fly generation case
                 if level_match:
-                    if sample_key not in samples:
+                    # If it's a specific sample or level entry in samples.json, check it
+                    if level != "all" and level != "0" and sample_key not in samples:
                         continue
                     # Check if base part exists
                     base_part_parts = list(parts)
@@ -615,7 +622,7 @@ def collectTest(testDir, partDir="part", sample_id=1):
             else:
                 # File exists on disk, but we might be running a redundant Slurm task for a singleton level
                 # (e.g., Job 10 running LEVEL=all, which should only run once)
-                if not level_match or not level_match.group(2):
+                if not level_match or not has_explicit_sample:
                     if s_idx > 1:
                         continue
                 
@@ -635,11 +642,10 @@ def collectTest(testDir, partDir="part", sample_id=1):
 TIMEOUT_CODE = -2
 ERROR_CODE = -1
 
-SAMPLES_DATA = None
+SAMPLES_CACHE = {}
+
 def load_samples(test_dir_origin):
-    global SAMPLES_DATA
-    if SAMPLES_DATA is not None:
-        return SAMPLES_DATA
+    global SAMPLES_CACHE
     
     current = Path(test_dir_origin).resolve()
     # If it's a file, start from its parent
@@ -656,16 +662,21 @@ def load_samples(test_dir_origin):
         current = current.parent
     
     if samples_json and samples_json.exists():
+        samples_key = str(samples_json)
+        if samples_key in SAMPLES_CACHE:
+            return SAMPLES_CACHE[samples_key]
+            
         try:
             with open(samples_json, "r") as f:
-                SAMPLES_DATA = json.load(f)
+                data = json.load(f)
+                SAMPLES_CACHE[samples_key] = data
+                return data
         except Exception as e:
             print(f"Error loading samples.json: {e}")
-            SAMPLES_DATA = {}
+            return {}
     else:
         # print(f"Warning: samples.json not found searching up from {test_dir_origin}")
-        SAMPLES_DATA = {}
-    return SAMPLES_DATA
+        return {}
 
 def filter_part_file_for_lucas(part_file):
     """
@@ -758,17 +769,24 @@ def prepare_test_artifacts(test, partDir, solver, mode, sample_id, temp_dir, tes
         benchmark_root = test_path.parent.parent
         
     samples = load_samples(benchmark_root)
-    # Robustly match po-part-LEVEL or po-part-LEVEL_SAMPLE
-    level_match = re.search(r"po-part-(.+?)(?:_(\d+))?$", partDir)
-    unobs = []
-    if level_match:
-        level = level_match.group(1)
-        s_idx = int(level_match.group(2)) if level_match.group(2) else sample_id
-        sample_key = f"{level}_{s_idx}_{test_stem}"
-        unobs = samples.get(sample_key, [])
-        
+    level, s_idx, level_match, has_explicit_sample = parse_part_dir(partDir, sample_id)
+    sample_key = f"{level}_{s_idx}_{test_stem}"
+    unobs = None
+    
+    # We use on-the-fly generation if:
+    # 1. We found an entry in samples.json
+    # 2. OR the level is FO (0) or FU (all)
+    if sample_key in samples:
+        unobs = samples[sample_key]
+    elif level == "0":
+        unobs = []
+    elif level == "all":
+        # FU fallback: unobs is everything. We'll extract it from base_part later.
+        unobs = "ALL_VARS" 
+
+    if unobs is not None:
         # Generate .part file on the fly
-        if original_part.exists():
+        if original_part.exists() and not (sample_key in samples or level in ["all", "0"]):
             shutil.copy2(original_part, partfile)
         else:
             # Need base part info
@@ -793,6 +811,9 @@ def prepare_test_artifacts(test, partDir, solver, mode, sample_id, temp_dir, tes
                     if not (trimmed.startswith("unobservables") or trimmed.startswith(".unobservables")):
                         new_content.append(line)
                 
+                if unobs == "ALL_VARS":
+                    unobs = sorted(get_variables_from_part(base_part, "inputs"))
+                
                 if unobs:
                     keyword = ".unobservables:" if has_dots else "unobservables"
                     new_content.append(f"{keyword} {' '.join(unobs)}")
@@ -800,6 +821,7 @@ def prepare_test_artifacts(test, partDir, solver, mode, sample_id, temp_dir, tes
                 with open(partfile, "w") as f:
                     f.write("\n".join(new_content) + "\n")
             else:
+                unobs = [] # Fallback
                 print(f"Warning: Base part file {base_part} not found for on-the-fly generation.")
 
         # Generate .mona.quant on the fly if needed
@@ -864,14 +886,15 @@ def prepare_test_artifacts(test, partDir, solver, mode, sample_id, temp_dir, tes
             content = content.replace("X[!]", "*").replace("X", "N").replace("*", "X")
             f.write(content)
     
-    with open(partfile, 'r') as f:
-        content = f.read()
+    if os.path.exists(partfile):
+        with open(partfile, 'r') as f:
+            content = f.read()
     
-    with open(partfile, 'w') as f:
-        if content.splitlines()[0].startswith("semantics"):
-            f.write("\n".join(content.splitlines()[1:]))
-        else:
-            f.write(content)
+        with open(partfile, 'w') as f:
+            if content.splitlines() and content.splitlines()[0].startswith("semantics"):
+                f.write("\n".join(content.splitlines()[1:]))
+            else:
+                f.write(content)
     
     return inputfile, partfile, actual_semantics, generation_time
 

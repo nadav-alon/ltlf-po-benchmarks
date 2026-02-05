@@ -230,8 +230,9 @@ class TestGames(unittest.TestCase):
             with open(inputfile, 'r') as f:
                 print(f"DEBUG: inputfile content {f.read()}")
             print(f"DEBUG: partfile {partfile}")
-            with open(partfile, 'r') as f:
-                print(f"DEBUG: partfile content {f.read()}")
+            if os.path.exists(partfile):
+                with open(partfile, 'r') as f:
+                    print(f"DEBUG: partfile content {f.read()}")
             print(f"DEBUG: actual_semantics {actual_semantics}")
 
             # Preprocess and execute

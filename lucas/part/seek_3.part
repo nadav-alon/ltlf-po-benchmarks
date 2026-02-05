@@ -1,3 +1,2 @@
-inputs HIT
+inputs HIT TARGET_0 TARGET_1 TARGET_2
 outputs GUESS_0 GUESS_1 GUESS_2
-unobservables TARGET_0 TARGET_1 TARGET_2
