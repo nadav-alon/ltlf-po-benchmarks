@@ -52,6 +52,14 @@ while [[ $# -gt 0 ]]; do
             NUM_SAMPLES="${1#*=}"
             shift
             ;;
+        --limit)
+            LIMIT="$2"
+            shift 2
+            ;;
+        --limit=*)
+            LIMIT="${1#*=}"
+            shift
+            ;;
         *)
             TARGETS+=("$1")
             shift
@@ -65,14 +73,22 @@ if [ ! -d "$TEST_DIR" ]; then
     exit 1
 fi
 
-if [[ ! " part 1-2 1-4 3-4 all " =~ " $LEVEL " ]]; then
-    echo "Error: Unknown level '$LEVEL'. Valid levels: 1-2, 1-4, 3-4, all"
+if [[ ! " part 0 1-2 1-4 3-4 all " =~ " $LEVEL " ]]; then
+    echo "Error: Unknown level '$LEVEL'. Valid levels: 0, part, 1-2, 1-4, 3-4, all"
     exit 1
 fi
 
 if [[ ! "$NUM_SAMPLES" =~ ^[0-9]+$ ]] || [ "$NUM_SAMPLES" -lt 1 ] || [ "$NUM_SAMPLES" -gt 30 ]; then
     echo "Error: Invalid number of samples '$NUM_SAMPLES'. Must be between 1 and 30."
     exit 1
+fi
+
+if [[ -n "$LIMIT" ]]; then
+    if [[ ! "$LIMIT" =~ ^[0-9]+$ ]] || [ "$LIMIT" -le 0 ]; then
+        echo "Error: Invalid limit '$LIMIT'. Must be a positive integer."
+        exit 1
+    fi
+    echo "Limit set to: $LIMIT"
 fi
 
 if [ ! -f "$SLURM_SCRIPT" ]; then
@@ -205,7 +221,7 @@ submit_job() {
         return 0
     fi
 
-    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",TEST_DIR="$TEST_DIR",LEVEL="$LEVEL",TASKS_PER_SAMPLE="$TASKS_PER_SAMPLE",SHARDS_PER_COMBINATION="$SHARDS_PER_COMBINATION" --time="$TIME" --array="$RANGE" "$SLURM_SCRIPT")
+    JOB_ID=$(sbatch --parsable --export=ALL,SEMANTICS="$SEMANTICS",TEST_DIR="$TEST_DIR",LEVEL="$LEVEL",TASKS_PER_SAMPLE="$TASKS_PER_SAMPLE",SHARDS_PER_COMBINATION="$SHARDS_PER_COMBINATION",LIMIT="$LIMIT" --time="$TIME" --array="$RANGE" "$SLURM_SCRIPT")
     
     if [ $? -eq 0 ]; then
         echo "  ✓ Job $JOB_ID submitted successfully! ($TIME limit)"

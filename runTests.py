@@ -1131,16 +1131,16 @@ if __name__ == "__main__":
         tests = [t for t in tests if args.filter in t.name]
         print(f"Filtered to {len(tests)} tests matching '{args.filter}'")
 
+    if args.limit > 0:
+        print(f"Limiting to first {args.limit} tests globally.")
+        tests = tests[:args.limit]
+
     if args.num_shards > 1:
         total_tests = len(tests)
         tests = tests[args.shard_id::args.num_shards]
         print(f"Shard {args.shard_id}/{args.num_shards}: Running {len(tests)} out of {total_tests} tests.")
     else:
         print(f"Running all {len(tests)} tests.")
-
-    if args.limit > 0:
-        print(f"Limiting to first {args.limit} tests.")
-        tests = tests[:args.limit]
 
     for test in tests:
         executeTest(test, timeout, solver, args.part_dir, internal_mode, iterations, args.semantics, 

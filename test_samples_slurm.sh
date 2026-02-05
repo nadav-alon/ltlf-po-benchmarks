@@ -140,7 +140,8 @@ for OTF_VAL in $OTF_VARIANTS; do
         --semantics=$SEMANTICS \
         --part-dir=$PART_DIR \
         --on-the-fly=$OTF_VAL \
-        --sample-id=$SAMPLE_ID
+        --sample-id=$SAMPLE_ID \
+        ${LIMIT:+--limit=$LIMIT}
 
     RET=$?
     if [ $RET -eq 124 ]; then
