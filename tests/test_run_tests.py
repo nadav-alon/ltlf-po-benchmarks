@@ -53,16 +53,9 @@ class BaseSolverTest(unittest.TestCase):
 
         # 1. Preprocess
         auto_time = solver.preprocess(inputfile, partfile, mode, semantics=semantics)
-        print(f"\nDEBUG: Preprocessed {example_name} in {mode} ({partfile})")
-        with open(partfile, 'r') as f:
-            print(f"DEBUG: Part File ({partfile}):\n{f.read()}")
-        
-        with open(inputfile, 'r') as f:
-            print(f"DEBUG: Input File ({inputfile}):\n{f.read()}")
         
         # 2. Get command
         cmd = solver.get_command(inputfile, partfile, mode, semantics=semantics, on_the_fly=on_the_fly)
-        print(f"DEBUG: Command for {example_name} in {mode}:\n{cmd}")
         self.assertTrue(cmd, f"Failed to get command for {example_name} in {mode}")
         
         # 3. Execute
@@ -77,120 +70,46 @@ class BaseSolverTest(unittest.TestCase):
         
         self.assertEqual(result, expected_val, f"Solver {solver.get_name()} for {example_name} ({mode}) returned {result}, expected {expected_val}. Output: {output.decode()}")
 
-class TestLucasBeliefStates(BaseSolverTest):
-    def test_lucas_bs_peek_1_1_1(self):
+class TestLucasSolvers(BaseSolverTest):
+    def test_lucas_benchmarks(self):
+        benchmarks = [
+            ("peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf"),
+            ("peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf"),
+            ("peek_3_3_54", "lucas/ltlf/peek/peek_3_3_54.ltlf"),
+            ("peek_4_4_87", "lucas/ltlf/peek/peek_4_4_87.ltlf"),
+            ("coins_3", "lucas/ltlf/coins_3.ltlf"),
+            ("coins_4", "lucas/ltlf/coins_4.ltlf"),
+            ("seek_5", "lucas/ltlf/seek_5.ltlf"),
+        ]
+        
+        modes = ["belief-states", "mso", "projection"]
         solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf", "belief-states")
+        
+        for name, path in benchmarks:
+            for mode in modes:
+                with self.subTest(benchmark=name, mode=mode):
+                    self.run_solver_logic(solver, name, path, mode)
 
-    def test_lucas_bs_peek_1_1_89(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf", "belief-states")
-    
-    def test_lucas_bs_coins_3(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "belief-states")
-
-    def test_lucas_bs_coins_4(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "coins_4", "lucas/ltlf/coins_4.ltlf", "belief-states")
-
-    def test_lucas_bs_seek_5(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "belief-states")
-
-class TestLucasMSO(BaseSolverTest):
-    def test_lucas_mso_peek_1_1_1(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf", "mso")
-
-    def test_lucas_mso_peek_1_1_89(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf", "mso")
-
-    def test_lucas_mso_coins_3(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "mso")
-
-    def test_lucas_mso_coins_4(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "coins_4", "lucas/ltlf/coins_4.ltlf", "mso")
-
-    def test_lucas_mso_seek_5(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "mso")
-
-class TestSpotLTLf(BaseSolverTest):
-    def test_spot_ltlf_coins_3(self):
+class TestSpotSolvers(BaseSolverTest):
+    def test_spot_benchmarks(self):
+        benchmarks = [
+            ("peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf"),
+            ("peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf"),
+            ("peek_3_3_54", "lucas/ltlf/peek/peek_3_3_54.ltlf"),
+            ("peek_4_4_87", "lucas/ltlf/peek/peek_4_4_87.ltlf"),
+            ("peek_4_3_68", "lucas/ltlf/peek/peek_4_3_68.ltlf"),
+            ("coins_3", "lucas/ltlf/coins_3.ltlf"),
+            ("coins_4", "lucas/ltlf/coins_4.ltlf"),
+            ("seek_5", "lucas/ltlf/seek_5.ltlf"),
+        ]
+        
         solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "ltlf")
-
-    def test_spot_ltlf_coins_4(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "coins_4", "lucas/ltlf/coins_4.ltlf", "ltlf")
-
-    def test_spot_ltlf_seek_5(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "ltlf")
-
-    def test_spot_ltlf_peek_1_1_1(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf", "ltlf")
-
-    def test_spot_ltlf_peek_1_1_89(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf", "ltlf")
-
-    def test_spot_ltlf_peek_4_3_68(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "peek_4_3_68", "lucas/ltlf/peek/peek_4_3_68.ltlf", "ltlf")
-
-class TestSpotLTLf_restricted(BaseSolverTest):
-    def test_spot_ltlf_coins_3(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "ltlf", on_the_fly=False)
-
-    def test_spot_ltlf_coins_4(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "coins_4", "lucas/ltlf/coins_4.ltlf", "ltlf", on_the_fly=False)
-
-    def test_spot_ltlf_seek_5(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "ltlf", on_the_fly=False)
-
-    def test_spot_ltlf_peek_1_1_1(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf", "ltlf", on_the_fly=False)
-
-    def test_spot_ltlf_peek_1_1_89(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf", "ltlf", on_the_fly=False)
-
-    def test_spot_ltlf_peek_4_3_68(self):
-        solver = runTests.SpotSolver("ltlfsynt", name="spot")
-        self.run_solver_logic(solver, "peek_4_3_68", "lucas/ltlf/peek/peek_4_3_68.ltlf", "ltlf", on_the_fly=False)
-
-class TestLucasProjection(BaseSolverTest):
-    def test_lucas_proj_peek_1_1_1(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf", "projection")
-
-    def test_lucas_proj_peek_1_1_89(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf", "projection")
-    
-    def test_lucas_proj_coins_3(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "coins_3", "lucas/ltlf/coins_3.ltlf", "projection")
-
-    def test_lucas_proj_coins_4(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        self.run_solver_logic(solver, "coins_4", "lucas/ltlf/coins_4.ltlf", "projection")
-
-    def test_lucas_proj_seek_5(self):
-        solver = runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas")
-        # Fixed copy-paste error: explicitly using "projection" mode as per method name intention
-        self.run_solver_logic(solver, "seek_5", "lucas/ltlf/seek_5.ltlf", "projection")
-
+        
+        for name, path in benchmarks:
+            for on_the_fly in [True, False]:
+                mode_name = "ltlf_otf" if on_the_fly else "ltlf_restricted"
+                with self.subTest(benchmark=name, mode=mode_name):
+                    self.run_solver_logic(solver, name, path, "ltlf", on_the_fly=on_the_fly)
 
 class TestGames(unittest.TestCase):
     def setUp(self):
@@ -203,7 +122,6 @@ class TestGames(unittest.TestCase):
         ltlf_src = REPO_ROOT / ltlf_path
         test_stem = ltlf_src.stem
         
-        # Determine part directory name (matching runTests logic)
         if level == "part":
             part_dir_name = "part"
         elif level == "all":
@@ -211,35 +129,16 @@ class TestGames(unittest.TestCase):
         else:
             part_dir_name = f"po-part-{level}"
 
-        # We should use a unique name for the partfile in the shared test_dir if multiple subtests run
-        # However, prepare_test_artifacts uses test_stem + ".part" inside temp_dir.
-        # Since we use a fresh temp_dir in execTest but here self.test_dir is reused?
-        # No, run_game_test is called within a test method, and setUp/tearDown handle self.test_dir.
-        # But wait, test_spot_counter runs multiple subTests!
-        # I should probably use a unique temp_dir per run_game_test call too, or make prepare_test_artifacts more flexible.
-        
         actual_temp = tempfile.mkdtemp(dir=self.test_dir)
         try:
-            # Use same logic as runTests.py
             benchmark_root = REPO_ROOT / "ltlf-fin-benchmarks"
             inputfile, partfile, actual_semantics, _ = runTests.prepare_test_artifacts(
                 ltlf_src, part_dir_name, solver, mode, sample_id, actual_temp, test_dir_origin=benchmark_root
             )
 
-            print(f"DEBUG: inputfile {inputfile}")
-            with open(inputfile, 'r') as f:
-                print(f"DEBUG: inputfile content {f.read()}")
-            print(f"DEBUG: partfile {partfile}")
-            if os.path.exists(partfile):
-                with open(partfile, 'r') as f:
-                    print(f"DEBUG: partfile content {f.read()}")
-            print(f"DEBUG: actual_semantics {actual_semantics}")
-
             # Preprocess and execute
             auto_time = solver.preprocess(inputfile, partfile, mode, semantics=actual_semantics)
-            print(f"DEBUG: auto time {auto_time} for {test_stem} at {level}")
             cmd = solver.get_command(inputfile, partfile, mode, semantics=actual_semantics)
-            print(f"DEBUG: cmd {cmd}")
             self.assertTrue(cmd)
             
             try:
@@ -254,7 +153,6 @@ class TestGames(unittest.TestCase):
 
     def test_counter(self):
         solvers = [(runTests.SpotSolver("ltlfsynt", name="spot"), "ltlf"), (runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas"), "belief-states"), (runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas"), "mso")]
-        # All modes are realizable for this small counter instance
         for solver, mode in solvers:
             for level, sample_id, expected in [("part", 1, 1), ("all", 1, 0), ("1-2", 1, 0)]:
                 with self.subTest(level=level, sample_id=sample_id, solver=solver.get_name(), mode=mode):
@@ -262,7 +160,6 @@ class TestGames(unittest.TestCase):
 
     def test_nim_real(self):
         solvers = [(runTests.SpotSolver("ltlfsynt", name="spot"), "ltlf"), (runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas"), "belief-states"), (runTests.LucasSyftSolver(str(LUCAS_SYFT_PATH), name="lucas"), "mso")]
-        # Nim is realizable for system here
         for solver, mode in solvers:
             for level, sample_id, expected in [("part", 1, 0), ("all", 1, 0)]:
                 with self.subTest(level=level, sample_id=sample_id, solver=solver.get_name(), mode=mode):

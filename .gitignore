@@ -27,3 +27,7 @@ SYNTCOMP-benchmarks/
 # Python
 __pycache__/
 *.pyc
+
+
+yellow_results/
+dry_run_results/

@@ -428,7 +428,7 @@ class LucasSyftSolver(Solver):
             print(f"[{self.get_name()}] Error: {dfa_file} not found. Preprocess may have failed.")
             return ""
         
-        if args.dry_run:
+        if globals().get('args') and args.dry_run:
             if not os.path.exists('dry_run_results'):
                 os.mkdir('dry_run_results')
             with open(os.path.join('dry_run_results', Path(input_file).stem + f'.{mode}.dfa'), 'w') as f:
@@ -934,7 +934,7 @@ def executeTest(test, timeout, solver: Solver, partDir="part", mode="direct", it
 
         automaton_time = solver.preprocess(inputfile, partfile, mode, actual_semantics, verify=verify)
         command = solver.get_command(inputfile, partfile, mode, actual_semantics, verify=verify, on_the_fly=on_the_fly)
-        if args.dry_run:
+        if globals().get('args') and args.dry_run:
             print(f"[{test_path.name}] Command: {command}")
             if not os.path.exists('dry_run_results'):
                 os.mkdir('dry_run_results')
