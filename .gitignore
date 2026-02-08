@@ -8,7 +8,7 @@ results-*.csv
 results_*.csv
 ltlf-po-benchmarks.code-workspace
 spot/*
-!/spot/spot-2.14.4.dev.tar.gz
+!/spot/spot-*.tar.gz
 !/spot/install.sh
 
 # Benchmarks
