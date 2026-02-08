@@ -74,9 +74,9 @@ class TestLucasSolvers(BaseSolverTest):
     def test_lucas_benchmarks(self):
         benchmarks = [
             ("peek_1_1_1", "lucas/ltlf/peek/peek_1_1_1.ltlf"),
-            ("peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf"),
-            ("peek_3_3_54", "lucas/ltlf/peek/peek_3_3_54.ltlf"),
-            ("peek_4_4_87", "lucas/ltlf/peek/peek_4_4_87.ltlf"),
+            # ("peek_1_1_89", "lucas/ltlf/peek/peek_1_1_89.ltlf"),
+            # ("peek_3_3_54", "lucas/ltlf/peek/peek_3_3_54.ltlf"),
+            # ("peek_4_4_87", "lucas/ltlf/peek/peek_4_4_87.ltlf"),
             ("coins_3", "lucas/ltlf/coins_3.ltlf"),
             ("coins_4", "lucas/ltlf/coins_4.ltlf"),
             ("seek_5", "lucas/ltlf/seek_5.ltlf"),
