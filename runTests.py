@@ -63,6 +63,13 @@ def get_system_info():
         pass
     return info
 
+def get_spot_version():
+    try:
+        result = subprocess.run(["ltlfsynt", "--version"], capture_output=True, text=True, check=True)
+        return result.stdout.splitlines()[0].strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return "unknown"
+
 
 class Solver():
     def __init__(self, path, name=None):
@@ -1187,6 +1194,7 @@ if __name__ == "__main__":
         output_file = args.output
 
     sys_info = get_system_info()
+    spot_version = get_spot_version()
     with open(output_file, "w") as csvfile:
         csvfile.write(f"# Commit: {commit_hash}\n")
         csvfile.write(f"# Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
@@ -1200,6 +1208,7 @@ if __name__ == "__main__":
         csvfile.write(f"# CPU: {sys_info['cpu']}\n")
         csvfile.write(f"# Cores: {sys_info['cores']}\n")
         csvfile.write(f"# RAM: {sys_info['mem']}\n")
+        csvfile.write(f"# Spot Version: {spot_version}\n")
         writer = csv.writer(csvfile)
         writer.writerow(["test", "time", "automaton_time", "generation_time", "status", "verified", "time_source"])
         for test, (time, auto_time, gen_time, status, verified, time_source) in statistics.results.items():
